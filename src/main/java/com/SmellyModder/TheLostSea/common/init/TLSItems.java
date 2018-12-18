@@ -59,27 +59,27 @@ public class TLSItems {
 	public static final Item PRISMARINE_BOOTS = new Item3DArmorP("prismarine_boots", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Vehicles
-	public static Item RED_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.RED, "sub_red");
-	public static Item ORANGE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.ORANGE, "sub_orange");
-	public static Item YELLOW_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.YELLOW, "sub_yellow");
-	public static Item LIME_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIME, "sub_lime");
-	public static Item GREEN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.GREEN, "sub_green");
-	public static Item BLUE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BLUE, "sub_blue");
-	public static Item LIGHTBLUE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIGHTBLUE, "sub_lightblue");
-	public static Item CYAN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.CYAN, "sub_cyan");
-	public static Item PURPLE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.PURPLE, "sub_purple");
-	public static Item MAGENTA_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.MAGENTA, "sub_magenta");
-	public static Item PINK_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.PINK, "sub_pink");
-	public static Item BROWN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BROWN, "sub_brown");
-	public static Item BLACK_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BLACK, "sub_black");
-	public static Item GRAY_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.GRAY, "sub_gray");
-	public static Item LIGHTGRAY_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIGHTGRAY, "sub_lightgray");
-	public static Item WHITE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.WHITE, "sub_white");
-	
+//	public static Item RED_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.RED, "sub_red");
+//	public static Item ORANGE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.ORANGE, "sub_orange");
+//	public static Item YELLOW_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.YELLOW, "sub_yellow");
+//	public static Item LIME_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIME, "sub_lime");
+//	public static Item GREEN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.GREEN, "sub_green");
+//	public static Item BLUE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BLUE, "sub_blue");
+//	public static Item LIGHTBLUE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIGHTBLUE, "sub_lightblue");
+//	public static Item CYAN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.CYAN, "sub_cyan");
+//	public static Item PURPLE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.PURPLE, "sub_purple");
+//	public static Item MAGENTA_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.MAGENTA, "sub_magenta");
+//	public static Item PINK_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.PINK, "sub_pink");
+//	public static Item BROWN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BROWN, "sub_brown");
+//	public static Item BLACK_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BLACK, "sub_black");
+//	public static Item GRAY_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.GRAY, "sub_gray");
+//	public static Item LIGHTGRAY_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIGHTGRAY, "sub_lightgray");
+//	public static Item WHITE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.WHITE, "sub_white");
+//	
 	//Parts
-	public static Item SUB_ENGINEI = new ItemSubPart("engine_1");
-	public static Item SUB_PROPELLERI = new ItemSubPart("propeller_1");
-	public static Item SUB_LIGHTSI = new ItemSubPart("lights_1");
+//	public static Item SUB_ENGINEI = new ItemSubPart("engine_1");
+//	public static Item SUB_PROPELLERI = new ItemSubPart("propeller_1");
+//	public static Item SUB_LIGHTSI = new ItemSubPart("lights_1");
 	
 	//Collectables
 	public static Item PEARL = new ItemPearl("pearl");

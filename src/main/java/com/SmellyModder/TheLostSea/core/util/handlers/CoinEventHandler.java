@@ -44,7 +44,7 @@ public class CoinEventHandler {
 			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
 		}
 		String message = String.format("Hello there, you have §7%d§r coins left.", (int) coins.getCoins()); 
-		player.sendMessage(new TextComponentString(message)); 
+		//player.sendMessage(new TextComponentString(message)); 
 	}
 	
 	

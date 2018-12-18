@@ -40,7 +40,7 @@ public class OverlayCoins extends Gui{
 	public void renderCoinTracker(RenderGameOverlayEvent event) {
 		if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT){
 			int posX = (event.getResolution().getScaledWidth()) / 2;
-			int posY = (event.getResolution().getScaledHeight()) / 2;
+			final int posY = (event.getResolution().getScaledHeight()) / 2;
 			int offsetFromScreenLeft = (event.getResolution().getScaledWidth() - width) / 2;
 			int offsetFromScreenTop = offsetFromScreenLeft * 2;
 

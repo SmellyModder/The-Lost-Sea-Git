@@ -14,6 +14,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class ItemSwordBaseP extends ItemSword implements IHasModel{
 	}
 	@Override
 	public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-		list.add("Rarity:" + " §5§lLegendary§r");
+		list.add("Rarity:" + TextFormatting.LIGHT_PURPLE + "Legendary");
 	}
 	
 	@Override

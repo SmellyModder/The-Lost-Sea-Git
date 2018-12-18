@@ -40,7 +40,7 @@ public class ItemSubB extends Item implements IHasModel{
     {
         this.type = typeIn;
         this.maxStackSize = 1;
-        this.setCreativeTab(TheLostSea.TLS_VEHICLES);
+        //this.setCreativeTab(TheLostSea.TLS_VEHICLES);
         this.setTranslationKey("sub." + typeIn.getName());
         this.setRegistryName(name);
         

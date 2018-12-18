@@ -11,7 +11,7 @@ public class ItemSpeedUpgrade extends ItemSubUpgrades implements IHasModel
     {
         setRegistryName(name);
         setTranslationKey(name);
-        setCreativeTab(TheLostSea.TLS_VEHICLES);
+       // setCreativeTab(TheLostSea.TLS_VEHICLES);
 
         TLSItems.ITEMS.add(this);
     }

@@ -93,12 +93,12 @@ public class TheLostSea {
 			}
 			};
 		
-	public static CreativeTabs TLS_VEHICLES = new CreativeTabs("The-Lost-Sea-Vehicles") {
-		@Override
-		public ItemStack createIcon() { 
-			return new ItemStack(TLSItems.BLUE_SUBMARINE);
-	}
-	};
+//	public static CreativeTabs TLS_VEHICLES = new CreativeTabs("The-Lost-Sea-Vehicles") {
+//		@Override
+//		public ItemStack createIcon() { 
+//			return new ItemStack(TLSItems.BLUE_SUBMARINE);
+//	}
+//	};
 	
 	public static CreativeTabs TLS_GEAR = new CreativeTabs("The-Lost-Sea-Gear") {
 		@Override

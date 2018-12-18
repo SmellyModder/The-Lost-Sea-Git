@@ -8,7 +8,7 @@ public class ItemSubPart extends ItemBase{
 
 	public ItemSubPart(String name) {
 		super(name);
-		setCreativeTab(TheLostSea.TLS_VEHICLES);
+		//setCreativeTab(TheLostSea.TLS_VEHICLES);
 	}
 
 }
