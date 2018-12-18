@@ -35,6 +35,7 @@ public class OverlayCoins extends Gui{
 	int heightForResText = 0;
 	int heightForResIcon = 0;
 	private double nextAnim, prevTime;
+	private boolean hasColl = false;
 
 	@SubscribeEvent
 	public void renderCoinTracker(RenderGameOverlayEvent event) {
@@ -48,9 +49,9 @@ public class OverlayCoins extends Gui{
 			EntityPlayer entitySP = Minecraft.getMinecraft().player;
 			int i2 = Minecraft.getMinecraft().gameSettings.guiScale;
 			if(i2 == 0) {
-				heightForRes = 233;
-				heightForResIcon = 260;
-				heightForResText = 241;
+				heightForRes = 263;
+				heightForResIcon = 290;
+				heightForResText = 271;
 			} else if(i2 == 1){
 				heightForRes = 995;
 				heightForResIcon = 1022;
@@ -70,12 +71,12 @@ public class OverlayCoins extends Gui{
 			FontRenderer fontrenderer = Minecraft.getMinecraft().ingameGUI.getFontRenderer();
 			EntityAtlantisCoin coin = new EntityAtlantisCoin(world1);
 			
-			final double time = (Sys.getTime() * 1000) / Sys.getTimerResolution();
+			final double time = (Sys.getTime() * 5300) / Sys.getTimerResolution();
 			final double timePassed = time - this.prevTime;
 
 			this.prevTime = time;
 
-			if (this.nextAnim < 1200)
+			if (this.nextAnim < 15350)
 			{
 				this.nextAnim += timePassed;
 			}
@@ -90,21 +91,19 @@ public class OverlayCoins extends Gui{
 			
 			GlStateManager.pushMatrix();
 			if (true) {
-				
-//				if(this.nextAnim == 0) {
-//					GlStateManager.translate(0, anim / 40000.0, 0);
-//				}
-//				else if (this.nextAnim < 500.0)
-//				{
-//					GlStateManager.translate(0, anim / 500.0, 0);
-//				}
-//				else if (this.nextAnim >= 500.0)
-//				{
-//					GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
-//				}
-//				else if(this.nextAnim >= 1000) {
-//					GlStateManager.translate(0, -((anim - 1000.0) / 500.0), 0);
-//				}
+				if(this.nextAnim == 0) {
+					GlStateManager.translate(0, anim / 40000.0, 0);
+				}
+				else if (this.nextAnim >= 500.0)
+				{
+					GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
+				}
+				else if(this.nextAnim >= 1000) {
+					GlStateManager.translate(0, -((anim - 1000.0) / 500.0), 0);
+				}
+				else if(this.nextAnim >= 2000) {
+					GlStateManager.translate(0, -((anim - 2000.0) / 500.0), 0);
+				}
 				
 				if(Config.isCoinOverlayTop == false) {
 					Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/overlay/player/coin_overlay.png"));
