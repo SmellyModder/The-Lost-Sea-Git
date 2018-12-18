@@ -1,0 +1,6 @@
+{
+   "parent": "thelostsea:item/lore_book",
+   "textures": {
+       "layer0": "thelostsea:items/relic/lore_book_thiccer"
+   }
+}

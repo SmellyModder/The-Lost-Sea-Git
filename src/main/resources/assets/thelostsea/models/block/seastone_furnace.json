@@ -1,0 +1,9 @@
+{
+  "parent": "thelostsea:block/orientable_ls",
+  "textures": {
+  
+    "top": "thelostsea:blocks/maps/searock_furnace_top",
+    "front": "thelostsea:blocks/maps/searock_furnace_front_off",
+    "side": "thelostsea:blocks/maps/searock_furnace_side"
+  }
+}

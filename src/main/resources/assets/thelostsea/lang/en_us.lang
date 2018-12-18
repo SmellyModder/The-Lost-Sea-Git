@@ -1,0 +1,136 @@
+#Tab
+itemGroup.The-Lost-Sea-Vehicles=§3Lost Sea Vehicles§r
+itemGroup.The-Lost-Sea-Blocks=§3Lost Sea Blocks§r
+itemGroup.The-Lost-Sea-Items=§3Lost Sea Items§r
+itemGroup.The-Lost-Sea-Gear=§3Lost Sea Gear§r
+itemGroup.The-Lost-Sea-Music=§3Lost Sea Music§r
+
+
+#Blocks
+tile.liquidack.name=Liquidack
+tile.runic_eye.name=Prismarine Eye Rune
+tile.carved_eye.name=Carved Prismarine Eye
+tile.prismarine_pillar.name=Prismarine Pillar
+tile.prismarine_pillar_top.name=Prismarine Pillar Top
+tile.prismarine_pillar_bottom.name=Prismarine Pillar Bottom
+tile.prismarine_eye_block.name=Prismarine Eye Ruin
+tile.prismarine_smooth.name=Smooth Prismarine
+tile.prismarine_swirl.name=Prismarine Swirl
+tile.prismarine_pyramid.name=Prismarine Pyramid
+tile.prismarine_intertwined.name=Prismarine Intertwined
+tile.prismarine_shell.name=Prismarine Shell
+tile.prismarine_guardian_rock.name=Guardian Hyroglif
+tile.prismarine_rock_aegaeon.name=Aegaeon Hyroglif
+tile.sea_rock.name=Sea Stone
+tile.deepsea_rock.name=Deep Sea Stone
+tile.lost_sea_portal.name=Water Portal
+tile.prismarine_wave.name=Prismarine Wave
+tile.prismarine_pyramid_dark.name=Dark Prismarine Pyramid
+tile.portal_key.name=Charged Portal Key
+tile.portal_key_d.name=Dormant Portal Key
+tile.p_sea_stone.name=Polished Sea Stone
+tile.p_deepsea_stone.name=Polished Deep Sea Stone
+
+# Machines
+tile.seastone_furnace.name=Sea Furnace
+
+# Ores
+tile.sea_goldore.name=Gold Ore
+tile.deepsea_goldore.name=Gold Ore
+
+#Entity
+entity.vampire_squid.name=Vampire Squid
+entity.tri_guardian.name=Tri Guardian
+entity.disc.name=Disc
+entity.anglerfish.name=Angler Fish
+entity.shark.name=Shark
+entity.titan_guardian.name=Titan Guardian
+
+# NPC
+entity.nurm.name=Nurm: The Old Cartographer
+
+#Vehicles
+entity.submarine.name=Submarine I
+entity.submarineii.name=Submarine II
+
+#Vehicle Items
+
+item.sub.red.name=Red Submarine I
+item.sub.orange.name=Orange Submarine I
+item.sub.yellow.name=Yellow Submarine I
+item.sub.lime.name=Lime Submarine I
+item.sub.green.name=Green Submarine I
+item.sub.blue.name=Blue Submarine I
+item.sub.lightblue.name=Light Blue Submarine I
+item.sub.cyan.name=Cyan Submarine I
+item.sub.purple.name=Purple Submarine I
+item.sub.magenta.name=Magenta Submarine I
+item.sub.pink.name=Pink Submarine I
+item.sub.brown.name=Brown Submarine I
+item.sub.black.name=Black Submarine I
+item.sub.gray.name=Gray Submarine I
+item.sub.lightgray.name=Light Gray Submarine I
+item.sub.white.name=White Submarine I
+
+# Materials
+item.pearl.name=Pearl
+item.shark_tooth.name=Shark Tooth
+
+# Relics
+item.elder_eye.name=Elder's Eye
+item.golden_elder_eye.name=§6Mythical Elder's Eye§r
+item.harpoon_gun.name=Harpoon Gun
+item.lore_book.name=§3The Old Aquapedia§r
+item.lore_book_page.name=Aquapedia #§k1§r
+item.cutlass.name=§e§oWind Slasher§r
+
+#Prismarine Tools
+item.prismarine_pickaxe.name=Prismarine Pick
+item.prismarine_sword.name=Prismarine Sword
+item.prismarine_spade.name=Prismarine Shovel
+item.prismarine_axe.name=Prismarine Axe
+item.prismarine_hoe.name=Prismarine Hoe
+item.elastic_prismarine.name=Elastic Prismarine Ball
+
+# Fish
+item.angler_fish.name=Angler Fish
+item.angler_fish_cooked.name=Cooked Angler Fish
+item.shark_meat.name=Raw Flake
+item.shark_meat_cooked.name=Cooked Flake
+
+# Discs
+item.prismarine_disc.name=Prismarine Disc
+item.gold_disc.name=Gold Disc
+item.diamond_disc.name=Diamond Disc
+item.iron_disc.name=Iron Disc
+item.stone_disc.name=Stone Disc
+item.wood_disc.name=Wooden Disc
+
+# Music
+item.pirate_crew.name=Music Disc
+item.record.pirate_crew.desc=Ross Bugden - Pirate Crew
+item.god_slayer.name=Music Disc
+item.record.god_slayer.desc=Name - §bGod Slayer§r
+item.convolution.name=Music Disc
+item.record.convolution.desc=Name - §9Convolution§r
+item.bedazzle.name=Music Disc
+item.record.bedazzle.desc=Name - §6Bedazzle§r
+
+#Prismarine Armors
+item.prismarine_helmet.name=Prismarine Helmet
+item.prismarine_chestplate.name=Prismarine Chestplate
+item.prismarine_leggings.name=Prismarine Leggings
+item.prismarine_boots.name=Prismarine Boots
+
+# Enchants
+enchantment.zeus_thrower=§eZeus Thrower§r
+enchantment.double_trouble=§eDouble Trouble§r
+enchantment.recharge=§eRecharge§r
+
+# Advancements
+thelostsea.advancements.entity_killed.angler_fish.title=Bio-lumie Killer
+thelostsea.advancements.entity_killed.angler_fish.description=Kill a Angler Fish
+thelostsea.advancements.joined.title=Lost Sea Story
+thelostsea.advancements.joined.description=A Story To Be Told; Has all the story progress. Thanks for downloading!
+thelostsea.advancements.elder_eye.title=Eye of the Sea
+thelostsea.advancements.elder_eye.description=Slay an Elder Guardian and aquire its otherworldly eye.

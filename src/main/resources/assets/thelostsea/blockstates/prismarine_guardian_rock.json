@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "thelostsea:prismarine_guardian_rock" },
+        "facing=west": { "model": "thelostsea:prismarine_guardian_rock", "y": 90 },
+        "facing=north": { "model": "thelostsea:prismarine_guardian_rock", "y": 180 },
+        "facing=east": { "model": "thelostsea:prismarine_guardian_rock", "y": 270 }
+    }
+}

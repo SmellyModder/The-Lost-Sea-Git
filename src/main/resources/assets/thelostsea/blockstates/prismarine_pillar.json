@@ -1,0 +1,8 @@
+{
+   "variants": {
+        "axis=y":  { "model": "thelostsea:prismarine_pillar" },
+        "axis=z":   { "model": "thelostsea:prismarine_pillar", "x": 90 },
+        "axis=x":   { "model": "thelostsea:prismarine_pillar", "x": 90, "y": 90 },
+        "axis=none": { "model": "thelostsea:prismarine_pillar" }
+    }
+}

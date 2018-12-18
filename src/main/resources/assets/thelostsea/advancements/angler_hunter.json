@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "thelostsea:angler_fish"
+    },
+    "title": {
+      "translate": "thelostsea.advancements.entity_killed.angler_fish.title"
+    },
+    "description": {
+      "translate": "thelostsea.advancements.entity_killed.angler_fish.description"
+    },
+    "background": "thelostsea:textures/gui/advancement/deepsea_rock.png"
+  },
+  "criteria": {
+    "angler_fish_killed": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "thelostsea:anglerfish"
+        }
+      }
+    }
+  }
+}

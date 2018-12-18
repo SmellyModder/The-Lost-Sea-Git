@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "thelostsea:portal_a",
+            "y": 180
+        },
+        "facing=south": {
+            "model": "thelostsea:portal_a",
+            "y": 0
+        },
+        "facing=east": {
+            "model": "thelostsea:portal_a",
+            "y": 270
+        },
+        "facing=west": {
+            "model": "thelostsea:portal_a",
+            "y": 90
+        }
+    }
+}

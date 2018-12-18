@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "thelostsea:elder_eye"
+    },
+    "title": {
+      "translate": "thelostsea.advancements.elder_eye.title"
+    },
+    "description": {
+      "translate": "thelostsea.advancements.elder_eye.description"
+    },
+    "frame": "task",
+    "show_toast": true
+  },
+  "parent": "thelostsea:story/starter_advancement",
+  "criteria": {
+    "has_eye": {
+       "trigger": "minecraft:inventory_changed",
+       "conditions": {
+       "items": [
+       {
+         "item": "thelostsea:elder_eye"
+       }
+    ]
+    }
+    }
+  }
+}

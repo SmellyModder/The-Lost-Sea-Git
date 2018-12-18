@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "title": {
+      "translate": "thelostsea.advancements.joined.title"
+    },
+    "description": {
+      "translate": "thelostsea.advancements.joined.description"
+    },
+    "background": "thelostsea:textures/gui/advancement/deepsea_rock.png",
+    "frame": "goal",
+    "show_toast": true
+  },
+  "criteria": {
+    "custom_test_name": {
+            "trigger": "minecraft:tick"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/glazed_terracotta",
+    "textures": {
+        "particle": "thelostsea:blocks/prismarine_pryramid",
+        "pattern": "thelostsea:blocks/prismarine_pryramid"
+    }
+}

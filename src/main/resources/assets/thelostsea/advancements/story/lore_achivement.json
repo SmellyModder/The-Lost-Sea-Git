@@ -1,0 +1,31 @@
+{
+"display": {
+        "title": {
+            "text": "Old Tales",
+            "italic": true
+        },
+        "description": {
+            "text": "Acquire the 'Aquapedia' from Nurm for guidance on your journey."
+        },
+        "icon": {
+            "item": "thelostsea:lore_book"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+        },
+        "parent": "thelostsea:story/starter_advancement",
+        "criteria": {
+        "lore_book": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "thelostsea:lore_book"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "thelostsea:sea_goldore" },
+            { "model": "thelostsea:sea_goldore", "x": 90 },
+            { "model": "thelostsea:sea_goldore", "x": 180 },
+            { "model": "thelostsea:sea_goldore", "x": 270 },
+            { "model": "thelostsea:sea_goldore", "y": 90 },
+            { "model": "thelostsea:sea_goldore", "y": 90, "x": 90 },
+            { "model": "thelostsea:sea_goldore", "y": 90, "x": 180 },
+            { "model": "thelostsea:sea_goldore", "y": 90, "x": 270 },
+            { "model": "thelostsea:sea_goldore", "y": 180 },
+            { "model": "thelostsea:sea_goldore", "y": 180, "x": 90 },
+            { "model": "thelostsea:sea_goldore", "y": 180, "x": 180 },
+            { "model": "thelostsea:sea_goldore", "y": 180, "x": 270 },
+            { "model": "thelostsea:sea_goldore", "y": 270 },
+            { "model": "thelostsea:sea_goldore", "y": 270, "x": 90 },
+            { "model": "thelostsea:sea_goldore", "y": 270, "x": 180 },
+            { "model": "thelostsea:sea_goldore", "y": 270, "x": 270 }
+        ]
+    }
+}

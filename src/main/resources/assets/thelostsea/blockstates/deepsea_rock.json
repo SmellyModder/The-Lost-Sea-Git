@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "thelostsea:deepsea_rock" },
+            { "model": "thelostsea:deepsea_rock", "x": 90 },
+            { "model": "thelostsea:deepsea_rock", "x": 180 },
+            { "model": "thelostsea:deepsea_rock", "x": 270 },
+            { "model": "thelostsea:deepsea_rock", "y": 90 },
+            { "model": "thelostsea:deepsea_rock", "y": 90, "x": 90 },
+            { "model": "thelostsea:deepsea_rock", "y": 90, "x": 180 },
+            { "model": "thelostsea:deepsea_rock", "y": 90, "x": 270 },
+            { "model": "thelostsea:deepsea_rock", "y": 180 },
+            { "model": "thelostsea:deepsea_rock", "y": 180, "x": 90 },
+            { "model": "thelostsea:deepsea_rock", "y": 180, "x": 180 },
+            { "model": "thelostsea:deepsea_rock", "y": 180, "x": 270 },
+            { "model": "thelostsea:deepsea_rock", "y": 270 },
+            { "model": "thelostsea:deepsea_rock", "y": 270, "x": 90 },
+            { "model": "thelostsea:deepsea_rock", "y": 270, "x": 180 },
+            { "model": "thelostsea:deepsea_rock", "y": 270, "x": 270 }
+        ]
+    }
+}

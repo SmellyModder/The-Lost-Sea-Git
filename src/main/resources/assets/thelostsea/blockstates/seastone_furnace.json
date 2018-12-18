@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "thelostsea:seastone_furnace"},
+    "facing=south": {"model": "thelostsea:seastone_furnace", "y": 180},
+    "facing=west": {"model": "thelostsea:seastone_furnace", "y": 270},
+    "facing=east": {"model": "thelostsea:seastone_furnace", "y": 90}
+  }
+}

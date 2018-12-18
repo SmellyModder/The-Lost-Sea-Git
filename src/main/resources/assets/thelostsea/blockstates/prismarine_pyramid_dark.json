@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=south": { "model": "thelostsea:prismarine_pryramid_dark" },
+        "facing=west": { "model": "thelostsea:prismarine_pryramid_dark", "y": 90 },
+        "facing=north": { "model": "thelostsea:prismarine_pryramid_dark", "y": 180 },
+        "facing=east": { "model": "thelostsea:prismarine_pryramid_dark", "y": 270 }
+    }
+}

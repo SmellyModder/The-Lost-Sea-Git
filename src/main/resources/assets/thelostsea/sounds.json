@@ -1,0 +1,101 @@
+{
+    "entity.submarine.sonar":
+    {
+        "category": "entity",
+        "subtitle": "Sonar Wave",
+        "sounds": [{ "name": "thelostsea:entity/submarine/sonar", "stream": true}]
+    },
+    "entity.titan.idle":
+    {
+        "category": "entity",
+        "subtitle": "Titan Idle",
+        "sounds": [{ "name": "thelostsea:entity/titan/titan_idle", "stream": true}]
+    },
+    "entity.titan.death":
+    {
+        "category": "entity",
+        "subtitle": "Soft Roar",
+        "sounds": [{ "name": "thelostsea:entity/titan/titan_trigger", "stream": true}]
+    },
+    
+    "entity.titan.step":
+    {
+        "category": "entity",
+        "subtitle": "Titan walks",
+        "sounds": [{ "name": "thelostsea:entity/titan/titan_step", "stream": true}]
+    },
+    
+    "entity.titan.attack":
+    {
+        "category": "entity",
+        "subtitle": "Titan Laser",
+        "sounds": [{ "name": "thelostsea:entity/titan/titan_attack", "stream": true}]
+    },
+    "entity.anglerbite":
+    {
+        "category": "entity",
+        "subtitle": "Angler Fish Bite",
+        "sounds": [{ "name": "thelostsea:entity/anglerfish/anglerfish_bite", "stream": true}]
+    },
+    "item.bookopen":
+    {
+        "category": "player",
+        "subtitle": "Aquapedia Opens",
+        "sounds": [{ "name": "thelostsea:item/bookopen", "stream": true}]
+    },"item.bookclose":
+    {
+        "category": "player",
+        "subtitle": "Aquapedia Closes",
+        "sounds": [{ "name": "thelostsea:item/bookclose", "stream": true}]
+    },
+    "item.pageflip":
+    {
+        "category": "player",
+        "subtitle": "Aquapedia Flips Page",
+        "sounds": [{ "name": "thelostsea:item/pageflip", "stream": false}]
+    },
+    "ambient.portal_1":
+    {
+        "category": "ambient",
+        "subtitle": "Portal Eeries",
+        "sounds": [{ "name": "thelostsea:ambient/portalambient", "stream": false}]
+    },
+    "ambient.portal_2":
+    {
+        "category": "ambient",
+        "subtitle": "Portal Cries",
+        "sounds": [{ "name": "thelostsea:ambient/portalambient2", "stream": false}]
+    },
+    "ambient.portal_open":
+    {
+        "category": "ambient",
+        "subtitle": "Portal Opens",
+        "sounds": [{ "name": "thelostsea:ambient/portalopen", "stream": false}]
+    },
+    "ambient.portal_laugh":
+    {
+        "category": "ambient",
+        "subtitle": "The Eldest One Laughs",
+        "sounds": [{ "name": "thelostsea:ambient/aegaeon_laugh", "stream": false}]
+    },
+    "block.boil_1":
+    {
+        "category": "block",
+        "subtitle": "Sea Furnace Boils",
+        "sounds": [{ "name": "thelostsea:block/boil1", "stream": false}]
+    },
+    "block.boil_2":
+    {
+        "category": "block",
+        "subtitle": "Sea Furnace Boils",
+        "sounds": [{ "name": "thelostsea:block/boil2", "stream": false}]
+    },
+    "entity.coin.collect":
+    {
+        "category": "player",
+        "subtitle": "Collect Coin",
+        "sounds": [{ "name": "thelostsea:entity/coin/coin_collect", "stream": false}]
+    },
+     "pirate_crew": {"sounds": [{"name": "thelostsea:music/pirate_crew", "stream": true}]}
+     
+}

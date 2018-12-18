@@ -1,0 +1,6 @@
+{
+   "parent": "item/handheld",
+   "textures": {
+       "layer0": "thelostsea:items/relic/golden_elder_eye"
+   }
+}
