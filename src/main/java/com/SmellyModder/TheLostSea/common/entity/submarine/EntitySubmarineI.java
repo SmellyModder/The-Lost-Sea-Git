@@ -82,33 +82,33 @@ public class EntitySubmarineI extends AbstractSubmarine{
     	this.dataManager.register(SUBMARINE_COLOR, Integer.valueOf(15));
     }
     
-    public Item getItemBoat()
-    {
-        switch (this.getBoatType())
-        {
-            case RED:
-            default:
-                return TLSItems.RED_SUBMARINE;
-            case ORANGE:
-                return TLSItems.ORANGE_SUBMARINE;
-            case YELLOW:
-                return TLSItems.YELLOW_SUBMARINE;
-            case LIME:
-                return TLSItems.LIME_SUBMARINE;
-            case GREEN:
-                return TLSItems.GREEN_SUBMARINE;
-            case BLUE:
-                return TLSItems.BLUE_SUBMARINE;
-            case LIGHTBLUE:
-                return TLSItems.LIGHTBLUE_SUBMARINE;
-            case CYAN:
-                return TLSItems.CYAN_SUBMARINE;
-            case PURPLE:
-                return TLSItems.PURPLE_SUBMARINE;
-            case MAGENTA:
-                return TLSItems.MAGENTA_SUBMARINE;
-        }
-    }
+//    public Item getItemBoat()
+//    {
+//        switch (this.getBoatType())
+//        {
+//            case RED:
+//            default:
+//                return TLSItems.RED_SUBMARINE;
+//            case ORANGE:
+//                return TLSItems.ORANGE_SUBMARINE;
+//            case YELLOW:
+//                return TLSItems.YELLOW_SUBMARINE;
+//            case LIME:
+//                return TLSItems.LIME_SUBMARINE;
+//            case GREEN:
+//                return TLSItems.GREEN_SUBMARINE;
+//            case BLUE:
+//                return TLSItems.BLUE_SUBMARINE;
+//            case LIGHTBLUE:
+//                return TLSItems.LIGHTBLUE_SUBMARINE;
+//            case CYAN:
+//                return TLSItems.CYAN_SUBMARINE;
+//            case PURPLE:
+//                return TLSItems.PURPLE_SUBMARINE;
+//            case MAGENTA:
+//                return TLSItems.MAGENTA_SUBMARINE;
+//        }
+//    }
 
     
     public void writeEntityToNBT(NBTTagCompound compound)

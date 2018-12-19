@@ -48,6 +48,7 @@ public class OverlayCoins extends Gui{
 			Minecraft mc = Minecraft.getMinecraft();
 			EntityPlayer entitySP = Minecraft.getMinecraft().player;
 			int i2 = Minecraft.getMinecraft().gameSettings.guiScale;
+			
 			if(i2 == 0) {
 				heightForRes = 263;
 				heightForResIcon = 290;
@@ -71,7 +72,7 @@ public class OverlayCoins extends Gui{
 			FontRenderer fontrenderer = Minecraft.getMinecraft().ingameGUI.getFontRenderer();
 			EntityAtlantisCoin coin = new EntityAtlantisCoin(world1);
 			
-			final double time = (Sys.getTime() * 5300) / Sys.getTimerResolution();
+			final double time = (Sys.getTime() * 7300) / Sys.getTimerResolution();
 			final double timePassed = time - this.prevTime;
 
 			this.prevTime = time;
