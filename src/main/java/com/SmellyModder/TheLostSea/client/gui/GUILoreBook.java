@@ -384,7 +384,7 @@ public class GUILoreBook extends GuiScreen {
 	 		  this.fontRenderer.drawSplitString(stringPageText[2], newCalc + 129, 51, 116, 0);
 	 		  this.fontRenderer.drawString(TextFormatting.UNDERLINE + "Pirate Cove", (newCalc + 146F), (149F), 65280, true);
 	 		 this.fontRenderer.drawSplitString("The Pirate Cove is a..", newCalc + 128, 161, 116, 0);
-	 		  this.fontRenderer.drawSplitString("remote island inhabited by pirates who are led by Captain Swashblocker. These pirates are hiding from the Ghost Pirates on this island because they’ve been hunted ever since they stole the treasure from Skull Island, which was Ghost Pirate territory.", newCalc + 247, 40, 105, 0);
+	 		  this.fontRenderer.drawSplitString("remote island inhabited by pirates who are led by Captain Swashblocker. These pirates are hiding from the Ghost Pirates on this island because they've been hunted ever since they stole the treasure from Skull Island, which was Ghost Pirate territory.", newCalc + 247, 40, 105, 0);
 	 		  
 	 		  GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	 		  mc.getTextureManager().bindTexture(LOCATION_ICONS);
@@ -399,9 +399,9 @@ public class GUILoreBook extends GuiScreen {
 	 		  drawModalRectWithCustomSizedTexture(newCalc +320, 142, 1, 23F, 30, 22, 155, 107);
 	 	  }else if(currPage == 5) {
 	 		  this.fontRenderer.drawString("Skull Island", (newCalc +143F), (39F), 16722176, true);
-	 		  this.fontRenderer.drawSplitString("\"It’s called Skull Island for a reason, ya know. You go there, and you never come back. A lot of skulls pile up there. It’s creepy, if you ask me.\" Skull Island is essentially No Man’s Land. Legend has it that..", newCalc +129, 48, 110, 0);
+	 		  this.fontRenderer.drawSplitString("\"It's called Skull Island for a reason, ya know. You go there, and you never come back. A lot of skulls pile up there. It's creepy, if you ask me.\" Skull Island is essentially No Man's Land. Legend has it that..", newCalc +129, 48, 110, 0);
 	 		  
-	 		  this.fontRenderer.drawSplitString("many years ago a crew of pirates sailed there for the fabled treasure, and never returned. Now apparently they haunt the island as greedy and malicious ghosts, protecting the treasure they couldn’t get from anyone else. What could have ghosts wanted with a magical cutlass? No clue.", newCalc +244, 40, 111, 0);
+	 		  this.fontRenderer.drawSplitString("many years ago a crew of pirates sailed there for the fabled treasure, and never returned. Now apparently they haunt the island as greedy and malicious ghosts, protecting the treasure they couldn't get from anyone else. What could have ghosts wanted with a magical cutlass? No clue.", newCalc +244, 40, 111, 0);
 	 		  GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	 		  mc.getTextureManager().bindTexture(LOCATION_ICONS);
 	 		  drawModalRectWithCustomSizedTexture(newCalc +170, 150, 38, 24F, 30, 22, 126.5F, 104);
