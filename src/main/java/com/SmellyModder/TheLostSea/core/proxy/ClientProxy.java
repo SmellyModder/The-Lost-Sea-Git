@@ -1,14 +1,12 @@
 package com.SmellyModder.TheLostSea.core.proxy;
 
 import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
-import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
-
+import com.SmellyModder.TheLostSea.core.util.handlers.RenderHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy{
 
@@ -17,6 +15,11 @@ public class ClientProxy extends CommonProxy{
 			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
 			
 		}
+
+	@Override
+	public void preInit() {
+		RenderHandler.registerEntityRenders();
+	}
 
 	@Override
 	public void openMyGui(ItemStack stack)

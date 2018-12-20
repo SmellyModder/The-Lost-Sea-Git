@@ -1,8 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util;
 
-import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
-import com.SmellyModder.TheLostSea.common.init.TLSFluids;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
@@ -27,7 +25,6 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class TheLostSea {
@@ -42,6 +39,7 @@ public class TheLostSea {
 	
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event) {
+		proxy.preInit();
 		Config.load(event);
 		RegistryHandler.preInitRegistries();
 		CapabilityHandler.register();
@@ -70,13 +68,6 @@ public class TheLostSea {
 	public static void PostInit(FMLPostInitializationEvent event) {
 			System.out.println("Player Data Loaded");
 			
-	}
-	
-	@SideOnly(Side.CLIENT)
-    @EventHandler
-    public static void preinitSide(FMLPreInitializationEvent event) {
-		 RegistryHandler.preInitRegistriesSide();
-		 MinecraftForge.EVENT_BUS.register(new OverlayCoins());
 	}
 
 	public static CreativeTabs TLS = new CreativeTabs("The-Lost-Sea-Items") {

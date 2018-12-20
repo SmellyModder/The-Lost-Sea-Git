@@ -1,6 +1,5 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
-import com.SmellyModder.TheLostSea.client.particle.ParticleAtlasFrames;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
 import com.SmellyModder.TheLostSea.common.init.TLSBiomes;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
@@ -13,7 +12,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSTileEntities;
 import com.SmellyModder.TheLostSea.common.init.TLSVehicles;
 import com.SmellyModder.TheLostSea.core.util.CommandDimensionTP;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -22,8 +20,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -67,12 +63,6 @@ public class RegistryHandler {
 			
 		}
 	}
-	
-	@SideOnly(Side.CLIENT)
-    public static void preInitRegistriesSide() {
-
-        RenderHandler.registerEntityRenders();
-    }
 	
 	public static void initRegistries() {
 

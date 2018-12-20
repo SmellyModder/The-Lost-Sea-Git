@@ -1,143 +1,107 @@
 package com.SmellyModder.TheLostSea.client.overlay.stats;
 
-import org.lwjgl.Sys;
-import org.lwjgl.opengl.GL11;
-
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class OverlayCoins extends Gui{
-	
-	int width = 74;
-	int height = 23;
-	int heightForRes = 0;
-	int heightForResText = 0;
-	int heightForResIcon = 0;
-	private double nextAnim, prevTime;
-	private boolean hasColl = false;
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Side.CLIENT)
+public class OverlayCoins extends Gui {
 
-	@SubscribeEvent
-	public void renderCoinTracker(RenderGameOverlayEvent event) {
-		if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT){
-			int posX = (event.getResolution().getScaledWidth()) / 2;
-			final int posY = (event.getResolution().getScaledHeight()) / 2;
-			int offsetFromScreenLeft = (event.getResolution().getScaledWidth() - width) / 2;
-			int offsetFromScreenTop = offsetFromScreenLeft * 2;
+    private static final Minecraft MC = Minecraft.getMinecraft();
+    private static final int ANIMATION_LENGTH = 120;
 
-			Minecraft mc = Minecraft.getMinecraft();
-			EntityPlayer entitySP = Minecraft.getMinecraft().player;
-			int i2 = Minecraft.getMinecraft().gameSettings.guiScale;
-			
-			if(i2 == 0) {
-				heightForRes = 263;
-				heightForResIcon = 290;
-				heightForResText = 271;
-			} else if(i2 == 1){
-				heightForRes = 995;
-				heightForResIcon = 1022;
-				heightForResText = 1003;
-			}else if(i2 == 2){
-				heightForRes = 486;
-				heightForResIcon = 513;
-				heightForResText = 494;
-			}
-			else if(i2 == 3){
-				heightForRes = 317;
-				heightForResIcon = 344;
-				heightForResText = 325;
-			}
-			
-			World world1 = mc.world;
-			FontRenderer fontrenderer = Minecraft.getMinecraft().ingameGUI.getFontRenderer();
-			EntityAtlantisCoin coin = new EntityAtlantisCoin(world1);
-			
-			final double time = (Sys.getTime() * 7300) / Sys.getTimerResolution();
-			final double timePassed = time - this.prevTime;
+    private static final int WIDTH = 74;
 
-			this.prevTime = time;
+    private static int lastCoinCount;
 
-			if (this.nextAnim < 15350)
-			{
-				this.nextAnim += timePassed;
-			}
-			else
-			{
-				this.nextAnim = 0.0;
-			}
+    private static int coinTimer;
+    private static int prevCoinTimer;
 
-			final double anim = this.nextAnim;
+    @SubscribeEvent
+    public static void onClientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.START && MC.player != null && !MC.isGamePaused()) {
+            prevCoinTimer = coinTimer;
+            if (coinTimer > 0) {
+                coinTimer--;
+            }
 
-			
-			
-			GlStateManager.pushMatrix();
-			if (true) {
-				if(this.nextAnim == 0) {
-					GlStateManager.translate(0, anim / 40000.0, 0);
-				}
-				else if (this.nextAnim >= 500.0)
-				{
-					GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
-				}
-				else if(this.nextAnim >= 1000) {
-					GlStateManager.translate(0, -((anim - 1000.0) / 500.0), 0);
-				}
-				else if(this.nextAnim >= 2000) {
-					GlStateManager.translate(0, -((anim - 2000.0) / 500.0), 0);
-				}
-				
-				if(Config.isCoinOverlayTop == false) {
-					Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/overlay/player/coin_overlay.png"));
-				} else {
-					Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/overlay/player/coin_overlay_top.png"));
-				}
-				
-				
-				Minecraft.getMinecraft().ingameGUI.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 129, heightForRes, 0, 0, 74, 22, 74, 22);
-				
-				EntityPlayer player = Minecraft.getMinecraft().player;
-				
-				ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
-				
-				String message = String.format("%d", (int) coins.getCoins()); 
-				
-				Minecraft.getMinecraft().ingameGUI.drawString(mc.fontRenderer, "x", offsetFromScreenLeft + 149, heightForResText, 16777215);
-				Minecraft.getMinecraft().ingameGUI.drawString(fontrenderer, String.valueOf(coins.getCoins()), offsetFromScreenLeft + 156, heightForResText, 16777215);
-				
-				GL11.glColor4f(1, 1, 1, 1);
-				drawEntityOnScreen(offsetFromScreenLeft + 141, heightForResIcon, 35, coin);
-				
-				GlStateManager.popMatrix();
-			}
-		}	
-	}
-	public static void drawEntityOnScreen(int posX, int posY, int scale, EntityLivingBase ent)
-    {
-		Minecraft mc = Minecraft.getMinecraft();
+            ICurrency coins = MC.player.getCapability(CoinProvider.COIN_CAP, null);
+            int coinCount = coins != null ? coins.getCoins() : 0;
+            if (lastCoinCount != coinCount) {
+                coinTimer = ANIMATION_LENGTH;
+                lastCoinCount = coinCount;
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void renderCoinTracker(RenderGameOverlayEvent event) {
+        if (event.getType() == RenderGameOverlayEvent.ElementType.TEXT) {
+            ICurrency coins = MC.player.getCapability(CoinProvider.COIN_CAP, null);
+            if (coins == null) {
+                return;
+            }
+
+            ScaledResolution resolution = event.getResolution();
+            int offsetFromScreenLeft = (resolution.getScaledWidth() - WIDTH) / 2;
+
+            if (coinTimer > 0) {
+                float partialTicks = event.getPartialTicks();
+                double coinAnimation = ANIMATION_LENGTH - (prevCoinTimer + (coinTimer - prevCoinTimer) * partialTicks);
+
+                EntityAtlantisCoin coin = new EntityAtlantisCoin(MC.world);
+
+                GlStateManager.pushMatrix();
+
+                if (!Config.isCoinOverlayTop) {
+                    MC.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/overlay/player/coin_overlay.png"));
+                } else {
+                    MC.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/gui/overlay/player/coin_overlay_top.png"));
+                }
+
+                double intermediate = coinAnimation / ANIMATION_LENGTH;
+                double slide = 2.0 * (intermediate < 0.5 ? intermediate : 1.0 - intermediate);
+                slide = Math.min(slide * 5, 1);
+
+                double screenHeight = resolution.getScaledHeight_double();
+
+                int y = MathHelper.ceil(screenHeight - slide * 22);
+
+                drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 129, y, 0, 0, 74, 22, 74, 22);
+
+                MC.fontRenderer.drawString("x" + coins.getCoins(), offsetFromScreenLeft + 152, y + 9, 0xFFFFFF);
+
+                GlStateManager.color(1, 1, 1, 1);
+                drawEntityOnScreen(offsetFromScreenLeft + 141, y + 27, 35, coin);
+
+                GlStateManager.popMatrix();
+            }
+        }
+    }
+
+    private static void drawEntityOnScreen(int posX, int posY, int scale, EntityLivingBase ent) {
+        Minecraft mc = Minecraft.getMinecraft();
         GlStateManager.enableColorMaterial();
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float)posX, (float)posY, 50.0F);
-        GlStateManager.scale((float)(-scale), (float)scale, (float)scale);
+        GlStateManager.translate((float) posX, (float) posY, 50.0F);
+        GlStateManager.scale((float) (-scale), (float) scale, (float) scale);
         GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
         float f = ent.renderYawOffset;
         float f1 = ent.rotationYaw;
@@ -146,7 +110,7 @@ public class OverlayCoins extends Gui{
         float f4 = ent.rotationYawHead;
         GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
-        float f9_3 = (float) (90*mc.player.ticksExisted*0.024);
+        float f9_3 = (float) (90 * mc.player.ticksExisted * 0.024);
         GlStateManager.rotate(f9_3, 0.0F, 1.0F, 0.0F);
         ent.rotationYawHead = ent.rotationYaw;
         ent.prevRotationYawHead = ent.rotationYaw;
