@@ -1,6 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.storage;
 
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IDialogueNurm;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTPrimitive;

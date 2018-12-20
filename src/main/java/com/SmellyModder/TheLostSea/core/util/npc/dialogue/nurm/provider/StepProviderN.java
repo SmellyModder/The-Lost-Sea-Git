@@ -1,6 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider;
 
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IStepGetterN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
 
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;

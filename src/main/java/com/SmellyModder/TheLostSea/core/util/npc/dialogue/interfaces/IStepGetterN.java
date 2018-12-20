@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.core.util.npc.dialogue.I;
+package com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces;
 
 public interface IStepGetterN {
 

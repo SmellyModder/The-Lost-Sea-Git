@@ -2,8 +2,8 @@ package com.SmellyModder.TheLostSea.core.util.handlers;
 
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IDialogueNurm;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IStepGetterN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller.DialogueControllerN;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller.StepControllerN;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;

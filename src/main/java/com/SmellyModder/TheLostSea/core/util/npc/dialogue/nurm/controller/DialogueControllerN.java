@@ -1,6 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller;
 
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IDialogueNurm;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 
 public class DialogueControllerN implements IDialogueNurm{
 

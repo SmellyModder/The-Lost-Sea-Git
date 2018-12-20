@@ -1,7 +1,7 @@
 package com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller;
 
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IDialogueNurm;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IStepGetterN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
 
 public class StepControllerN implements IStepGetterN{
 
