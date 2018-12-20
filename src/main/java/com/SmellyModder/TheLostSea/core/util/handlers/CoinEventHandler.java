@@ -6,6 +6,10 @@ import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IDialogueNurm;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.I.IStepGetterN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.StepProviderN;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 
@@ -40,14 +44,16 @@ public class CoinEventHandler {
 	{ 
 		EntityPlayer player = event.player; 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
+		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
+		IStepGetterN dataNPC2 = player.getCapability(StepProviderN.CAP_S, null);
 		if(player instanceof EntityPlayerMP) {
 			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
 		}
-		String message = String.format("Hello there, you have §7%d§r coins left.", (int) coins.getCoins()); 
-		//player.sendMessage(new TextComponentString(message)); 
+		String messageV = String.format("Verse: %d", (int) dataNPC.getVerse()); 
+		
+		String messageS = String.format("Step: %d", (int) dataNPC2.getStep()); 
+		player.sendMessage(new TextComponentString(messageV +  messageS)); 
 	}
-	
-	
 	
 	@SubscribeEvent
 	public void onPlayerTravelLS(PlayerChangedDimensionEvent event) {
@@ -64,8 +70,15 @@ public class CoinEventHandler {
 		EntityPlayer player = event.getEntityPlayer(); 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		ICurrency coins_ad = event.getOriginal().getCapability(CoinProvider.COIN_CAP, null); 
-
 		coins.set(coins_ad.getCoins()); 
+		
+		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
+		IDialogueNurm dataNPC_AD = event.getOriginal().getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
+		dataNPC.setVerse(dataNPC_AD.getVerse());
+		
+		IStepGetterN dataNPC2 = player.getCapability(StepProviderN.CAP_S, null); 
+		IStepGetterN dataNPC2_AD = event.getOriginal().getCapability(StepProviderN.CAP_S, null); 
+		dataNPC2.setStep(dataNPC2_AD.getStep());
 	}
 	
 	@SubscribeEvent 
@@ -77,7 +90,5 @@ public class CoinEventHandler {
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
-		
-		
 	}
 }

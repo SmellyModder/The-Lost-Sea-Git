@@ -31,9 +31,5 @@ public class EntityLunete extends EntityLSNpcBase{
 		this.posX = this.prevPosX;
 		this.posZ = this.prevPosZ;
 	}
-	@Override
-	public int getID() {
-		return 9;
-	}
 
 }

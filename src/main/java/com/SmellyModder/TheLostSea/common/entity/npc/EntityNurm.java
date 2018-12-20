@@ -22,11 +22,6 @@ public class EntityNurm extends EntityLSNpcBase {
 	public EntityNurm(World worldIn) {
 		super(worldIn);
 	}
-
-	@Override
-	public int getID() {
-		return 1;
-	}
 	
 	@Override
 	public void onUpdate() {

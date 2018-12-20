@@ -1,7 +1,5 @@
 package com.SmellyModder.TheLostSea.common.entity.npc;
 
-import com.SmellyModder.TheLostSea.core.util.interfaces.ILSNpc;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAILookAtVillager;
@@ -13,7 +11,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public abstract class EntityLSNpcBase extends EntityCreature implements ILSNpc{
+public abstract class EntityLSNpcBase extends EntityCreature {
 
 	public EntityLSNpcBase(World worldIn) {
 		super(worldIn);
