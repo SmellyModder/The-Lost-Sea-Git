@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "SS",
+        "SS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "thelostsea:deepsea_rock"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:p_deepsea_stone",
+        "count": 4
+    }
+}

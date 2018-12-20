@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "SS",
+        "SS"
+    ],
+   
+    "key":
+    {
+        "S":
+        {
+            "item": "thelostsea:sea_rock"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:p_sea_stone",
+        "count": 4
+    }
+}

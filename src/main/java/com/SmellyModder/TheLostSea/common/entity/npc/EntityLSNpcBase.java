@@ -1,5 +1,7 @@
 package com.SmellyModder.TheLostSea.common.entity.npc;
 
+import com.SmellyModder.TheLostSea.core.util.interfaces.ILSNpc;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAILookAtVillager;
@@ -11,14 +13,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityLSNpcBase extends EntityCreature{
+public abstract class EntityLSNpcBase extends EntityCreature implements ILSNpc{
 
 	public EntityLSNpcBase(World worldIn) {
 		super(worldIn);
-	}
-	@Override
-	public boolean isEntityInvulnerable(DamageSource source) {
-		return true;
 	}
 	
 	@Override
@@ -30,12 +28,6 @@ public class EntityLSNpcBase extends EntityCreature{
 	public boolean canBePushed() {
 		return false;
 	}
-	
-	@Override
-	public boolean canBeCollidedWith() {
-		return false;
-	}
-	
 	@Override
 	public boolean canBeLeashedTo(EntityPlayer player) {
 		return false;
