@@ -1,7 +1,6 @@
 package com.SmellyModder.TheLostSea.core.proxy;
 
 import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
-import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoinAmount;
 import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 
 import net.minecraft.client.Minecraft;

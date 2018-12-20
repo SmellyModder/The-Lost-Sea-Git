@@ -1,6 +1,5 @@
 package com.SmellyModder.TheLostSea.core.util;
 
-import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoinAmount;
 import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSFluids;
