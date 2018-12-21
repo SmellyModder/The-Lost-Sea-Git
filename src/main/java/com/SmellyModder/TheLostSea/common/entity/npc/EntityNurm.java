@@ -57,9 +57,6 @@ public class EntityNurm extends EntityLSNpcBase {
 		
 		
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
-		if(player instanceof EntityPlayerMP) {
-    			TheLostSea.NETWORK.sendTo(new MessageVerseN(dataNPC.getVerse()), (EntityPlayerMP) player);
-    	}
         if (flag)
         {
             itemstack.interactWithEntity(player, this, hand);

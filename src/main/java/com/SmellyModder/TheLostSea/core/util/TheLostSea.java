@@ -1,5 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util;
 
+import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.config.Config;
@@ -40,6 +41,7 @@ public class TheLostSea {
 	public static CommonProxy proxy;
 	
 	public static final SimpleNetworkWrapper NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+	public static final SimpleNetworkWrapper NETWORK_NPC = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID + "_npc");
 	
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event) {
@@ -49,8 +51,9 @@ public class TheLostSea {
 		CapabilityHandler.register();
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 0, Side.CLIENT);
-		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 0, Side.SERVER);
-		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 0, Side.CLIENT);
+		
+		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 1, Side.SERVER);
+		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 1, Side.CLIENT);
 	}
 	
 	@EventHandler

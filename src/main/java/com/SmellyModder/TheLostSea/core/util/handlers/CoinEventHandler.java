@@ -54,8 +54,6 @@ public class CoinEventHandler {
 		int ID = event.toDim;
 		EntityPlayer player = event.player;
 		if(ID == -9) {
-			IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
-			dataNPC.setVerse(1);
 		}
 	}
 	
