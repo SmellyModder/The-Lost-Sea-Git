@@ -58,7 +58,6 @@ public class OverlayCoins extends Gui {
             if (coins == null) {
                 return;
             }
-
             ScaledResolution resolution = event.getResolution();
             int offsetFromScreenLeft = (resolution.getScaledWidth() - WIDTH) / 2;
 
