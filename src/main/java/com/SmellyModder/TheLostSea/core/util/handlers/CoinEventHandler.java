@@ -44,15 +44,9 @@ public class CoinEventHandler {
 	{ 
 		EntityPlayer player = event.player; 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
-		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
-		IStepGetterN dataNPC2 = player.getCapability(StepProviderN.CAP_S, null);
 		if(player instanceof EntityPlayerMP) {
 			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
 		}
-		String messageV = String.format("Verse: %d", (int) dataNPC.getVerse()); 
-		
-		String messageS = String.format("Step: %d", (int) dataNPC2.getStep()); 
-		player.sendMessage(new TextComponentString(messageV +  messageS)); 
 	}
 	
 	@SubscribeEvent
@@ -60,7 +54,8 @@ public class CoinEventHandler {
 		int ID = event.toDim;
 		EntityPlayer player = event.player;
 		if(ID == -9) {
-			//player.getEntityWorld().playSound(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), TLSSounds.AEGAEON_LAUGH, SoundCategory.MASTER, 5.0F, 1.0F, true);
+			IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
+			dataNPC.setVerse(1);
 		}
 	}
 	

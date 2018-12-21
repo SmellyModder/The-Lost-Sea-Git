@@ -1,13 +1,18 @@
 package com.SmellyModder.TheLostSea.common.entity.npc;
 
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
+import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
+import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.CoinCurrency;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -49,7 +54,12 @@ public class EntityNurm extends EntityLSNpcBase {
 	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack itemstack = player.getHeldItem(hand);
 		boolean flag = itemstack.getItem() == Items.NAME_TAG;
-
+		
+		
+		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
+		if(player instanceof EntityPlayerMP) {
+    			TheLostSea.NETWORK.sendTo(new MessageVerseN(dataNPC.getVerse()), (EntityPlayerMP) player);
+    	}
         if (flag)
         {
             itemstack.interactWithEntity(player, this, hand);
@@ -58,9 +68,9 @@ public class EntityNurm extends EntityLSNpcBase {
 		else if (this.isEntityAlive() && !player.isSneaking())
         {
 			ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null);
-			String message = String.format("I see you have %d coins.", (int) coins.getCoins()); 
 			
-			player.sendMessage(new TextComponentString(message));
+			
+			TheLostSea.proxy.OpenNurmGUI(player);
             return true;
         }
 		else 

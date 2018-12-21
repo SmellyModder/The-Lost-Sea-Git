@@ -1,5 +1,6 @@
 package com.SmellyModder.TheLostSea.core.proxy;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -24,5 +25,9 @@ public class CommonProxy {
 
 	public void preInit() {
 
+	}
+	
+	public void OpenNurmGUI(EntityPlayer player) {
+			
 	}
 }

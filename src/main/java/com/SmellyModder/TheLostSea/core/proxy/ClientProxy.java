@@ -1,11 +1,17 @@
 package com.SmellyModder.TheLostSea.core.proxy;
 
 import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
+import com.SmellyModder.TheLostSea.client.gui.npc.GUINurmNpc;
+import com.SmellyModder.TheLostSea.client.gui.npc.NPCFont;
+import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.handlers.RenderHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 
 public class ClientProxy extends CommonProxy{
@@ -31,5 +37,9 @@ public class ClientProxy extends CommonProxy{
 	public void coinOverlay()
 	{
 		
+	}
+	
+	public void OpenNurmGUI(EntityPlayer player) {
+		 Minecraft.getMinecraft().displayGuiScreen(new GUINurmNpc(player));
 	}
 }

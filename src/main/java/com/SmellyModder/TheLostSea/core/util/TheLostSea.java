@@ -6,11 +6,15 @@ import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
+import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
+import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.proxy.CommonProxy;
 import com.SmellyModder.TheLostSea.core.util.handlers.CapabilityHandler;
 import com.SmellyModder.TheLostSea.core.util.handlers.CoinEventHandler;
 import com.SmellyModder.TheLostSea.core.util.handlers.GUIHandler;
 import com.SmellyModder.TheLostSea.core.util.handlers.RegistryHandler;
+import com.SmellyModder.TheLostSea.core.util.handlers.npc.NPCEventHandler;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -45,6 +49,8 @@ public class TheLostSea {
 		CapabilityHandler.register();
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 0, Side.SERVER);
+		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 0, Side.CLIENT);
 	}
 	
 	@EventHandler
@@ -60,7 +66,7 @@ public class TheLostSea {
 		 */
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
-	    //MinecraftForge.EVENT_BUS.register(new OverlayCoinAmount());
+	    MinecraftForge.EVENT_BUS.register(new NPCEventHandler());
 	    OreDictionaryLS.register();
 	}
 	
