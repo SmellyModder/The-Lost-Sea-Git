@@ -5,6 +5,7 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
+import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
@@ -44,8 +45,10 @@ public class CoinEventHandler {
 	{ 
 		EntityPlayer player = event.player; 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
+		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		if(player instanceof EntityPlayerMP) {
 			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
+			TheLostSea.NETWORK.sendTo(new MessageVerseN(dataNPC.getVerse()), (EntityPlayerMP) player);
 		}
 	}
 	
@@ -68,10 +71,6 @@ public class CoinEventHandler {
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		IDialogueNurm dataNPC_AD = event.getOriginal().getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		dataNPC.setVerse(dataNPC_AD.getVerse());
-		
-		IStepGetterN dataNPC2 = player.getCapability(StepProviderN.CAP_S, null); 
-		IStepGetterN dataNPC2_AD = event.getOriginal().getCapability(StepProviderN.CAP_S, null); 
-		dataNPC2.setStep(dataNPC2_AD.getStep());
 	}
 	
 	@SubscribeEvent 
@@ -79,7 +78,11 @@ public class CoinEventHandler {
 	{ 
 		EntityPlayer player = event.player; 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
+		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		
+		if(player instanceof EntityPlayerMP && player.isEntityAlive()) {
+			TheLostSea.NETWORK.sendTo(new MessageVerseN(dataNPC.getVerse()), (EntityPlayerMP) player);
+		}
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}

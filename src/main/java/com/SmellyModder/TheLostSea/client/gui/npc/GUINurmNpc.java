@@ -70,9 +70,6 @@ public class GUINurmNpc extends GuiScreen{
 	public void updateScreen() 
 	{	
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
-		if(player instanceof EntityPlayerMP) {
-			TheLostSea.NETWORK.sendTo(new MessageVerseN(dialouge.getVerse()), (EntityPlayerMP) player);
-		 }
 	}
 	
 	public void drawBackGround() {
@@ -84,7 +81,7 @@ public class GUINurmNpc extends GuiScreen{
 	{
 		this.drawGradientRect(0, 0, this.width, this.height, -1072689136, -804253680);
 		if(dialogueID == 0) {
-			fontRenderer.drawStringWithShadow("Welcome to Nurm's Adventure Emporium!", offsetFromScreenLeft + 145, y, 16777215);
+			fontRenderer.drawStringWithShadow("Welcome to Nurm's Adventure Emporium! How may I help you today?", offsetFromScreenLeft + 145, y, 16777215);
 		} else if (dialogueID == 1) {
 			fontRenderer.drawStringWithShadow("Welcome back! Have you managed to get that eye?", offsetFromScreenLeft + 145, y, 16777215);
 		}

@@ -37,7 +37,7 @@ public abstract class EntityLSNpcBase extends EntityCreature {
 	
 	@Override
 	protected void initEntityAI() {
-		this.tasks.addTask(7, new EntityAILookIdle(this));
+		//this.tasks.addTask(7, new EntityAILookIdle(this));
 		this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
 	}
 
