@@ -36,7 +36,7 @@ public class GUINurmNpc extends GuiScreen{
 	private final int HEIGHT = 256;
 	private int currGui = 0;
 	private int dialogueID = 0;
-	protected FontRenderer customFontRenderer = new FontRenderer(Minecraft.getMinecraft().gameSettings, new ResourceLocation(Reference.MOD_ID + ":textures/font/npc_font.png"), Minecraft.getMinecraft().renderEngine, false);
+	protected FontRenderer customFontRenderer = new FontRenderer(mine.gameSettings, new ResourceLocation("textures/font/ascii.png"), mine.renderEngine, true);
 	private static final ResourceLocation BG = new ResourceLocation(Reference.MOD_ID + ":textures/gui/overlay/gray_bg.png");
 	int offsetFromScreenLeft = (resolution.getScaledWidth() - WIDTH) / 2;
 	int y = (this.height - HEIGHT) / 2;
@@ -70,10 +70,6 @@ public class GUINurmNpc extends GuiScreen{
 		
 		buttonList.clear();
         Keyboard.enableRepeatEvents(true);
-        
-        buttonList.add(testButton = new GuiButton(785, this.offsetFromScreenLeft + 167, 65, 98, 28, ""));
-   
-        testButton.visible = true;
 		super.initGui();
 	}
 	
@@ -98,11 +94,9 @@ public class GUINurmNpc extends GuiScreen{
 	public void drawScreen(int parWidth, int parHeight, float p_73863_3_)
 	{
 		this.drawGradientRect(0, 0, this.width, this.height, -1072689136, -804253680);
-		if(dialogueID == 0) {
-			fontRenderer.drawStringWithShadow("Welcome to Nurm's Adventure Emporium! How may I help you today?", offsetFromScreenLeft + 145, y + 145, 16777215);
-		} else if (dialogueID == 1) {
-			fontRenderer.drawStringWithShadow("Welcome back! Have you managed to get that eye?", offsetFromScreenLeft + 145, y + 145, 16777215);
-		}
+		this.fontRenderer.drawString("Welcome to Nurm's Adventure Emporium! How may I help you?", this.offsetFromScreenLeft + 55, y + 155, 16777215, true);
+    	//this.drawGradientRect(0, this.height / 2 + 0 * 12 + 30, this.width / 2 + 0 / 2 + 1000, this.height / 2 + 0 * 10 + 140, 0x66000000, 0x66000000);
+		super.drawScreen(parWidth, parHeight, p_73863_3_);
 	}
 	
 	 protected void actionPerformed(GuiButton parButton) 
