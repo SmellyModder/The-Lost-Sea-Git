@@ -81,9 +81,7 @@ public class CoinEventHandler {
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		
-		if(player instanceof EntityPlayerMP && player.isEntityAlive()) {
-			TheLostSea.NETWORK.sendTo(new MessageVerseN(dataNPC.getVerse()), (EntityPlayerMP) player);
-		}
+		
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
