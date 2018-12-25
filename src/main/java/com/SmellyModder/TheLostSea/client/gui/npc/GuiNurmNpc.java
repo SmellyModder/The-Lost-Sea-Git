@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GUINurmNpc extends GuiScreen {
+public class GuiNurmNpc extends GuiScreen {
 	
 	EntityPlayer player;
 	Minecraft mine = Minecraft.getMinecraft();
@@ -77,7 +77,11 @@ public class GUINurmNpc extends GuiScreen {
 	private ResponseButton ResponeButton9;
 	private ResponseButton ResponeButton10;
 	
-	public GUINurmNpc(EntityPlayer player) {
+	//Response 6:
+	private ResponseButton ResponeButton11;
+	private ResponseButton ResponeButton12;
+	
+	public GuiNurmNpc(EntityPlayer player) {
 		this.player = player;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
 		dialogueID = dialouge.getVerse();
@@ -111,8 +115,11 @@ public class GUINurmNpc extends GuiScreen {
 		buttonList.add(ResponeButton8 = new ResponseButton(11, offsetFromScreenLeft - 57, y + 195, 121, "No thank you, goodbye"));
 
 
-		buttonList.add(ResponeButton9 = new ResponseButton(10, offsetFromScreenLeft - 57, y + 175, 64, "Yes, I'm in"));
-		buttonList.add(ResponeButton10 = new ResponseButton(11, offsetFromScreenLeft - 57, y + 195, 70, "No, goodbye"));
+		buttonList.add(ResponeButton9 = new ResponseButton(12, offsetFromScreenLeft - 57, y + 175, 60, "Yes, I'm in"));
+		buttonList.add(ResponeButton10 = new ResponseButton(13, offsetFromScreenLeft - 57, y + 195, 69, "No, goodbye"));
+		
+		buttonList.add(ResponeButton11 = new ResponseButton(14, offsetFromScreenLeft - 57, y + 175, 76, "Yes, I'm ready"));
+		buttonList.add(ResponeButton12 = new ResponseButton(15, offsetFromScreenLeft - 57, y + 195, 140, "Maybe another time, thanks"));
 		
         Keyboard.enableRepeatEvents(true);
         this.NextDialougeButton.visible = false;
@@ -135,6 +142,9 @@ public class GUINurmNpc extends GuiScreen {
 		this.ResponeButton9.visible = currGui == 1 && currDialogue == 9;
 		this.ResponeButton10.visible = currGui == 1 && currDialogue == 9;
 		
+		this.ResponeButton11.visible = currGui == 1 && currDialogue == 11;
+		this.ResponeButton12.visible = currGui == 1 && currDialogue == 11;
+
 		super.initGui();
 	}
 	protected void actionPerformed(GuiButton parButton) {	
@@ -167,14 +177,23 @@ public class GUINurmNpc extends GuiScreen {
 			 else if(currDialogue == 8) {
 				 currDialogue = 9;
 			 }
+			 else if(currDialogue == 10) {
+				 currDialogue = 11;
+			 }
 		 }
 		 else if(parButton.id == 9) {
 			 currDialogue = 5;
 		 }
 		 else if(parButton.id == 10) {
 			 currDialogue = 8;
-		 } else if(parButton.id == 11) {
+		 } else if(parButton.id == 11 || parButton.id == 13 || parButton.id == 15) {
 	         mc.displayGuiScreen((GuiScreen)null);
+		 }
+		 else if(parButton.id == 12) {
+			 currDialogue = 10;
+		 }
+		 else if(parButton.id == 14) {
+			 currDialogue = 12;
 		 }
 	 }
 	
@@ -195,7 +214,7 @@ public class GUINurmNpc extends GuiScreen {
 		this.ResponeButton3.visible = currGui == 1 && currDialogue == 0;
 		
 		this.NextDialougeButton.visible = currGui == 1 && currDialogue == 1 || currGui == 1 && currDialogue == 3 || currGui == 1 && currDialogue == 5 || currGui == 1 && currDialogue == 6 
-				|| currGui == 1 && currDialogue == 8;
+				|| currGui == 1 && currDialogue == 8 || currGui == 1 && currDialogue == 10;
 		
 		this.ResponeButton4.visible = currGui == 1 && currDialogue == 2 || currGui == 1 && currDialogue == 4;
 		
@@ -207,6 +226,9 @@ public class GUINurmNpc extends GuiScreen {
 		
 		this.ResponeButton9.visible = currGui == 1 && currDialogue == 9;
 		this.ResponeButton10.visible = currGui == 1 && currDialogue == 9;
+		
+		this.ResponeButton11.visible = currGui == 1 && currDialogue == 11;
+		this.ResponeButton12.visible = currGui == 1 && currDialogue == 11;
 	}
 	
 	@Override
@@ -282,6 +304,20 @@ public class GUINurmNpc extends GuiScreen {
         			this.fontRenderer.drawString("Jack died a couple days after he returned from the dimension.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
         			this.fontRenderer.drawString("Avenging his death would mean the world to me, I mean it.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
         			this.fontRenderer.drawString("So, are you in?", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 10) {
+        			this.fontRenderer.drawString("Alright, good, I truly appreciate it. Anyways, getting to the dimension..", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("is not so easy. To open the portal we're gonna need an Elder.. ", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("Guardian's Eye. Which could be hard to get.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 11) {
+        			this.fontRenderer.drawString("To get the eye you must slay an Elder Guardian.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("Once you get the eye, return it to me. I can forge it into a portal key.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("So adventurer, ready to start your journey?", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 12) {
+        			this.fontRenderer.drawString("Awesome! I wish you luck on your adventure.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("Remeber to return to me once you get the eye.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
     			}
     		}
     		} else if(dialouge.getVerse() == 1) {

@@ -86,8 +86,8 @@ public class OverlayCoins extends Gui {
 
                 drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 129, y, 0, 0, 74, 22, 74, 22);
 
-                MC.fontRenderer.drawString("x" + coins.getCoins(), offsetFromScreenLeft + 150, y + 9, 0xFFFFFF);
-
+                MC.fontRenderer.drawString("x", offsetFromScreenLeft + 149, y + 8, 0xFFFFFF, true);
+                MC.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft + 156.5F, y + 8.6F, 0xFFFFFF, true);
                 GlStateManager.color(1, 1, 1, 1);
                 drawEntityOnScreen(offsetFromScreenLeft + 141, y + 27, 35, coin);
 

@@ -1,7 +1,7 @@
 package com.SmellyModder.TheLostSea.core.proxy;
 
 import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
-import com.SmellyModder.TheLostSea.client.gui.npc.GUINurmNpc;
+import com.SmellyModder.TheLostSea.client.gui.npc.GuiNurmNpc;
 import com.SmellyModder.TheLostSea.client.gui.npc.NPCFont;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.handlers.RenderHandler;
@@ -40,6 +40,6 @@ public class ClientProxy extends CommonProxy{
 	}
 	
 	public void OpenNurmGUI(EntityPlayer player) {
-		 Minecraft.getMinecraft().displayGuiScreen(new GUINurmNpc(player));
+		 Minecraft.getMinecraft().displayGuiScreen(new GuiNurmNpc(player));
 	}
 }

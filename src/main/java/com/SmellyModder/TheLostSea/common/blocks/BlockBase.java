@@ -17,7 +17,6 @@ public class BlockBase extends Block implements IHasModel{
 		setTranslationKey(name);
 		setRegistryName(name);
 		setCreativeTab(TheLostSea.TLS_BLOCKS);
-		
 		TLSBlocks.BLOCKS.add(this);
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 		}
