@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GUINurmNpc extends GuiScreen{
+public class GUINurmNpc extends GuiScreen {
 	
 	EntityPlayer player;
 	Minecraft mine = Minecraft.getMinecraft();
@@ -45,21 +46,6 @@ public class GUINurmNpc extends GuiScreen{
 	private int dialogueID = 0;
 	protected FontRenderer customFontRenderer = new FontRenderer(mine.gameSettings, new ResourceLocation("textures/font/ascii.png"), mine.renderEngine, true);
 	private static final ResourceLocation BG = new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png");
-	
-	
-	private int getYForSize() {
-		switch(mc.gameSettings.guiScale) {
-			case 0:
-				default:
-				return 175;
-			case 1: 
-				return 335;
-			case 2:
-				return 400;
-			case 3:
-				return 450;
-		}
-	}
 	 
 	/*
 	 * Buttons
@@ -76,6 +62,20 @@ public class GUINurmNpc extends GuiScreen{
 	private ResponseButton ResponeButton2;
 	private ResponseButton ResponeButton3;
 	
+	//Response 2:
+	private ResponseButton ResponeButton4;
+	private ResponseButton ResponeButton5;
+	
+	//Response 3:
+	private ResponseButton ResponeButton6;
+	
+	//Response 4:
+	private ResponseButton ResponeButton7;
+	private ResponseButton ResponeButton8;
+	
+	//Response 5:
+	private ResponseButton ResponeButton9;
+	private ResponseButton ResponeButton10;
 	
 	public GUINurmNpc(EntityPlayer player) {
 		this.player = player;
@@ -90,7 +90,7 @@ public class GUINurmNpc extends GuiScreen{
 
 		buttonList.clear();
 		int y = (this.height - HEIGHT) / 2;
-		buttonList.add(NextDialougeButton = new NextDialougeButton(1, offsetFromScreenLeft + 535, y + 273));
+		buttonList.add(NextDialougeButton = new NextDialougeButton(1, offsetFromScreenLeft + 295, y + 145));
 		
 		buttonList.add(TalkButton = new TalkButton(2, offsetFromScreenLeft + 243, y + 175));
 		buttonList.add(ShopButton = new ShopButton(3, offsetFromScreenLeft + 243, y + 200));
@@ -102,35 +102,79 @@ public class GUINurmNpc extends GuiScreen{
 		buttonList.add(ResponeButton3 = new ResponseButton(7, offsetFromScreenLeft - 57, y + 215, 30, "Back"));
 		
 		
+		buttonList.add(ResponeButton4 = new ResponseButton(8, offsetFromScreenLeft - 57, y + 195, 77, "Nope, Goodbye"));
+		
+		buttonList.add(ResponeButton6 = new ResponseButton(9, offsetFromScreenLeft - 57, y + 175, 28, "Yes"));
+		
+		
+		buttonList.add(ResponeButton7 = new ResponseButton(10, offsetFromScreenLeft - 57, y + 175, 160, "Maybe, but what's in it for me?"));
+		buttonList.add(ResponeButton8 = new ResponseButton(11, offsetFromScreenLeft - 57, y + 195, 121, "No thank you, goodbye"));
+
+
+		buttonList.add(ResponeButton9 = new ResponseButton(10, offsetFromScreenLeft - 57, y + 175, 64, "Yes, I'm in"));
+		buttonList.add(ResponeButton10 = new ResponseButton(11, offsetFromScreenLeft - 57, y + 195, 70, "No, goodbye"));
+		
         Keyboard.enableRepeatEvents(true);
         this.NextDialougeButton.visible = false;
         
         this.ExitButton.visible = currGui == 0;
 		this.TalkButton.visible = currGui == 0;
 		this.ShopButton.visible = currGui == 0;
-		this.ResponeButton1.visible = currGui == 1 && currDialogue == 0;
+		this.ResponeButton1.visible = currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
 		this.ResponeButton2.visible = currGui == 1 && currDialogue == 0;
 		this.ResponeButton3.visible = currGui == 1 && currDialogue == 0;
+		
+		this.ResponeButton4.visible = currGui == 1 && currDialogue == 2 || currGui == 1 && currDialogue == 4;
+		
+		this.ResponeButton6.visible = currGui == 1 && currDialogue == 4;
+		
+		
+		this.ResponeButton7.visible = currGui == 1 && currDialogue == 7;
+		this.ResponeButton8.visible = currGui == 1 && currDialogue == 7;
+		
+		this.ResponeButton9.visible = currGui == 1 && currDialogue == 9;
+		this.ResponeButton10.visible = currGui == 1 && currDialogue == 9;
+		
 		super.initGui();
 	}
 	protected void actionPerformed(GuiButton parButton) {	
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
-		 if(parButton == NextDialougeButton) {
-			 dialouge.setVerse(1);
-		 }
 		 if(parButton.id == 4) {
 	         mc.displayGuiScreen((GuiScreen)null);
+	         
 		 } else if(parButton.id == 2) {
 			 this.currGui = 1;
-		 }
-		 
-		 if(parButton.id == 7) {
+		 } 
+		 else if(parButton.id == 7 || parButton.id == 8) {
 			 this.currGui = 0;
-		 } else if(parButton.id == 6) {
-			 
+		 }
+		 else if(parButton.id == 6) {
+			 this.currDialogue = 1;
 		 }
 		 else if(parButton.id == 5) {
-			 
+			 this.currDialogue = 3;
+		 }
+		 else if(parButton.id == 1) {
+			 if(currDialogue == 1) {
+				 currDialogue = 2;
+			 } else if(currDialogue == 3) {
+				 currDialogue = 4;
+			 } else if(currDialogue == 5) {
+				 currDialogue = 6;
+			 } else if(currDialogue == 6) {
+				 currDialogue = 7;
+			 }
+			 else if(currDialogue == 8) {
+				 currDialogue = 9;
+			 }
+		 }
+		 else if(parButton.id == 9) {
+			 currDialogue = 5;
+		 }
+		 else if(parButton.id == 10) {
+			 currDialogue = 8;
+		 } else if(parButton.id == 11) {
+	         mc.displayGuiScreen((GuiScreen)null);
 		 }
 	 }
 	
@@ -146,9 +190,23 @@ public class GUINurmNpc extends GuiScreen{
 		this.TalkButton.visible = currGui == 0;
 		this.ShopButton.visible = currGui == 0;
 		
-		this.ResponeButton1.visible = currGui == 1 && currDialogue == 0;
+		this.ResponeButton1.visible = currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
 		this.ResponeButton2.visible = currGui == 1 && currDialogue == 0;
 		this.ResponeButton3.visible = currGui == 1 && currDialogue == 0;
+		
+		this.NextDialougeButton.visible = currGui == 1 && currDialogue == 1 || currGui == 1 && currDialogue == 3 || currGui == 1 && currDialogue == 5 || currGui == 1 && currDialogue == 6 
+				|| currGui == 1 && currDialogue == 8;
+		
+		this.ResponeButton4.visible = currGui == 1 && currDialogue == 2 || currGui == 1 && currDialogue == 4;
+		
+		this.ResponeButton6.visible = currGui == 1 && currDialogue == 4;
+		
+		
+		this.ResponeButton7.visible = currGui == 1 && currDialogue == 7;
+		this.ResponeButton8.visible = currGui == 1 && currDialogue == 7;
+		
+		this.ResponeButton9.visible = currGui == 1 && currDialogue == 9;
+		this.ResponeButton10.visible = currGui == 1 && currDialogue == 9;
 	}
 	
 	@Override
@@ -183,7 +241,48 @@ public class GUINurmNpc extends GuiScreen{
     		if(currGui == 0) {
     			this.fontRenderer.drawString("Welcome to my Adventure Emporium! How may I help you today?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
     		} else if(currGui == 1) {
-    			this.fontRenderer.drawString("Yes what is that you need?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    			if(currDialogue == 0) {
+        			this.fontRenderer.drawString("Yes what is that you need?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    			} else if(currDialogue == 1) {
+        			this.fontRenderer.drawString("My shop sells supplies for all adventurers and explorers alike.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("I sell compasses, maps, and so much more.", offsetFromScreenLeft - 53, y + 130, 16777215, true);
+    			}
+    			else if(currDialogue == 2) {
+        			this.fontRenderer.drawString("Anything else you need?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    			}
+    			else if(currDialogue == 3) {
+        			this.fontRenderer.drawString("Well I know quite a lot actually, more than I should I'm afraid. ", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("I could tell you the legend of 'The Lost Sea', the Guardians homeworld.", offsetFromScreenLeft - 53, y + 130, 16777215, true);
+    			} 
+    			else if(currDialogue == 4) {
+        			this.fontRenderer.drawString("Would you like to know?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			
+    			}
+    			else if(currDialogue == 5) {
+        			this.fontRenderer.drawString("Well I'd tell you a lot, but it does bring back haunting memories.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("I had a friend, his name was Jack and he was a brave adventurer.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("He once found a not so ordinary sea temple.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 6) {
+        			this.fontRenderer.drawString("He opened a gate to another world in the temple.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("Being him, he wanted to explore this new world. Eventually he returned..", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("many years later, and came back with a strange curse.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 7) {
+        			this.fontRenderer.drawString("The curse made him unable to speak and he was dying slowly.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("And I've been wondering for so many years as to how he was cursed.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("Perhaps you could unravel the mystery?", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 8) {
+        			this.fontRenderer.drawString("Well there's a lot in it for you actually.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("It's a new world, who knows what treasure it may have?", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("And I'll be sure to reward you, just for going there.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
+    			else if(currDialogue == 9) {
+        			this.fontRenderer.drawString("Jack died a couple days after he returned from the dimension.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			this.fontRenderer.drawString("Avenging his death would mean the world to me, I mean it.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("So, are you in?", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    			}
     		}
     		} else if(dialouge.getVerse() == 1) {
 			this.fontRenderer.drawString("Welcome back! Have you managed to get that eye yet?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
@@ -255,6 +354,7 @@ public class GUINurmNpc extends GuiScreen{
         @Override
         public void playPressSound(SoundHandler soundHandlerIn) {
         }
+        
         @Override
         public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
         {
@@ -423,9 +523,9 @@ public class GUINurmNpc extends GuiScreen{
 		
 		int width;
 		String text;
-		public ResponseButton(int parButtonId, int parPosX, int parPosY, int wordWidth, String text)
+		public ResponseButton(int parButtonId, int parPosX, int parPosY,int wordWidth, String text)
         {
-            super(parButtonId, parPosX, parPosY, 70, 20, "");
+            super(parButtonId, parPosX, parPosY, wordWidth, 20, "");
             width = wordWidth;
             this.text = text;
         }
