@@ -22,11 +22,13 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.tools.nsc.backend.icode.Opcodes.opcodes..CJUMP;
 
 @SideOnly(Side.CLIENT)
 public class GuiNurmNpc extends GuiScreen {
@@ -81,6 +83,10 @@ public class GuiNurmNpc extends GuiScreen {
 	private ResponseButton ResponeButton11;
 	private ResponseButton ResponeButton12;
 	
+	//Response 7:
+	private ResponseButton ResponeButton13;
+	private ResponseButton ResponeButton14;
+	
 	public GuiNurmNpc(EntityPlayer player) {
 		this.player = player;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
@@ -91,6 +97,7 @@ public class GuiNurmNpc extends GuiScreen {
 	public void initGui() {
 		
 		int offsetFromScreenLeft = (width - WIDTH) / 2;
+		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 
 		buttonList.clear();
 		int y = (this.height - HEIGHT) / 2;
@@ -121,30 +128,41 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(ResponeButton11 = new ResponseButton(14, offsetFromScreenLeft - 57, y + 175, 76, "Yes, I'm ready"));
 		buttonList.add(ResponeButton12 = new ResponseButton(15, offsetFromScreenLeft - 57, y + 195, 140, "Maybe another time, thanks"));
 		
+		buttonList.add(ResponeButton13 = new ResponseButton(16, offsetFromScreenLeft - 57, y + 175, 75, "Yes, I have it"));
+		buttonList.add(ResponeButton14 = new ResponseButton(17, offsetFromScreenLeft - 57, y + 195, 126, "No, I still need to get it."));
+	
         Keyboard.enableRepeatEvents(true);
+        
+        
         this.NextDialougeButton.visible = false;
         
         this.ExitButton.visible = currGui == 0;
 		this.TalkButton.visible = currGui == 0;
 		this.ShopButton.visible = currGui == 0;
-		this.ResponeButton1.visible = currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
-		this.ResponeButton2.visible = currGui == 1 && currDialogue == 0;
-		this.ResponeButton3.visible = currGui == 1 && currDialogue == 0;
+		this.ResponeButton1.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
+		this.ResponeButton2.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
+		this.ResponeButton3.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
 		
-		this.ResponeButton4.visible = currGui == 1 && currDialogue == 2 || currGui == 1 && currDialogue == 4;
+		this.NextDialougeButton.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 1 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 3 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 6 
+				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12;
 		
-		this.ResponeButton6.visible = currGui == 1 && currDialogue == 4;
+		this.ResponeButton4.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
+		
+		this.ResponeButton6.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
 		
-		this.ResponeButton7.visible = currGui == 1 && currDialogue == 7;
-		this.ResponeButton8.visible = currGui == 1 && currDialogue == 7;
+		this.ResponeButton7.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 7;
+		this.ResponeButton8.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 7;
 		
-		this.ResponeButton9.visible = currGui == 1 && currDialogue == 9;
-		this.ResponeButton10.visible = currGui == 1 && currDialogue == 9;
+		this.ResponeButton9.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 9;
+		this.ResponeButton10.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 9;
 		
-		this.ResponeButton11.visible = currGui == 1 && currDialogue == 11;
-		this.ResponeButton12.visible = currGui == 1 && currDialogue == 11;
+		this.ResponeButton11.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 11;
+		this.ResponeButton12.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 11;
 
+		this.ResponeButton13.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
+		this.ResponeButton14.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
+		
 		super.initGui();
 	}
 	protected void actionPerformed(GuiButton parButton) {	
@@ -180,6 +198,10 @@ public class GuiNurmNpc extends GuiScreen {
 			 else if(currDialogue == 10) {
 				 currDialogue = 11;
 			 }
+			 else if(currDialogue == 12) {
+				 dialouge.setVerse(1);
+		         mc.displayGuiScreen((GuiScreen)null);
+			 }
 		 }
 		 else if(parButton.id == 9) {
 			 currDialogue = 5;
@@ -195,6 +217,11 @@ public class GuiNurmNpc extends GuiScreen {
 		 else if(parButton.id == 14) {
 			 currDialogue = 12;
 		 }
+		 else if(parButton.id == 16) {
+			 currDialogue = 2;
+		 } else if(parButton.id == 17) {
+			 currDialogue = 5;
+		 }
 	 }
 	
 	@Override
@@ -205,30 +232,34 @@ public class GuiNurmNpc extends GuiScreen {
 	@Override
 	public void updateScreen() 
 	{
+		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		this.ExitButton.visible = currGui == 0;
 		this.TalkButton.visible = currGui == 0;
 		this.ShopButton.visible = currGui == 0;
 		
-		this.ResponeButton1.visible = currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
-		this.ResponeButton2.visible = currGui == 1 && currDialogue == 0;
-		this.ResponeButton3.visible = currGui == 1 && currDialogue == 0;
+		this.ResponeButton1.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
+		this.ResponeButton2.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
+		this.ResponeButton3.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
 		
-		this.NextDialougeButton.visible = currGui == 1 && currDialogue == 1 || currGui == 1 && currDialogue == 3 || currGui == 1 && currDialogue == 5 || currGui == 1 && currDialogue == 6 
-				|| currGui == 1 && currDialogue == 8 || currGui == 1 && currDialogue == 10;
+		this.NextDialougeButton.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 1 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 3 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 6 
+				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12;
 		
-		this.ResponeButton4.visible = currGui == 1 && currDialogue == 2 || currGui == 1 && currDialogue == 4;
+		this.ResponeButton4.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
-		this.ResponeButton6.visible = currGui == 1 && currDialogue == 4;
+		this.ResponeButton6.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
 		
-		this.ResponeButton7.visible = currGui == 1 && currDialogue == 7;
-		this.ResponeButton8.visible = currGui == 1 && currDialogue == 7;
+		this.ResponeButton7.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 7;
+		this.ResponeButton8.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 7;
 		
-		this.ResponeButton9.visible = currGui == 1 && currDialogue == 9;
-		this.ResponeButton10.visible = currGui == 1 && currDialogue == 9;
+		this.ResponeButton9.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 9;
+		this.ResponeButton10.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 9;
 		
-		this.ResponeButton11.visible = currGui == 1 && currDialogue == 11;
-		this.ResponeButton12.visible = currGui == 1 && currDialogue == 11;
+		this.ResponeButton11.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 11;
+		this.ResponeButton12.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 11;
+	
+		this.ResponeButton13.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
+		this.ResponeButton14.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
 	}
 	
 	@Override
@@ -317,12 +348,21 @@ public class GuiNurmNpc extends GuiScreen {
     			}
     			else if(currDialogue == 12) {
         			this.fontRenderer.drawString("Awesome! I wish you luck on your adventure.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
-        			this.fontRenderer.drawString("Remeber to return to me once you get the eye.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+        			this.fontRenderer.drawString("Remeber to return to me once you get the eye. Goodbye and good luck!", offsetFromScreenLeft - 53, y + 131, 16777215, true);
     			}
     		}
     		} else if(dialouge.getVerse() == 1) {
-			this.fontRenderer.drawString("Welcome back! Have you managed to get that eye yet?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
-		}
+    			if(currGui == 0) {
+        			this.fontRenderer.drawString("Welcome back! Have you managed to get that eye yet?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    			}
+    			else if(currGui == 1) {
+        			this.fontRenderer.drawString("So did you get it?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			if(currDialogue == 1) {
+            			this.fontRenderer.drawString("Nice, hand over the eye to me.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			}
+    			}
+    		
+    		}
     	mc.getTextureManager().bindTexture(BG);
     	super.drawScreen(parWidth, parHeight, p_73863_3_);
     	if(currGui == 0) {
