@@ -14,7 +14,7 @@ public class DialogueProviderN implements ICapabilitySerializable<NBTBase> {
 		@CapabilityInject(IDialogueNurm.class) 
 		public static final Capability<IDialogueNurm> DIALOGUE_CAP = null; 
 
-		private IDialogueNurm instance = DIALOGUE_CAP.getDefaultInstance(); 
+		private IDialogueNurm instance = DIALOGUE_CAP.getDefaultInstance();
 
 		@Override 
 		public boolean hasCapability(Capability<?> capability, EnumFacing facing) 

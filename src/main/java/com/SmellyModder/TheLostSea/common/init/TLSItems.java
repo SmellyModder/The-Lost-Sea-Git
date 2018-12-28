@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.common.init;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
+import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
 import com.SmellyModder.TheLostSea.common.item.ItemOrb;
 import com.SmellyModder.TheLostSea.common.item.ItemPearl;
 import com.SmellyModder.TheLostSea.common.item.ItemTempleFinder;
@@ -83,7 +84,7 @@ public class TLSItems {
 	
 	//Collectables
 	public static Item PEARL = new ItemPearl("pearl");
-	public static Item ELDER_EYE = new ItemBase("elder_eye");
+	public static Item ELDER_EYE = new ItemElderEye("elder_eye");
 	public static Item GOLDEN_ELDER_EYE = new ItemTempleFinder("golden_elder_eye");
 	public static Item PRISMARINE_BALL = new ItemBase("elastic_prismarine");
 	public static Item SHARK_TOOTH = new ItemBase("shark_tooth");

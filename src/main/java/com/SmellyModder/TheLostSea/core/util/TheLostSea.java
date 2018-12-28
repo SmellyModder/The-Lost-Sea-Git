@@ -5,6 +5,7 @@ import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
+import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
@@ -50,10 +51,11 @@ public class TheLostSea {
 		RegistryHandler.preInitRegistries();
 		CapabilityHandler.register();
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
-		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 1, Side.CLIENT);
 		
-		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 1, Side.SERVER);
-		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 1, Side.CLIENT);
+		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 2, Side.SERVER);
+		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 3, Side.CLIENT);
+		NETWORK.registerMessage(MessageSetVerse.HandleMessageSetVerse.class, MessageSetVerse.class, 4, Side.SERVER);
 	}
 	
 	@EventHandler

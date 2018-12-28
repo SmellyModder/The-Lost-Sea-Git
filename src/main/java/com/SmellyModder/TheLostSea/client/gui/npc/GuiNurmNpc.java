@@ -1,9 +1,15 @@
 package com.SmellyModder.TheLostSea.client.gui.npc;
 
+import javax.swing.text.html.parser.Entity;
+
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import com.SmellyModder.TheLostSea.common.item.ItemBase;
+import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
+import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
+import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
@@ -23,12 +29,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryEnderChest;
+import net.minecraft.item.ItemArrow;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.BossInfo.Color;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.tools.nsc.backend.icode.Opcodes.opcodes..CJUMP;
+
 
 @SideOnly(Side.CLIENT)
 public class GuiNurmNpc extends GuiScreen {
@@ -37,6 +47,9 @@ public class GuiNurmNpc extends GuiScreen {
 	Minecraft mine = Minecraft.getMinecraft();
 	ScaledResolution resolution = new ScaledResolution(mine);
     double screenHeight = resolution.getScaledHeight_double();
+    
+    private boolean showError = false;
+    int fade;
    
 	private static double nextAnimation;
 	private static double timeBefore;
@@ -46,7 +59,6 @@ public class GuiNurmNpc extends GuiScreen {
 	private int currGui = 0;
 	private int currDialogue = 0;
 	private int dialogueID = 0;
-	protected FontRenderer customFontRenderer = new FontRenderer(mine.gameSettings, new ResourceLocation("textures/font/ascii.png"), mine.renderEngine, true);
 	private static final ResourceLocation BG = new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png");
 	 
 	/*
@@ -86,6 +98,9 @@ public class GuiNurmNpc extends GuiScreen {
 	//Response 7:
 	private ResponseButton ResponeButton13;
 	private ResponseButton ResponeButton14;
+	
+	//Give Buttons
+	private ResponseButton ResponeButtonEye;
 	
 	public GuiNurmNpc(EntityPlayer player) {
 		this.player = player;
@@ -131,6 +146,10 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(ResponeButton13 = new ResponseButton(16, offsetFromScreenLeft - 57, y + 175, 75, "Yes, I have it"));
 		buttonList.add(ResponeButton14 = new ResponseButton(17, offsetFromScreenLeft - 57, y + 195, 126, "No, I still need to get it."));
 	
+		
+		buttonList.add(ResponeButtonEye = new ResponseButton(18, offsetFromScreenLeft - 57, y + 175, 51, "Give Eye"));
+		
+		
         Keyboard.enableRepeatEvents(true);
         
         
@@ -162,6 +181,8 @@ public class GuiNurmNpc extends GuiScreen {
 
 		this.ResponeButton13.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
 		this.ResponeButton14.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
+		
+		this.ResponeButtonEye.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 3;
 		
 		super.initGui();
 	}
@@ -200,6 +221,7 @@ public class GuiNurmNpc extends GuiScreen {
 			 }
 			 else if(currDialogue == 12) {
 				 dialouge.setVerse(1);
+				 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(1));
 		         mc.displayGuiScreen((GuiScreen)null);
 			 }
 		 }
@@ -218,9 +240,25 @@ public class GuiNurmNpc extends GuiScreen {
 			 currDialogue = 12;
 		 }
 		 else if(parButton.id == 16) {
-			 currDialogue = 2;
-		 } else if(parButton.id == 17) {
+			 currDialogue = 1;
+		 } 
+		 else if(parButton.id == 17) {
 			 currDialogue = 5;
+		 }
+		 else if(parButton.id == 18) {
+			int offsetFromScreenLeft = (width - WIDTH) / 2;
+			int y = (this.height - HEIGHT) / 2;
+			 ItemStack itemstack = this.findEye(player);
+			 if(!itemstack.isEmpty()) {
+				 if(itemstack.getItem() instanceof ItemElderEye) {
+					 itemstack.shrink(1);
+					 //currDialogue = 2;
+					 dialouge.setVerse(2);
+					 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(2));
+				 }
+			 } else {
+				 this.showError = true;
+			}
 		 }
 	 }
 	
@@ -237,7 +275,7 @@ public class GuiNurmNpc extends GuiScreen {
 		this.TalkButton.visible = currGui == 0;
 		this.ShopButton.visible = currGui == 0;
 		
-		this.ResponeButton1.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0 || currGui == 1 && currDialogue == 2;
+		this.ResponeButton1.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2;
 		this.ResponeButton2.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
 		this.ResponeButton3.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
 		
@@ -260,14 +298,22 @@ public class GuiNurmNpc extends GuiScreen {
 	
 		this.ResponeButton13.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
 		this.ResponeButton14.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
+		
+		this.ResponeButtonEye.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 1;
+		
+		if(showError) {
+			fade++;
+		}
+		if(fade >= 100) {
+			showError = false;
+			fade = 0;
+		}
 	}
 	
 	@Override
 	public void onGuiClosed() {
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
-		if(player instanceof EntityPlayerMP) {
-			TheLostSea.NETWORK.sendTo(new MessageVerseN(dialouge.getVerse()), (EntityPlayerMP) player);
-		}
+		TheLostSea.NETWORK.sendToServer(new MessageRequestVerseN());
 		super.onGuiClosed();
 	}
 	
@@ -356,19 +402,34 @@ public class GuiNurmNpc extends GuiScreen {
         			this.fontRenderer.drawString("Welcome back! Have you managed to get that eye yet?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
     			}
     			else if(currGui == 1) {
-        			this.fontRenderer.drawString("So did you get it?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
-        			if(currDialogue == 1) {
+    				if(currDialogue == 0) {
+            			this.fontRenderer.drawString("So did you get it?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+        			}
+    				else if(currDialogue == 1) {
             			this.fontRenderer.drawString("Nice, hand over the eye to me.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
         			}
+    				else if(currDialogue == 2) {
+            			this.fontRenderer.drawString("Excellent, now the real journey can begin.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+            			this.fontRenderer.drawString("Before you go, I have a chest of supplies for you.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+            			this.fontRenderer.drawString("The chest has many things that will help you on your journey.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    				}
     			}
-    		
+    		} else if(dialouge.getVerse() == 2) {
+    			if(currGui == 1) {
+        			this.fontRenderer.drawString("Works", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    			}
     		}
+    	
     	mc.getTextureManager().bindTexture(BG);
     	super.drawScreen(parWidth, parHeight, p_73863_3_);
     	if(currGui == 0) {
     		this.fontRenderer.drawString("Talk", offsetFromScreenLeft + 272, y + 177, 16777215, true);
         	this.fontRenderer.drawString("Shop", offsetFromScreenLeft + 271, y + 202, 16777215, true);
         	this.fontRenderer.drawString("Exit", offsetFromScreenLeft + 273, y + 227, 16777215, true);
+    	}
+    	
+    	if(this.showError) {
+    		this.fontRenderer.drawString(TextFormatting.BOLD + "No Eye In Inventory!", offsetFromScreenLeft + 202, y + 180, 16711680, true);
     	}
 	}
 	
@@ -594,6 +655,25 @@ public class GuiNurmNpc extends GuiScreen {
         	}
         }
 	}
+	
+	protected boolean isEye(ItemStack stack)
+	{
+	   return stack.getItem() instanceof ItemBase;
+	}
+	
+	private ItemStack findEye(EntityPlayer player)
+    {
+            for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
+            {
+                ItemStack itemstack = player.inventory.getStackInSlot(i);
+
+                if (this.isEye(itemstack))
+                {
+                    return itemstack;
+                }
+            }
+            return ItemStack.EMPTY;
+     }
 	
 	static class ResponseButton extends GuiButton {
 		

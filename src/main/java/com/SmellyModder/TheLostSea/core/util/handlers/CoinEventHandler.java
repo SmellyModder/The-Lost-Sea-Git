@@ -1,5 +1,7 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
+import java.io.IOException;
+
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
@@ -14,6 +16,7 @@ import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.StepProv
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -36,10 +39,11 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class CoinEventHandler {
+public class CoinEventHandler{
 
 	@SubscribeEvent 
 	public void onPlayerLogsIn(PlayerLoggedInEvent event) 
@@ -52,6 +56,7 @@ public class CoinEventHandler {
 			TheLostSea.NETWORK.sendTo(new MessageVerseN(dataNPC.getVerse()), (EntityPlayerMP) player);
 		}
 	}
+	
 	
 	@SubscribeEvent
 	public void onPlayerTravelLS(PlayerChangedDimensionEvent event) {
@@ -72,6 +77,7 @@ public class CoinEventHandler {
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		IDialogueNurm dataNPC_AD = event.getOriginal().getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		dataNPC.setVerse(dataNPC_AD.getVerse());
+
 	}
 	
 	@SubscribeEvent 
@@ -85,5 +91,6 @@ public class CoinEventHandler {
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
+		System.out.println(dataNPC.getVerse());
 	}
 }

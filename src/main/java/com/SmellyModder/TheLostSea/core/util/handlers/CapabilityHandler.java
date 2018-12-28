@@ -27,13 +27,11 @@ public class CapabilityHandler {
 
 	public static final ResourceLocation COIN_CAP = new ResourceLocation(Reference.MOD_ID, "coins");
 	public static final ResourceLocation NURM_DIALOGUE_CAP = new ResourceLocation(Reference.MOD_ID, "nurm_cap");
-	public static final ResourceLocation NURM_STEP_CAP = new ResourceLocation(Reference.MOD_ID, "nurm_step_cap");
 	
 	public static void register()
     {
         CapabilityManager.INSTANCE.register(ICurrency.class, new CoinStorage(), CoinCurrency.class);
         CapabilityManager.INSTANCE.register(IDialogueNurm.class, new VerseStorageN(), DialogueControllerN.class);
-        CapabilityManager.INSTANCE.register(IStepGetterN.class, new StepStorageN(), StepControllerN.class);
     }
 	
 	@SubscribeEvent 
@@ -43,6 +41,5 @@ public class CapabilityHandler {
 
 		event.addCapability(COIN_CAP, new CoinProvider()); 
 		event.addCapability(NURM_DIALOGUE_CAP, new DialogueProviderN());
-		event.addCapability(NURM_STEP_CAP, new StepProviderN());
 	}
 }
