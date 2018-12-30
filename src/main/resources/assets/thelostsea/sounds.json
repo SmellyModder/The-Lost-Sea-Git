@@ -96,6 +96,12 @@
         "subtitle": "Collect Coin",
         "sounds": [{ "name": "thelostsea:entity/coin/coin_collect", "stream": false}]
     },
+    "block.loot.common":
+    {
+        "category": "blocks",
+        "subtitle": "Common Chest Opens",
+        "sounds": [{ "name": "thelostsea:block/treasure_common", "stream": false}]
+    },
      "pirate_crew": {"sounds": [{"name": "thelostsea:music/pirate_crew", "stream": true}]}
      
 }

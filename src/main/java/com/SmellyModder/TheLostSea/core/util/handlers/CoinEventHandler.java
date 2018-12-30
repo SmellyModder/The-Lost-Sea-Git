@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
+import com.SmellyModder.TheLostSea.core.math.ColorRBGHexIndex;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
@@ -91,6 +92,5 @@ public class CoinEventHandler{
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
-		System.out.println(dataNPC.getVerse());
 	}
 }

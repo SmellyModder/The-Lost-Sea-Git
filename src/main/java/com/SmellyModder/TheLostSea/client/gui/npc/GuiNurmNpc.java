@@ -1,11 +1,15 @@
 package com.SmellyModder.TheLostSea.client.gui.npc;
 
+import java.util.Arrays;
+
+import javax.crypto.Cipher;
 import javax.swing.text.html.parser.Entity;
 
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
 import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
@@ -27,15 +31,20 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.BossInfo.Color;
+import net.minecraft.world.MinecraftException;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -102,6 +111,8 @@ public class GuiNurmNpc extends GuiScreen {
 	//Give Buttons
 	private ResponseButton ResponeButtonEye;
 	
+	private ResponseButton ResponeButtonChest;
+	
 	public GuiNurmNpc(EntityPlayer player) {
 		this.player = player;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
@@ -148,7 +159,7 @@ public class GuiNurmNpc extends GuiScreen {
 	
 		
 		buttonList.add(ResponeButtonEye = new ResponseButton(18, offsetFromScreenLeft - 57, y + 175, 51, "Give Eye"));
-		
+		buttonList.add(ResponeButtonChest = new ResponseButton(19, offsetFromScreenLeft - 57, y + 175, 61, "Take Chest"));
 		
         Keyboard.enableRepeatEvents(true);
         
@@ -163,7 +174,9 @@ public class GuiNurmNpc extends GuiScreen {
 		this.ResponeButton3.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
 		
 		this.NextDialougeButton.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 1 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 3 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 6 
-				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12;
+				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12 
+				|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 0 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 3
+						|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 5;
 		
 		this.ResponeButton4.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
@@ -184,8 +197,21 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		this.ResponeButtonEye.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 3;
 		
+		this.ResponeButtonChest.visible = dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 4;
+		
 		super.initGui();
 	}
+	
+	public boolean isInvEmpty(EntityPlayer player, ItemStack stackIn)
+    {
+        return player.inventory.add(-1, stackIn);
+    }
+	
+	public boolean invFull(EntityPlayer p) {          
+	    return p.inventory.mainInventory.size() == -1;
+	}
+
+	
 	protected void actionPerformed(GuiButton parButton) {	
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		 if(parButton.id == 4) {
@@ -208,7 +234,7 @@ public class GuiNurmNpc extends GuiScreen {
 				 currDialogue = 2;
 			 } else if(currDialogue == 3) {
 				 currDialogue = 4;
-			 } else if(currDialogue == 5) {
+			 } else if(currDialogue == 5 && dialouge.getVerse() == 0) {
 				 currDialogue = 6;
 			 } else if(currDialogue == 6) {
 				 currDialogue = 7;
@@ -222,6 +248,20 @@ public class GuiNurmNpc extends GuiScreen {
 			 else if(currDialogue == 12) {
 				 dialouge.setVerse(1);
 				 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(1));
+		         mc.displayGuiScreen((GuiScreen)null);
+			 }
+			 else if(currDialogue == 0 && dialouge.getVerse() == 2) {
+				 currDialogue = 2;
+			 }
+			 else if(currDialogue == 2 && dialouge.getVerse() == 2) {
+				 currDialogue = 3;
+			 }
+			 else if(currDialogue == 3 && dialouge.getVerse() == 2) {
+				 currDialogue = 4;
+			 }
+			 else if(currDialogue == 5 && dialouge.getVerse() == 2) {
+				 dialouge.setVerse(3);
+				 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(3));
 		         mc.displayGuiScreen((GuiScreen)null);
 			 }
 		 }
@@ -252,13 +292,21 @@ public class GuiNurmNpc extends GuiScreen {
 			 if(!itemstack.isEmpty()) {
 				 if(itemstack.getItem() instanceof ItemElderEye) {
 					 itemstack.shrink(1);
-					 //currDialogue = 2;
 					 dialouge.setVerse(2);
 					 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(2));
+					 this.currDialogue = 0;
 				 }
 			 } else {
 				 this.showError = true;
 			}
+		 }
+		 else if(parButton.id == 19) {
+			 if(!this.isInvEmpty(player, new ItemStack(Items.AIR)) && player.inventory.getFirstEmptyStack() != -1) {
+				 player.inventory.addItemStackToInventory(new ItemStack(TLSItems.GOLDEN_ELDER_EYE, 1));
+				 this.currDialogue = 5;
+			 } else {
+				 this.showError = true;
+			 }
 		 }
 	 }
 	
@@ -280,7 +328,9 @@ public class GuiNurmNpc extends GuiScreen {
 		this.ResponeButton3.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 0;
 		
 		this.NextDialougeButton.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 1 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 3 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 6 
-				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12;
+				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12 
+				|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 0 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 3
+						|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 5;
 		
 		this.ResponeButton4.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
@@ -300,6 +350,7 @@ public class GuiNurmNpc extends GuiScreen {
 		this.ResponeButton14.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 0;
 		
 		this.ResponeButtonEye.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 1;
+		this.ResponeButtonChest.visible = dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 4;
 		
 		if(showError) {
 			fade++;
@@ -308,6 +359,8 @@ public class GuiNurmNpc extends GuiScreen {
 			showError = false;
 			fade = 0;
 		}
+		
+		
 	}
 	
 	@Override
@@ -416,9 +469,28 @@ public class GuiNurmNpc extends GuiScreen {
     			}
     		} else if(dialouge.getVerse() == 2) {
     			if(currGui == 1) {
-        			this.fontRenderer.drawString("Works", offsetFromScreenLeft - 53, y + 120, 16777215, true);
-    			}
+    				if(currDialogue == 0) {
+    					this.fontRenderer.drawString("Excellent, now the real journey can begin.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    					this.fontRenderer.drawString("Before you go, I have a chest of supplies for you.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+    					this.fontRenderer.drawString("The chest has many things that will help you on your journey.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    				} else if(currDialogue == 2) {
+    					this.fontRenderer.drawString("Inside the chest I have put the eye.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    					this.fontRenderer.drawString("I have also engineered the eye to look in the direction to the temple.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+    					this.fontRenderer.drawString("There are two other things I've put in the chest that will be useful.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    				} else if(currDialogue == 3) {
+    					this.fontRenderer.drawString("I put some of the dimension's so called 'currency' in there as well.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    					this.fontRenderer.drawString("Lastly, Jack wrote notes on the dimension in a journal.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+    					this.fontRenderer.drawString("Most of the pages are lost, but I'll give it to you anyway.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    				} else if(currDialogue == 4) {
+    					this.fontRenderer.drawString("Maybe you can find some of the lost pages ey?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    					this.fontRenderer.drawString("Well anyway, you best be getting going. Good luck out there.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
+    					this.fontRenderer.drawString("Take the chest and begin your journey.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    				}
+    				else if(currDialogue == 5) {
+    					this.fontRenderer.drawString("You can go now, good luck. Don't die out there, friend.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    				}
     		}
+    	}
     	
     	mc.getTextureManager().bindTexture(BG);
     	super.drawScreen(parWidth, parHeight, p_73863_3_);
@@ -429,7 +501,11 @@ public class GuiNurmNpc extends GuiScreen {
     	}
     	
     	if(this.showError) {
-    		this.fontRenderer.drawString(TextFormatting.BOLD + "No Eye In Inventory!", offsetFromScreenLeft + 202, y + 180, 16711680, true);
+    		if(dialouge.getVerse() == 1) {
+    		 this.fontRenderer.drawString(TextFormatting.BOLD + "No Eye In Inventory!", offsetFromScreenLeft + 202, y + 180, 16711680, true);
+    		} else if(dialouge.getVerse() == 2){
+   			 this.fontRenderer.drawString(TextFormatting.BOLD + "Inventory Slots Full!", offsetFromScreenLeft + 202, y + 180, 16711680, true);
+    		}
     	}
 	}
 	

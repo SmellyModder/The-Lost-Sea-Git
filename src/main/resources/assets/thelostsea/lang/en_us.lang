@@ -34,6 +34,10 @@ tile.p_deepsea_stone.name=Polished Deep Sea Stone
 # Machines
 tile.seastone_furnace.name=Sea Furnace
 
+# Rewards
+tile.starter_chest.name=§5Nurm's Starter Chest§r
+tile.lostsea.starter_chest.name=Nurm's Starter Chest
+
 # Ores
 tile.sea_goldore.name=Gold Ore
 tile.deepsea_goldore.name=Gold Ore
@@ -81,7 +85,7 @@ item.elder_eye.name=Elder's Eye
 item.golden_elder_eye.name=§6Mythical Elder's Eye§r
 item.harpoon_gun.name=Harpoon Gun
 item.lore_book.name=§3The Old Aquapedia§r
-item.lore_book_page.name=Aquapedia #§k1§r
+item.lore_book_page.name=Aquapedia §k1§r
 item.cutlass.name=§e§oWind Slasher§r
 
 #Prismarine Tools

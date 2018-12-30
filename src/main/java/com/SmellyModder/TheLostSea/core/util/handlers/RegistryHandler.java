@@ -1,5 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
+import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestRenderer;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
 import com.SmellyModder.TheLostSea.common.init.TLSBiomes;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
@@ -10,13 +11,18 @@ import com.SmellyModder.TheLostSea.common.init.TLSSmeltebles;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.init.TLSTileEntities;
 import com.SmellyModder.TheLostSea.common.init.TLSVehicles;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.core.util.CommandDimensionTP;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -34,6 +40,7 @@ public class RegistryHandler {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(TLSBlocks.BLOCKS.toArray(new Block [0]));
 		TLSTileEntities.registerTileEntities();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStarterChest.class, new TileEntityStarterChestRenderer());
 	}
 	
 	@SubscribeEvent
@@ -43,7 +50,8 @@ public class RegistryHandler {
 	
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
-	
+		TileEntityStarterChest chest = new TileEntityStarterChest();
+		
 		for(Item item : TLSItems.ITEMS) {
 			
 			if(item instanceof IHasModel) {
@@ -59,8 +67,15 @@ public class RegistryHandler {
 				
 				((IHasModel)block).registerModels();
 				
+		        
 			}
 			
+		    Item.getItemFromBlock(TLSBlocks.STARTER_CHEST).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
+		            @Override
+		            public void renderByItem(ItemStack stack) {
+		                TileEntityRendererDispatcher.instance.render(chest, 0.0, 0.0, 0.0, 0.0F, 1.0F);
+		            }
+		    });
 		}
 	}
 	

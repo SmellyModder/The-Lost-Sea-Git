@@ -35,4 +35,5 @@ public class Reference {
 	
 	//Gui
 	public static int ID_LORE = 1010;
+	public static int ID_GUI_CHEST = 1334;
 }

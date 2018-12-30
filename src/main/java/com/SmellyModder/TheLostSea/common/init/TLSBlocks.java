@@ -10,6 +10,7 @@ import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
 import com.SmellyModder.TheLostSea.common.blocks.fluid.BlockDarkwaterFluid;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaGOre;
+import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPillarBase;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPortalKey;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPortalKeyDormant;
@@ -66,6 +67,12 @@ public class TLSBlocks {
 	//Machines
 	public static final Block SEASTONE_FURNACE = new BlockSeaFurnace("seastone_furnace", false, true);
 	public static final Block SEASTONE_FURNACE_LIT = new BlockSeaFurnace("seastone_furnace_lit", true, false);
+	
+	/*
+	 * Rewards
+	 */
+	public static final Block STARTER_CHEST = new BlockStarterChest("starter_chest");
+
 	
 	//Fluids
 	//public static final Block DARK_WATER = new BlockDarkwaterFluid();

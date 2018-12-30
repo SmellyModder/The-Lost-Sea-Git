@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class TLSSounds {
 	
 public static SoundEvent ENTITY_TITAN_IDLE, ENTITY_TITAN_DEATH, ENTITY_TITAN_STEP, ENTITY_TITAN_ATTACK, PAGE_FLIP, BOOK_OPEN, BOOK_CLOSE, PORTAL_AMBIENT, PORTAL_AMBIENT_2,
-		PORTAL_OPENING, AEGAEON_LAUGH, ANGLER_BITE, BOIL1, BOIL2, COIN_COLLECT;
+		PORTAL_OPENING, AEGAEON_LAUGH, ANGLER_BITE, BOIL1, BOIL2, COIN_COLLECT, COMMON_LOOT;
 	
 	public static void registerSounds() {
 		
@@ -38,6 +38,9 @@ public static SoundEvent ENTITY_TITAN_IDLE, ENTITY_TITAN_DEATH, ENTITY_TITAN_STE
 		
 		//Coins
 		COIN_COLLECT = registerSound("entity.coin.collect");
+		
+		//Chests
+		COMMON_LOOT = registerSound("block.loot.common");
 	}
 	
 	public static SoundEvent registerSound(String name) {

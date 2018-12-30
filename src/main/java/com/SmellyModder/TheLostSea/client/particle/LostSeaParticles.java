@@ -6,8 +6,9 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.world.World;
 
 public enum LostSeaParticles {
-    AQUA_PORTAL(new ParticleAquaPortal.Factory());
-
+    AQUA_PORTAL(new ParticleAquaPortal.Factory()),
+	GOLD_DUST(new ParticleGoldDust.Factory());
+	
     private final IParticleFactory factory;
 
     LostSeaParticles(IParticleFactory factory) {
