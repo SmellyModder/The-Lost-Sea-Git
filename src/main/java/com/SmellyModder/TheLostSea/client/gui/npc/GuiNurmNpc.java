@@ -9,6 +9,7 @@ import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
@@ -302,7 +303,7 @@ public class GuiNurmNpc extends GuiScreen {
 		 }
 		 else if(parButton.id == 19) {
 			 if(!this.isInvEmpty(player, new ItemStack(Items.AIR)) && player.inventory.getFirstEmptyStack() != -1) {
-				 player.inventory.addItemStackToInventory(new ItemStack(TLSItems.GOLDEN_ELDER_EYE, 1));
+				 player.inventory.addItemStackToInventory(new ItemStack(TLSBlocks.STARTER_CHEST_FULL, 1));
 				 this.currDialogue = 5;
 			 } else {
 				 this.showError = true;
