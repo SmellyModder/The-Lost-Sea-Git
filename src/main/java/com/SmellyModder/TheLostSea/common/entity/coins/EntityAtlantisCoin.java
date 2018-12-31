@@ -143,9 +143,6 @@ public class EntityAtlantisCoin extends EntityLiving {
                 this.playSound(TLSSounds.COIN_COLLECT, 0.25F, rand.nextInt(2) * 0.50F);
                 player.onItemPickup(this, 1);
                 
-                player.posX = player.prevPosX;  
-                player.posY = player.prevPosY;
-                player.posZ = player.prevPosZ;
                 this.setDead();
                 
             }
@@ -330,7 +327,7 @@ public class EntityAtlantisCoin extends EntityLiving {
         }
     }
 	
-	public void randSpray() {
+	public void randSpray(int randomness) {
 		this.motionX = (double)((float)(Math.random() * 0.22000000298023224D - 0.10000000149011612D) * 2.0F);
 		this.motionZ = (double)((float)(Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F);
 		this.motionY = (double)((float)(Math.random() * 0.2D) * 2.0F);

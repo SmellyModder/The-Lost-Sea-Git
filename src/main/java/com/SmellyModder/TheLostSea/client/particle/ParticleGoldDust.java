@@ -15,7 +15,7 @@ public class ParticleGoldDust extends ParticlePortal {
 
 		this.particleBlue = 0.0F;
 		this.particleRed = 0.976F;
-		this.particleGreen = 0.7450980392156863F + (rand.nextFloat() * 0.15F);
+		this.particleGreen = 0.7650980392156863F + (rand.nextFloat() * 0.15F);
 		
 		this.interpPosY = this.motionY * Math.random() * Math.PI * -1.0;
 	}

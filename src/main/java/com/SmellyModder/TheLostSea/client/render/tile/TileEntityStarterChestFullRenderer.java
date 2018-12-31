@@ -2,8 +2,8 @@ package com.SmellyModder.TheLostSea.client.render.tile;
 
 import com.SmellyModder.TheLostSea.client.model.animation.ModelStarterChest;
 import com.SmellyModder.TheLostSea.client.model.animation.ModelStarterChestFull;
-import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.block.Block;
@@ -11,19 +11,22 @@ import net.minecraft.block.BlockChest;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityStarterChestRenderer extends TileEntitySpecialRenderer<TileEntityStarterChest> {
-	
-	private static final ResourceLocation TEXTURE_NORMAL = new ResourceLocation("thelostsea:textures/blocks/rewards/starter_full.png");
-    private final ModelStarterChest simpleChest = new ModelStarterChest();
+public class TileEntityStarterChestFullRenderer extends TileEntitySpecialRenderer<TileEntityStarterChestFull> {
+    private static final ResourceLocation TEXTURE_NORMAL = new ResourceLocation("thelostsea:textures/blocks/rewards/starter_full.png");
+    private final ModelStarterChestFull simpleChest = new ModelStarterChestFull();
 
-    public TileEntityStarterChestRenderer() {
+    public TileEntityStarterChestFullRenderer() {
+    	
     }
 
     @Override
-    public void render(TileEntityStarterChest te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+    public void render(TileEntityStarterChestFull te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         {
             GlStateManager.enableDepth();
             GlStateManager.depthFunc(515);
@@ -40,7 +43,7 @@ public class TileEntityStarterChestRenderer extends TileEntitySpecialRenderer<Ti
             }
 
             if (te.adjacentChestZNeg == null && te.adjacentChestXNeg == null) {
-            	ModelStarterChest modelchest;
+            	ModelStarterChestFull modelchest;
 
                 if (te.adjacentChestXPos == null && te.adjacentChestZPos == null) {
                     modelchest = this.simpleChest;
@@ -142,5 +145,4 @@ public class TileEntityStarterChestRenderer extends TileEntitySpecialRenderer<Ti
             }
         }
     }
-
 }

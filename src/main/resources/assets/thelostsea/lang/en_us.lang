@@ -35,8 +35,9 @@ tile.p_deepsea_stone.name=Polished Deep Sea Stone
 tile.seastone_furnace.name=Sea Furnace
 
 # Rewards
-tile.starter_chest.name=§5Nurm's Starter Chest§r
+tile.starter_chest.name=Nurm's Starter Chest
 tile.lostsea.starter_chest.name=Nurm's Starter Chest
+tile.starter_chest_full.name=§5Nurm's Starter Chest§r
 
 # Ores
 tile.sea_goldore.name=Gold Ore

@@ -1,0 +1,15 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thelostsea:empty",
+    "textures": {
+      "particle": "minecraft:blocks/door_spruce_upper"
+    }
+  },
+  "variants": {
+    "facing=north": {"model": "thelostsea:empty"},
+    "facing=south": {"model": "thelostsea:empty", "y": 180},
+    "facing=west": {"model": "thelostsea:empty", "y": 270},
+    "facing=east": {"model": "thelostsea:empty", "y": 90}
+  }
+}

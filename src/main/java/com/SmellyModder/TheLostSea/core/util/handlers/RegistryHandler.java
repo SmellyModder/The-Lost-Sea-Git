@@ -1,6 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
-import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestRenderer;
+import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestFullRenderer;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
 import com.SmellyModder.TheLostSea.common.init.TLSBiomes;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
@@ -11,7 +11,9 @@ import com.SmellyModder.TheLostSea.common.init.TLSSmeltebles;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.init.TLSTileEntities;
 import com.SmellyModder.TheLostSea.common.init.TLSVehicles;
+import com.SmellyModder.TheLostSea.common.init.client.TileEntityRenders;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.util.CommandDimensionTP;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import net.minecraft.block.Block;
@@ -40,7 +42,7 @@ public class RegistryHandler {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(TLSBlocks.BLOCKS.toArray(new Block [0]));
 		TLSTileEntities.registerTileEntities();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStarterChest.class, new TileEntityStarterChestRenderer());
+		TileEntityRenders.register();
 	}
 	
 	@SubscribeEvent
@@ -50,7 +52,8 @@ public class RegistryHandler {
 	
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event) {
-		TileEntityStarterChest chest = new TileEntityStarterChest();
+		TileEntityStarterChestFull chest = new TileEntityStarterChestFull();
+		TileEntityStarterChest chest1 = new TileEntityStarterChest();
 		
 		for(Item item : TLSItems.ITEMS) {
 			
@@ -70,11 +73,17 @@ public class RegistryHandler {
 		        
 			}
 			
-		    Item.getItemFromBlock(TLSBlocks.STARTER_CHEST).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
+		    Item.getItemFromBlock(TLSBlocks.STARTER_CHEST_FULL).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
 		            @Override
 		            public void renderByItem(ItemStack stack) {
 		                TileEntityRendererDispatcher.instance.render(chest, 0.0, 0.0, 0.0, 0.0F, 1.0F);
 		            }
+		    });
+		    Item.getItemFromBlock(TLSBlocks.STARTER_CHEST).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
+	            @Override
+	            public void renderByItem(ItemStack stack) {
+	                TileEntityRendererDispatcher.instance.render(chest1, 0.0, 0.0, 0.0, 0.0F, 1.0F);
+	            }
 		    });
 		}
 	}
