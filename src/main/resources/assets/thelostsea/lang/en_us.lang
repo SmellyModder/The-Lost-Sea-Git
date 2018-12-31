@@ -30,6 +30,7 @@ tile.portal_key.name=Charged Portal Key
 tile.portal_key_d.name=Dormant Portal Key
 tile.p_sea_stone.name=Polished Sea Stone
 tile.p_deepsea_stone.name=Polished Deep Sea Stone
+tile.sea_pebbles.name=Sea Pebbles
 
 # Machines
 tile.seastone_furnace.name=Sea Furnace

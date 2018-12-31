@@ -219,8 +219,12 @@ public class GuiNurmNpc extends GuiScreen {
 	         mc.displayGuiScreen((GuiScreen)null);
 	         
 		 } else if(parButton.id == 2) {
-			 this.currGui = 1;
-		 } 
+			 if(dialouge.getVerse() < 3) {
+				 this.currGui = 1;
+			 } else {
+				 
+			 }
+		 }
 		 else if(parButton.id == 7 || parButton.id == 8) {
 			 this.currGui = 0;
 		 }
@@ -492,6 +496,14 @@ public class GuiNurmNpc extends GuiScreen {
     				}
     		}
     	}
+    	else if(dialouge.getVerse() == 3) {
+    		if(currGui == 0) {
+				this.fontRenderer.drawString("Welcome back friend, what is it you need?", offsetFromScreenLeft - 53, y + 120, 16777215, true);
+    		}
+    		else if(currGui == 1) {
+    			
+    		}
+    	}
     	
     	mc.getTextureManager().bindTexture(BG);
     	super.drawScreen(parWidth, parHeight, p_73863_3_);
@@ -530,17 +542,20 @@ public class GuiNurmNpc extends GuiScreen {
         	if(visible) {
     	 		  boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
     	 		  
+    	 		  GlStateManager.pushMatrix();
+
     	 		  int i = 2;
                   int j = 11;
     	 		  GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
     	 		  mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png"));
     	 		  
-
     	 		 final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
     	 		 final double timePassed = time - timeBefore;
 
     	 		timeBefore = time;
-
+    	 		
+    	 		
+    	 		
     	 		if (nextAnimation < 1000)
     	 		{
     	 			nextAnimation += timePassed;
@@ -561,7 +576,9 @@ public class GuiNurmNpc extends GuiScreen {
     	 			GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
     	 		}
     	 		
+    	 		
                 this.drawTexturedModalRect(this.x, this.y, i, j, 11, 8);
+                GlStateManager.popMatrix();
         	}
         }
         

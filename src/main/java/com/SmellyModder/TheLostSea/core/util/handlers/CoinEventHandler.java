@@ -41,6 +41,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
@@ -63,7 +64,13 @@ public class CoinEventHandler{
 	public void onPlayerTravelLS(PlayerChangedDimensionEvent event) {
 		int ID = event.toDim;
 		EntityPlayer player = event.player;
+		ICurrency coins2 = player.getCapability(CoinProvider.COIN_CAP, null); 
+
 		if(ID == -9) {
+
+			if(player instanceof EntityPlayerMP) {
+				TheLostSea.NETWORK.sendTo(new MessageCoins(coins2.getCoins()), (EntityPlayerMP) player);
+			}
 		}
 	}
 	
@@ -73,12 +80,20 @@ public class CoinEventHandler{
 		EntityPlayer player = event.getEntityPlayer(); 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		ICurrency coins_ad = event.getOriginal().getCapability(CoinProvider.COIN_CAP, null); 
+		
+		
 		coins.set(coins_ad.getCoins()); 
 		
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		IDialogueNurm dataNPC_AD = event.getOriginal().getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		dataNPC.setVerse(dataNPC_AD.getVerse());
+		
+		
+		ICurrency coins2 = player.getCapability(CoinProvider.COIN_CAP, null); 
 
+		if(player instanceof EntityPlayerMP) {
+			TheLostSea.NETWORK.sendTo(new MessageCoins(coins2.getCoins()), (EntityPlayerMP) player);
+		}
 	}
 	
 	@SubscribeEvent 
@@ -92,5 +107,5 @@ public class CoinEventHandler{
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
-	}
+	}	
 }

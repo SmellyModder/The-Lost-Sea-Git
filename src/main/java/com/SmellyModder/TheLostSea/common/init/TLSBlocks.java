@@ -35,8 +35,10 @@ public class TLSBlocks {
 	public static final Block DEEP_SEA_ROCK = new BlockRock("deepsea_rock", Material.ROCK, 2.2F, false);
 	//public static final Block SEA_COBBLE = new BlockRock("sea_cobble", Material.ROCK, 1.85F, true);
 	//public static final Block DEEPSEA_COBBLE = new BlockRock("deepsea_cobble", Material.ROCK, 2.2F, true);
-	public static final Block POLISHED_SEASTONE = new BlockRock("p_sea_stone", Material.ROCK, 2.2F, true);
+	public static final Block POLISHED_SEASTONE = new BlockRock("p_sea_stone", Material.ROCK, 1.9F, true);
 	public static final Block POLISHED_DEEPSEASTONE = new BlockRock("p_deepsea_stone", Material.ROCK, 2.2F, true);
+	
+	public static final Block SEA_PEBBLES = new BlockRock("sea_pebbles", Material.ROCK, 1.4F, false);
 	
 	//Ores
 	public static final Block DEEPSEA_GOLDORE = new BlockSeaGOre("deepsea_goldore", Material.ROCK, true);
