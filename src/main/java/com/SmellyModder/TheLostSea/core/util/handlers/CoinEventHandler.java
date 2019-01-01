@@ -22,9 +22,12 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityElderGuardian;
+import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -32,6 +35,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.conditions.KilledByPlayer;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -91,9 +96,7 @@ public class CoinEventHandler{
 		
 		ICurrency coins2 = player.getCapability(CoinProvider.COIN_CAP, null); 
 
-		if(player instanceof EntityPlayerMP) {
-			TheLostSea.NETWORK.sendTo(new MessageCoins(coins2.getCoins()), (EntityPlayerMP) player);
-		}
+		
 	}
 	
 	@SubscribeEvent 
@@ -107,5 +110,16 @@ public class CoinEventHandler{
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
-	}	
+		
+		if(player instanceof EntityPlayerMP) {
+			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
+		}
+	}
+	
+	@SubscribeEvent
+	public void onGuardianTick(EntityJoinWorldEvent event) {
+		if(event.getEntity() instanceof EntityGuardian && event.getEntity().dimension == -9) {
+			((EntityGuardian)event.getEntity()).addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) 10E10, 1));
+		}
+	}
 }

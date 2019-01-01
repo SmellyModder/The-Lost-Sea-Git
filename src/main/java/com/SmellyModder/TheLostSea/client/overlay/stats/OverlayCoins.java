@@ -2,7 +2,9 @@ package com.SmellyModder.TheLostSea.client.overlay.stats;
 
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.core.config.Config;
+import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.util.Reference;
+import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 import net.minecraft.client.Minecraft;
@@ -13,6 +15,7 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -41,7 +44,6 @@ public class OverlayCoins extends Gui {
             if (coinTimer > 0) {
                 coinTimer--;
             }
-
             ICurrency coins = MC.player.getCapability(CoinProvider.COIN_CAP, null);
             int coinCount = coins != null ? coins.getCoins() : 0;
             if (lastCoinCount != coinCount) {

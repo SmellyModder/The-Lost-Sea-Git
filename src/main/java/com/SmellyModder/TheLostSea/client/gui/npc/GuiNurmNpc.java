@@ -225,6 +225,10 @@ public class GuiNurmNpc extends GuiScreen {
 				 
 			 }
 		 }
+		 else if(parButton.id == 3) {
+	         mc.displayGuiScreen((GuiScreen)null);
+	         TheLostSea.proxy.OpenNurmShop(player);
+		 }
 		 else if(parButton.id == 7 || parButton.id == 8) {
 			 this.currGui = 0;
 		 }

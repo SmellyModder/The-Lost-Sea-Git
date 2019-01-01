@@ -35,4 +35,8 @@ public class CommonProxy {
 	
 	public void OpenNurmGUI(EntityPlayer player) {
 	}
+	
+	public void OpenNurmShop(EntityPlayer player) {
+		
+	}
 }
