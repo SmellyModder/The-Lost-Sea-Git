@@ -4,6 +4,7 @@ itemGroup.The-Lost-Sea-Blocks=§3Lost Sea Blocks§r
 itemGroup.The-Lost-Sea-Items=§3Lost Sea Items§r
 itemGroup.The-Lost-Sea-Gear=§3Lost Sea Gear§r
 itemGroup.The-Lost-Sea-Music=§3Lost Sea Music§r
+itemGroup.The-Lost-Sea-Ores=§3Lost Sea Ores§r
 
 
 #Blocks
@@ -41,8 +42,14 @@ tile.lostsea.starter_chest.name=Nurm's Starter Chest
 tile.starter_chest_full.name=§5Nurm's Starter Chest§r
 
 # Ores
-tile.sea_goldore.name=Gold Ore
-tile.deepsea_goldore.name=Gold Ore
+tile.sea_goldore.name=Oceanic Gold Ore
+tile.deepsea_goldore.name=Trench Gold Ore
+tile.sea_ironore.name=Oceanic Iron Ore
+tile.deepsea_ironore.name=Trench Iron Ore
+tile.sea_diamondore.name=Oceanic Diamond Ore
+tile.deepsea_diamondore.name=Trench Diamond Ore
+tile.sea_coalore.name=Oceanic Coal Ore
+tile.deepsea_coalore.name=Trench Coal Ore
 
 #Entity
 entity.vampire_squid.name=Vampire Squid

@@ -3,13 +3,13 @@ package com.SmellyModder.TheLostSea.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.SmellyModder.TheLostSea.common.blocks.BlockAnchor;
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
-import com.SmellyModder.TheLostSea.common.blocks.BlockLiquidack;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
-import com.SmellyModder.TheLostSea.common.blocks.fluid.BlockDarkwaterFluid;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
-import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaGOre;
+import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaCoalOre;
+import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
+import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
+import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaOres;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChestFull;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPillarBase;
@@ -17,12 +17,10 @@ import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPortalKey;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPortalKeyDormant;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRotatableDeco;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRuin;
-import com.SmellyModder.TheLostSea.common.blocks.temple.BlockTempleBase;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockTempleBaseStone;
 import com.SmellyModder.TheLostSea.common.blocks.temple.DummyAirBlock;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
 
 public class TLSBlocks {
@@ -41,8 +39,14 @@ public class TLSBlocks {
 	public static final Block SEA_PEBBLES = new BlockRock("sea_pebbles", Material.ROCK, 1.4F, false);
 	
 	//Ores
-	public static final Block DEEPSEA_GOLDORE = new BlockSeaGOre("deepsea_goldore", Material.ROCK, true);
-	public static final Block SEA_GOLDORE = new BlockSeaGOre("sea_goldore", Material.ROCK, false);
+	public static final Block DEEPSEA_GOLDORE = new BlockSeaOres("deepsea_goldore", Material.ROCK, true, 0);
+	public static final Block SEA_GOLDORE = new BlockSeaOres("sea_goldore", Material.ROCK, false, 0);
+	public static final Block DEEPSEA_DIAMONDORE = new BlockSeaDiamondOre("deepsea_diamondore", Material.ROCK, true);
+	public static final Block SEA_DIAMONDORE = new BlockSeaDiamondOre("sea_diamondore", Material.ROCK, false);
+	public static final Block DEEPSEA_IRONORE = new BlockSeaIronOre("deepsea_ironore", Material.ROCK, true);
+	public static final Block SEA_IRONORE = new BlockSeaIronOre("sea_ironore", Material.ROCK, false);
+	public static final Block DEEPSEA_COALORE = new BlockSeaCoalOre("deepsea_coalore", Material.ROCK, true);
+	public static final Block SEA_COALORE = new BlockSeaCoalOre("sea_coalore", Material.ROCK, false);
 	
 	//Temple
 	public static final Block CARVED_PRISMARINE_EYE = new BlockRuin("carved_eye", Material.ROCK);

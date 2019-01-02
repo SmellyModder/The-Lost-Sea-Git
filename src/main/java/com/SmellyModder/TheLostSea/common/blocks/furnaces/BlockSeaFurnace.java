@@ -54,6 +54,7 @@ public class BlockSeaFurnace extends BlockContainer implements IHasModel {
 	{
 		super(Material.ROCK);
 		this.setHardness(3.5F);
+		this.setResistance(1.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		states = state;
 		this.isBurning = isBurning;

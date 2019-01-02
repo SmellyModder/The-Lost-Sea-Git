@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "thelostsea:sea_diamondore" },
+            { "model": "thelostsea:sea_diamondore", "x": 90 },
+            { "model": "thelostsea:sea_diamondore", "x": 180 },
+            { "model": "thelostsea:sea_diamondore", "x": 270 },
+            { "model": "thelostsea:sea_diamondore", "y": 90 },
+            { "model": "thelostsea:sea_diamondore", "y": 90, "x": 90 },
+            { "model": "thelostsea:sea_diamondore", "y": 90, "x": 180 },
+            { "model": "thelostsea:sea_diamondore", "y": 90, "x": 270 },
+            { "model": "thelostsea:sea_diamondore", "y": 180 },
+            { "model": "thelostsea:sea_diamondore", "y": 180, "x": 90 },
+            { "model": "thelostsea:sea_diamondore", "y": 180, "x": 180 },
+            { "model": "thelostsea:sea_diamondore", "y": 180, "x": 270 },
+            { "model": "thelostsea:sea_diamondore", "y": 270 },
+            { "model": "thelostsea:sea_diamondore", "y": 270, "x": 90 },
+            { "model": "thelostsea:sea_diamondore", "y": 270, "x": 180 },
+            { "model": "thelostsea:sea_diamondore", "y": 270, "x": 270 }
+        ]
+    }
+}
