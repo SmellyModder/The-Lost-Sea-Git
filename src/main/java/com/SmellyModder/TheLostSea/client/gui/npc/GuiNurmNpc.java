@@ -273,6 +273,9 @@ public class GuiNurmNpc extends GuiScreen {
 				 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(3));
 		         mc.displayGuiScreen((GuiScreen)null);
 			 }
+			 else if(currDialogue == 5 && dialouge.getVerse() == 1) {
+				 mc.displayGuiScreen((GuiScreen)null);
+			 }
 		 }
 		 else if(parButton.id == 9) {
 			 currDialogue = 5;
@@ -339,7 +342,7 @@ public class GuiNurmNpc extends GuiScreen {
 		this.NextDialougeButton.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 1 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 3 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 6 
 				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12 
 				|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 0 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 3
-						|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 5;
+						|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 5;
 		
 		this.ResponeButton4.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
@@ -474,6 +477,9 @@ public class GuiNurmNpc extends GuiScreen {
             			this.fontRenderer.drawString("Excellent, now the real journey can begin.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
             			this.fontRenderer.drawString("Before you go, I have a chest of supplies for you.", offsetFromScreenLeft - 53, y + 131, 16777215, true);
             			this.fontRenderer.drawString("The chest has many things that will help you on your journey.", offsetFromScreenLeft - 53, y + 142, 16777215, true);
+    				}
+    				else if(currDialogue == 5) {
+            			this.fontRenderer.drawString("That's fine, just return to me as soon as you get the eye.", offsetFromScreenLeft - 53, y + 120, 16777215, true);
     				}
     			}
     		} else if(dialouge.getVerse() == 2) {

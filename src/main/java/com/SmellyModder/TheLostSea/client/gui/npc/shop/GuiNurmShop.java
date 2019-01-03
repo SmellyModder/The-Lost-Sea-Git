@@ -1,6 +1,7 @@
 package com.SmellyModder.TheLostSea.client.gui.npc.shop;
 
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
+import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
@@ -11,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -57,12 +59,24 @@ public class GuiNurmShop extends GuiScreen{
 		int y = (this.height - HEIGHT) / 2;
 		ICurrency coins = this.player.getCapability(CoinProvider.COIN_CAP, null); 
 		this.drawBackGround();
-		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft - 53, y + 107, 16777215, true);
+		
+		
+		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
+		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 88, y + 11, 0, 0, 80, 32, 80, 32);
+	
+		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_coinamount.png"));
+		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 55, y + 45, 0, 0, 96, 32, 96, 32);
+		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft - 18, y + 54.5F, 16777215, true);
+	
+		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_page_1.png"));
+		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 40, y + 45, 0, 0, 162, 195, 162, 195);
+		
+		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_page_2.png"));
+		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 130, y + 45, 0, 0, 162, 195, 162, 195);
+		
 	}
     
     public void drawBackGround() {
 		this.drawDefaultBackground();
 	}
-    
-    
 }
