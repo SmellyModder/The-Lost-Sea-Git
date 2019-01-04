@@ -50,6 +50,8 @@ tile.sea_diamondore.name=Oceanic Diamond Ore
 tile.deepsea_diamondore.name=Trench Diamond Ore
 tile.sea_coalore.name=Oceanic Coal Ore
 tile.deepsea_coalore.name=Trench Coal Ore
+tile.sea_cobaltore.name=Cobalt Ore
+tile.deepsea_cobaltore.name=Trench Cobalt Ore
 
 #Entity
 entity.vampire_squid.name=Vampire Squid
@@ -88,6 +90,7 @@ item.sub.white.name=White Submarine I
 # Materials
 item.pearl.name=Pearl
 item.shark_tooth.name=Shark Tooth
+item.cobalt.name=Cobalt
 
 # Relics
 item.elder_eye.name=Elder's Eye

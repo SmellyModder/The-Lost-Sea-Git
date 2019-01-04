@@ -114,7 +114,6 @@ public class CoinEventHandler{
 		if(player instanceof EntityPlayerMP) {
 			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
 		}
-		coins.set(9999999);
 	}
 	
 	@SubscribeEvent

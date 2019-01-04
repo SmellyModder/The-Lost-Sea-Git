@@ -6,6 +6,7 @@ import java.util.List;
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
+import com.SmellyModder.TheLostSea.common.blocks.ore.BlockLSOres;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaCoalOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
@@ -47,6 +48,8 @@ public class TLSBlocks {
 	public static final Block SEA_IRONORE = new BlockSeaIronOre("sea_ironore", Material.ROCK, false);
 	public static final Block DEEPSEA_COALORE = new BlockSeaCoalOre("deepsea_coalore", Material.ROCK, true);
 	public static final Block SEA_COALORE = new BlockSeaCoalOre("sea_coalore", Material.ROCK, false);
+	public static final Block DEEPSEA_COBALTORE = new BlockLSOres("deepsea_cobaltore", Material.ROCK, true);
+	public static final Block SEA_COBALTORE = new BlockLSOres("sea_cobaltore", Material.ROCK, false);
 	
 	//Temple
 	public static final Block CARVED_PRISMARINE_EYE = new BlockRuin("carved_eye", Material.ROCK);
