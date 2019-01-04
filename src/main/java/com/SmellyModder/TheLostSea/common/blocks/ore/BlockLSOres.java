@@ -11,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -100,12 +101,26 @@ public class BlockLSOres extends BlockBase{
 
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
 	{
+		
 	   return new ItemStack(this);
 	}
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return TLSItems.COBALT;
+		Item item = null;
+		
+		if (this == TLSBlocks.SEA_COBALTORE || this == TLSBlocks.DEEPSEA_COBALTORE)
+        {
+            item = TLSItems.COBALT;
+        }
+		else if(this == TLSBlocks.AQUAMARINE_ORE) {
+			item = TLSItems.AQUAMARINE;
+		}
+		else if(this == TLSBlocks.DEEPSEA_VANADIUMORE || this == TLSBlocks.SEA_VANADIUMORE) {
+			item = Item.getItemFromBlock(this);
+		}
+		
+		return item;
 	}
 
 }
