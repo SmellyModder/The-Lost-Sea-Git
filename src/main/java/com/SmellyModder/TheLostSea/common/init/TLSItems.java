@@ -14,6 +14,7 @@ import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
+import com.SmellyModder.TheLostSea.common.item.specialtools.ItemCobaltSword;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemFishBucket;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemHarpoonGun;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemLoreBook;
@@ -28,6 +29,10 @@ import com.SmellyModder.TheLostSea.common.item.tools.ItemHoeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemPickaxeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemSpadeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemSwordBaseP;
+import com.SmellyModder.TheLostSea.common.item.tools.main.ItemAxeBase;
+import com.SmellyModder.TheLostSea.common.item.tools.main.ItemPickaxeBase;
+import com.SmellyModder.TheLostSea.common.item.tools.main.ItemSpadeBase;
+import com.SmellyModder.TheLostSea.common.item.tools.main.ItemSwordBase;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -35,6 +40,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
@@ -51,6 +57,8 @@ public class TLSItems {
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
 	public static final ToolMaterial CUTLASS_MAT = EnumHelper.addToolMaterial("cutlass", 5, -1, 1.0F, 18F, 55);
 	public static final ToolMaterial PRISMARINE_MAT_DISC = EnumHelper.addToolMaterial("prismarine_disc", 3, 1876, 8.2F, 3F, 33);
+	public static final ToolMaterial COBALT_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 9F, 8, 33);
+	public static final ToolMaterial VANADIUM_MAT = EnumHelper.addToolMaterial("vanadiummat", 3, 1500, 2.5F, 2.3F, 33);
 	public static final ArmorMaterial ARMOR_MATERIAL_PRIS = EnumHelper.addArmorMaterial("armor_material_prismarine", Reference.MOD_ID + ":prismarinew", 11, new int[] {2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 2.6F);
 	
 	//Armor
@@ -99,6 +107,18 @@ public class TLSItems {
 	public static Item PRISMARINE_SWORD = new ItemSwordBaseP("prismarine_sword", PRISMARINE_MAT);
 	public static Item PRISMARINE_SPADE = new ItemSpadeBaseP("prismarine_spade", PRISMARINE_MAT);
 	public static Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
+	
+	//Tools Cobalt
+	public static Item COBALT_SWORD = new ItemCobaltSword("cobalt_sword", COBALT_MAT);
+	public static Item COBALT_SHOVEL = new ItemSpadeBase("cobalt_shovel", COBALT_MAT);
+	public static Item COBALT_PICKAXE = new ItemPickaxeBase("cobalt_pickaxe", COBALT_MAT);
+	public static Item COBALT_AXE = new ItemAxeBase("cobalt_axe", COBALT_MAT);
+	
+	//Tools Vanadium
+	public static Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);
+	public static Item VANADIUM_SHOVEL = new ItemSpadeBase("vanadium_shovel", VANADIUM_MAT);
+	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
+	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
 	
 	//Foods
 	public static ItemFood BUBBLE_FRUIT = new ItemBubbleFruit("bubble_berry", 2, false).setAlwaysEdible();
