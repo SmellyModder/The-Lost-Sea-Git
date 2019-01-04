@@ -52,7 +52,9 @@ tile.sea_coalore.name=Oceanic Coal Ore
 tile.deepsea_coalore.name=Trench Coal Ore
 tile.sea_cobaltore.name=Cobalt Ore
 tile.deepsea_cobaltore.name=Trench Cobalt Ore
-tile.aquamarine_ore.name=Aquamarine Ore
+tile.sea_aquamarineore.name=Aquamarine Ore
+tile.sea_vanadiumore.name=Vanadium Ore
+tile.deepsea_vanadiumore.name=Trench Vanadium Ore
 
 #Entity
 entity.vampire_squid.name=Vampire Squid

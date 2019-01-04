@@ -20,13 +20,24 @@ import net.minecraft.world.World;
 public class BlockLSOres extends BlockBase{
 
 	private boolean deep;
-	public BlockLSOres(String name, Material material, boolean isDeep) {
+	public BlockLSOres(String name, Material material, boolean isDeep, int meta) {
 		super(name, material);
 		this.deep = isDeep;
-		setHardness(getHardness());
-		setResistance(getResistance());
 		setHarvestLevel("pickaxe", 3);
 		setCreativeTab(TheLostSea.TLS_ORES);
+		
+		if(meta == 1) {
+			setHardness(-0.5F + getHardness());
+			setResistance(-0.5F + getResistance());
+		}
+		else if(meta == 2){
+			setHardness(getHardness());
+			setResistance(getResistance());
+		}
+		else {
+			setHardness(getHardness() - 0.3F);
+			setResistance(getResistance() - 0.3F);
+		}
 	}
 	
 	float getHardness() {
@@ -71,7 +82,17 @@ public class BlockLSOres extends BlockBase{
             {
                 i = MathHelper.getInt(rand, 2, 5);
             }
-
+            else if(this == TLSBlocks.DEEPSEA_VANADIUMORE) {
+            	i = MathHelper.getInt(rand, 0, 0);
+            }
+            else if (this == TLSBlocks.SEA_VANADIUMORE)
+            {
+            	i = MathHelper.getInt(rand, 0, 0);
+            }
+            else if (this == TLSBlocks.AQUAMARINE_ORE)
+            {
+            	i = MathHelper.getInt(rand, 2, 4);
+            }
             return i;
         }
         return 0;
