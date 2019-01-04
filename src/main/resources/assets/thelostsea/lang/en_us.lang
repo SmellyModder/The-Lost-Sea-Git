@@ -52,6 +52,7 @@ tile.sea_coalore.name=Oceanic Coal Ore
 tile.deepsea_coalore.name=Trench Coal Ore
 tile.sea_cobaltore.name=Cobalt Ore
 tile.deepsea_cobaltore.name=Trench Cobalt Ore
+tile.aquamarine_ore.name=Aquamarine Ore
 
 #Entity
 entity.vampire_squid.name=Vampire Squid
@@ -92,6 +93,10 @@ item.pearl.name=Pearl
 item.shark_tooth.name=Shark Tooth
 item.cobalt.name=Cobalt
 item.vanadium_ingot.name=Vanadium Ingot
+item.aquamarine.name=Aquamarine
+
+# Food
+item.bubble_berry.name=Bubble Berry
 
 # Relics
 item.elder_eye.name=Elder's Eye
@@ -101,7 +106,7 @@ item.lore_book.name=§3The Old Aquapedia§r
 item.lore_book_page.name=Aquapedia §k1§r
 item.cutlass.name=§e§oWind Slasher§r
 
-#Prismarine Tools
+# Prismarine Tools
 item.prismarine_pickaxe.name=Prismarine Pick
 item.prismarine_sword.name=Prismarine Sword
 item.prismarine_spade.name=Prismarine Shovel
@@ -109,7 +114,7 @@ item.prismarine_axe.name=Prismarine Axe
 item.prismarine_hoe.name=Prismarine Hoe
 item.elastic_prismarine.name=Elastic Prismarine Ball
 
-#Cobalt Tools
+# Cobalt Tools
 item.cobalt_sword.name=Cobalt Sword
 item.cobalt_axe.name=Cobalt Axe
 item.cobalt_pickaxe.name=Cobalt Pickaxe

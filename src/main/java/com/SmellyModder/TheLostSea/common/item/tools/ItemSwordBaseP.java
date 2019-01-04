@@ -44,7 +44,6 @@ public class ItemSwordBaseP extends ItemSword implements IHasModel{
 	}
 	@Override
 	public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-		list.add("Rarity:" + TextFormatting.LIGHT_PURPLE + "Legendary");
 	}
 	
 	@Override
