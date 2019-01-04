@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.blocks.BlockBase;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
+import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.block.material.Material;
@@ -62,11 +63,11 @@ public class BlockLSOres extends BlockBase{
         {
             int i = 0;
 
-            if (this == TLSBlocks.SEA_DIAMONDORE)
+            if (this == TLSBlocks.SEA_COBALTORE)
             {
                 i = MathHelper.getInt(rand, 0, 2);
             }
-            else if (this == TLSBlocks.DEEPSEA_DIAMONDORE)
+            else if (this == TLSBlocks.DEEPSEA_COBALTORE)
             {
                 i = MathHelper.getInt(rand, 2, 5);
             }
@@ -79,6 +80,11 @@ public class BlockLSOres extends BlockBase{
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
 	{
 	   return new ItemStack(this);
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return TLSItems.COBALT;
 	}
 
 }
