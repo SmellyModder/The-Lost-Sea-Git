@@ -12,7 +12,7 @@
     {
         "P":
         {
-            "item": "thelostsea:vanadium"
+            "item": "thelostsea:vanadium_ingot"
         },
     
         "I":
@@ -23,7 +23,7 @@
     
     "result":
     {
-        "item": "thelostsea:vanadium_sword",
+        "item": "thelostsea:vanadium_pickaxe",
         "count": 1
     }
 }
