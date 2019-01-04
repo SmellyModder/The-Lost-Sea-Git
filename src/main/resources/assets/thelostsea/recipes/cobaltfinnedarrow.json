@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " P ",
+        " I ",
+        " R "
+    ],
+   
+    "key":
+    {
+        "P":
+        {
+            "item": "thelostsea:cobalt"
+        },
+    
+        "I":
+        {
+            "item": "minecraft:stick"
+        },
+        
+        "R":
+        {
+            "item": "thelostsea:fin"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:cobaltfinnedarrow",
+        "count": 4
+    }
+}

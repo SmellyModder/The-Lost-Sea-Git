@@ -1,0 +1,28 @@
+{
+   "parent": "item/handheld",
+   "textures": {
+       "layer0": "thelostsea:items/tools/cobaltbow_standby"
+   },
+   "overrides": [
+        {
+            "predicate": {
+                "pulling": 1
+            },
+            "model": "thelostsea:item/cobaltbow_pulling_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65
+            },
+            "model": "thelostsea:item/cobaltbow_pulling_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9
+            },
+            "model": "thelostsea:item/cobaltbow_pulling_2"
+        }
+    ]
+}

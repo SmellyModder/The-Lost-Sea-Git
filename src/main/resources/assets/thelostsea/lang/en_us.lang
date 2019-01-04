@@ -20,8 +20,8 @@ tile.prismarine_swirl.name=Prismarine Swirl
 tile.prismarine_pyramid.name=Prismarine Pyramid
 tile.prismarine_intertwined.name=Prismarine Intertwined
 tile.prismarine_shell.name=Prismarine Shell
-tile.prismarine_guardian_rock.name=Guardian Hyroglif
-tile.prismarine_rock_aegaeon.name=Aegaeon Hyroglif
+tile.prismarine_guardian_rock.name=Guardian Hiroglif
+tile.prismarine_rock_aegaeon.name=Aegaeon Hiroglif
 tile.sea_rock.name=Sea Stone
 tile.deepsea_rock.name=Deep Sea Stone
 tile.lost_sea_portal.name=Water Portal
@@ -109,11 +109,29 @@ item.prismarine_axe.name=Prismarine Axe
 item.prismarine_hoe.name=Prismarine Hoe
 item.elastic_prismarine.name=Elastic Prismarine Ball
 
+#Cobalt Tools
+item.cobalt_sword.name=Cobalt Sword
+item.cobalt_axe.name=Cobalt Axe
+item.cobalt_pickaxe.name=Cobalt Pickaxe
+item.cobalt_shovel.name=Cobalt Shovel
+item.cobaltbow.name=Cobalt Bow
+
+#Vanadium
+item.vanadium_sword.name=Vanadium Sword
+item.vanadium_axe.name=Vanadium Axe
+item.vanadium_pickaxe.name=Vanadium Pickaxe
+item.vanadium_shovel.name=Vanadium Shovel
+
+#Finned Arrows
+item.finnedarrow.name=Finned Arrow
+item.cobaltfinnedarrow.name=Cobalt Finned Arrow
+
 # Fish
 item.angler_fish.name=Angler Fish
 item.angler_fish_cooked.name=Cooked Angler Fish
 item.shark_meat.name=Raw Flake
 item.shark_meat_cooked.name=Cooked Flake
+item.fin.name=Guardian Fin
 
 # Discs
 item.prismarine_disc.name=Prismarine Disc

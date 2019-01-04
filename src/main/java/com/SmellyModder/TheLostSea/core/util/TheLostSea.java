@@ -5,6 +5,7 @@ import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
+import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
 import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
@@ -66,6 +67,7 @@ public class TheLostSea {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
 		
 		MinecraftForge.EVENT_BUS.register(new EyeDropEvent());
+		MinecraftForge.EVENT_BUS.register(new FinDropEvent());
 		/**
 		 * Handles Data
 		 */

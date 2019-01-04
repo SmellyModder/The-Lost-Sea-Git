@@ -14,6 +14,7 @@ import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
+import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemCobaltSword;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemFishBucket;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemHarpoonGun;
@@ -100,6 +101,12 @@ public class TLSItems {
 	public static Item SHARK_TOOTH = new ItemBase("shark_tooth");
 	public static Item LORE_BOOK = new ItemLoreBook("lore_book");
 	public static Item LORE_BOOK_PAGE = new ItemLorePage("lore_book_page");
+	public static Item GUARDIAN_FIN = new ItemBase("fin");
+	
+	
+	//Finned Arrows
+	public static Item FINNED_ARROW = new ItemBase("finnedarrow");
+	public static Item COBALT_FINNED_ARROW = new ItemBase("cobaltfinnedarrow");
 	
 	//Tools Prismarine
 	public static Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
@@ -113,6 +120,7 @@ public class TLSItems {
 	public static Item COBALT_SHOVEL = new ItemSpadeBase("cobalt_shovel", COBALT_MAT);
 	public static Item COBALT_PICKAXE = new ItemPickaxeBase("cobalt_pickaxe", COBALT_MAT);
 	public static Item COBALT_AXE = new ItemAxeBase("cobalt_axe", COBALT_MAT);
+	public static Item COBALT_BOW = new ItemBowBase("cobaltbow");
 	
 	//Tools Vanadium
 	public static Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);

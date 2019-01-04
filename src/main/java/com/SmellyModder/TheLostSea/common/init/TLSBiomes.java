@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.common.init;
 
 import com.SmellyModder.TheLostSea.common.biome.BiomeLostSea;
 
+import net.minecraft.command.CommandLocate;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
@@ -26,6 +27,7 @@ public static Biome initBiome(Biome biome, String name, BiomeType biometype, Typ
 	ForgeRegistries.BIOMES.register(biome);
 	BiomeDictionary.addTypes(biome, types);
 	BiomeManager.addSpawnBiome(biome);
+	
 	return biome;
 }
 

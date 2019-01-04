@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " PI",
+        "P I",
+        " PI"
+    ],
+   
+    "key":
+    {
+        "P":
+        {
+            "item": "thelostsea:cobalt"
+        },
+    
+        "I":
+        {
+            "item": "minecraft:string"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:cobaltbow",
+        "count": 1
+    }
+}
