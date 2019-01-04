@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "PP ",
+        "PI ",
+        " I "
+    ],
+   
+    "key":
+    {
+        "P":
+        {
+            "item": "thelostsea:vanadium"
+        },
+    
+        "I":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:vanadium_axe",
+        "count": 1
+    }
+}

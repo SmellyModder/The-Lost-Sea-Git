@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        " P ",
+        " I ",
+        " I "
+    ],
+   
+    "key":
+    {
+        "P":
+        {
+            "item": "thelostsea:cobalt"
+        },
+    
+        "I":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:cobalt_shovel",
+        "count": 1
+    }
+}

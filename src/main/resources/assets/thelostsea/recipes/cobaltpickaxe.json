@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "PPP",
+        " I ",
+        " I "
+    ],
+   
+    "key":
+    {
+        "P":
+        {
+            "item": "thelostsea:cobalt"
+        },
+    
+        "I":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "thelostsea:cobalt_pickaxe",
+        "count": 1
+    }
+}
