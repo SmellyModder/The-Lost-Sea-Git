@@ -36,7 +36,7 @@ public class ItemCobaltSword extends ItemTool implements IHasModel{
 		setTranslationKey(name);
 		setCreativeTab(TheLostSea.TLS_GEAR);
 		
-		this.attackSpeed = 0.25F;
+		this.attackSpeed = 0.10F;
 		
 		TLSItems.ITEMS.add(this);
 	}

@@ -1,6 +1,8 @@
 package com.SmellyModder.TheLostSea.core.util.client_events;
 
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
+import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
+import com.SmellyModder.TheLostSea.common.item.tools.cobalt.ItemCobaltAxe;
 
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -9,7 +11,7 @@ public class FovUpdater {
 
 	@SubscribeEvent
 	public static void fovUpdate(FOVUpdateEvent event) {
-		if (event.getEntity().isHandActive() && (event.getEntity().getHeldItem(event.getEntity().getActiveHand()).getItem() instanceof ItemBase)) {
+		if (event.getEntity().isHandActive() && (event.getEntity().getHeldItem(event.getEntity().getActiveHand()).getItem() instanceof ItemBowBase)) {
 			int i = event.getEntity().getItemInUseCount();
 			float f1 = (float) i / 20.0F;
 

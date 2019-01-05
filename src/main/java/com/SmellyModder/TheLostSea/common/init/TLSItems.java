@@ -65,7 +65,8 @@ public class TLSItems {
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
 	public static final ToolMaterial CUTLASS_MAT = EnumHelper.addToolMaterial("cutlass", 5, -1, 1.0F, 18F, 55);
 	public static final ToolMaterial PRISMARINE_MAT_DISC = EnumHelper.addToolMaterial("prismarine_disc", 3, 1876, 8.2F, 3F, 33);
-	public static final ToolMaterial COBALT_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 9F, 8, 33);
+	public static final ToolMaterial COBALT_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 9F, 7.0F, 33);
+	public static final ToolMaterial COBALT_MAT_S = EnumHelper.addToolMaterial("cobaltmats", 4, 2000, 9F, 9.0F, 33);
 	public static final ToolMaterial AQUAMARINE_MAT = EnumHelper.addToolMaterial("aquamarinemat", 4, 1800, 4.0F, 4.0F, 33);
 	public static final ToolMaterial VANADIUM_MAT = EnumHelper.addToolMaterial("vanadiummat", 3, 1661, 8F, 3.0F, 13);
 	public static final ArmorMaterial ARMOR_MATERIAL_PRIS = EnumHelper.addArmorMaterial("armor_material_prismarine", Reference.MOD_ID + ":prismarinew", 11, new int[] {2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 2.6F);
@@ -125,7 +126,7 @@ public class TLSItems {
 	public static Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
 	
 	//Tools Cobalt
-	public static Item COBALT_SWORD = new ItemCobaltSword("cobalt_sword", COBALT_MAT);
+	public static Item COBALT_SWORD = new ItemCobaltSword("cobalt_sword", COBALT_MAT_S);
 	public static Item COBALT_SHOVEL = new ItemSpadeBase("cobalt_shovel", COBALT_MAT);
 	public static Item COBALT_PICKAXE = new ItemPickaxeBase("cobalt_pickaxe", COBALT_MAT);
 	public static Item COBALT_AXE = new ItemCobaltAxe("cobalt_axe", COBALT_MAT);

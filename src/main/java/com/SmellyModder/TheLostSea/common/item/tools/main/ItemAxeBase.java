@@ -31,6 +31,4 @@ public class ItemAxeBase extends ItemAxe implements IHasModel {
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
-	
-	
 }

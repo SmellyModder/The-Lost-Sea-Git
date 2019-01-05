@@ -12,6 +12,7 @@ import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.proxy.CommonProxy;
+import com.SmellyModder.TheLostSea.core.util.client_events.FovUpdater;
 import com.SmellyModder.TheLostSea.core.util.handlers.CapabilityHandler;
 import com.SmellyModder.TheLostSea.core.util.handlers.CoinEventHandler;
 import com.SmellyModder.TheLostSea.core.util.handlers.GUIHandler;
@@ -75,6 +76,7 @@ public class TheLostSea {
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
 	    //MinecraftForge.EVENT_BUS.register(new NPCEventHandler());
 	    OreDictionaryLS.register();
+	    MinecraftForge.EVENT_BUS.register(new FovUpdater());
 	}
 	
 	@EventHandler
