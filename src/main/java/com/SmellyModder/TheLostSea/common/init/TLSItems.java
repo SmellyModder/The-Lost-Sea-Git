@@ -139,7 +139,7 @@ public class TLSItems {
 	
 	//Tools Aquamarine
 	public static Item AQUAMARINE_SWORD = new ItemSwordBase("aquamarine_sword", AQUAMARINE_MAT);
-	public static Item AQUAMARINE = new ItemSpadeBase("aquamarine_shovel", AQUAMARINE_MAT);
+	public static Item AQUAMARINE_SHOVEL = new ItemSpadeBase("aquamarine_shovel", AQUAMARINE_MAT);
 	public static Item AQUAMARINE_PICKAXE = new ItemPickaxeBase("aquamarine_pickaxe", AQUAMARINE_MAT);
 	public static Item AQUAMARINE_AXE = new ItemAxeBase("aquamarine_axe", AQUAMARINE_MAT);
 	

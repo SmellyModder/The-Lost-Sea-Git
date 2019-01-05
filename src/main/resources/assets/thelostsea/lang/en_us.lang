@@ -123,11 +123,18 @@ item.cobalt_pickaxe.name=Cobalt Pickaxe
 item.cobalt_shovel.name=Cobalt Shovel
 item.cobaltbow.name=Cobalt Bow
 
-#Vanadium
+# Vanadium
 item.vanadium_sword.name=Vanadium Sword
 item.vanadium_axe.name=Vanadium Axe
 item.vanadium_pickaxe.name=Vanadium Pickaxe
 item.vanadium_shovel.name=Vanadium Shovel
+tile.vanadium_block.name=Block of Vanadium 
+
+# Aquamarine
+item.aquamarine_sword.name=Aquamarine Sword
+item.aquamarine_axe.name=Aquamarine Axe
+item.aquamarine_pickaxe.name=Aquamarine Pickaxe
+item.aquamarine_shovel.name=Aquamarine Shovel
 
 #Finned Arrows
 item.finnedarrow.name=Finned Arrow
