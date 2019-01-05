@@ -6,6 +6,7 @@ import java.util.List;
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
+import com.SmellyModder.TheLostSea.common.blocks.metals.BlockMetalBase;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockLSOres;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaCoalOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
@@ -29,7 +30,6 @@ public class TLSBlocks {
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
 	//Environment
-	//public static final Block LIQUIDACK = new BlockLiquidack("liquidack", Material.ROCK);
 	public static final Block SEA_ROCK = new BlockRock("sea_rock", Material.ROCK, 1.9F, false);
 	public static final Block DEEP_SEA_ROCK = new BlockRock("deepsea_rock", Material.ROCK, 2.2F, false);
 	//public static final Block SEA_COBBLE = new BlockRock("sea_cobble", Material.ROCK, 1.85F, true);
@@ -57,7 +57,6 @@ public class TLSBlocks {
 	
 	//Temple
 	public static final Block CARVED_PRISMARINE_EYE = new BlockRuin("carved_eye", Material.ROCK);
-	//public static final Block RUNIC_PRISMARINE_EYE = new BlockRuin("runic_eye", Material.ROCK);
 	public static final Block PRISMARINE_PILLAR = new BlockPillarBase("prismarine_pillar", Material.ROCK);
 	public static final Block PRISMARINE_PILLAR_TOP = new BlockPillarBase("prismarine_pillar_top", Material.ROCK);
 	public static final Block PRISMARINE_PILLAR_TOP_FANCY = new BlockPillarBase("prismarine_pillar_bottom", Material.ROCK);
@@ -74,6 +73,9 @@ public class TLSBlocks {
 	public static final Block PORTAL_KEY = new BlockPortalKey("portal_key", Material.CIRCUITS);
 	public static final Block PORTAL_KEY_DORMANT = new BlockPortalKeyDormant("portal_key_d", Material.CIRCUITS);
 	public static final Block DUMMY_AIR = new DummyAirBlock("dummy_air", Material.CIRCUITS);
+	
+	//Ore Blocks
+	public static final Block VANADIUM_BLOCK = new BlockMetalBase("vanadium_block", Material.ROCK, 5.2F, 10F);
 	
 	//Portal
 	public static final Block PORTAL = new BlockLSPortal("lost_sea_portal", Material.PORTAL);
