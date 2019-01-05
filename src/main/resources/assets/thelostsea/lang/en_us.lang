@@ -116,12 +116,13 @@ item.prismarine_axe.name=Prismarine Axe
 item.prismarine_hoe.name=Prismarine Hoe
 item.elastic_prismarine.name=Elastic Prismarine Ball
 
-# Cobalt Tools
+# Cobalt
 item.cobalt_sword.name=Cobalt Sword
 item.cobalt_axe.name=Cobalt Axe
 item.cobalt_pickaxe.name=Cobalt Pickaxe
 item.cobalt_shovel.name=Cobalt Shovel
 item.cobaltbow.name=Cobalt Bow
+tile.cobalt_block.name=Block of Cobalt
 
 # Vanadium
 item.vanadium_sword.name=Vanadium Sword

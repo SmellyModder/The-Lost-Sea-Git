@@ -31,9 +31,6 @@ public class ItemFinnedArrow extends ItemBase implements IHasModel
 	public EntityFinnedArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter)
     {
         EntityFinnedArrow entitytippedarrow = new EntityFinnedArrow(worldIn, shooter);
-        
-        
-        
         return entitytippedarrow;
     }
 

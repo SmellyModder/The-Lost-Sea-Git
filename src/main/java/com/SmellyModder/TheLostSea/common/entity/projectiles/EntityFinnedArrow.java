@@ -127,7 +127,7 @@ public class EntityFinnedArrow extends EntityArrow
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
-        if (compound.hasKey("Type", 8))
+        if (compound.hasKey("TypeA", 8))
         {
             this.setArrowType(EntityFinnedArrow.TypeOfArrow.getTypeFromString(compound.getString("Type")));
         }

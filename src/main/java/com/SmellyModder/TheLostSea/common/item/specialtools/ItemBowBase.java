@@ -122,7 +122,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
 
                 if ((double)f >= 0.1D)
                 {
-                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
+                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemFinnedArrow && ((ItemFinnedArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
 
                     if (!worldIn.isRemote)
                     {
@@ -132,12 +132,12 @@ public class ItemBowBase extends ItemBow implements IHasModel
                         if(itemarrow == TLSItems.FINNED_ARROW)
                         {
                         	entityarrow.setArrowType(TypeOfArrow.NORMAL);
-                        }
-                        
-                        if(itemarrow == TLSItems.COBALT_FINNED_ARROW)
+                        } 
+                        else if(itemarrow == TLSItems.COBALT_FINNED_ARROW)
                         {
                         	entityarrow.setArrowType(TypeOfArrow.COBALT);
                         }
+         
                         
                         entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
 
