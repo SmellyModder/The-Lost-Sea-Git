@@ -136,6 +136,7 @@ item.aquamarine_sword.name=Aquamarine Sword
 item.aquamarine_axe.name=Aquamarine Axe
 item.aquamarine_pickaxe.name=Aquamarine Pickaxe
 item.aquamarine_shovel.name=Aquamarine Shovel
+tile.aquamarine_block.name=Block of Aquamarine
 
 #Finned Arrows
 item.finnedarrow.name=Finned Arrow

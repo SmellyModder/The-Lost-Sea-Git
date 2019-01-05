@@ -77,6 +77,7 @@ public class TLSBlocks {
 	//Ore Blocks
 	public static final Block VANADIUM_BLOCK = new BlockMetalBase("vanadium_block", Material.ROCK, 5.2F, 10F);
 	public static final Block COBALT_BLOCK = new BlockMetalBase("cobalt_block", Material.ROCK, 6.0F, 11F);
+	public static final Block AQUAMARINE_BLOCK = new BlockMetalBase("aquamarine_block", Material.ROCK, 5.5F, 10.5F);
 
 	
 	//Portal
