@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.core.util.handlers;
 import com.SmellyModder.TheLostSea.client.render.RenderAnglerfish;
 import com.SmellyModder.TheLostSea.client.render.RenderCoin;
 import com.SmellyModder.TheLostSea.client.render.RenderDisc;
+import com.SmellyModder.TheLostSea.client.render.RenderFinnedArrow;
 import com.SmellyModder.TheLostSea.client.render.RenderJellyfish;
 import com.SmellyModder.TheLostSea.client.render.RenderOrb;
 import com.SmellyModder.TheLostSea.client.render.RenderShark;
@@ -25,6 +26,7 @@ import com.SmellyModder.TheLostSea.common.entity.npc.EntityNurm;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityShark;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
+import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
 import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
@@ -61,6 +63,18 @@ public static void registerEntityRenders() {
 			public Render<? super EntityVampireSquid> createRenderFor(RenderManager manager){
 				
 				return new RenderVampireSquid(manager);
+			
+			}
+			
+		});
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityFinnedArrow.class, new IRenderFactory<EntityFinnedArrow>()
+		{
+			
+			@Override
+			public Render<? super EntityFinnedArrow> createRenderFor(RenderManager manager){
+				
+				return new RenderFinnedArrow<>(manager);
 				
 			}
 			

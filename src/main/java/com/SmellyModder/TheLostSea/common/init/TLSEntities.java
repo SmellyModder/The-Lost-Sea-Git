@@ -11,6 +11,7 @@ import com.SmellyModder.TheLostSea.common.entity.npc.EntityNurm;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityShark;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
+import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
 import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineII;
@@ -51,6 +52,7 @@ public class TLSEntities {
 		registerEntity2("nurm", EntityNurm.class, Reference.NURM, 50);
 		registerEntity2("lunete", EntityLunete.class, Reference.LUNETE, 50);
 		registerEntity2("doubloon", EntityAtlantisCoin.class, 9875, 50);
+		registerEntity2("finnedarrow", EntityFinnedArrow.class, Reference.FINNEDARROW, 50);
 	}
 	
 	private static void registerEntity2(String entityName, Class<? extends Entity> entityClass, int id, int range) {

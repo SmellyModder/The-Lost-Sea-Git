@@ -28,6 +28,7 @@ public class Reference {
 	public static int DISC = 947;
 	public static int HARPOON = 948;
 	public static int CUTLASS = 949;
+	public static int FINNEDARROW = 950;
 	
 	//Npc
 	public static int NURM = 1200;
