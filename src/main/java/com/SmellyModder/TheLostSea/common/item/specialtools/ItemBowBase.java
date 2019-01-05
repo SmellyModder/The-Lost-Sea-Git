@@ -186,11 +186,6 @@ public class ItemBowBase extends ItemBow implements IHasModel
 	}
 	
 	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
-		return 72000;
-	}
-	
-	@Override
 	public void registerModels() {
 		
 		

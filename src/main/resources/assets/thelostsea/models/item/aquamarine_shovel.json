@@ -1,0 +1,6 @@
+{
+   "parent": "item/handheld",
+   "textures": {
+       "layer0": "thelostsea:items/tools/aquamarine_shovel"
+   }
+}

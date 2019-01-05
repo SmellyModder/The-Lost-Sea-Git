@@ -6,7 +6,9 @@ import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
 import com.SmellyModder.TheLostSea.common.item.ItemOrb;
 import com.SmellyModder.TheLostSea.common.item.ItemPearl;
+import com.SmellyModder.TheLostSea.common.item.ItemShieldBase;
 import com.SmellyModder.TheLostSea.common.item.ItemTempleFinder;
+import com.SmellyModder.TheLostSea.common.item.TLS_Rarities;
 import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
@@ -35,12 +37,16 @@ import com.SmellyModder.TheLostSea.common.item.tools.main.ItemPickaxeBase;
 import com.SmellyModder.TheLostSea.common.item.tools.main.ItemSpadeBase;
 import com.SmellyModder.TheLostSea.common.item.tools.main.ItemSwordBase;
 import com.SmellyModder.TheLostSea.core.util.Reference;
+
+import net.minecraft.client.renderer.entity.RenderArrow;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemShield;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -59,6 +65,7 @@ public class TLSItems {
 	public static final ToolMaterial CUTLASS_MAT = EnumHelper.addToolMaterial("cutlass", 5, -1, 1.0F, 18F, 55);
 	public static final ToolMaterial PRISMARINE_MAT_DISC = EnumHelper.addToolMaterial("prismarine_disc", 3, 1876, 8.2F, 3F, 33);
 	public static final ToolMaterial COBALT_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 9F, 8, 33);
+	public static final ToolMaterial AQUAMARINE_MAT = EnumHelper.addToolMaterial("aquamarinemat", 4, 1800, 5F, 6, 33);
 	public static final ToolMaterial VANADIUM_MAT = EnumHelper.addToolMaterial("vanadiummat", 3, 1500, 2.5F, 2.3F, 33);
 	public static final ArmorMaterial ARMOR_MATERIAL_PRIS = EnumHelper.addArmorMaterial("armor_material_prismarine", Reference.MOD_ID + ":prismarinew", 11, new int[] {2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 2.6F);
 	
@@ -127,6 +134,13 @@ public class TLSItems {
 	public static Item VANADIUM_SHOVEL = new ItemSpadeBase("vanadium_shovel", VANADIUM_MAT);
 	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
 	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
+	public static Item VANADIUM_SHIELD = new ItemShieldBase("vanadium_shield", TLS_Rarities.RARE);
+	
+	//Tools Aquamarine
+	public static Item AQUAMARINE_SWORD = new ItemSwordBase("aquamarine_sword", AQUAMARINE_MAT);
+	public static Item AQUAMARINE = new ItemSpadeBase("aquamarine_shovel", AQUAMARINE_MAT);
+	public static Item AQUAMARINE_PICKAXE = new ItemPickaxeBase("aquamarine_pickaxe", AQUAMARINE_MAT);
+	public static Item AQUAMARINE_AXE = new ItemAxeBase("aquamarine_axe", AQUAMARINE_MAT);
 	
 	//Foods
 	public static ItemFood BUBBLE_FRUIT = new ItemBubbleFruit("bubble_berry", 2, false).setAlwaysEdible();
