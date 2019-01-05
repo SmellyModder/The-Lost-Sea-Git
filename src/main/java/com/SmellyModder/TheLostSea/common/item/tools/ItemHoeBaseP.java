@@ -48,11 +48,6 @@ public class ItemHoeBaseP extends ItemHoe implements IHasModel{
 		}
 	}
 	
-	@Override
-	public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-		list.add("Rarity:" + " §5§lLegendary§r");
-	}
-	
 	@SuppressWarnings("incomplete-switch")
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {

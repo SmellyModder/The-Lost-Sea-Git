@@ -25,6 +25,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Set;
 
+
 public class ItemCobaltSword extends ItemTool implements IHasModel{
 
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.PLANKS, Blocks.BOOKSHELF, Blocks.LOG, Blocks.LOG2, Blocks.CHEST, Blocks.PUMPKIN, Blocks.LIT_PUMPKIN, Blocks.MELON_BLOCK, Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE);
@@ -35,8 +36,7 @@ public class ItemCobaltSword extends ItemTool implements IHasModel{
 		setTranslationKey(name);
 		setCreativeTab(TheLostSea.TLS_GEAR);
 		
-		this.attackSpeed = 2.0F;
-		
+		this.attackSpeed = 0.25F;
 		
 		TLSItems.ITEMS.add(this);
 	}

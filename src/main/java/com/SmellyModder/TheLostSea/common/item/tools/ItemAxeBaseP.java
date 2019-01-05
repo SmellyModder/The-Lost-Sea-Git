@@ -36,11 +36,6 @@ public class ItemAxeBaseP extends ItemAxe implements IHasModel {
 	}
 	
 	@Override
-	public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-		list.add("Rarity:" + " §5§lLegendary§r");
-	}
-	
-	@Override
 	public void registerModels() {
 		
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");

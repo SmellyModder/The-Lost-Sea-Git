@@ -109,6 +109,7 @@ public class TLSItems {
 	public static Item LORE_BOOK = new ItemLoreBook("lore_book");
 	public static Item LORE_BOOK_PAGE = new ItemLorePage("lore_book_page");
 	public static Item GUARDIAN_FIN = new ItemBase("fin");
+	public static Item AQUAMARINE = new ItemBase("aquamarine");
 	
 	
 	//Finned Arrows
