@@ -1,119 +1,103 @@
 package com.SmellyModder.TheLostSea.common.entity.projectiles;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.client.render.RenderDisc;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.MoverType;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Enchantments;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.network.play.server.SPacketChangeGameState;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityFinnedArrow extends EntityArrow
+public class EntityFinnedArrow extends EntityLSArrow
 {
-	
-	private static final DataParameter<Integer> ARROW_TYPE = EntityDataManager.<Integer>createKey(EntityDisc.class, DataSerializers.VARINT);
-	
-	public EntityFinnedArrow(World worldIn, double x, double y, double z)
-	{
-		super(worldIn);
-		this.setPosition(x, y, z);
+	private static final DataParameter<Integer> ARROW_TYPE = EntityDataManager.<Integer>createKey(EntityFinnedArrow.class, DataSerializers.VARINT);
+   
+	public EntityFinnedArrow(World world) {
+		super(world);
 	}
-	
-	public EntityFinnedArrow(World worldIn, EntityLivingBase shooter)
-    {
-        super(worldIn, shooter);
-    }
 
-	
-	public EntityFinnedArrow(World worldIn) {
-		super(worldIn);
-		setSize(1.0F, 1.0F);
-		this.setVelocity(this.speedForType(), this.speedForType(), this.speedForType());
+	public EntityFinnedArrow(World world, EntityLivingBase player) {
+		super(world, player);
 	}
-	
-	@Override
-	protected ItemStack getArrowStack() 
-	{
-		return this.arrowType();
-	}
-	
-	@Override
-	public double getDamage() {
-		return this.damageToDeal();
-	}
-	
+
 	protected void entityInit()
     {
+		super.entityInit();
         this.dataManager.register(ARROW_TYPE, Integer.valueOf(EntityFinnedArrow.TypeOfArrow.NORMAL.ordinal()));
     }
 	
-	@Override
-	public void onEntityUpdate() 
-	{
-		if(!this.world.isRemote)
-		{
-			if(this.isInWater())
-			{
-				this.setVelocity(this.speedForType() * 2, this.speedForType() * 2, this.speedForType() * 2);
-			}
-		}
-		
-		super.onEntityUpdate();
-	}
-	
-	private int damageToDeal() {
-		switch (this.getFinnedArrowType())
-        {
-		case NORMAL:
-			default:
-			return 6;
-		case COBALT:
-			return 9;
-        }
+	public static void registerFixesArrow(DataFixer fixer)
+    {
+        registerFixesArrow(fixer, "Arrow");
     }
-	
-	private ItemStack arrowType()
-	{
-		switch(this.getFinnedArrowType())
-		{
-		case NORMAL:
-			default:
-			return new ItemStack(TLSItems.FINNED_ARROW);
-		case COBALT:
-			return new ItemStack(TLSItems.COBALT_FINNED_ARROW);
-		}
-	}
-	
-	//When out of water, its this
-	//When IN water, it is the values x 2
-	private int speedForType() {
-		switch (this.getFinnedArrowType())
-        {
-        case NORMAL:
-		default:
-			//water speed = 12
-		return 6;
-		case COBALT:
-			//water speed = 18
-		return 9;
-        }
-	}
-	
-	
 
 	
-	
-	public void setArrowType(EntityFinnedArrow.TypeOfArrow type)
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if(this.isInWater()) {
+			this.motionX *= (double)2.05F;
+			this.motionY *= (double)2.05F;
+        	this.motionZ *= (double)2.05F;
+		}
+	}
+    /**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        compound.setString("arrowType", this.getFinnedArrowType().getName());
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        if (compound.hasKey("arrowType", 8))
+        {
+            this.setArrowType(EntityFinnedArrow.TypeOfArrow.getTypeFromString(compound.getString("arrowType")));
+        }
+    }
+    public void setArrowType(EntityFinnedArrow.TypeOfArrow type)
     {
         this.dataManager.set(ARROW_TYPE, Integer.valueOf(type.ordinal()));
     }
@@ -122,42 +106,12 @@ public class EntityFinnedArrow extends EntityArrow
     {
         return EntityFinnedArrow.TypeOfArrow.byId(((Integer)this.dataManager.get(ARROW_TYPE)).intValue());
     }
-	
-    public void writeEntityToNBT(NBTTagCompound compound) {
-        compound.setString("Type", this.getFinnedArrowType().getName());
-    }
-
-    public void readEntityFromNBT(NBTTagCompound compound) {
-        if (compound.hasKey("Type", 8))
-        {
-            this.setArrowType(EntityFinnedArrow.TypeOfArrow.getTypeFromString(compound.getString("Type")));
-        }
-    }
     
-    @Override
-    public void onUpdate() {
-    	makeTrail();
-    }
-    
-    private void makeTrail() {
-		for (int i = 0; i < 3; i++) {
-			double dx = posX + 0.5 * (rand.nextDouble() - rand.nextDouble());
-			double dy = posY + 0.5 * (rand.nextDouble() - rand.nextDouble());
-			double dz = posZ + 0.5 * (rand.nextDouble() - rand.nextDouble());
-			world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, dx, dy, dz, 0.0D, 0.0D, 0.0D);
-		}
-	}
-	
-	public static enum TypeOfArrow
+    public static enum TypeOfArrow
     {
-        NORMAL(BlockPlanks.EnumType.OAK.getMetadata(), "n"),
-        COBALT(BlockPlanks.EnumType.OAK.getMetadata(), "c");
-
-        /**
-         * Get a boat type by it's enum ordinal
-         */
-		
-		private final String name;
+        NORMAL(BlockPlanks.EnumType.OAK.getMetadata(), "normal"),
+        COBALT(BlockPlanks.EnumType.SPRUCE.getMetadata(), "cobalt");
+        private final String name;
         private final int metadata;
 
         private TypeOfArrow(int metadataIn, String nameIn)
@@ -180,7 +134,10 @@ public class EntityFinnedArrow extends EntityArrow
         {
             return this.name;
         }
-		
+
+        /**
+         * Get a boat type by it's enum ordinal
+         */
         public static EntityFinnedArrow.TypeOfArrow byId(int id)
         {
             if (id < 0 || id >= values().length)
@@ -204,5 +161,4 @@ public class EntityFinnedArrow extends EntityArrow
             return values()[0];
         }
     }
-	
 }

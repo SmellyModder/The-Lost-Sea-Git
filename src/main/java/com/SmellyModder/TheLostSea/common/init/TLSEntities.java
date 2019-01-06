@@ -12,7 +12,6 @@ import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityShark;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
-import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrowTest;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
 import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineII;

@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.common.item;
 import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
-import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrowTest;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
@@ -20,32 +19,30 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemFinnedArrow extends ItemArrow implements IHasModel
+public class ItemFinnedArrow extends ItemBase
 {
 	
 	public ItemFinnedArrow(String name) {
-		setRegistryName(name);
-		setTranslationKey(name);
+		super(name);
 		setMaxStackSize(1);
 		setMaxDamage(1000);
 		setCreativeTab(TheLostSea.TLS_GEAR);
-		
-		TLSItems.ITEMS.add(this);
-		
 	}
 	
-	public EntityFinnedArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase shooter)
+	public EntityFinnedArrow createArrow(World worldIn, ItemStack stack, EntityLivingBase player)
     {
-		EntityFinnedArrow entitytippedarrow = new EntityFinnedArrow(worldIn, shooter);
+		EntityFinnedArrow entitytippedarrow = new EntityFinnedArrow(worldIn, player);
         return entitytippedarrow;
     }
 
 	@Override
 	public void registerModels() {
-		
-		
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-		
 	}
 	
+	public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.EntityPlayer player)
+    {
+        int enchant = net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel(net.minecraft.init.Enchantments.INFINITY, bow);
+        return enchant <= 0 ? false : this.getClass() == ItemFinnedArrow.class;
+    }
 }

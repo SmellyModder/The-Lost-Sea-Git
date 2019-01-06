@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.common.item.specialtools;
 import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
-import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrowTest;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow.TypeOfArrow;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
@@ -170,7 +169,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
 
                         if (flag1 || entityplayer.capabilities.isCreativeMode && (itemstack.getItem() == Items.SPECTRAL_ARROW || itemstack.getItem() == Items.TIPPED_ARROW))
                         {
-                            entityarrow.pickupStatus = EntityArrow.PickupStatus.CREATIVE_ONLY;
+                            entityarrow.pickupStatus = EntityFinnedArrow.PickupStatus.CREATIVE_ONLY;
                         }
 
                         worldIn.spawnEntity(entityarrow);
