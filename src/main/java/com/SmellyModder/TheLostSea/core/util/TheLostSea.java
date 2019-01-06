@@ -76,13 +76,12 @@ public class TheLostSea {
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
 	    //MinecraftForge.EVENT_BUS.register(new NPCEventHandler());
 	    OreDictionaryLS.register();
-	    MinecraftForge.EVENT_BUS.register(new FovUpdater());
+	    
 	}
 	
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event) {
-			System.out.println("Player Data Loaded");
-			
+		System.out.println("Player Data Loaded");
 	}
 
 	public static CreativeTabs TLS = new CreativeTabs("The-Lost-Sea-Items") {

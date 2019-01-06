@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow.TypeOfArrow;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
@@ -22,6 +23,8 @@ import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -36,7 +39,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
 		setRegistryName(name);
 		setTranslationKey(name);
 		setMaxStackSize(1);
-		setMaxDamage(1000);
+		setMaxDamage(765);
 		setCreativeTab(TheLostSea.TLS_GEAR);
 
 		this.addPropertyOverride(new ResourceLocation("pull"), new IItemPropertyGetter()
@@ -95,7 +98,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
 	
 	@Override
 	protected boolean isArrow(ItemStack stack) {
-		return stack.getItem() == TLSItems.COBALT_FINNED_ARROW;
+		return stack.getItem() instanceof ItemFinnedArrow;
 	}
 	
 	@Override
@@ -139,8 +142,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
                         	entityarrow.setArrowType(TypeOfArrow.COBALT);
                         }
                         
-                        
-
+                     
                         if (f == 1.0F)
                         {
                             entityarrow.setIsCritical(true);
@@ -175,7 +177,12 @@ public class ItemBowBase extends ItemBow implements IHasModel
                         worldIn.spawnEntity(entityarrow);
                     }
 
-                    worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    if(entityLiving.isInWater()) {
+                    	worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, TLSSounds.WATER_BOW, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    }
+                    else {
+                    	worldIn.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    }
 
                     if (!flag1 && !entityplayer.capabilities.isCreativeMode)
                     {
@@ -211,6 +218,26 @@ public class ItemBowBase extends ItemBow implements IHasModel
 	public EnumRarity getRarity(ItemStack stack) {
 		return EnumRarity.EPIC;
 	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+    {
+        ItemStack itemstack = playerIn.getHeldItem(handIn);
+        boolean flag = !this.findAmmo(playerIn).isEmpty();
+
+        ActionResult<ItemStack> ret = net.minecraftforge.event.ForgeEventFactory.onArrowNock(itemstack, worldIn, playerIn, handIn, flag);
+        if (ret != null) return ret;
+
+        if (!playerIn.capabilities.isCreativeMode && !flag)
+        {
+            return flag ? new ActionResult(EnumActionResult.PASS, itemstack) : new ActionResult(EnumActionResult.FAIL, itemstack);
+        }
+        else
+        {
+            playerIn.setActiveHand(handIn);
+            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+        }
+    }
 	
 	@Override
 	public void registerModels() {

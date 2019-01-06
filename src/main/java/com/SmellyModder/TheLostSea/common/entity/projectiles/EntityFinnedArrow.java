@@ -66,17 +66,22 @@ public class EntityFinnedArrow extends EntityLSArrow
 	
 	public static void registerFixesArrow(DataFixer fixer)
     {
-        registerFixesArrow(fixer, "Arrow");
+        registerFixesArrow(fixer, "FinnedArrow");
     }
 
-	
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if(this.isInWater()) {
+		if(this.isInWater() && this.getFinnedArrowType() == EntityFinnedArrow.TypeOfArrow.COBALT) {
 			this.motionX *= (double)1.7F;
 			this.motionY *= (double)1.7;
         	this.motionZ *= (double)1.7F;
+        	this.setDamage(this.getDamage() * 2F);
+		}
+		else if(this.isInWater() && this.getFinnedArrowType() == EntityFinnedArrow.TypeOfArrow.NORMAL){
+			this.motionX *= (double)1.55F;
+			this.motionY *= (double)1.55;
+        	this.motionZ *= (double)1.55F;
 		}
 	}
     /**

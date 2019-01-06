@@ -14,6 +14,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+
 
 public class ClientProxy extends CommonProxy{
 
@@ -32,12 +36,6 @@ public class ClientProxy extends CommonProxy{
 	public void openMyGui(ItemStack stack)
 	{
 	     Minecraft.getMinecraft().displayGuiScreen(new GUILoreBook(stack));
-	}
-	
-	@Override
-	public void coinOverlay()
-	{
-		
 	}
 	
 	public void OpenNurmGUI(EntityPlayer player) {

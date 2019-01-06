@@ -102,6 +102,12 @@
         "subtitle": "Common Chest Opens",
         "sounds": [{ "name": "thelostsea:block/treasure_common", "stream": false}]
     },
+    "item.water_bow":
+    {
+        "category": "item",
+        "subtitle": "Bow Water Swishes",
+        "sounds": [{ "name": "thelostsea:item/underwater_bow", "stream": false}]
+    },
     "ocean_man": {"sounds": [{"name": "thelostsea:music/oceanman", "stream": true}]},
     
     "pirate_crew": {"sounds": [{"name": "thelostsea:music/pirate_crew", "stream": true}]}
