@@ -166,6 +166,8 @@ item.convolution.name=Music Disc
 item.record.convolution.desc=Name - §9Convolution§r
 item.bedazzle.name=Music Disc
 item.record.bedazzle.desc=Name - §6Bedazzle§r
+item.ocean_man.name=Music Disc
+item.record.ocean_man.desc=XboxSignOut - Ocean Man(NoteBlock Beat)
 
 #Prismarine Armors
 item.prismarine_helmet.name=Prismarine Helmet

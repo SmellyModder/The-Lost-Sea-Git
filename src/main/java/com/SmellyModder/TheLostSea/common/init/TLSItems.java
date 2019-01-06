@@ -170,9 +170,11 @@ public class TLSItems {
 	
 	//Music Discs
 	public static ItemPirateCrewDisc PIRATE_CREW_DISC = new ItemPirateCrewDisc("pirate_crew", TLSMusic.PIRATE_CREW);
-	public static ItemGodSlayerDisc GOD_SLAYER_DISC = new ItemGodSlayerDisc("god_slayer", TLSMusic.PIRATE_CREW);
-	public static ItemConvolutionDisc CONVOLUTION_DISC = new ItemConvolutionDisc("convolution", TLSMusic.PIRATE_CREW);
-	public static ItemConvolutionDisc BEDAZZLE_DISC = new ItemConvolutionDisc("bedazzle", TLSMusic.PIRATE_CREW);
+	public static ItemConvolutionDisc OMAN_DISC = new ItemConvolutionDisc("ocean_man", TLSMusic.OCEAN_MAN);
+	//public static ItemGodSlayerDisc GOD_SLAYER_DISC = new ItemGodSlayerDisc("god_slayer", TLSMusic.PIRATE_CREW);
+	//public static ItemConvolutionDisc CONVOLUTION_DISC = new ItemConvolutionDisc("convolution", TLSMusic.PIRATE_CREW);
+	//public static ItemConvolutionDisc BEDAZZLE_DISC = new ItemConvolutionDisc("bedazzle", TLSMusic.PIRATE_CREW);
+	
 	
 	//Upgrades
 	public static Item SPEED_UPGRADE = new ItemSpeedUpgrade("speed_upgrade");

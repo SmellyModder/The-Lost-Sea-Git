@@ -13,14 +13,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 public class TLSMusic {
 	
 	public static final SoundEvent PIRATE_CREW = new SoundEvent(new ResourceLocation(Reference.MOD_ID, "pirate_crew")).setRegistryName(new ResourceLocation(Reference.MOD_ID, "pirate_crew"));
-	
+	public static final SoundEvent OCEAN_MAN = new SoundEvent(new ResourceLocation(Reference.MOD_ID, "ocean_man")).setRegistryName(new ResourceLocation(Reference.MOD_ID, "ocean_man"));
 	
 	@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 	public static class SoundEventRegistration {
 		@SubscribeEvent
 		public static void registerSoundEvents(final RegistryEvent.Register<SoundEvent> event) {
 			final SoundEvent[] sounds = {
-					PIRATE_CREW
+					PIRATE_CREW,
+					OCEAN_MAN
 			};
 			
 			event.getRegistry().registerAll(sounds);

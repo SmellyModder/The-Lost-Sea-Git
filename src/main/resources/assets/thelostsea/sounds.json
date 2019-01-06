@@ -102,6 +102,8 @@
         "subtitle": "Common Chest Opens",
         "sounds": [{ "name": "thelostsea:block/treasure_common", "stream": false}]
     },
-     "pirate_crew": {"sounds": [{"name": "thelostsea:music/pirate_crew", "stream": true}]}
+    "ocean_man": {"sounds": [{"name": "thelostsea:music/oceanman", "stream": true}]},
+    
+    "pirate_crew": {"sounds": [{"name": "thelostsea:music/pirate_crew", "stream": true}]}
      
 }
