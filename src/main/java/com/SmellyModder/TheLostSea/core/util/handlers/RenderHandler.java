@@ -4,6 +4,7 @@ import com.SmellyModder.TheLostSea.client.render.RenderAnglerfish;
 import com.SmellyModder.TheLostSea.client.render.RenderCoin;
 import com.SmellyModder.TheLostSea.client.render.RenderDisc;
 import com.SmellyModder.TheLostSea.client.render.RenderFinnedArrow;
+import com.SmellyModder.TheLostSea.client.render.RenderFinnedTestArrow;
 import com.SmellyModder.TheLostSea.client.render.RenderJellyfish;
 import com.SmellyModder.TheLostSea.client.render.RenderOrb;
 import com.SmellyModder.TheLostSea.client.render.RenderShark;
@@ -27,6 +28,7 @@ import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityShark;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
+import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrowTest;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
 import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
@@ -79,6 +81,18 @@ public static void registerEntityRenders() {
 			}
 			
 		});
+		
+		/*RenderingRegistry.registerEntityRenderingHandler(EntityFinnedArrowTest.class, new IRenderFactory<EntityFinnedArrowTest>()
+		{
+			
+			@Override
+			public Render<? super EntityFinnedArrowTest> createRenderFor(RenderManager manager){
+				
+				return new RenderFinnedTestArrow(manager);
+				
+			}
+			
+		});*/
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntitySubmarineI.class, new IRenderFactory<EntitySubmarineI>()
 		{

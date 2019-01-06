@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
@@ -59,10 +60,14 @@ public class EntityFinnedArrow extends EntityArrow
 	@Override
 	public void onEntityUpdate() 
 	{
-		if(this.isInWater())
+		if(!this.world.isRemote)
 		{
-			this.setVelocity(this.speedForType() * 2, this.speedForType() * 2, this.speedForType() * 2);
+			if(this.isInWater())
+			{
+				this.setVelocity(this.speedForType() * 2, this.speedForType() * 2, this.speedForType() * 2);
+			}
 		}
+		
 		super.onEntityUpdate();
 	}
 	
@@ -118,20 +123,30 @@ public class EntityFinnedArrow extends EntityArrow
         return EntityFinnedArrow.TypeOfArrow.byId(((Integer)this.dataManager.get(ARROW_TYPE)).intValue());
     }
 	
-	@Override
     public void writeEntityToNBT(NBTTagCompound compound) {
-        super.writeEntityToNBT(compound);
         compound.setString("Type", this.getFinnedArrowType().getName());
     }
 
-    @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
-        super.readEntityFromNBT(compound);
-        if (compound.hasKey("TypeA", 8))
+        if (compound.hasKey("Type", 8))
         {
             this.setArrowType(EntityFinnedArrow.TypeOfArrow.getTypeFromString(compound.getString("Type")));
         }
     }
+    
+    @Override
+    public void onUpdate() {
+    	makeTrail();
+    }
+    
+    private void makeTrail() {
+		for (int i = 0; i < 3; i++) {
+			double dx = posX + 0.5 * (rand.nextDouble() - rand.nextDouble());
+			double dy = posY + 0.5 * (rand.nextDouble() - rand.nextDouble());
+			double dz = posZ + 0.5 * (rand.nextDouble() - rand.nextDouble());
+			world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, dx, dy, dz, 0.0D, 0.0D, 0.0D);
+		}
+	}
 	
 	public static enum TypeOfArrow
     {

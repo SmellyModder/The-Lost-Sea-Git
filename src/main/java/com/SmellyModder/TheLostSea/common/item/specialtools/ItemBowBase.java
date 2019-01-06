@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.common.item.specialtools;
 import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
+import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrowTest;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow.TypeOfArrow;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
@@ -128,18 +129,18 @@ public class ItemBowBase extends ItemBow implements IHasModel
                     {
                     	ItemFinnedArrow itemarrow = (ItemFinnedArrow)(itemstack.getItem() instanceof ItemFinnedArrow ? itemstack.getItem() : TLSItems.FINNED_ARROW);
                         EntityFinnedArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
-                        
+                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, 5, 1.0F);
                         if(itemarrow == TLSItems.FINNED_ARROW)
                         {
                         	entityarrow.setArrowType(TypeOfArrow.NORMAL);
-                        } 
-                        else if(itemarrow == TLSItems.COBALT_FINNED_ARROW)
+                        }
+                        
+                        if(itemarrow == TLSItems.COBALT_FINNED_ARROW)
                         {
                         	entityarrow.setArrowType(TypeOfArrow.COBALT);
                         }
-         
                         
-                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
+                        
 
                         if (f == 1.0F)
                         {

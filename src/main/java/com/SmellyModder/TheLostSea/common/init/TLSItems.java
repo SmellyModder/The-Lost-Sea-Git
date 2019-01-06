@@ -4,6 +4,7 @@ import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
+import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
 import com.SmellyModder.TheLostSea.common.item.ItemOrb;
 import com.SmellyModder.TheLostSea.common.item.ItemPearl;
 import com.SmellyModder.TheLostSea.common.item.ItemShieldBase;
@@ -115,8 +116,8 @@ public class TLSItems {
 	
 	
 	//Finned Arrows
-	public static Item FINNED_ARROW = new ItemBase("finnedarrow");
-	public static Item COBALT_FINNED_ARROW = new ItemBase("cobaltfinnedarrow");
+	public static Item FINNED_ARROW = new ItemFinnedArrow("finnedarrow");
+	public static Item COBALT_FINNED_ARROW = new ItemFinnedArrow("cobaltfinnedarrow");
 	
 	//Tools Prismarine
 	public static Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
