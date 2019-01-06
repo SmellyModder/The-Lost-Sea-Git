@@ -1,5 +1,5 @@
 {
-   "parent": "item/handheld",
+   "parent": "item/bow",
    "textures": {
        "layer0": "thelostsea:items/tools/cobaltbow_standby"
    },

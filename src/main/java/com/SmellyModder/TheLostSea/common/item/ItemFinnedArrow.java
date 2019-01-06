@@ -24,7 +24,7 @@ public class ItemFinnedArrow extends ItemBase
 	
 	public ItemFinnedArrow(String name) {
 		super(name);
-		setMaxStackSize(1);
+		setMaxStackSize(64);
 		setMaxDamage(1000);
 		setCreativeTab(TheLostSea.TLS_GEAR);
 	}

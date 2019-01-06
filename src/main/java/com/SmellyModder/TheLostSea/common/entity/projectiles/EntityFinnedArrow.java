@@ -74,9 +74,9 @@ public class EntityFinnedArrow extends EntityLSArrow
 	public void onUpdate() {
 		super.onUpdate();
 		if(this.isInWater()) {
-			this.motionX *= (double)2.05F;
-			this.motionY *= (double)2.05F;
-        	this.motionZ *= (double)2.05F;
+			this.motionX *= (double)1.7F;
+			this.motionY *= (double)1.7;
+        	this.motionZ *= (double)1.7F;
 		}
 	}
     /**
@@ -161,4 +161,15 @@ public class EntityFinnedArrow extends EntityLSArrow
             return values()[0];
         }
     }
+
+	@Override
+	protected ItemStack getArrowStack() {
+		switch(this.getFinnedArrowType()) {
+		case NORMAL:
+			return new ItemStack(TLSItems.FINNED_ARROW);
+		case COBALT:
+			return new ItemStack(TLSItems.COBALT_FINNED_ARROW);
+		}
+		return null;
+	}
 }

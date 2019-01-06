@@ -72,4 +72,22 @@ public class EntityLSArrow extends EntityArrow implements IThrowableEntity{
 	public void setThrower(Entity entity) {
 		this.shootingEntity = entity;
 	}
+	
+	 @SideOnly(Side.CLIENT)
+	 public boolean isInRangeToRenderDist(double distance)
+	 {
+	        return true;
+	 }
+	
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if (!this.hasNoGravity() && !this.isInWater())
+        {
+            this.motionY -= 0.0;
+        }
+		else if(!this.hasNoGravity() && this.isInWater()) {
+			this.motionY += 0.03000000074505806D;
+		}
+	}
 }

@@ -128,7 +128,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
                     {
                     	ItemFinnedArrow itemarrow = (ItemFinnedArrow)(itemstack.getItem() instanceof ItemFinnedArrow ? itemstack.getItem() : TLSItems.FINNED_ARROW);
                         EntityFinnedArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
-                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, 5, 1.0F);
+                        entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, 3 * f, 1.0F);
                         if(itemarrow == TLSItems.FINNED_ARROW)
                         {
                         	entityarrow.setArrowType(TypeOfArrow.NORMAL);
@@ -193,6 +193,19 @@ public class ItemBowBase extends ItemBow implements IHasModel
         }
     }
 	
+	public static float getArrowVelocity(int charge)
+    {
+        float f = (float)charge / 20.0F;
+        f = (f * f + f * 2.0F) / 3.0F;
+
+        if (f > 1.0F)
+        {
+            f = 1.0F;
+        }
+
+        return f;
+    }
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumRarity getRarity(ItemStack stack) {
@@ -201,8 +214,6 @@ public class ItemBowBase extends ItemBow implements IHasModel
 	
 	@Override
 	public void registerModels() {
-		
-		
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 		
 	}
