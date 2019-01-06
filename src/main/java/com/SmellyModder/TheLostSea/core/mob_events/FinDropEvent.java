@@ -21,7 +21,7 @@ public class FinDropEvent {
 	    @SubscribeEvent
 	    public void onMobDrops(LivingDropsEvent event)
 	    {
-	        if (event.getEntity() instanceof EntityGuardian)
+	        if (event.getEntity() instanceof EntityGuardian && rand.nextInt(4) <= 2)
 	        {
 	        	World world = event.getEntity().getEntityWorld();
 	            
