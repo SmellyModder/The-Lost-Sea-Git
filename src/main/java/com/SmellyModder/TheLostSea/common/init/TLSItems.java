@@ -12,6 +12,7 @@ import com.SmellyModder.TheLostSea.common.item.ItemTempleFinder;
 import com.SmellyModder.TheLostSea.common.item.TLS_Rarities;
 import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
+import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBase;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
@@ -61,6 +62,7 @@ public class TLSItems {
 	
 	public static class ArmorMaterials {
 		public static final ArmorMaterial PRISMARINE_ARMOR = EnumHelper.addArmorMaterial("prismarineArmor", "thelostsea:prismarine", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
+		public static final ArmorMaterial VANADIUM_ARMOR = EnumHelper.addArmorMaterial("vanadiumArmor", "thelostsea:vanadium", 35, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f);
 	}
 	
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
@@ -138,7 +140,11 @@ public class TLSItems {
 	public static Item VANADIUM_SHOVEL = new ItemSpadeBase("vanadium_shovel", VANADIUM_MAT);
 	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
 	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
-	public static Item VANADIUM_SHIELD = new ItemShieldBase("vanadium_shield", TLS_Rarities.RARE);
+	//public static Item VANADIUM_SHIELD = new ItemShieldBase("vanadium_shield", TLS_Rarities.RARE);
+	public static final Item VANADIUM_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	public static final Item VANADIUM_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
+	public static final Item VANADIUM_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Tools Aquamarine
 	public static Item AQUAMARINE_SWORD = new ItemSwordBase("aquamarine_sword", AQUAMARINE_MAT);

@@ -76,7 +76,7 @@ public class EntityFinnedArrow extends EntityLSArrow
 			this.motionX *= (double)1.7F;
 			this.motionY *= (double)1.7;
         	this.motionZ *= (double)1.7F;
-        	this.setDamage(this.getDamage() * 1.2F);
+        	this.setDamage(this.getDamage() * 1.05F);
 		}
 		else if(this.isInWater() && this.getFinnedArrowType() == EntityFinnedArrow.TypeOfArrow.NORMAL){
 			this.motionX *= (double)1.55F;

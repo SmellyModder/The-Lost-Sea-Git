@@ -130,6 +130,10 @@ item.vanadium_axe.name=Vanadium Axe
 item.vanadium_pickaxe.name=Vanadium Pickaxe
 item.vanadium_shovel.name=Vanadium Shovel
 tile.vanadium_block.name=Block of Vanadium 
+item.vanadium_helmet.name=Vanadium Helmet
+item.vanadium_chestplate.name=Vanadium Chestplate
+item.vanadium_leggings.name=Vanadium Leggings
+item.vanadium_boots.name=Vanadium Boots
 
 # Aquamarine
 item.aquamarine_sword.name=Aquamarine Sword
