@@ -18,6 +18,7 @@ import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
+import com.SmellyModder.TheLostSea.common.item.shield.ItemVanadiumShield;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemCobaltSword;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemFishBucket;
@@ -140,11 +141,12 @@ public class TLSItems {
 	public static Item VANADIUM_SHOVEL = new ItemSpadeBase("vanadium_shovel", VANADIUM_MAT);
 	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
 	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
-	//public static Item VANADIUM_SHIELD = new ItemShieldBase("vanadium_shield", TLS_Rarities.RARE);
+	public static Item VANADIUM_SHIELD = new ItemVanadiumShield("vanadium_shield");
 	public static final Item VANADIUM_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
 	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
 	public static final Item VANADIUM_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
 	public static final Item VANADIUM_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
+	
 	
 	//Tools Aquamarine
 	public static Item AQUAMARINE_SWORD = new ItemSwordBase("aquamarine_sword", AQUAMARINE_MAT);

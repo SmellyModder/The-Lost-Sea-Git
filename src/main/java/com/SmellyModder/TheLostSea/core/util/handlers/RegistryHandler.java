@@ -1,5 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
+import com.SmellyModder.TheLostSea.client.model.items.ModelVanadiumShield;
 import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestFullRenderer;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
 import com.SmellyModder.TheLostSea.common.init.TLSBiomes;
@@ -16,12 +17,20 @@ import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterCh
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.util.CommandDimensionTP;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
+import com.SmellyModder.TheLostSea.core.util.Reference;
+import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
+
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.BannerTextures;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -63,6 +72,24 @@ public class RegistryHandler {
 				
 			}
 			
+			if(item instanceof ILSShield) {
+				
+				if(item == TLSItems.VANADIUM_SHIELD) {
+					
+					ModelVanadiumShield model = ((ILSShield)item).shieldModel();
+					
+					item.setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
+			            @Override
+			            public void renderByItem(ItemStack stack) {
+			                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/models/shield/vanadium_shield.png"));
+			                GlStateManager.pushMatrix();
+			                GlStateManager.scale(1.0F, -1.0F, -1.0F);
+			                model.render();
+			                GlStateManager.popMatrix();
+			            }
+				    });
+				}
+			}
 		}
 		for(Block block : TLSBlocks.BLOCKS) {
 			
@@ -85,6 +112,8 @@ public class RegistryHandler {
 	                TileEntityRendererDispatcher.instance.render(chest1, 0.0, 0.0, 0.0, 0.0F, 1.0F);
 	            }
 		    });
+		    
+		    
 		}
 	}
 	
