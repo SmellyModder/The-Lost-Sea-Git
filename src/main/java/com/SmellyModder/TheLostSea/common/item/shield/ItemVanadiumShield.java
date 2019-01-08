@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import org.lwjgl.input.Keyboard;
+
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
@@ -30,6 +32,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -68,6 +71,15 @@ public class ItemVanadiumShield extends ItemBase implements ILSShield
     {
         return 72000;
     }
+    
+    @Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+    	if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+    		tooltip.add(TextFormatting.BLUE + "This item is immune to Salt Degradation");
+    	} else {
+    		tooltip.add(TextFormatting.DARK_GREEN + "Anti-Chloride" + TextFormatting.DARK_GRAY + " [Shift]");
+    	}
+	}
 
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
@@ -76,7 +88,6 @@ public class ItemVanadiumShield extends ItemBase implements ILSShield
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
     }
 
-    
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
         return repair.getItem() == Item.getItemFromBlock(TLSBlocks.VANADIUM_BLOCK) ? true : super.getIsRepairable(toRepair, repair);

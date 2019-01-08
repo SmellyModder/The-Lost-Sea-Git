@@ -12,7 +12,7 @@ import com.SmellyModder.TheLostSea.common.item.ItemTempleFinder;
 import com.SmellyModder.TheLostSea.common.item.TLS_Rarities;
 import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
-import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBase;
+import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBaseV;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
@@ -142,10 +142,10 @@ public class TLSItems {
 	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
 	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
 	public static Item VANADIUM_SHIELD = new ItemVanadiumShield("vanadium_shield");
-	public static final Item VANADIUM_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
-	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
-	public static final Item VANADIUM_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
-	public static final Item VANADIUM_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
+	public static final Item VANADIUM_HELMET = new ItemArmorBaseV("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBaseV("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	public static final Item VANADIUM_LEGGINGS = new ItemArmorBaseV("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
+	public static final Item VANADIUM_BOOTS = new ItemArmorBaseV("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	
 	//Tools Aquamarine
