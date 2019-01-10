@@ -13,11 +13,13 @@ import com.SmellyModder.TheLostSea.common.item.TLS_Rarities;
 import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBaseV;
+import com.SmellyModder.TheLostSea.common.item.devutils.ItemScreen;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
+import com.SmellyModder.TheLostSea.common.item.shield.ItemCobaltShield;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemVanadiumShield;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemCobaltSword;
@@ -135,6 +137,7 @@ public class TLSItems {
 	public static Item COBALT_PICKAXE = new ItemPickaxeBase("cobalt_pickaxe", COBALT_MAT);
 	public static Item COBALT_AXE = new ItemCobaltAxe("cobalt_axe", COBALT_MAT);
 	public static Item COBALT_BOW = new ItemBowBase("cobaltbow");
+	public static Item COBALT_SHIELD = new ItemCobaltShield("cobalt_shield");
 	
 	//Tools Vanadium
 	public static Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);
@@ -193,4 +196,7 @@ public class TLSItems {
 	 * @param boolean(Is Special) - makes it enchanted, highlights text, will be marked as a *Special* rarity
 	 */
 	public static Item CUTLASS = new ItemCutlass("cutlass", CUTLASS_MAT, true);
+	
+	//Util
+	public static Item GS = new ItemScreen("gs");
 }

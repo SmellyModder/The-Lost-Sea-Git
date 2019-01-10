@@ -6,6 +6,7 @@ import java.util.List;
 import com.SmellyModder.TheLostSea.common.enchants.disc.EnchantmentDoubleTrouble;
 import com.SmellyModder.TheLostSea.common.enchants.disc.EnchantmentRecharge;
 import com.SmellyModder.TheLostSea.common.enchants.disc.EnchantmentZeusThrower;
+import com.SmellyModder.TheLostSea.common.enchants.tools.EnchantmentAntiChloride;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.enchantment.Enchantment;
@@ -22,4 +23,6 @@ public class TLSEnchants {
 	public static final Enchantment DOUBLE_TROUBLE = new EnchantmentDoubleTrouble(new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 	
 	public static final Enchantment RECHARGE = new EnchantmentRecharge(new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+
+	public static final Enchantment ANTI_CHLORIDE = new EnchantmentAntiChloride(new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 }

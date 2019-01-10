@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.core.math;
 import java.util.Random;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 public class LSMathHelper {
 
@@ -44,5 +45,9 @@ public class LSMathHelper {
 	    
 	    public static float square(float value) {
 	    	return value * value;
+	    }
+	    
+	    public static float squareInverted(float value) {
+	    	return (float) ((value * value) / MathHelper.fastInvSqrt(value));
 	    }
 }

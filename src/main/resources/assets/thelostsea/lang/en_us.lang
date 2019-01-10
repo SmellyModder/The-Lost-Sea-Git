@@ -7,7 +7,7 @@ itemGroup.The-Lost-Sea-Music=§3Lost Sea Music§r
 itemGroup.The-Lost-Sea-Ores=§3Lost Sea Ores§r
 
 
-#Blocks
+# Blocks
 tile.liquidack.name=Liquidack
 tile.runic_eye.name=Prismarine Eye Rune
 tile.carved_eye.name=Carved Prismarine Eye
@@ -143,7 +143,7 @@ item.aquamarine_pickaxe.name=Aquamarine Pickaxe
 item.aquamarine_shovel.name=Aquamarine Shovel
 tile.aquamarine_block.name=Block of Aquamarine
 
-#Finned Arrows
+# Finned Arrows
 item.finnedarrow.name=Finned Arrow
 item.cobaltfinnedarrow.name=Cobalt Finned Arrow
 
@@ -184,6 +184,7 @@ item.prismarine_boots.name=Prismarine Boots
 enchantment.zeus_thrower=§eZeus Thrower§r
 enchantment.double_trouble=§eDouble Trouble§r
 enchantment.recharge=§eRecharge§r
+enchantment.anti_chloride=§2Anti Chloride§r
 
 # Advancements
 thelostsea.advancements.entity_killed.angler_fish.title=Bio-lumie Killer

@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
  * ModelVShield - SmellyModder
  * Created using Tabula 7.0.0
  */
-public class ModelVanadiumShield extends ModelBase {
+public class ModelVanadiumShield extends ModelLSShield {
     public ModelRenderer handle;
     public ModelRenderer plate;
     public ModelRenderer shape4;
@@ -52,6 +52,7 @@ public class ModelVanadiumShield extends ModelBase {
         this.plate.addChild(this.shape4);
     }
 
+    @Override
     public void render() { 
         this.handle.render(0.0625F);
     }

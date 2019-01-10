@@ -1,54 +1,42 @@
 package com.SmellyModder.TheLostSea.common.item.shield;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import org.lwjgl.input.Keyboard;
-
-import com.SmellyModder.TheLostSea.common.item.ItemBase;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
-import com.SmellyModder.TheLostSea.core.util.player.ILostSeaPlayer;
+import com.SmellyModder.TheLostSea.client.model.items.ModelCobaltShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelLSShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelVanadiumShield;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
+import com.SmellyModder.TheLostSea.common.item.ItemBase;
+import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
 
 import net.minecraft.block.BlockDispenser;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Enchantments;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemBanner;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityBanner;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemVanadiumShield extends ItemBase implements ILSShield
+public class ItemCobaltShield extends ItemBase implements ILSShield
 {
-    public ItemVanadiumShield(String name)
+    public ItemCobaltShield(String name)
     {
     	super(name);
         this.maxStackSize = 1;
-        this.setMaxDamage(655);
+        this.setMaxDamage(876);
         this.setCreativeTab(TheLostSea.TLS_GEAR);
         this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter()
         {
@@ -60,19 +48,10 @@ public class ItemVanadiumShield extends ItemBase implements ILSShield
         });
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
     }
-    
-    @Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (isInCreativeTab(tab)) {
-			ItemStack istack = new ItemStack(this);
-			istack.addEnchantment(TLSEnchants.ANTI_CHLORIDE, 1);
-			list.add(istack);
-		}
-	}
 
     public String getItemStackDisplayName(ItemStack stack)
     {
-        return I18n.translateToLocal("item.v_shield.name");
+        return I18n.translateToLocal("item.cobalt_shield.name");
     }
     
     public EnumAction getItemUseAction(ItemStack stack)
@@ -94,12 +73,11 @@ public class ItemVanadiumShield extends ItemBase implements ILSShield
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return repair.getItem() == Item.getItemFromBlock(TLSBlocks.VANADIUM_BLOCK) ? true : super.getIsRepairable(toRepair, repair);
+        return repair.getItem() == Item.getItemFromBlock(TLSBlocks.COBALT_BLOCK) ? true : super.getIsRepairable(toRepair, repair);
     }
 
 	@Override
 	public ModelLSShield shieldModel() {
-		return new ModelVanadiumShield();
+		return new ModelCobaltShield();
 	}
-
 }

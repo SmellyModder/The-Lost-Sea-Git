@@ -1,5 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
+import com.SmellyModder.TheLostSea.client.model.items.ModelLSShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelVanadiumShield;
 import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestFullRenderer;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
@@ -74,20 +75,13 @@ public class RegistryHandler {
 			
 			if(item instanceof ILSShield) {
 				
+				ModelLSShield model = ((ILSShield)item).shieldModel();
+				
 				if(item == TLSItems.VANADIUM_SHIELD) {
-					
-					ModelVanadiumShield model = ((ILSShield)item).shieldModel();
-					
-					item.setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
-			            @Override
-			            public void renderByItem(ItemStack stack) {
-			                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/models/shield/vanadium_shield.png"));
-			                GlStateManager.pushMatrix();
-			                GlStateManager.scale(1.0F, -1.0F, -1.0F);
-			                model.render();
-			                GlStateManager.popMatrix();
-			            }
-				    });
+					RegistryHandler.createRender(item, model, ":textures/models/shield/vanadium_shield.png");
+				}
+				else if(item == TLSItems.COBALT_SHIELD) {
+					RegistryHandler.createRender(item, model, ":textures/models/shield/cobalt_shield.png");
 				}
 			}
 		}
@@ -116,7 +110,7 @@ public class RegistryHandler {
 		    
 		}
 	}
-	
+
 	public static void initRegistries() {
 
         TLSBiomes.registerBiomes();
@@ -139,4 +133,17 @@ public class RegistryHandler {
         event.registerServerCommand(new CommandDimensionTP());
 
     }
+	
+	private static void createRender(Item item, ModelLSShield s, String resource) {
+		item.setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
+            @Override
+            public void renderByItem(ItemStack stack) {
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + resource));
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(1.0F, -1.0F, -1.0F);
+                s.render();
+                GlStateManager.popMatrix();
+            }
+	    });
+	}
 }

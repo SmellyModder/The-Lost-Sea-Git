@@ -52,6 +52,8 @@ public class EntityDisc extends LSProjectile implements IEntityAdditionalSpawnDa
 	
 	private int bounceCount;
 	
+	public float spin, prevSpin;
+	
 	public boolean shouldSummon2 = false;
 	
 	private int damageToDeal() {
@@ -75,7 +77,7 @@ public class EntityDisc extends LSProjectile implements IEntityAdditionalSpawnDa
 	
 	public boolean createBolts = false;
 	public int setDiscType;
-	private int speedForType() {
+	public int speedForType() {
 		switch (this.getDiscType())
         {
 		case PRISMARINE:
@@ -323,6 +325,11 @@ public class EntityDisc extends LSProjectile implements IEntityAdditionalSpawnDa
 
         if (bounceCount > 25 && !world.isRemote) {
             setDead();
+        }
+        
+        this.prevSpin = spin;
+        if(!this.onGround) {
+        	spin += 26F;
         }
 
         float damping = 0.98f;

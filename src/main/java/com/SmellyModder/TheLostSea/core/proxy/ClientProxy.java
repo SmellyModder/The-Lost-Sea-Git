@@ -4,6 +4,7 @@ import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
 import com.SmellyModder.TheLostSea.client.gui.npc.GuiNurmNpc;
 import com.SmellyModder.TheLostSea.client.gui.npc.NPCFont;
 import com.SmellyModder.TheLostSea.client.gui.npc.shop.GuiNurmShop;
+import com.SmellyModder.TheLostSea.client.util.GuiGreenScreen;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.handlers.RenderHandler;
 
@@ -30,6 +31,11 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void preInit() {
 		RenderHandler.registerEntityRenders();
+	}
+	
+	@Override
+	public void openScreen() {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiGreenScreen());
 	}
 
 	@Override

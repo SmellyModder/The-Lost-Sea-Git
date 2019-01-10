@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
@@ -29,14 +30,14 @@ public class ItemArmorBaseV extends ItemArmor implements IHasModel{
 		TLSItems.ITEMS.add(this);
 	}
 	
-	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-    	if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-    		tooltip.add(TextFormatting.BLUE + "This item is immune to Salt Degradation");
-    	} else {
-    		tooltip.add(TextFormatting.DARK_GREEN + "Anti-Chloride" + TextFormatting.DARK_GRAY + " [Shift]");
-    	}
-	}
+	 @Override
+		public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+			if (isInCreativeTab(tab)) {
+				ItemStack istack = new ItemStack(this);
+				istack.addEnchantment(TLSEnchants.ANTI_CHLORIDE, 1);
+				list.add(istack);
+			}
+		}
 	
 	@Override
 	public void registerModels() {

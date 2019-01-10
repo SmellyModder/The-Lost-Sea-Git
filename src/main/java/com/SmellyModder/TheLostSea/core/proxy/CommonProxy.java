@@ -20,6 +20,10 @@ public class CommonProxy {
 	{
 	}
 	
+	public void openScreen() {
+		
+	}
+	
 	public void initCapabilites() {
 		 
 	}

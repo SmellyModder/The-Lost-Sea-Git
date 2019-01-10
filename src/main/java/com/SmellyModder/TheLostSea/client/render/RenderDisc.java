@@ -6,6 +6,7 @@ import com.SmellyModder.TheLostSea.client.model.ModelDisc;
 import com.SmellyModder.TheLostSea.client.model.ModelJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
+import com.SmellyModder.TheLostSea.core.math.LSMathHelper;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.client.model.ModelBook;
@@ -40,11 +41,13 @@ public class RenderDisc extends Render<EntityDisc>{
 	public void doRender(EntityDisc entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
 		float f1 = (float)entity.ticksExisted;
+		float spin = entity.prevSpin + ((entity.spin - entity.prevSpin) * 2) * partialTicks;
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float)x, (float)y - 0.35F, (float)z);
+        GlStateManager.translate((float)x, (float)y - 1.05F, (float)z);
         GlStateManager.rotate(entity.prevRotationYaw + (entity.rotationYaw - entity.prevRotationYaw) * partialTicks - 90.0F, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(entity.rotationYaw, (float)x, f1, (float)z);
+        //GlStateManager.rotate(entity.rotationYaw, (float)x, f1, (float)z);
         GlStateManager.rotate(entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(spin, 0.0F, 1.0F, 0.0F);
         this.bindEntityTexture(entity);
 
         if (this.renderOutlines)
