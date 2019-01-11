@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.item.tools.main;
+package com.SmellyModder.TheLostSea.common.item.tools.base;
 
 import java.util.List;
 

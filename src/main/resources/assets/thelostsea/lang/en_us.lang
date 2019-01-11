@@ -123,6 +123,7 @@ item.cobalt_pickaxe.name=Cobalt Pickaxe
 item.cobalt_shovel.name=Cobalt Shovel
 item.cobaltbow.name=Cobalt Bow
 tile.cobalt_block.name=Block of Cobalt
+item.cobalt_shield.name=Cobalt Shield
 
 # Vanadium
 item.vanadium_sword.name=Vanadium Sword

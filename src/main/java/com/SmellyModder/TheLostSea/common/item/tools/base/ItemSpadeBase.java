@@ -1,26 +1,27 @@
-package com.SmellyModder.TheLostSea.common.item.tools.main;
+package com.SmellyModder.TheLostSea.common.item.tools.base;
 
 import java.util.List;
-import java.util.Set;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.util.NonNullList;
-import net.minecraft.world.World;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-public class ItemPickaxeBase extends ItemPickaxe  implements IHasModel{
+public class ItemSpadeBase extends ItemSpade implements IHasModel{
 
-	public ItemPickaxeBase(String name, ToolMaterial material) 
+	public ItemSpadeBase(String name, ToolMaterial material) 
 	{ 
 		super(material);
 		setRegistryName(name);
@@ -28,10 +29,10 @@ public class ItemPickaxeBase extends ItemPickaxe  implements IHasModel{
 		setCreativeTab(TheLostSea.TLS_GEAR);
 		TLSItems.ITEMS.add(this);
 	}
-	
+
 	@Override
 	public void registerModels() {
-		
+	
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 }

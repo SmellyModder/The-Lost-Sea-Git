@@ -37,11 +37,11 @@ import com.SmellyModder.TheLostSea.common.item.tools.ItemHoeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemPickaxeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemSpadeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemSwordBaseP;
+import com.SmellyModder.TheLostSea.common.item.tools.base.ItemAxeBase;
+import com.SmellyModder.TheLostSea.common.item.tools.base.ItemPickaxeBase;
+import com.SmellyModder.TheLostSea.common.item.tools.base.ItemSpadeBase;
+import com.SmellyModder.TheLostSea.common.item.tools.base.ItemSwordBase;
 import com.SmellyModder.TheLostSea.common.item.tools.cobalt.ItemCobaltAxe;
-import com.SmellyModder.TheLostSea.common.item.tools.main.ItemAxeBase;
-import com.SmellyModder.TheLostSea.common.item.tools.main.ItemPickaxeBase;
-import com.SmellyModder.TheLostSea.common.item.tools.main.ItemSpadeBase;
-import com.SmellyModder.TheLostSea.common.item.tools.main.ItemSwordBase;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.client.renderer.entity.RenderArrow;

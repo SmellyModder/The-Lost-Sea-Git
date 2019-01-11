@@ -60,15 +60,6 @@ public class ItemVanadiumShield extends ItemBase implements ILSShield
         });
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
     }
-    
-    @Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
-		if (isInCreativeTab(tab)) {
-			ItemStack istack = new ItemStack(this);
-			istack.addEnchantment(TLSEnchants.ANTI_CHLORIDE, 1);
-			list.add(istack);
-		}
-	}
 
     public String getItemStackDisplayName(ItemStack stack)
     {

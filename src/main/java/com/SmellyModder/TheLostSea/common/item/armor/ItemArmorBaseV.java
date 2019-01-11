@@ -30,15 +30,6 @@ public class ItemArmorBaseV extends ItemArmor implements IHasModel{
 		TLSItems.ITEMS.add(this);
 	}
 	
-	 @Override
-		public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
-			if (isInCreativeTab(tab)) {
-				ItemStack istack = new ItemStack(this);
-				istack.addEnchantment(TLSEnchants.ANTI_CHLORIDE, 1);
-				list.add(istack);
-			}
-		}
-	
 	@Override
 	public void registerModels() {
 		
