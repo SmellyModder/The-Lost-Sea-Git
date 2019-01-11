@@ -12,7 +12,7 @@ import com.SmellyModder.TheLostSea.common.item.ItemTempleFinder;
 import com.SmellyModder.TheLostSea.common.item.TLS_Rarities;
 import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
-import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBaseV;
+import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBase;
 import com.SmellyModder.TheLostSea.common.item.devutils.ItemScreen;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
@@ -66,6 +66,8 @@ public class TLSItems {
 	public static class ArmorMaterials {
 		public static final ArmorMaterial PRISMARINE_ARMOR = EnumHelper.addArmorMaterial("prismarineArmor", "thelostsea:prismarine", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 		public static final ArmorMaterial VANADIUM_ARMOR = EnumHelper.addArmorMaterial("vanadiumArmor", "thelostsea:vanadium", 35, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f);
+		public static final ArmorMaterial COBALT_ARMOR = EnumHelper.addArmorMaterial("cobaltArmor", "thelostsea:cobalt", 45, new int[]{4, 8, 10, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 3f);
+		public static final ArmorMaterial AQUAMARINE_ARMOR = EnumHelper.addArmorMaterial("aquamarineArmor", "thelostsea:aquamarine", 37, new int[]{3, 7, 9, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2f);
 	}
 	
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
@@ -138,6 +140,10 @@ public class TLSItems {
 	public static Item COBALT_AXE = new ItemCobaltAxe("cobalt_axe", COBALT_MAT);
 	public static Item COBALT_BOW = new ItemBowBase("cobaltbow");
 	public static Item COBALT_SHIELD = new ItemCobaltShield("cobalt_shield");
+	//public static final Item COBALT_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.COBALT_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	//public static final Item COBALT_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.COBALT_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	//public static final Item COBALT_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.COBALT_ARMOR, 2, EntityEquipmentSlot.LEGS);
+	//public static final Item COBALT_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.COBALT_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Tools Vanadium
 	public static Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);
@@ -145,10 +151,10 @@ public class TLSItems {
 	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
 	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
 	public static Item VANADIUM_SHIELD = new ItemVanadiumShield("vanadium_shield");
-	public static final Item VANADIUM_HELMET = new ItemArmorBaseV("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
-	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBaseV("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
-	public static final Item VANADIUM_LEGGINGS = new ItemArmorBaseV("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
-	public static final Item VANADIUM_BOOTS = new ItemArmorBaseV("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
+	public static final Item VANADIUM_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	public static final Item VANADIUM_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
+	public static final Item VANADIUM_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	
 	//Tools Aquamarine
@@ -156,6 +162,10 @@ public class TLSItems {
 	public static Item AQUAMARINE_SHOVEL = new ItemSpadeBase("aquamarine_shovel", AQUAMARINE_MAT);
 	public static Item AQUAMARINE_PICKAXE = new ItemPickaxeBase("aquamarine_pickaxe", AQUAMARINE_MAT);
 	public static Item AQUAMARINE_AXE = new ItemAxeBase("aquamarine_axe", AQUAMARINE_MAT);
+	public static final Item AQUAMARINE_HELMET = new ItemArmorBase("aquamarine_helmet", ArmorMaterials.AQUAMARINE_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	public static final Item AQUAMARINE_CHESTPLATE = new ItemArmorBase("aquamarine_chestplate", ArmorMaterials.AQUAMARINE_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	public static final Item AQUAMARINE_LEGGINGS = new ItemArmorBase("aquamarine_leggings", ArmorMaterials.AQUAMARINE_ARMOR, 2, EntityEquipmentSlot.LEGS);
+	public static final Item AQUAMARINE_BOOTS = new ItemArmorBase("aquamarine_boots", ArmorMaterials.AQUAMARINE_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Foods
 	public static ItemFood BUBBLE_FRUIT = new ItemBubbleFruit("bubble_berry", 2, false).setAlwaysEdible();
