@@ -173,7 +173,7 @@ public class EntityFinnedArrow extends EntityLSArrow
 		case NORMAL:
 			return new ItemStack(TLSItems.FINNED_ARROW);
 		case COBALT:
-			return new ItemStack(TLSItems.COBALT_FINNED_ARROW);
+			return new ItemStack(TLSItems.NEPTUNUM_FINNED_ARROW);
 		}
 		return null;
 	}

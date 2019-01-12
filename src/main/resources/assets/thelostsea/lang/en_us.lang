@@ -50,8 +50,8 @@ tile.sea_diamondore.name=Oceanic Diamond Ore
 tile.deepsea_diamondore.name=Trench Diamond Ore
 tile.sea_coalore.name=Oceanic Coal Ore
 tile.deepsea_coalore.name=Trench Coal Ore
-tile.sea_cobaltore.name=Cobalt Ore
-tile.deepsea_cobaltore.name=Trench Cobalt Ore
+tile.sea_cobaltore.name=Neptunum Ore
+tile.deepsea_cobaltore.name=Trench Neptunum Ore
 tile.sea_aquamarineore.name=Aquamarine Ore
 tile.sea_vanadiumore.name=Vanadium Ore
 tile.deepsea_vanadiumore.name=Trench Vanadium Ore
@@ -93,7 +93,7 @@ item.sub.white.name=White Submarine I
 # Materials
 item.pearl.name=Pearl
 item.shark_tooth.name=Shark Tooth
-item.cobalt.name=Cobalt
+item.cobalt.name=Neptunum
 item.vanadium_ingot.name=Vanadium Ingot
 item.aquamarine.name=Aquamarine
 
@@ -117,13 +117,13 @@ item.prismarine_hoe.name=Prismarine Hoe
 item.elastic_prismarine.name=Elastic Prismarine Ball
 
 # Cobalt
-item.cobalt_sword.name=Cobalt Sword
-item.cobalt_axe.name=Cobalt Axe
-item.cobalt_pickaxe.name=Cobalt Pickaxe
-item.cobalt_shovel.name=Cobalt Shovel
-item.cobaltbow.name=Cobalt Bow
-tile.cobalt_block.name=Block of Cobalt
-item.cobalt_shield.name=Cobalt Shield
+item.cobalt_sword.name=Neptunum Sword
+item.cobalt_axe.name=Neptunum Axe
+item.cobalt_pickaxe.name=Neptunum Pickaxe
+item.cobalt_shovel.name=Neptunum Shovel
+item.cobaltbow.name=Neptunum Bow
+tile.cobalt_block.name=Block of Neptunum
+item.cobalt_shield.name=Neptunum Shield
 
 # Vanadium
 item.vanadium_sword.name=Vanadium Sword
@@ -150,7 +150,7 @@ item.aquamarine_boots.name=Aquamarine Boots
 
 # Finned Arrows
 item.finnedarrow.name=Finned Arrow
-item.cobaltfinnedarrow.name=Cobalt Finned Arrow
+item.cobaltfinnedarrow.name=Neptunum Finned Arrow
 
 # Fish
 item.angler_fish.name=Angler Fish

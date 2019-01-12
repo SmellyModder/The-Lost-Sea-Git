@@ -80,7 +80,7 @@ public class RegistryHandler {
 				if(item == TLSItems.VANADIUM_SHIELD) {
 					RegistryHandler.createRender(item, model, ":textures/models/shield/vanadium_shield.png");
 				}
-				else if(item == TLSItems.COBALT_SHIELD) {
+				else if(item == TLSItems.NEPTUNUM_SHIELD) {
 					RegistryHandler.createRender(item, model, ":textures/models/shield/cobalt_shield.png");
 				}
 			}

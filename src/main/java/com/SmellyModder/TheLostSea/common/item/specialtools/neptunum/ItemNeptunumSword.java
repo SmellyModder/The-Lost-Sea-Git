@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.item.specialtools;
+package com.SmellyModder.TheLostSea.common.item.specialtools.neptunum;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
@@ -21,29 +21,44 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Set;
 
+import org.lwjgl.input.Keyboard;
 
-public class ItemCobaltSword extends ItemTool implements IHasModel{
 
-	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.PLANKS, Blocks.BOOKSHELF, Blocks.LOG, Blocks.LOG2, Blocks.CHEST, Blocks.PUMPKIN, Blocks.LIT_PUMPKIN, Blocks.MELON_BLOCK, Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE);
-	public ItemCobaltSword(String name, ToolMaterial material) 
+public class ItemNeptunumSword extends ItemTool implements IHasModel{
+
+	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.WEB);
+	public ItemNeptunumSword(String name, ToolMaterial material) 
 	{ 
 		super(material, EFFECTIVE_ON);
 		setRegistryName(name);
 		setTranslationKey(name);
 		setCreativeTab(TheLostSea.TLS_GEAR);
 		
-		this.attackSpeed = 0.10F;
+		this.attackSpeed = -1F;
 		
 		TLSItems.ITEMS.add(this);
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+        {
+			tooltip.add(TextFormatting.BLUE + "Water-Bound:" + TextFormatting.GRAY + " This item is more powerful when your elements are bound to water");
+        }
+		else {
+			tooltip.add(TextFormatting.BLUE + "Water-Bound" + TextFormatting.GRAY + " [SHIFT]");
+		}
+	}
+	
+	@Override
 	public void registerModels() {
-		
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 

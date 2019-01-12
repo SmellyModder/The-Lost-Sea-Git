@@ -1,6 +1,10 @@
 package com.SmellyModder.TheLostSea.common.item.specialtools;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
+
+import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow.TypeOfArrow;
@@ -10,6 +14,7 @@ import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,6 +33,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -53,7 +59,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
                 }
                 else
                 {
-                    return entityIn.getActiveItemStack().getItem() != TLSItems.COBALT_BOW ? 0.0F : (float)(stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F;
+                    return entityIn.getActiveItemStack().getItem() != TLSItems.NEPTUNUM_BOW ? 0.0F : (float)(stack.getMaxItemUseDuration() - entityIn.getItemInUseCount()) / 20.0F;
                 }
             }
         });
@@ -118,7 +124,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
             {
                 if (itemstack.isEmpty())
                 {
-                    itemstack = new ItemStack(TLSItems.COBALT_FINNED_ARROW);
+                    itemstack = new ItemStack(TLSItems.NEPTUNUM_FINNED_ARROW);
                 }
 
                 float f = getArrowVelocity(i);
@@ -137,7 +143,7 @@ public class ItemBowBase extends ItemBow implements IHasModel
                         	entityarrow.setArrowType(TypeOfArrow.NORMAL);
                         }
                         
-                        if(itemarrow == TLSItems.COBALT_FINNED_ARROW)
+                        if(itemarrow == TLSItems.NEPTUNUM_FINNED_ARROW)
                         {
                         	entityarrow.setArrowType(TypeOfArrow.COBALT);
                         }
@@ -199,6 +205,18 @@ public class ItemBowBase extends ItemBow implements IHasModel
             }
         }
     }
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+        {
+			tooltip.add(TextFormatting.BLUE + "Water-Bound:" + TextFormatting.GRAY + " This item is more powerful when your elements are bound to water");
+        }
+		else {
+			tooltip.add(TextFormatting.BLUE + "Water-Bound" + TextFormatting.GRAY + " [SHIFT]");
+		}
+	}
 	
 	public static float getArrowVelocity(int charge)
     {

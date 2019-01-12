@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.client.model;
+package com.SmellyModder.TheLostSea.client.model.armor;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBiped;

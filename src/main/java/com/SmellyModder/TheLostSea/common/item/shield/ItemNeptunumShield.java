@@ -1,6 +1,10 @@
 package com.SmellyModder.TheLostSea.common.item.shield;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
+
+import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.client.model.items.ModelCobaltShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelLSShield;
@@ -12,6 +16,7 @@ import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
 
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,14 +30,15 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemCobaltShield extends ItemBase implements ILSShield
+public class ItemNeptunumShield extends ItemBase implements ILSShield
 {
-    public ItemCobaltShield(String name)
+    public ItemNeptunumShield(String name)
     {
     	super(name);
         this.maxStackSize = 1;
@@ -79,5 +85,17 @@ public class ItemCobaltShield extends ItemBase implements ILSShield
 	@Override
 	public ModelLSShield shieldModel() {
 		return new ModelCobaltShield();
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+        {
+			tooltip.add(TextFormatting.BLUE + "Water-Bound:" + TextFormatting.GRAY + " This item is more powerful when your elements are bound to water");
+        }
+		else {
+			tooltip.add(TextFormatting.BLUE + "Water-Bound" + TextFormatting.GRAY + " [SHIFT]");
+		}
 	}
 }

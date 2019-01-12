@@ -3,7 +3,7 @@ package com.SmellyModder.TheLostSea.common.item.armor;
 import java.util.List;
 
 import com.SmellyModder.TheLostSea.client.model.ModelFlippers;
-import com.SmellyModder.TheLostSea.client.model.ModelPrismarineArmor;
+import com.SmellyModder.TheLostSea.client.model.armor.ModelPrismarineArmor;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;

@@ -13,22 +13,26 @@ import com.SmellyModder.TheLostSea.common.item.TLS_Rarities;
 import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBase;
+import com.SmellyModder.TheLostSea.common.item.armor.ItemNeptunumArmor;
 import com.SmellyModder.TheLostSea.common.item.devutils.ItemScreen;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
-import com.SmellyModder.TheLostSea.common.item.shield.ItemCobaltShield;
+import com.SmellyModder.TheLostSea.common.item.shield.ItemNeptunumShield;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemVanadiumShield;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
-import com.SmellyModder.TheLostSea.common.item.specialtools.ItemCobaltSword;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemFishBucket;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemHarpoonGun;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemLoreBook;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemLorePage;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemToolDisc;
 import com.SmellyModder.TheLostSea.common.item.specialtools.exotics.ItemCutlass;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumAxe;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumPickaxe;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumSpade;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumSword;
 import com.SmellyModder.TheLostSea.common.item.submarine.ItemSpeedUpgrade;
 import com.SmellyModder.TheLostSea.common.item.submarine.ItemSubB;
 import com.SmellyModder.TheLostSea.common.item.submarine.ItemSubPart;
@@ -41,7 +45,6 @@ import com.SmellyModder.TheLostSea.common.item.tools.base.ItemAxeBase;
 import com.SmellyModder.TheLostSea.common.item.tools.base.ItemPickaxeBase;
 import com.SmellyModder.TheLostSea.common.item.tools.base.ItemSpadeBase;
 import com.SmellyModder.TheLostSea.common.item.tools.base.ItemSwordBase;
-import com.SmellyModder.TheLostSea.common.item.tools.cobalt.ItemCobaltAxe;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.client.renderer.entity.RenderArrow;
@@ -66,15 +69,15 @@ public class TLSItems {
 	public static class ArmorMaterials {
 		public static final ArmorMaterial PRISMARINE_ARMOR = EnumHelper.addArmorMaterial("prismarineArmor", "thelostsea:prismarine", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 		public static final ArmorMaterial VANADIUM_ARMOR = EnumHelper.addArmorMaterial("vanadiumArmor", "thelostsea:vanadium", 35, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f);
-		public static final ArmorMaterial COBALT_ARMOR = EnumHelper.addArmorMaterial("cobaltArmor", "thelostsea:cobalt", 45, new int[]{4, 8, 10, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 3f);
+		public static final ArmorMaterial NEPTUNUM_ARMOR = EnumHelper.addArmorMaterial("cobaltArmor", "thelostsea:neptunum", 45, new int[]{4, 8, 10, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 3f);
 		public static final ArmorMaterial AQUAMARINE_ARMOR = EnumHelper.addArmorMaterial("aquamarineArmor", "thelostsea:aquamarine", 37, new int[]{3, 7, 9, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2f);
 	}
 	
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
 	public static final ToolMaterial CUTLASS_MAT = EnumHelper.addToolMaterial("cutlass", 5, -1, 1.0F, 18F, 55);
 	public static final ToolMaterial PRISMARINE_MAT_DISC = EnumHelper.addToolMaterial("prismarine_disc", 3, 1876, 8.2F, 3F, 33);
-	public static final ToolMaterial COBALT_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 9F, 7.0F, 33);
-	public static final ToolMaterial COBALT_MAT_S = EnumHelper.addToolMaterial("cobaltmats", 4, 2000, 9F, 9.0F, 33);
+	public static final ToolMaterial NEPTUNUM_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 10F, 7.0F, 33);
+	public static final ToolMaterial NEPTUNUM_MAT_S = EnumHelper.addToolMaterial("cobaltmats", 4, 2000, 9F, 9.0F, 33);
 	public static final ToolMaterial AQUAMARINE_MAT = EnumHelper.addToolMaterial("aquamarinemat", 4, 1800, 4.0F, 4.0F, 33);
 	public static final ToolMaterial VANADIUM_MAT = EnumHelper.addToolMaterial("vanadiummat", 3, 1661, 8F, 3.0F, 13);
 	public static final ArmorMaterial ARMOR_MATERIAL_PRIS = EnumHelper.addArmorMaterial("armor_material_prismarine", Reference.MOD_ID + ":prismarinew", 11, new int[] {2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 2.6F);
@@ -123,8 +126,8 @@ public class TLSItems {
 	
 	
 	//Finned Arrows
-	public static Item FINNED_ARROW = new ItemFinnedArrow("finnedarrow");
-	public static Item COBALT_FINNED_ARROW = new ItemFinnedArrow("cobaltfinnedarrow");
+	public static Item FINNED_ARROW = new ItemFinnedArrow("finnedarrow", false);
+	public static Item NEPTUNUM_FINNED_ARROW = new ItemFinnedArrow("cobaltfinnedarrow", true);
 	
 	//Tools Prismarine
 	public static Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
@@ -133,17 +136,17 @@ public class TLSItems {
 	public static Item PRISMARINE_SPADE = new ItemSpadeBaseP("prismarine_spade", PRISMARINE_MAT);
 	public static Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
 	
-	//Tools Cobalt
-	public static Item COBALT_SWORD = new ItemCobaltSword("cobalt_sword", COBALT_MAT_S);
-	public static Item COBALT_SHOVEL = new ItemSpadeBase("cobalt_shovel", COBALT_MAT);
-	public static Item COBALT_PICKAXE = new ItemPickaxeBase("cobalt_pickaxe", COBALT_MAT);
-	public static Item COBALT_AXE = new ItemCobaltAxe("cobalt_axe", COBALT_MAT);
-	public static Item COBALT_BOW = new ItemBowBase("cobaltbow");
-	public static Item COBALT_SHIELD = new ItemCobaltShield("cobalt_shield");
-	//public static final Item COBALT_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.COBALT_ARMOR, 1, EntityEquipmentSlot.HEAD);
-	//public static final Item COBALT_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.COBALT_ARMOR, 1, EntityEquipmentSlot.CHEST);
-	//public static final Item COBALT_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.COBALT_ARMOR, 2, EntityEquipmentSlot.LEGS);
-	//public static final Item COBALT_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.COBALT_ARMOR, 1, EntityEquipmentSlot.FEET);
+	//Tools Neptunum
+	public static Item NEPTUNUM_SWORD = new ItemNeptunumSword("cobalt_sword", NEPTUNUM_MAT_S);
+	public static Item NEPTUNUM_SHOVEL = new ItemNeptunumSpade("cobalt_shovel", NEPTUNUM_MAT);
+	public static Item NEPTUNUM_PICKAXE = new ItemNeptunumPickaxe("cobalt_pickaxe", NEPTUNUM_MAT);
+	public static Item NEPTUNUM_AXE = new ItemNeptunumAxe("cobalt_axe", NEPTUNUM_MAT);
+	public static Item NEPTUNUM_BOW = new ItemBowBase("cobaltbow");
+	public static Item NEPTUNUM_SHIELD = new ItemNeptunumShield("cobalt_shield");
+	public static final Item NEPTUNUM_HELMET = new ItemNeptunumArmor("neptunum_helmet", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	public static final Item NEPTUNUM_CHESTPLATE = new ItemNeptunumArmor("neptunum_chestplate", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	public static final Item NEPTUNUM_LEGGINGS = new ItemNeptunumArmor("neptunum_leggings", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
+	public static final Item NEPTUNUM_BOOTS = new ItemNeptunumArmor("neptunum_boots", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Tools Vanadium
 	public static Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);

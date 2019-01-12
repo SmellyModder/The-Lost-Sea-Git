@@ -3,7 +3,7 @@ package com.SmellyModder.TheLostSea.core.util.client_events;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
-import com.SmellyModder.TheLostSea.common.item.tools.cobalt.ItemCobaltAxe;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumAxe;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraftforge.client.event.FOVUpdateEvent;
