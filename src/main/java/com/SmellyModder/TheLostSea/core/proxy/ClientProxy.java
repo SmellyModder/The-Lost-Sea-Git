@@ -4,7 +4,11 @@ import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
 import com.SmellyModder.TheLostSea.client.gui.npc.GuiNurmNpc;
 import com.SmellyModder.TheLostSea.client.gui.npc.NPCFont;
 import com.SmellyModder.TheLostSea.client.gui.npc.shop.GuiNurmShop;
+import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestFullRenderer;
+import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestRenderer;
 import com.SmellyModder.TheLostSea.client.util.GuiGreenScreen;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.handlers.RenderHandler;
 
@@ -15,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,6 +36,12 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void preInit() {
 		RenderHandler.registerEntityRenders();
+	}
+	
+	@Override
+	public void init() {
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStarterChestFull.class, new TileEntityStarterChestFullRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStarterChest.class, new TileEntityStarterChestRenderer());
 	}
 	
 	@Override

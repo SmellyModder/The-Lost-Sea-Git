@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.core.util.handlers;
 import com.SmellyModder.TheLostSea.client.model.items.ModelLSShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelVanadiumShield;
 import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestFullRenderer;
+import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestRenderer;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
 import com.SmellyModder.TheLostSea.common.init.TLSBiomes;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
@@ -31,6 +32,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -38,6 +40,8 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -52,7 +56,7 @@ public class RegistryHandler {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(TLSBlocks.BLOCKS.toArray(new Block [0]));
 		TLSTileEntities.registerTileEntities();
-		TileEntityRenders.register();
+		
 	}
 	
 	@SubscribeEvent
@@ -72,6 +76,7 @@ public class RegistryHandler {
 				((IHasModel)item).registerModels();
 				
 			}
+			
 			
 			if(item instanceof ILSShield) {
 				
@@ -94,20 +99,12 @@ public class RegistryHandler {
 		        
 			}
 			
-		    Item.getItemFromBlock(TLSBlocks.STARTER_CHEST_FULL).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
-		            @Override
-		            public void renderByItem(ItemStack stack) {
-		                TileEntityRendererDispatcher.instance.render(chest, 0.0, 0.0, 0.0, 0.0F, 1.0F);
-		            }
-		    });
-		    Item.getItemFromBlock(TLSBlocks.STARTER_CHEST).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
-	            @Override
-	            public void renderByItem(ItemStack stack) {
-	                TileEntityRendererDispatcher.instance.render(chest1, 0.0, 0.0, 0.0, 0.0F, 1.0F);
-	            }
-		    });
-		    
-		    
+			if(block == TLSBlocks.STARTER_CHEST) {
+				RegistryHandler.createBlockRender(block, chest1);
+			}
+			else if(block == TLSBlocks.STARTER_CHEST_FULL) {
+				RegistryHandler.createBlockRender(block, chest);
+			}
 		}
 	}
 
@@ -134,6 +131,7 @@ public class RegistryHandler {
 
     }
 	
+	@SideOnly(Side.CLIENT)
 	private static void createRender(Item item, ModelLSShield s, String resource) {
 		item.setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
             @Override
@@ -143,6 +141,17 @@ public class RegistryHandler {
                 GlStateManager.scale(1.0F, -1.0F, -1.0F);
                 s.render();
                 GlStateManager.popMatrix();
+            }
+	    });
+	}
+	
+	@SideOnly(Side.CLIENT)
+	private static void createBlockRender(Block block, TileEntity t) {
+		Item.getItemFromBlock(block).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
+	    	
+	    	@Override
+            public void renderByItem(ItemStack stack) {
+                TileEntityRendererDispatcher.instance.render(t, 0.0, 0.0, 0.0, 0.0F, 1.0F);
             }
 	    });
 	}

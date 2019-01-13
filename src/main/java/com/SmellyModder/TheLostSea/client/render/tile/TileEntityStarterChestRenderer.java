@@ -13,7 +13,10 @@ import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class TileEntityStarterChestRenderer extends TileEntitySpecialRenderer<TileEntityStarterChest> {
 	
 	private static final ResourceLocation TEXTURE_NORMAL = new ResourceLocation("thelostsea:textures/blocks/rewards/starter_full.png");

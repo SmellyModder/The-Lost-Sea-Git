@@ -62,6 +62,7 @@ public class TheLostSea {
 	
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
+		proxy.init();
 		RegistryHandler.initRegistries();
 		
 		/* Register Gui Handler */

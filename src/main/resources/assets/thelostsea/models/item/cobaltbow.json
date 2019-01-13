@@ -13,14 +13,14 @@
         {
             "predicate": {
                 "pulling": 1,
-                "pull": 0.65
+                "pull": 0.60
             },
             "model": "thelostsea:item/cobaltbow_pulling_1"
         },
         {
             "predicate": {
                 "pulling": 1,
-                "pull": 0.9
+                "pull": 0.85
             },
             "model": "thelostsea:item/cobaltbow_pulling_2"
         }

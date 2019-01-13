@@ -6,7 +6,10 @@ import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterCh
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class TileEntityRenders {
 	
 	public static void register() {

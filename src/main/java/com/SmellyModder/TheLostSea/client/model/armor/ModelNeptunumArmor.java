@@ -58,7 +58,7 @@ public class ModelNeptunumArmor extends ModelBiped {
         this.shape29.setRotationPoint(0.0F, -9.0F, -5.1F);
         this.shape29.addBox(-1.0F, 0.0F, 0.0F, 2, 6, 10, 0.0F);
         this.setRotateAngle(shape29, 0.06981317007977318F, 0.0F, 0.0F);
-        this.shape37 = new ModelRenderer(this, 55, 40);
+        this.shape37 = new ModelRenderer(this, 89, 54);
         this.shape37.setRotationPoint(-4.5F, 11.0F, -2.5F);
         this.shape37.addBox(0.0F, 0.0F, 0.0F, 9, 3, 5, 0.00F);
         this.shape30_1 = new ModelRenderer(this, 0, 32);

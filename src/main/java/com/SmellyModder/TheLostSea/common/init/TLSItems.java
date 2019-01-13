@@ -159,17 +159,6 @@ public class TLSItems {
 	public static final Item VANADIUM_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
 	public static final Item VANADIUM_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
-	
-	//Tools Aquamarine
-	public static Item AQUAMARINE_SWORD = new ItemSwordBase("aquamarine_sword", AQUAMARINE_MAT);
-	public static Item AQUAMARINE_SHOVEL = new ItemSpadeBase("aquamarine_shovel", AQUAMARINE_MAT);
-	public static Item AQUAMARINE_PICKAXE = new ItemPickaxeBase("aquamarine_pickaxe", AQUAMARINE_MAT);
-	public static Item AQUAMARINE_AXE = new ItemAxeBase("aquamarine_axe", AQUAMARINE_MAT);
-	public static final Item AQUAMARINE_HELMET = new ItemArmorBase("aquamarine_helmet", ArmorMaterials.AQUAMARINE_ARMOR, 1, EntityEquipmentSlot.HEAD);
-	public static final Item AQUAMARINE_CHESTPLATE = new ItemArmorBase("aquamarine_chestplate", ArmorMaterials.AQUAMARINE_ARMOR, 1, EntityEquipmentSlot.CHEST);
-	public static final Item AQUAMARINE_LEGGINGS = new ItemArmorBase("aquamarine_leggings", ArmorMaterials.AQUAMARINE_ARMOR, 2, EntityEquipmentSlot.LEGS);
-	public static final Item AQUAMARINE_BOOTS = new ItemArmorBase("aquamarine_boots", ArmorMaterials.AQUAMARINE_ARMOR, 1, EntityEquipmentSlot.FEET);
-	
 	//Foods
 	public static ItemFood BUBBLE_FRUIT = new ItemBubbleFruit("bubble_berry", 2, false).setAlwaysEdible();
 	public static ItemFishFoodBase ANGLER_FISH = new ItemFishFoodBase("angler_fish", 1);

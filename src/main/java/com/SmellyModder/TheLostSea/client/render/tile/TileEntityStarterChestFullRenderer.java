@@ -17,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class TileEntityStarterChestFullRenderer extends TileEntitySpecialRenderer<TileEntityStarterChestFull> {
     private static final ResourceLocation TEXTURE_NORMAL = new ResourceLocation("thelostsea:textures/blocks/rewards/starter_full.png");
     private final ModelStarterChestFull simpleChest = new ModelStarterChestFull();

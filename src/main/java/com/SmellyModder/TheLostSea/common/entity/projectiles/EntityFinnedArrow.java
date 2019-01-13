@@ -83,6 +83,11 @@ public class EntityFinnedArrow extends EntityLSArrow
 			this.motionY *= (double)1.55;
         	this.motionZ *= (double)1.55F;
 		}
+		else if(!this.isInWater()) {
+			this.motionX *= (double)0.92F;
+			this.motionY *= (double)0.92F;
+        	this.motionZ *= (double)0.92F;
+		}
 	}
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
