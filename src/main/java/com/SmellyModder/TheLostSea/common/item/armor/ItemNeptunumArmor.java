@@ -25,6 +25,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -52,9 +53,23 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if(player.isInWater()) {
-			//player.speed
-		}
+		 ItemStack boots = player.inventory.armorItemInSlot(0);
+		 ItemStack chest = player.inventory.armorItemInSlot(2);
+		 ItemStack legs = player.inventory.armorItemInSlot(1);
+		 ItemStack helmet = player.inventory.armorItemInSlot(3);
+		    if ((legs != null) && (legs.getItem() == TLSItems.NEPTUNUM_LEGGINGS) && (helmet != null) && (helmet.getItem() == TLSItems.NEPTUNUM_HELMET) && (chest != null) && (chest.getItem() == TLSItems.NEPTUNUM_CHESTPLATE) && 
+		    		(boots != null) && (boots.getItem() == TLSItems.NEPTUNUM_BOOTS)) {
+		      double d0 = 0.0D;
+		      double d1 = 0.02D;
+		      double d2 = 0.0D;
+		      double a = Math.toRadians(player.renderYawOffset);
+		      double dx = -Math.sin(a - 1.5D);
+		      double dz = Math.cos(a - 1.5D);
+		      double dx2 = -Math.sin(a + 1.5D);
+		      double dz2 = Math.cos(a + 1.5D);
+		      world.spawnParticle(EnumParticleTypes.WATER_WAKE, player.posX + dx, player.posY + 1.8D, player.posZ + dz, d0, d1, d2, new int[0]);
+		      world.spawnParticle(EnumParticleTypes.WATER_WAKE, player.posX + dx2, player.posY + 1.8D, player.posZ + dz2, d0, d1, d2, new int[0]);
+		 }
 	}
 	
 	@Override
@@ -74,7 +89,7 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
         if(itemStack != ItemStack.EMPTY && itemStack.getItem() instanceof ItemArmor) {
-            ModelNeptunumArmor model = new ModelNeptunumArmor(0.006f);          
+            ModelNeptunumArmor model = new ModelNeptunumArmor(0.01f);          
            
            
             model.bipedHead.showModel = armorSlot == EntityEquipmentSlot.HEAD;

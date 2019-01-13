@@ -38,6 +38,7 @@ public class BlockLSOres extends BlockBase{
 		else {
 			setHardness(getHardness() - 0.3F);
 			setResistance(getResistance() - 0.3F);
+			setLightLevel(0.25F);
 		}
 	}
 	
@@ -111,7 +112,7 @@ public class BlockLSOres extends BlockBase{
 		
 		if (this == TLSBlocks.SEA_COBALTORE || this == TLSBlocks.DEEPSEA_COBALTORE)
         {
-            item = TLSItems.COBALT;
+            item = TLSItems.NEPTUNUM;
         }
 		else if(this == TLSBlocks.AQUAMARINE_ORE) {
 			item = TLSItems.AQUAMARINE;
