@@ -5,6 +5,7 @@ import java.util.List;
 import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.client.model.armor.ModelNeptunumArmor;
+import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
@@ -16,6 +17,9 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnchantmentWaterWalker;
+import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,11 +39,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 
-	private String armorTexturePath;
-	private String skinType;
-	 
 	
-	    
 	public ItemNeptunumArmor(String name, String path, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndexIn, equipmentSlotIn);
 		this.setCreativeTab(TheLostSea.TLS_GEAR);
@@ -47,20 +47,17 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 		setTranslationKey(name);
 		setRegistryName(name);
 		TLSItems.ITEMS.add(this);
-		
-		this.armorTexturePath = Reference.MOD_ID + ":textures/models/armor/" + path;
-        this.skinType = "default";
 	}
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		 float speedBoost = 0;
 		 ItemStack boots = player.inventory.armorItemInSlot(0);
 		 ItemStack chest = player.inventory.armorItemInSlot(2);
 		 ItemStack legs = player.inventory.armorItemInSlot(1);
 		 ItemStack helmet = player.inventory.armorItemInSlot(3);
 		    if ((legs != null) && (legs.getItem() == TLSItems.NEPTUNUM_LEGGINGS) && (helmet != null) && (helmet.getItem() == TLSItems.NEPTUNUM_HELMET) && (chest != null) && (chest.getItem() == TLSItems.NEPTUNUM_CHESTPLATE) && 
 		    		(boots != null) && (boots.getItem() == TLSItems.NEPTUNUM_BOOTS)) {
+		      
 		      double d0 = 0.0D;
 		      double d1 = 0.02D;
 		      double d2 = 0.0D;
@@ -72,20 +69,6 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 		      world.spawnParticle(EnumParticleTypes.WATER_WAKE, player.posX + dx, player.posY + 1.8D, player.posZ + dz, d0, d1, d2, new int[0]);
 		      world.spawnParticle(EnumParticleTypes.WATER_WAKE, player.posX + dx2, player.posY + 1.8D, player.posZ + dz2, d0, d1, d2, new int[0]);
 		 }
-		    
-		 if((legs != null) && (legs.getItem() == TLSItems.NEPTUNUM_LEGGINGS)) {
-			 speedBoost += 0.5F;
-		 }
-		 if((helmet != null) && (helmet.getItem() == TLSItems.NEPTUNUM_HELMET)) {
-			 speedBoost += 0.5F;
-		 }
-		 if((chest != null) && (chest.getItem() == TLSItems.NEPTUNUM_CHESTPLATE)) {
-			 speedBoost += 0.5F;
-		 }
-		 if((boots != null) && (boots.getItem() == TLSItems.NEPTUNUM_BOOTS)) {
-			 speedBoost += 0.4F;
-		 }
-		 player.getEntityAttribute(player.SWIM_SPEED).setBaseValue(speedBoost);
 	}
 	
 	@Override
@@ -125,16 +108,7 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
         }
         return null;
     }  
-
-	protected boolean isArmorLegs(ItemStack stack) {
-		return stack.getItem() == TLSItems.NEPTUNUM_LEGGINGS;
-	}
-	
-	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		return super.canApplyAtEnchantingTable(stack, enchantment);
-	}
-	
+    
 	@Override
 	public void registerModels() {
 		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");

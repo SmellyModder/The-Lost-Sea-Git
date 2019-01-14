@@ -69,15 +69,15 @@ public class TLSItems {
 	public static class ArmorMaterials {
 		public static final ArmorMaterial PRISMARINE_ARMOR = EnumHelper.addArmorMaterial("prismarineArmor", "thelostsea:prismarine", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 		public static final ArmorMaterial VANADIUM_ARMOR = EnumHelper.addArmorMaterial("vanadiumArmor", "thelostsea:vanadium", 35, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f);
-		public static final ArmorMaterial NEPTUNUM_ARMOR = EnumHelper.addArmorMaterial("cobaltArmor", "thelostsea:neptunum", 45, new int[]{4, 8, 10, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 3f);
+		public static final ArmorMaterial NEPTUNUM_ARMOR = EnumHelper.addArmorMaterial("cobaltArmor", "thelostsea:neptunum", 45, new int[]{4, 8, 10, 4}, 9, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 3f);
 		public static final ArmorMaterial AQUAMARINE_ARMOR = EnumHelper.addArmorMaterial("aquamarineArmor", "thelostsea:aquamarine", 37, new int[]{3, 7, 9, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2f);
 	}
 	
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
 	public static final ToolMaterial CUTLASS_MAT = EnumHelper.addToolMaterial("cutlass", 5, -1, 1.0F, 18F, 55);
 	public static final ToolMaterial PRISMARINE_MAT_DISC = EnumHelper.addToolMaterial("prismarine_disc", 3, 1876, 8.2F, 3F, 33);
-	public static final ToolMaterial NEPTUNUM_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 10F, 7.0F, 33);
-	public static final ToolMaterial NEPTUNUM_MAT_S = EnumHelper.addToolMaterial("cobaltmats", 4, 2000, 9F, 9.0F, 33);
+	public static final ToolMaterial NEPTUNUM_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 10F, 7.0F, 20);
+	public static final ToolMaterial NEPTUNUM_MAT_S = EnumHelper.addToolMaterial("cobaltmats", 4, 2000, 9F, 9.0F, 20);
 	public static final ToolMaterial AQUAMARINE_MAT = EnumHelper.addToolMaterial("aquamarinemat", 4, 1800, 4.0F, 4.0F, 33);
 	public static final ToolMaterial VANADIUM_MAT = EnumHelper.addToolMaterial("vanadiummat", 3, 1661, 8F, 3.0F, 13);
 	public static final ArmorMaterial ARMOR_MATERIAL_PRIS = EnumHelper.addArmorMaterial("armor_material_prismarine", Reference.MOD_ID + ":prismarinew", 11, new int[] {2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 2.6F);
