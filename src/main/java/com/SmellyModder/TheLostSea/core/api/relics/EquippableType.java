@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.core.api.relics;
 public enum EquippableType {
 	
 	RELIC(-1, 0,          1,2,3,4),
-	HEART_PACK(-1, 0,     5),
 	ELEMENT_STONE(-1, 0,  6,7),
 	GAUNTLET(-1, 0,       8);
 	
@@ -21,6 +20,7 @@ public enum EquippableType {
 			if (s == slot) 
 				return true;
 		}
+		
 		return false; 
 	}
 
@@ -32,6 +32,7 @@ public enum EquippableType {
 	{
 		return this.durability;
 	}
+	
 
 	public int getDefense()
 	{

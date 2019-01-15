@@ -3,7 +3,7 @@ package com.SmellyModder.TheLostSea.core.api.relics;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
-public interface IEquppible {
+public interface IEquippable {
 	
 	/*
 	 * Checks for if it's worn and can perform some action inside the method
