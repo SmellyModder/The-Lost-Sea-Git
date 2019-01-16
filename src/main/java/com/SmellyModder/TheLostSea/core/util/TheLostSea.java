@@ -78,7 +78,6 @@ public class TheLostSea {
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
 	    MinecraftForge.EVENT_BUS.register(new GameplayEventHandler());
 	    OreDictionaryLS.register();
-	    
 	}
 	
 	@EventHandler

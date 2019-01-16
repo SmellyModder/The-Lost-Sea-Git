@@ -40,7 +40,6 @@ public class CapabilityHandler {
         CapabilityManager.INSTANCE.register(ICurrency.class, new CoinStorage(), CoinCurrency.class);
         CapabilityManager.INSTANCE.register(IDialogueNurm.class, new VerseStorageN(), DialogueControllerN.class);
         CapabilityManager.INSTANCE.register(IEquippable.class, new EquippableCapabilties.CapabilityItemEquippableStorage(), () -> new FakeEquippable(EquippableType.RELIC));
-        //CapabilityManager.INSTANCE.register(IEquippableItemHandler.class, new EquippableCapabilties.CapabilityEquippable(),);
     }
 	
 	@SubscribeEvent 

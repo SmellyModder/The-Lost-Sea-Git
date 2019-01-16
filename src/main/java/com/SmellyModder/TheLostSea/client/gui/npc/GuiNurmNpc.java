@@ -21,6 +21,8 @@ import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller.DialogueControllerN;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
+import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -226,8 +228,7 @@ public class GuiNurmNpc extends GuiScreen {
 			 }
 		 }
 		 else if(parButton.id == 3) {
-	         mc.displayGuiScreen((GuiScreen)null);
-	         TheLostSea.proxy.OpenNurmShop(player);
+	         currGui = 2;
 		 }
 		 else if(parButton.id == 7 || parButton.id == 8) {
 			 this.currGui = 0;
@@ -392,14 +393,17 @@ public class GuiNurmNpc extends GuiScreen {
 		int offsetFromScreenLeft = (width - WIDTH) / 2;	
 		int y = (this.height - HEIGHT) / 2;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
-	
+		ICurrency coins = this.player.getCapability(CoinProvider.COIN_CAP, null); 
 		
 
 		this.drawGradientRect(0, 0, this.width, this.height, -1072689136, -804253680);
 		
     	this.drawGradientRect(0, this.height / 2 + 0 * 12 + 40, this.width / 2 + 0 / 2 + 1000, this.height / 2 + 0 * 10 + 590, 0x66000000, 0x66000000);
     	
-    	this.drawDialouge();
+    	if(currGui < 2) {
+    		this.drawDialouge();
+    	}
+    	
     	
     	if(dialouge.getVerse() == 0) {
     		if(currGui == 0) {
@@ -529,6 +533,22 @@ public class GuiNurmNpc extends GuiScreen {
     		} else if(dialouge.getVerse() == 2){
    			 this.fontRenderer.drawString(TextFormatting.BOLD + "Inventory Slots Full!", offsetFromScreenLeft + 202, y + 180, 16711680, true);
     		}
+    	}
+    	
+    	if(currGui == 2) {
+    		
+    		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
+    		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
+    	
+    		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_coinamount.png"));
+    		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 45, y + 11, 0, 0, 96, 32, 96, 32);
+    		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft - 8, y + 20.5F, 16777215, true);
+    	
+    		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_page_1.png"));
+    		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 35, y + 45, 0, 0, 162, 195, 162, 195);
+    		
+    		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_page_2.png"));
+    		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 135, y + 45, 0, 0, 162, 195, 162, 195);
     	}
 	}
 	
