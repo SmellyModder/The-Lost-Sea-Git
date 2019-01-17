@@ -236,5 +236,4 @@ public class ItemToolDisc extends ItemTool implements IHasModel{
 	        return stack;
 	    }
 	    }
-	    
 }

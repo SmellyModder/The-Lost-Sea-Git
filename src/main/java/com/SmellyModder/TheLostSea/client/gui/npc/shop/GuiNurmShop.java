@@ -61,19 +61,6 @@ public class GuiNurmShop extends GuiScreen{
 		this.drawBackGround();
 		
 		
-		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
-		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + (int)90.5F, y + 11, 0, 0, 80, 32, 80, 32);
-	
-		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_coinamount.png"));
-		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 45, y + 11, 0, 0, 96, 32, 96, 32);
-		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft - 8, y + 20.5F, 16777215, true);
-	
-		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_page_1.png"));
-		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 35, y + 45, 0, 0, 162, 195, 162, 195);
-		
-		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_page_2.png"));
-		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 135, y + 45, 0, 0, 162, 195, 162, 195);
-		
 	}
     
     public void drawBackGround() {
