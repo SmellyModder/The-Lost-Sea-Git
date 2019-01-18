@@ -9,10 +9,13 @@ import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import com.SmellyModder.TheLostSea.client.gui.npc.shop.SaleButtons;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
+import com.SmellyModder.TheLostSea.core.api.inventory.ILSShopItem;
+import com.SmellyModder.TheLostSea.core.api.inventory.IShopButton;
 import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
@@ -29,6 +32,7 @@ import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -37,6 +41,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryEnderChest;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -62,7 +67,8 @@ public class GuiNurmNpc extends GuiScreen {
     
     private boolean showError = false;
     int fade;
-   
+
+    private int shopScreenID;
 	private static double nextAnimation;
 	private static double timeBefore;
 
@@ -77,6 +83,8 @@ public class GuiNurmNpc extends GuiScreen {
 	 * Buttons
 	 */
 	private NextDialougeButton NextDialougeButton;
+	private SaleButton saleButton;
+	
 	
 	private TalkButton TalkButton;
 	private ShopButton ShopButton;
@@ -164,6 +172,9 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(ResponeButtonEye = new ResponseButton(18, offsetFromScreenLeft - 57, y + 175, 51, "Give Eye"));
 		buttonList.add(ResponeButtonChest = new ResponseButton(19, offsetFromScreenLeft - 57, y + 175, 61, "Take Chest"));
 		
+		buttonList.add(SaleButtons.SaleButton = new SaleButton(Items.COMPASS, 10, 30, offsetFromScreenLeft + 48, y + 160, 16, 16, ""));
+		buttonList.add(SaleButtons.SaleButton2 = new SaleButton(Items.MAP, 10, 31, offsetFromScreenLeft + 66, y + 160, 16, 16, ""));
+		
         Keyboard.enableRepeatEvents(true);
         
         
@@ -201,6 +212,13 @@ public class GuiNurmNpc extends GuiScreen {
 		this.ResponeButtonEye.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 3;
 		
 		this.ResponeButtonChest.visible = dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 4;
+		
+		
+		
+		
+		SaleButtons.SaleButton.visible = this.currGui == 2;
+		SaleButtons.SaleButton2.visible = this.currGui == 2;
+		
 		
 		super.initGui();
 	}
@@ -321,6 +339,19 @@ public class GuiNurmNpc extends GuiScreen {
 				 this.showError = true;
 			 }
 		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 	 }
 	
 	@Override
@@ -373,6 +404,8 @@ public class GuiNurmNpc extends GuiScreen {
 			fade = 0;
 		}
 		
+		SaleButtons.SaleButton.visible = this.currGui == 2;
+		SaleButtons.SaleButton2.visible = this.currGui == 2;
 		
 	}
 	
@@ -400,8 +433,20 @@ public class GuiNurmNpc extends GuiScreen {
 		
     	this.drawGradientRect(0, this.height / 2 + 0 * 12 + 40, this.width / 2 + 0 / 2 + 1000, this.height / 2 + 0 * 10 + 590, 0x66000000, 0x66000000);
     	
-    	if(currGui < 2) {
-    		this.drawDialouge();
+    	if(currGui >= 0) {
+    		if(currGui == 0 || currGui == 1) {
+    			this.drawDialouge();
+    		}
+    		else if(currGui == 2) {
+        		
+        		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
+        		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 0, y - 6, 0, 0, 256, 256, 256, 256);
+        		
+        		this.fontRenderer.drawString("Shop", offsetFromScreenLeft + (int)42.5F, y + 13, 4210752);
+        		this.fontRenderer.drawString("Cost", offsetFromScreenLeft + (int)187F, y + 40, 4210752);
+        		
+        		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft + (int)181, y + 13, 4210752);
+        	}
     	}
     	
     	
@@ -535,15 +580,7 @@ public class GuiNurmNpc extends GuiScreen {
     		}
     	}
     	
-    	if(currGui == 2) {
-    		
-    		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
-    		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 0, y - 6, 0, 0, 256, 256, 256, 256);
-    		
-    		this.fontRenderer.drawString("Shop", offsetFromScreenLeft + (int)42.5F, y + 13, 4210752);
-    		
-    		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft + (int)181, y + 13, 4210752);
-    	}
+    	
 	}
 	
 	protected void drawDialouge() {
@@ -826,5 +863,61 @@ public class GuiNurmNpc extends GuiScreen {
     		 mc.fontRenderer.drawString(text, this.x + 3, this.y, 16777215, true);
 		}
 	  } 
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static class SaleButton extends GuiButton implements IShopButton {
+	
+		Item itemForSale;
+		int price;
+		public SaleButton(Item itemForSale, int price, int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
+			super(buttonId, x, y, widthIn, heightIn, buttonText);
+			this.itemForSale = itemForSale;
+			this.price = price;
+		}
+		
+		@Override
+		public Item getItem() {
+			return itemForSale;
+		}
+		
+		@Override
+		public int getPrice() {
+			if(itemForSale instanceof ILSShopItem) {
+				this.price = ((ILSShopItem) itemForSale).setPrice();
+			}
+			return this.price;
+		}
+		
+		
+		public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+			if (this.visible)
+            {	
+				
+				mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(this.getItem()), this.x, this.y);
+				
+                boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_buttons.png"));
+                int i = 42;
+                int j = 100;
+
+                if (flag)
+                {
+                    j -= 59;
+                }
+                
+                GlStateManager.enableBlend();
+                GlStateManager.disableAlpha();
+   			 	GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+   			 	this.drawTexturedModalRect(this.x, this.y, i, j, 16, 16);
+   			 	GlStateManager.disableBlend();
+   			 	GlStateManager.enableAlpha();
+            }
+		}
+		
+		@Override
+		public void playPressSound(SoundHandler soundHandlerIn) {
+		}
 	}
 }
