@@ -55,6 +55,7 @@ import net.minecraft.world.MinecraftException;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.reflect.internal.Trees.This;
 
 
 @SideOnly(Side.CLIENT)
@@ -77,13 +78,22 @@ public class GuiNurmNpc extends GuiScreen {
 	private int currGui = 0;
 	private int currDialogue = 0;
 	private int dialogueID = 0;
+	private Item currItem;
+	private int price;
+	private int prevPrice;
+	private String description;
+	private int amount;
 	private static final ResourceLocation BG = new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png");
 	 
 	/*
 	 * Buttons
 	 */
 	private NextDialougeButton NextDialougeButton;
+	private AmountArrow addArrow;
+	private AmountArrow subtractArrow;
 	private SaleButton saleButton;
+	private SaleButton SaleButton;
+	private SaleButton SaleButton2;
 	
 	
 	private TalkButton TalkButton;
@@ -172,8 +182,11 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(ResponeButtonEye = new ResponseButton(18, offsetFromScreenLeft - 57, y + 175, 51, "Give Eye"));
 		buttonList.add(ResponeButtonChest = new ResponseButton(19, offsetFromScreenLeft - 57, y + 175, 61, "Take Chest"));
 		
-		buttonList.add(SaleButtons.SaleButton = new SaleButton(Items.COMPASS, 10, 30, offsetFromScreenLeft + 48, y + 160, 16, 16, ""));
-		buttonList.add(SaleButtons.SaleButton2 = new SaleButton(Items.MAP, 10, 31, offsetFromScreenLeft + 66, y + 160, 16, 16, ""));
+		buttonList.add(SaleButton = new SaleButton(Items.COMPASS, 15, "The classic minecraft spawn finder tool.", 30, offsetFromScreenLeft + 48, y + 160, 16, 16, ""));
+		buttonList.add(SaleButton2 = new SaleButton(Items.MAP, 10, "The classic minecraft map.", 31, offsetFromScreenLeft + 66, y + 160, 16, 16, ""));
+		
+		buttonList.add(addArrow = new AmountArrow(1001, offsetFromScreenLeft + 153, y + 54, true));
+		buttonList.add(subtractArrow = new AmountArrow(1002, offsetFromScreenLeft + 118, y + 54, false));
 		
         Keyboard.enableRepeatEvents(true);
         
@@ -216,9 +229,11 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		
 		
-		SaleButtons.SaleButton.visible = this.currGui == 2;
-		SaleButtons.SaleButton2.visible = this.currGui == 2;
+		SaleButton.visible = this.currGui == 2;
+		SaleButton2.visible = this.currGui == 2;
 		
+		addArrow.visible = this.currGui == 2;
+		subtractArrow.visible = this.currGui == 2;
 		
 		super.initGui();
 	}
@@ -342,17 +357,18 @@ public class GuiNurmNpc extends GuiScreen {
 		 
 		 
 		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-	 }
+		 if(parButton instanceof IShopButton) {
+			 currItem = ((IShopButton) parButton).getItem();
+			 prevPrice = ((IShopButton) parButton).setPrice();
+			 description = ((IShopButton) parButton).getDescription();
+		 }
+		 if(parButton.id == 1001 && currItem != null && this.amount < currItem.getItemStackLimit()) {
+			 amount++;
+			 this.price = this.prevPrice * this.amount;
+		 } else if(parButton.id == 1002 && currItem != null && this.amount > 0)
+			 amount--;
+		 	 this.price = this.prevPrice * this.amount;
+	 	 }
 	
 	@Override
 	public boolean doesGuiPauseGame() {
@@ -404,9 +420,11 @@ public class GuiNurmNpc extends GuiScreen {
 			fade = 0;
 		}
 		
-		SaleButtons.SaleButton.visible = this.currGui == 2;
-		SaleButtons.SaleButton2.visible = this.currGui == 2;
+		SaleButton.visible = this.currGui == 2;
+		SaleButton2.visible = this.currGui == 2;
 		
+		addArrow.visible = this.currGui == 2;
+		subtractArrow.visible = this.currGui == 2;
 	}
 	
 	@Override
@@ -446,7 +464,30 @@ public class GuiNurmNpc extends GuiScreen {
         		this.fontRenderer.drawString("Cost", offsetFromScreenLeft + (int)187F, y + 40, 4210752);
         		
         		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft + (int)181, y + 13, 4210752);
-        	}
+        		
+        		
+        		this.fontRenderer.drawString(String.valueOf(this.price), offsetFromScreenLeft + (int)184, y + 59, 4210752);
+        		
+        		/*
+        		 * Note: Gui has a limit to how far it can display an Item's name. So add an if to check for it that would say, ex. Vanadium Ches...
+        		 */
+        		if(this.currItem != null) {
+        			 this.fontRenderer.drawString(this.currItem.getItemStackDisplayName(new ItemStack(currItem)), offsetFromScreenLeft + (int)31, y + 40, 4210752);
+        	
+        			 this.fontRenderer.drawSplitString(this.description, offsetFromScreenLeft + (int)132, y + 85, 85, 4210752);
+        		}
+        		
+        		
+        		if(this.amount < 10) {
+        			this.fontRenderer.drawString(String.valueOf(this.amount), offsetFromScreenLeft + (int)137, y + 59, 4210752);
+        		}
+        		else {
+        			this.fontRenderer.drawString(String.valueOf(this.amount), offsetFromScreenLeft + (int)134, y + 59, 4210752);
+        		}
+        		
+        		mc.getRenderItem().renderItemIntoGUI(new ItemStack(this.currItem), offsetFromScreenLeft + (int)51, y + 54);
+        		
+    		}
     	}
     	
     	
@@ -870,31 +911,34 @@ public class GuiNurmNpc extends GuiScreen {
 	
 		Item itemForSale;
 		int price;
-		public SaleButton(Item itemForSale, int price, int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
+		String description;
+		public SaleButton(Item itemForSale, int price, String desc, int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
 			super(buttonId, x, y, widthIn, heightIn, buttonText);
 			this.itemForSale = itemForSale;
 			this.price = price;
+			this.description = desc;
 		}
 		
 		@Override
 		public Item getItem() {
-			return itemForSale;
+			return this.itemForSale;
 		}
 		
 		@Override
-		public int getPrice() {
-			if(itemForSale instanceof ILSShopItem) {
-				this.price = ((ILSShopItem) itemForSale).setPrice();
-			}
-			return this.price;
+		public int setPrice() {
+			return price;
 		}
 		
+		@Override
+		public String getDescription() {
+			return this.description;
+		}
 		
 		public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
 			if (this.visible)
             {	
 				
-				mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(this.getItem()), this.x, this.y);
+				mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(this.itemForSale), this.x, this.y);
 				
                 boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -919,5 +963,42 @@ public class GuiNurmNpc extends GuiScreen {
 		@Override
 		public void playPressSound(SoundHandler soundHandlerIn) {
 		}
-	}
+		
+		}
+	
+	@SideOnly(Side.CLIENT)
+    static class AmountArrow extends GuiButton
+    {
+            private final boolean isForward;
+
+            public AmountArrow(int buttonId, int x, int y, boolean isForwardIn)
+            {
+                super(buttonId, x, y, 23, 13, "");
+                this.isForward = isForwardIn;
+            }
+
+            public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
+            {
+                if (this.visible)
+                {
+                    boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                    mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_buttons.png"));
+                    int i = 32;
+                    int j = 2;
+
+                    if (flag)
+                    {
+                        j += 19;
+                    }
+
+                    if (this.isForward)
+                    {
+                        i += 23;
+                    }
+
+                    this.drawTexturedModalRect(this.x, this.y, i, j, 8, 17);
+                }
+           }
+     }
 }
