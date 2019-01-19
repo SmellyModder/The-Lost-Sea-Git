@@ -91,6 +91,8 @@ public class GuiNurmNpc extends GuiScreen {
 	private NextDialougeButton NextDialougeButton;
 	private AmountArrow addArrow;
 	private AmountArrow subtractArrow;
+	private BuyButton buyButton;
+	private BuyButton sellButton;
 	private SaleButton saleButton;
 	private SaleButton SaleButton;
 	private SaleButton SaleButton2;
@@ -188,6 +190,9 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(addArrow = new AmountArrow(1001, offsetFromScreenLeft + 153, y + 54, true));
 		buttonList.add(subtractArrow = new AmountArrow(1002, offsetFromScreenLeft + 118, y + 54, false));
 		
+		buttonList.add(buyButton = new BuyButton(1500, offsetFromScreenLeft + 30, y + 87, false));
+		buttonList.add(sellButton = new BuyButton(1501, offsetFromScreenLeft + 30, y + 115, true));
+
         Keyboard.enableRepeatEvents(true);
         
         
@@ -235,6 +240,8 @@ public class GuiNurmNpc extends GuiScreen {
 		addArrow.visible = this.currGui == 2;
 		subtractArrow.visible = this.currGui == 2;
 		
+		buyButton.visible = this.currGui == 2;
+		sellButton.visible = this.currGui == 2;
 		super.initGui();
 	}
 	
@@ -425,6 +432,9 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		addArrow.visible = this.currGui == 2;
 		subtractArrow.visible = this.currGui == 2;
+		
+		buyButton.visible = this.currGui == 2;
+		sellButton.visible = this.currGui == 2;
 	}
 	
 	@Override
@@ -462,6 +472,7 @@ public class GuiNurmNpc extends GuiScreen {
         		
         		this.fontRenderer.drawString("Shop", offsetFromScreenLeft + (int)42.5F, y + 13, 4210752);
         		this.fontRenderer.drawString("Cost", offsetFromScreenLeft + (int)187F, y + 40, 4210752);
+        		
         		
         		this.fontRenderer.drawString(String.valueOf(coins.getCoins()), offsetFromScreenLeft + (int)181, y + 13, 4210752);
         		
@@ -1001,4 +1012,43 @@ public class GuiNurmNpc extends GuiScreen {
                 }
            }
      }
+	
+	static class BuyButton extends GuiButton
+    {
+        private final boolean isSell;
+
+        public BuyButton(int buttonId, int x, int y, boolean isSell)
+        {
+            super(buttonId, x, y, 43, 20, "");
+            this.isSell = isSell;
+        }
+
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
+        {
+            if (this.visible)
+            {
+                boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_buttons.png"));
+                int i = 0;
+                int j = 41;
+
+                if (flag)
+                {
+                    j += 20;
+                }
+
+                this.drawTexturedModalRect(this.x, this.y, i, j, 42, 20);
+                
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                
+                if(!this.isSell) {
+                	mc.fontRenderer.drawString("Buy", (float)((this.x + this.width / 2) - mc.fontRenderer.getStringWidth("Buy") / 2), this.y + (this.height - 8) / 2, 4210752, false);
+                }
+                else {
+                	mc.fontRenderer.drawString("Sell", (float)((this.x + this.width / 2) - mc.fontRenderer.getStringWidth("Buy") / 2), this.y + (this.height - 8) / 2, 4210752, false);
+                }
+            }
+       }
+  }
 }
