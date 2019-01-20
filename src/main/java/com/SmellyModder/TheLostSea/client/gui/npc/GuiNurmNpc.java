@@ -36,17 +36,23 @@ import net.minecraft.client.gui.GuiScreenBook;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.crash.CrashReportCategory;
+import net.minecraft.crash.ICrashReportDetail;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
+import net.minecraft.item.ItemCompass;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IProgressUpdate;
+import net.minecraft.util.ReportedException;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -96,7 +102,9 @@ public class GuiNurmNpc extends GuiScreen {
 	private SaleButton saleButton;
 	private SaleButton SaleButton;
 	private SaleButton SaleButton2;
-	
+	private SaleButton SaleButton3;
+	private SaleButton SaleButton4;
+	private SaleButton SaleButton5;
 	
 	private TalkButton TalkButton;
 	private ShopButton ShopButton;
@@ -186,6 +194,10 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		buttonList.add(SaleButton = new SaleButton(Items.COMPASS, 15, "The classic minecraft spawn finder tool.", 30, offsetFromScreenLeft + 48, y + 160, 16, 16, ""));
 		buttonList.add(SaleButton2 = new SaleButton(Items.MAP, 10, "The classic minecraft map.", 31, offsetFromScreenLeft + 66, y + 160, 16, 16, ""));
+		buttonList.add(SaleButton3 = new SaleButton(Items.PAPER, 1, "Normal paper.", 31, offsetFromScreenLeft + 84, y + 160, 16, 16, ""));
+		buttonList.add(SaleButton4 = new SaleButton(Items.FILLED_MAP, 15, "A filled map of the area around you.", 31, offsetFromScreenLeft + 102, y + 160, 16, 16, ""));
+		buttonList.add(SaleButton5 = new SaleButton(Items.EXPERIENCE_BOTTLE, 8, "A bottle of experience.", 31, offsetFromScreenLeft + 120, y + 160, 16, 16, ""));
+
 		
 		buttonList.add(addArrow = new AmountArrow(1001, offsetFromScreenLeft + 153, y + 54, true));
 		buttonList.add(subtractArrow = new AmountArrow(1002, offsetFromScreenLeft + 118, y + 54, false));
@@ -236,6 +248,9 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		SaleButton.visible = this.currGui == 2;
 		SaleButton2.visible = this.currGui == 2;
+		SaleButton3.visible = this.currGui == 2;
+		SaleButton4.visible = this.currGui == 2;
+		SaleButton5.visible = this.currGui == 2;
 		
 		addArrow.visible = this.currGui == 2;
 		subtractArrow.visible = this.currGui == 2;
@@ -372,10 +387,59 @@ public class GuiNurmNpc extends GuiScreen {
 		 if(parButton.id == 1001 && currItem != null && this.amount < currItem.getItemStackLimit()) {
 			 amount++;
 			 this.price = this.prevPrice * this.amount;
-		 } else if(parButton.id == 1002 && currItem != null && this.amount > 0)
+		 } else if(parButton.id == 1002 && currItem != null && this.amount > 0) {
 			 amount--;
 		 	 this.price = this.prevPrice * this.amount;
 	 	 }
+		 else if(parButton.id == 1500) {
+			 ICurrency coins = this.player.getCapability(CoinProvider.COIN_CAP, null); 
+			 if(coins.getCoins() >= this.price && this.currItem != null && this.getStacks(player) >= this.getStacks(player) - 64 + amount) {
+				if(player.inventory.addItemStackToInventory(new ItemStack(currItem, this.amount)) == true) {
+					 if(player.capabilities.isCreativeMode) {
+						 
+					 } else {
+						 coins.set(coins.getCoins() - price);
+					 }
+				}
+			} else {
+				this.showError = true;
+			}
+		}
+		else if(parButton.id == 1501) {
+			ICurrency coins = this.player.getCapability(CoinProvider.COIN_CAP, null);
+			ItemStack itemstack = this.findItem(player, currItem);
+			if(currItem != null && !itemstack.isEmpty() && itemstack.getCount() >= amount) {
+				coins.set(coins.getCoins() + price);
+				itemstack.shrink(amount);
+			}
+			else {
+				
+			}
+		}
+	}
+	
+	
+	private int getStacks(EntityPlayer player) {
+		int i = 0;
+		for(ItemStack stack : player.inventory.mainInventory) {
+			i += stack.getMaxStackSize();
+		}
+		return i * 36;
+	}
+	
+	private ItemStack findItem(EntityPlayer player, Item item)
+    {
+         for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
+         {
+             ItemStack itemstack = player.inventory.getStackInSlot(i);
+
+             if (itemstack.getItem() == item)
+             {
+                 return itemstack;
+             }
+         }
+         return ItemStack.EMPTY;
+    }
 	
 	@Override
 	public boolean doesGuiPauseGame() {
@@ -429,6 +493,9 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		SaleButton.visible = this.currGui == 2;
 		SaleButton2.visible = this.currGui == 2;
+		SaleButton3.visible = this.currGui == 2;
+		SaleButton4.visible = this.currGui == 2;
+		SaleButton5.visible = this.currGui == 2;
 		
 		addArrow.visible = this.currGui == 2;
 		subtractArrow.visible = this.currGui == 2;

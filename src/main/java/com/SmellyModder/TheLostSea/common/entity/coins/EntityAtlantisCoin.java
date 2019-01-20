@@ -196,11 +196,7 @@ public class EntityAtlantisCoin extends EntityLiving {
 				this.motionZ = -(double)((float)(Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F);
 			}
 			
-			if(this.getRNG().nextInt(5) == 4) {
-				this.setCoinType(EntityAtlantisCoin.Size.NORMAL);
-			}else {
-				this.setCoinType(EntityAtlantisCoin.Size.SMALL);
-			}
+		
 		}
 		return super.onInitialSpawn(difficulty, livingdata);
 	}
