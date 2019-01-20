@@ -22,6 +22,7 @@ import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemNeptunumShield;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemVanadiumShield;
+import com.SmellyModder.TheLostSea.common.item.shop.ItemMonumentMap;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemFishBucket;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemHarpoonGun;

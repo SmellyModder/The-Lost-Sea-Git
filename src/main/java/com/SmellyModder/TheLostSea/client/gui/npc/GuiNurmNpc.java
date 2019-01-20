@@ -1,6 +1,7 @@
 package com.SmellyModder.TheLostSea.client.gui.npc;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 import javax.crypto.Cipher;
 import javax.swing.text.html.parser.Entity;
@@ -48,16 +49,21 @@ import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemCompass;
+import net.minecraft.item.ItemMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.BossInfo.Color;
+import net.minecraft.world.storage.MapData;
+import net.minecraft.world.storage.MapDecoration;
 import net.minecraft.world.MinecraftException;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -74,6 +80,7 @@ public class GuiNurmNpc extends GuiScreen {
     
     private boolean showError = false;
     int fade;
+    private boolean yesLoaded = false;
 
     private int shopScreenID;
 	private static double nextAnimation;
@@ -105,6 +112,7 @@ public class GuiNurmNpc extends GuiScreen {
 	private SaleButton SaleButton3;
 	private SaleButton SaleButton4;
 	private SaleButton SaleButton5;
+	private SaleButton SaleButton6;
 	
 	private TalkButton TalkButton;
 	private ShopButton ShopButton;
@@ -144,11 +152,19 @@ public class GuiNurmNpc extends GuiScreen {
 	
 	private ResponseButton ResponeButtonChest;
 	
+	World world;
+    BlockPos blockpos;
+	
 	public GuiNurmNpc(EntityPlayer player) {
 		this.player = player;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
 		dialogueID = dialouge.getVerse();
+		
+		world = player.getEntityWorld();
+		blockpos = world.findNearestStructure("Monument", player.getPosition(), true);
 	}
+	
+	
 	
 	@Override
 	public void initGui() {
@@ -192,12 +208,13 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(ResponeButtonEye = new ResponseButton(18, offsetFromScreenLeft - 57, y + 175, 51, "Give Eye"));
 		buttonList.add(ResponeButtonChest = new ResponseButton(19, offsetFromScreenLeft - 57, y + 175, 61, "Take Chest"));
 		
+		
+        
 		buttonList.add(SaleButton = new SaleButton(Items.COMPASS, 15, "The classic minecraft spawn finder tool.", 30, offsetFromScreenLeft + 48, y + 160, 16, 16, ""));
 		buttonList.add(SaleButton2 = new SaleButton(Items.MAP, 10, "The classic minecraft map.", 31, offsetFromScreenLeft + 66, y + 160, 16, 16, ""));
 		buttonList.add(SaleButton3 = new SaleButton(Items.PAPER, 1, "Normal paper.", 31, offsetFromScreenLeft + 84, y + 160, 16, 16, ""));
 		buttonList.add(SaleButton4 = new SaleButton(Items.FILLED_MAP, 15, "A filled map of the area around you.", 31, offsetFromScreenLeft + 102, y + 160, 16, 16, ""));
 		buttonList.add(SaleButton5 = new SaleButton(Items.EXPERIENCE_BOTTLE, 8, "A bottle of experience.", 31, offsetFromScreenLeft + 120, y + 160, 16, 16, ""));
-
 		
 		buttonList.add(addArrow = new AmountArrow(1001, offsetFromScreenLeft + 153, y + 54, true));
 		buttonList.add(subtractArrow = new AmountArrow(1002, offsetFromScreenLeft + 118, y + 54, false));
@@ -563,7 +580,7 @@ public class GuiNurmNpc extends GuiScreen {
         			this.fontRenderer.drawString(String.valueOf(this.amount), offsetFromScreenLeft + (int)134, y + 59, 4210752);
         		}
         		
-        		mc.getRenderItem().renderItemIntoGUI(new ItemStack(this.currItem), offsetFromScreenLeft + (int)51, y + 54);
+        		mc.getRenderItem().renderItemIntoGUI(new ItemStack(this.currItem), offsetFromScreenLeft + (int)51, y + 53);
         		
     		}
     	}
