@@ -191,11 +191,19 @@ item.prismarine_chestplate.name=Prismarine Chestplate
 item.prismarine_leggings.name=Prismarine Leggings
 item.prismarine_boots.name=Prismarine Boots
 
+# Shop Exclusives
+item.wayfinder.name=Wayfinder Compass
+
 # Enchants
 enchantment.zeus_thrower=§eZeus Thrower§r
 enchantment.double_trouble=§eDouble Trouble§r
 enchantment.recharge=§eRecharge§r
 enchantment.anti_chloride=§2Anti Chloride§r
+
+# Tooltip
+tooltip.thelostsea.x=Position X:
+tooltip.thelostsea.y=Position Y:
+tooltip.thelostsea.dimension=Dimension:
 
 # Advancements
 thelostsea.advancements.entity_killed.angler_fish.title=Bio-lumie Killer

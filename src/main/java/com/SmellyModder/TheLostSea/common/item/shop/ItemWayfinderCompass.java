@@ -1,9 +1,14 @@
 package com.SmellyModder.TheLostSea.common.item.shop;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
+import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItemFrame;
@@ -19,15 +24,16 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemWayfinderCompass extends ItemBase
 {
-    private int[] list;
-    private int x; private int y; private int z;
-    private BlockPos pos;
+	public int dimension;
+	private int posX, posZ;
 
 	public ItemWayfinderCompass(String name)
     {
@@ -58,8 +64,15 @@ public class ItemWayfinderCompass extends ItemBase
                     }
 
                     double d0;
-
-                    if (worldIn.provider.isSurfaceWorld())
+                    
+                    if(!stack.hasTagCompound()) {
+            			stack.setTagCompound(new NBTTagCompound());
+            		}
+                    if (stack.hasTagCompound() && stack.getTagCompound().hasKey("dimension"))
+						dimension = stack.getTagCompound().getInteger("dimension");
+                    
+                    
+                    if (worldIn.provider.getDimension() == dimension)
                     {
                         double d1 = flag ? (double)entity.rotationYaw : this.getFrameRotation((EntityItemFrame)entity);
                         d1 = MathHelper.positiveModulo(d1 / 360.0D, 1.0D);
@@ -102,35 +115,52 @@ public class ItemWayfinderCompass extends ItemBase
             @SideOnly(Side.CLIENT)
             private double getSpawnToAngle(World p_185092_1_, Entity p_185092_2_)
             {
-                return Math.atan2((double)pos.getZ() - p_185092_2_.posZ, (double)pos.getX() - p_185092_2_.posX);
+            	if(p_185092_1_ != null && p_185092_2_ instanceof EntityPlayer) {
+            		EntityPlayer player = (EntityPlayer)p_185092_2_;
+            		ItemStack itemstack = player.inventory.getCurrentItem();
+            		if (!itemstack.isEmpty() && itemstack.getItem() == TLSItems.WAYFINDER_COMPASS && itemstack.hasTagCompound() && itemstack.getTagCompound().hasKey("dimension")) {
+            			posX = itemstack.getTagCompound().getInteger("posX");
+            			posZ = itemstack.getTagCompound().getInteger("posZ");
+            		}
+            	}
+            	
+                return Math.atan2((double)posZ - p_185092_2_.posZ, (double)posX - p_185092_2_.posX);
             }
         });
     }
-    
-    @Override
-	public EnumActionResult onItemUseFirst(EntityPlayer entity, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
-		float var4 = 1.0F;
-		int i = pos.getX();
-		int j = pos.getY();
-		int k = pos.getZ();
-		ItemStack itemstack = entity.getHeldItem(hand);
-		NBTTagCompound nbt = itemstack.getTagCompound();
-		if(nbt == null) {
-			nbt = new NBTTagCompound();
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> list, ITooltipFlag flag) {
+		if(!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
 		}
-		nbt = nbt.getCompoundTag("blockpos");
-		
-		if(nbt.hasKey("x"))
-		{
-			this.x = nbt.getInteger("x");
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey("dimension")) {
+			list.add(TextFormatting.GRAY + new TextComponentTranslation("tooltip.thelostsea.dimension", new Object[0]).getFormattedText() + TextFormatting.WHITE + " " + stack.getTagCompound().getString("dim_name"));
+			list.add(TextFormatting.GRAY + new TextComponentTranslation("tooltip.thelostsea.x", new Object[0]).getFormattedText() + TextFormatting.WHITE + " " + stack.getTagCompound().getInteger("posX"));
+			list.add(TextFormatting.GRAY + new TextComponentTranslation("tooltip.thelostsea.y", new Object[0]).getFormattedText() + TextFormatting.WHITE + " " + stack.getTagCompound().getInteger("posY"));
 		}
-		if (true) {
-			nbt.setInteger("x", x);
-		}
-		
-		this.pos = new BlockPos(i, j, k);
-
-		return EnumActionResult.PASS;
 	}
 
+    
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		ItemStack stack = player.getHeldItem(hand);
+		if(!stack.hasTagCompound()) {
+			stack.setTagCompound(new NBTTagCompound());
+		}
+		Block block = world.getBlockState(pos).getBlock();
+		if (stack.hasTagCompound() && player.isSneaking()) {
+			if (!world.isRemote && block != null) {
+				stack.getTagCompound().setString("dim_name", player.getEntityWorld().provider.getDimensionType().getName());
+				
+				stack.getTagCompound().setInteger("dimension", player.getEntityWorld().provider.getDimension());
+				
+				stack.getTagCompound().setInteger("posX", pos.getX());
+				stack.getTagCompound().setInteger("posZ", pos.getZ());
+				return EnumActionResult.SUCCESS;
+			}
+		}
+		return EnumActionResult.FAIL;
+	}
 }

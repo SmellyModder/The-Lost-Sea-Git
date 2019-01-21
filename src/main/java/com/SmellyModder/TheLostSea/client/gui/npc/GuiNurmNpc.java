@@ -17,8 +17,10 @@ import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
 import com.SmellyModder.TheLostSea.core.api.inventory.ILSShopItem;
 import com.SmellyModder.TheLostSea.core.api.inventory.IShopButton;
+import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
+import com.SmellyModder.TheLostSea.core.packets.npc.MessageSetCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
@@ -113,6 +115,8 @@ public class GuiNurmNpc extends GuiScreen {
 	private SaleButton SaleButton4;
 	private SaleButton SaleButton5;
 	private SaleButton SaleButton6;
+	private SaleButton SaleButton7;
+	private SaleButton SaleButton8;
 	
 	private TalkButton TalkButton;
 	private ShopButton ShopButton;
@@ -208,14 +212,24 @@ public class GuiNurmNpc extends GuiScreen {
 		buttonList.add(ResponeButtonEye = new ResponseButton(18, offsetFromScreenLeft - 57, y + 175, 51, "Give Eye"));
 		buttonList.add(ResponeButtonChest = new ResponseButton(19, offsetFromScreenLeft - 57, y + 175, 61, "Take Chest"));
 		
-		
+		int x2 = 48;
         
-		buttonList.add(SaleButton = new SaleButton(Items.COMPASS, 15, "The classic minecraft spawn finder tool.", 30, offsetFromScreenLeft + 48, y + 160, 16, 16, ""));
-		buttonList.add(SaleButton2 = new SaleButton(Items.MAP, 10, "The classic minecraft map.", 31, offsetFromScreenLeft + 66, y + 160, 16, 16, ""));
-		buttonList.add(SaleButton3 = new SaleButton(Items.PAPER, 1, "Normal paper.", 31, offsetFromScreenLeft + 84, y + 160, 16, 16, ""));
-		buttonList.add(SaleButton4 = new SaleButton(Items.FILLED_MAP, 15, "A filled map of the area around you.", 31, offsetFromScreenLeft + 102, y + 160, 16, 16, ""));
-		buttonList.add(SaleButton5 = new SaleButton(Items.EXPERIENCE_BOTTLE, 8, "A bottle of experience.", 31, offsetFromScreenLeft + 120, y + 160, 16, 16, ""));
-		
+		buttonList.add(SaleButton = new SaleButton(Items.COMPASS, 15, "The classic minecraft spawn finder tool.", 30, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton2 = new SaleButton(TLSItems.WAYFINDER_COMPASS, 100, "A special compass that can set waypoints.", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton3 = new SaleButton(Items.PAPER, 1, "Normal paper.", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton4 = new SaleButton(Items.MAP, 10, "A blank map.", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton5 = new SaleButton(Items.EXPERIENCE_BOTTLE, 8, "A bottle of experience.", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton6 = new SaleButton(Items.ENDER_EYE, 55, "An eye of ender", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton7 = new SaleButton(Items.SADDLE, 40, "A saddle", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+		x2 += 18;
+		buttonList.add(SaleButton8 = new SaleButton(Items.EMERALD, 35, "An Emerald", 31, offsetFromScreenLeft + x2, y + 160, 16, 16, ""));
+
 		buttonList.add(addArrow = new AmountArrow(1001, offsetFromScreenLeft + 153, y + 54, true));
 		buttonList.add(subtractArrow = new AmountArrow(1002, offsetFromScreenLeft + 118, y + 54, false));
 		
@@ -262,12 +276,14 @@ public class GuiNurmNpc extends GuiScreen {
 		
 		
 		
-		
 		SaleButton.visible = this.currGui == 2;
 		SaleButton2.visible = this.currGui == 2;
 		SaleButton3.visible = this.currGui == 2;
 		SaleButton4.visible = this.currGui == 2;
 		SaleButton5.visible = this.currGui == 2;
+		SaleButton6.visible = this.currGui == 2;
+		SaleButton7.visible = this.currGui == 2;
+		SaleButton8.visible = this.currGui == 2;
 		
 		addArrow.visible = this.currGui == 2;
 		subtractArrow.visible = this.currGui == 2;
@@ -400,6 +416,7 @@ public class GuiNurmNpc extends GuiScreen {
 			 currItem = ((IShopButton) parButton).getItem();
 			 prevPrice = ((IShopButton) parButton).setPrice();
 			 description = ((IShopButton) parButton).getDescription();
+			 price = prevPrice * amount;
 		 }
 		 if(parButton.id == 1001 && currItem != null && this.amount < currItem.getItemStackLimit()) {
 			 amount++;
@@ -416,6 +433,7 @@ public class GuiNurmNpc extends GuiScreen {
 						 
 					 } else {
 						 coins.set(coins.getCoins() - price);
+						 TheLostSea.NETWORK.sendToServer(new MessageSetCoins(coins.getCoins()));
 					 }
 				}
 			} else {
@@ -428,6 +446,7 @@ public class GuiNurmNpc extends GuiScreen {
 			if(currItem != null && !itemstack.isEmpty() && itemstack.getCount() >= amount) {
 				coins.set(coins.getCoins() + price);
 				itemstack.shrink(amount);
+				TheLostSea.NETWORK.sendToServer(new MessageSetCoins(coins.getCoins()));
 			}
 			else {
 				
@@ -513,6 +532,9 @@ public class GuiNurmNpc extends GuiScreen {
 		SaleButton3.visible = this.currGui == 2;
 		SaleButton4.visible = this.currGui == 2;
 		SaleButton5.visible = this.currGui == 2;
+		SaleButton6.visible = this.currGui == 2;
+		SaleButton7.visible = this.currGui == 2;
+		SaleButton8.visible = this.currGui == 2;
 		
 		addArrow.visible = this.currGui == 2;
 		subtractArrow.visible = this.currGui == 2;
@@ -551,8 +573,13 @@ public class GuiNurmNpc extends GuiScreen {
     		}
     		else if(currGui == 2) {
         		
-        		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
-        		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 0, y - 6, 0, 0, 256, 256, 256, 256);
+    			if(currItem == TLSItems.WAYFINDER_COMPASS || currItem == Items.EXPERIENCE_BOTTLE) {
+    				mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_extended.png"));
+            		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 0, y - 6, 0, 0, 256, 256, 256, 256);
+    			} else {
+    				mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop.png"));
+    				this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 0, y - 6, 0, 0, 256, 256, 256, 256);
+    			}
         		
         		this.fontRenderer.drawString("Shop", offsetFromScreenLeft + (int)42.5F, y + 13, 4210752);
         		this.fontRenderer.drawString("Cost", offsetFromScreenLeft + (int)187F, y + 40, 4210752);
