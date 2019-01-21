@@ -48,8 +48,8 @@ public class TLSBlocks {
 	public static final Block SEA_IRONORE = new BlockSeaIronOre("sea_ironore", Material.ROCK, false);
 	public static final Block DEEPSEA_COALORE = new BlockSeaCoalOre("deepsea_coalore", Material.ROCK, true);
 	public static final Block SEA_COALORE = new BlockSeaCoalOre("sea_coalore", Material.ROCK, false);
-	public static final Block DEEPSEA_COBALTORE = new BlockLSOres("deepsea_cobaltore", Material.ROCK, true, 0);
-	public static final Block SEA_COBALTORE = new BlockLSOres("sea_cobaltore", Material.ROCK, false, 0);
+	public static final Block DEEPSEA_COBALTORE = new BlockLSOres("deepsea_neptunumore", Material.ROCK, true, 0);
+	public static final Block SEA_COBALTORE = new BlockLSOres("sea_neptunumore", Material.ROCK, false, 0);
 	public static final Block SEA_VANADIUMORE = new BlockLSOres("sea_vanadiumore", Material.ROCK, false, 1);
 	public static final Block DEEPSEA_VANADIUMORE = new BlockLSOres("deepsea_vanadiumore", Material.ROCK, false, 1);
 	public static final Block AQUAMARINE_ORE = new BlockLSOres("sea_aquamarineore", Material.ROCK, false, 2);

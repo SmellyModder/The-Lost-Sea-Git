@@ -57,7 +57,7 @@ public class MessageTakeItems implements IMessage{
 				}
 			}
 			return null;
-		}
+	 }
 		
 		private ItemStack findItem(EntityPlayer player, Item item)
 		{
