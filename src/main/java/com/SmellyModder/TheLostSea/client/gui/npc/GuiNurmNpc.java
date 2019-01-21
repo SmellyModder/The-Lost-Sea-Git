@@ -22,6 +22,8 @@ import com.SmellyModder.TheLostSea.core.packets.MessageSetVerse;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageSetCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
+import com.SmellyModder.TheLostSea.core.packets.npc.shop.MessageGiveItems;
+import com.SmellyModder.TheLostSea.core.packets.npc.shop.MessageTakeItems;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
@@ -428,7 +430,7 @@ public class GuiNurmNpc extends GuiScreen {
 		 else if(parButton.id == 1500) {
 			 ICurrency coins = this.player.getCapability(CoinProvider.COIN_CAP, null); 
 			 if(coins.getCoins() >= this.price && this.currItem != null && this.getStacks(player) >= this.getStacks(player) - 64 + amount) {
-				if(player.inventory.addItemStackToInventory(new ItemStack(currItem, this.amount)) == true) {
+				 	 TheLostSea.NETWORK.sendToServer(new MessageGiveItems(player, currItem, amount));
 					 if(player.capabilities.isCreativeMode) {
 						 
 					 } else {
@@ -436,16 +438,16 @@ public class GuiNurmNpc extends GuiScreen {
 						 TheLostSea.NETWORK.sendToServer(new MessageSetCoins(coins.getCoins()));
 					 }
 				}
-			} else {
+			 	else {
 				this.showError = true;
-			}
+			 	}
 		}
 		else if(parButton.id == 1501) {
 			ICurrency coins = this.player.getCapability(CoinProvider.COIN_CAP, null);
 			ItemStack itemstack = this.findItem(player, currItem);
 			if(currItem != null && !itemstack.isEmpty() && itemstack.getCount() >= amount) {
+				TheLostSea.NETWORK.sendToServer(new MessageTakeItems(player, currItem, amount));
 				coins.set(coins.getCoins() + price);
-				itemstack.shrink(amount);
 				TheLostSea.NETWORK.sendToServer(new MessageSetCoins(coins.getCoins()));
 			}
 			else {

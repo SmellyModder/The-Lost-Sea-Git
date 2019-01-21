@@ -12,6 +12,8 @@ import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageSetCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
+import com.SmellyModder.TheLostSea.core.packets.npc.shop.MessageGiveItems;
+import com.SmellyModder.TheLostSea.core.packets.npc.shop.MessageTakeItems;
 import com.SmellyModder.TheLostSea.core.proxy.CommonProxy;
 import com.SmellyModder.TheLostSea.core.util.client_events.FovUpdater;
 import com.SmellyModder.TheLostSea.core.util.events.GameplayEventHandler;
@@ -61,6 +63,9 @@ public class TheLostSea {
 		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 3, Side.SERVER);
 		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 4, Side.CLIENT);
 		NETWORK.registerMessage(MessageSetVerse.HandleMessageSetVerse.class, MessageSetVerse.class, 5, Side.SERVER);
+		
+		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 6, Side.SERVER);
+		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 7, Side.SERVER);
 	}
 	
 	@EventHandler

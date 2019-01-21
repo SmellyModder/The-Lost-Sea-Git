@@ -63,17 +63,16 @@ public class ItemWayfinderCompass extends ItemBase
                         worldIn = entity.world;
                     }
 
-                    double d0;
+                    double d0 = 0;
                     
                     if(!stack.hasTagCompound()) {
             			stack.setTagCompound(new NBTTagCompound());
             		}
-                    if (stack.hasTagCompound() && stack.getTagCompound().hasKey("dimension"))
-						dimension = stack.getTagCompound().getInteger("dimension");
+                    if (stack.hasTagCompound() && stack.getTagCompound().hasKey("dimension")) {
+                    	dimension = stack.getTagCompound().getInteger("dimension");
                     
-                    
-                    if (worldIn.provider.getDimension() == dimension)
-                    {
+                    	if (worldIn.provider.getDimension() == dimension)
+                    	{
                         double d1 = flag ? (double)entity.rotationYaw : this.getFrameRotation((EntityItemFrame)entity);
                         d1 = MathHelper.positiveModulo(d1 / 360.0D, 1.0D);
                         double d2 = this.getSpawnToAngle(worldIn, entity) / (Math.PI * 2D);
@@ -83,13 +82,15 @@ public class ItemWayfinderCompass extends ItemBase
                     {
                         d0 = Math.random();
                     }
-
                     if (flag)
                     {
                         d0 = this.wobble(worldIn, d0);
                     }
-
+                    
                     return MathHelper.positiveModulo((float)d0, 1.0F);
+                    } else {
+                    	return (float) MathHelper.positiveModulo((float)d0 * Math.random() * 5, 1.0F);
+                    }
                 }
             }
             @SideOnly(Side.CLIENT)
