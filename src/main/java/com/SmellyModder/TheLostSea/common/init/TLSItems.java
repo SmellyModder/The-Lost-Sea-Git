@@ -128,7 +128,6 @@ public class TLSItems {
 	
 	/**
 	 * Shop Exclusives
-	 * 
 	 */
 	public static Item WAYFINDER_COMPASS = new ItemWayfinderCompass("wayfinder");
 	
@@ -207,5 +206,5 @@ public class TLSItems {
 	public static Item CUTLASS = new ItemCutlass("cutlass", CUTLASS_MAT, true);
 	
 	//Util
-	public static Item GS = new ItemScreen("gs");
+	//public static Item GS = new ItemScreen("gs");
 }
