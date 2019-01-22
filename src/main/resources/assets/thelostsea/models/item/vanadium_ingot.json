@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "thelostsea:items/vanadium_ingot"
+       "layer0": "thelostsea:items/vanadium_ingot2"
    }
 }
