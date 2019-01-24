@@ -114,4 +114,9 @@ public class BlockBubbleFruitStem extends BlockBase implements IGrowable, IPlant
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
 	}
+
+	@Override
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
+		return false;
+	}
 }
