@@ -219,7 +219,7 @@ public class GUILoreBook extends GuiScreen {
 		 	buttonList.clear();
 	        Keyboard.enableRepeatEvents(true);
 	        
-	        buttonDone = new GuiButton(0, width / 2 - 49, -25 + bookImageHeight, 98, 20, I18n.format("gui.done", new Object[0])) {
+	        buttonDone = new GuiButton(0, width / 2 - 50, -15 + bookImageHeight, 98, 20, I18n.format("gui.done", new Object[0])) {
 	        	
 	        	@Override
 	        	public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
@@ -239,31 +239,33 @@ public class GUILoreBook extends GuiScreen {
 	        
 	        
 	        int offsetFromScreenLeft = (width - bookImageWidth) / 2;
-	        buttonList.add(buttonNextPage = new NextPageButton(1, offsetFromScreenLeft + nextButtonBack, 168, true));
-	        buttonList.add(buttonNextPageF = new NextPageButton(1, offsetFromScreenLeft + 167, 168, true));
+	        buttonList.add(buttonNextPage = new NextPageButton(1, offsetFromScreenLeft + nextButtonBack + 21, 178, true));
+	        buttonList.add(buttonNextPageF = new NextPageButton(1, offsetFromScreenLeft + 175, 175, true));
 	       
 	        buttonList.add(buttonPreviousPage = new NextPageButton(2, 
-	              offsetFromScreenLeft - 2, 168, false));
+	              offsetFromScreenLeft - 25, 178, false));
 	        
 	        buttonList.add(VolSelectorM = new NumbSelctor(2, 
-		              offsetFromScreenLeft + 104, 69, 45, false));
+		              offsetFromScreenLeft + 100, 60, 45, false));
 	        buttonList.add(VolSelectorG = new NumbSelctor(2, 
-		              offsetFromScreenLeft + 104, 104, 45, true));
+		              offsetFromScreenLeft + 100, 101, 45, true));
 	        buttonList.add(VolSelectorA = new NumbSelctor(2, 
-		              offsetFromScreenLeft + 104, 139, 45, true));
+		              offsetFromScreenLeft + 100, 142, 45, true));
 	        
 	        buttonList.add(buttonWhatThis = new WhatThisButton(2, 
-	        		offsetFromScreenLeft + 186, 50));
+	        		offsetFromScreenLeft + 192, 37));
 	        
 	        buttonList.add(volumeNextPage1 = new VolumeArrows(2, 
-		              offsetFromScreenLeft - 2, 26, true, 46));
-	        buttonList.add(volumePreviousPage1 = new VolumeArrows(2, 
-		              offsetFromScreenLeft - 2, 26, false, 46));
-	        
+		              offsetFromScreenLeft - 14, 10, true, 46));
 	        buttonList.add(volumeNextPage2 = new VolumeArrows(2, 
-		              offsetFromScreenLeft - -20, 26, true, 91));
+		              offsetFromScreenLeft - -10, 10, true, 91));
 	        buttonList.add(volumeNextPage3 = new VolumeArrows(2, 
-		              offsetFromScreenLeft - -43, 26, true, 136));
+		              offsetFromScreenLeft - -34, 10, true, 136));
+	        
+	        
+	        buttonList.add(volumePreviousPage1 = new VolumeArrows(2, 
+	        		offsetFromScreenLeft - 14, 10, false, 46));
+	        
 	        buttonList.add(magButton = new ButtonMagnifier(777, 
 		              offsetFromScreenLeft - -49, 80, zoomed, 136));
 	        
@@ -353,14 +355,15 @@ public class GUILoreBook extends GuiScreen {
 	 		}
 	 	    int newCalc = offsetFromScreenLeft - 110;
 	 	    int newCalc2 = newCalc - 2;
-	 	    drawTexturedModalRect(offsetFromScreenLeft, 2, 0, 0, bookImageWidth, bookImageHeight);
+	 	    //drawTexturedModalRect(offsetFromScreenLeft, 2, 0, 0, bookImageWidth, bookImageHeight);
+	 	    this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft - 23, -20, 0, 0, 300, 300, 300, 300);
 	 	    
 	 	  if(currPage == 1) {
-	 	    this.fontRenderer.drawString("Volume Index", (newCalc + 144F), (50), 000000, false);
+	 	    this.fontRenderer.drawString("Volume Index", (newCalc + 133F), (36), 000000, false);
 	 	    
-	 	    this.fontRenderer.drawString("A Lost Sea", (newCalc + 150F), (70), 000000, false);
-	 	    this.fontRenderer.drawString("The Guardians", (newCalc + 140F), (106), 000000, false);
-	 	    this.fontRenderer.drawString("Atlantis", (newCalc + 158F), (141.5F), 000000, false);
+	 	    this.fontRenderer.drawString("A Lost Sea", (newCalc + 137F), (62), 000000, false);
+	 	    this.fontRenderer.drawString("The Guardians", (newCalc + 128F), (104), 000000, false);
+	 	    this.fontRenderer.drawString("Atlantis", (newCalc + 145F), (145F), 000000, false);
 	 	    
 	 	    
 	 	    this.fontRenderer.drawSplitString(TextFormatting.UNDERLINE + "Volume I: A Lost Sea", newCalc + 248, 55, 116, 5592575);
@@ -1271,10 +1274,10 @@ public class GUILoreBook extends GuiScreen {
 	 		}
 	 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	 		mc.getTextureManager().bindTexture(bookPageTextures[5]);
-	 	    drawTexturedModalRect(offsetFromScreenLeft + 65, 2, 0, 0, bookImageWidth, bookImageHeight);
+	 		this.drawModalRectWithCustomSizedTexture(offsetFromScreenLeft + 53, -20, 0, 0, 300, 300, 300, 300);
 	 	   if(showMe == true) {
-		 		this.fontRenderer.drawSplitString(TextFormatting.UNDERLINE + "What's This Book?", 321, 40, 112, 0);
-		 		this.fontRenderer.drawSplitString(TextFormatting.ITALIC + "The Aquapedia is a journal that contains Jack's old writings about the Lost Sea, some pages are lost.", 321, 50, 90, 0);
+		 		this.fontRenderer.drawSplitString(TextFormatting.UNDERLINE + "What's This Book?", offsetFromScreenLeft + 230, 30, 112, 0);
+		 		this.fontRenderer.drawSplitString(TextFormatting.ITALIC + "The Aquapedia is a journal that contains Jack's old writings about the Lost Sea, some pages are lost.", offsetFromScreenLeft + 230, 40, 90, 0);
 	 	   }
 	    }
 	  super.drawScreen(parWidth, parHeight, p_73863_3_);
