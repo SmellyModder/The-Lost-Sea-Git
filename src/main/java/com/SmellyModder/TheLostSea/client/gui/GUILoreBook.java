@@ -138,8 +138,8 @@ public class GUILoreBook extends GuiScreen {
 		stringPageText[4] = "Skull Island, even if it does exist that is, here are some things I know about it. I've never personally been there but ol' swashblocker says he has. It's apparently a Island with a huge cave shaped as a skull, says the name.";
 		stringPageText2[1] = "Swashblocker is the only one who knows what it looks like because apparently his other crew members died in the storms near the Island. Apparently these are no normal storms, they are like super hurricanes. He says there is also a great treasure in the cave";
 	
-		stringPageText[5] = "Dwarka village probably has to be the most peaceful place in the sea. It's a village that has a spell cast around it to prevent monsters from getting in, it also has a few survivers from the Atlantis invasion. ";
-		stringPageText2[2] = "They're many powerful and ancient people there, including a mighty wizard who claims to have made the guardians. His name is Dromonar, the great Warlock. It's said he started the rebellion against the guardians. Nobody's seen him ever since he put up the magic shield.";
+		stringPageText[5] = "“Behold, Dwarka Village! A safe haven for all fighting the reign of Aegaeon!” Built from prismarine, Dwarka Village is a beautiful town* near the Lush Coral Reef governed by Chief Honon. Atlantean survivors and other people of the Lost Sea inhabit the village.";
+		stringPageText2[2] = "A bubble exists around the village providing air for those inside, which most creatures steer clear of for reasons unknown to the Dwarkans. Dwarka Village used to be an old religious complex of Atlantean origin, which Honon and Dromonar rebuilt into a town.";
 		
 		//Page 5
 		stringPageText[6] = "This is like most trenches except this is one hell of a trench. Like some other places on this list, I have never personally been there. I once saw it from a distance, it looked like a endless void, apparently it's not and has a bottom.";

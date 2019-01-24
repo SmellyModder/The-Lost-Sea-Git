@@ -12,6 +12,7 @@ import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaCoalOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaOres;
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockBubbleFruitStem;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChestFull;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPillarBase;
@@ -32,8 +33,7 @@ public class TLSBlocks {
 	//Environment
 	public static final Block SEA_ROCK = new BlockRock("sea_rock", Material.ROCK, 1.9F, false);
 	public static final Block DEEP_SEA_ROCK = new BlockRock("deepsea_rock", Material.ROCK, 2.2F, false);
-	//public static final Block SEA_COBBLE = new BlockRock("sea_cobble", Material.ROCK, 1.85F, true);
-	//public static final Block DEEPSEA_COBBLE = new BlockRock("deepsea_cobble", Material.ROCK, 2.2F, true);
+	//public static final Block BUBBLE_FRUIT_STEM = new BlockBubbleFruitStem("bubble_fruit_stem", Material.VINE);
 	public static final Block POLISHED_SEASTONE = new BlockRock("p_sea_stone", Material.ROCK, 1.9F, true);
 	public static final Block POLISHED_DEEPSEASTONE = new BlockRock("p_deepsea_stone", Material.ROCK, 2.2F, true);
 	
