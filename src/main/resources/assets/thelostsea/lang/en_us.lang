@@ -172,6 +172,8 @@ item.diamond_disc.name=Diamond Disc
 item.iron_disc.name=Iron Disc
 item.stone_disc.name=Stone Disc
 item.wood_disc.name=Wooden Disc
+item.vanadium_disc.name=Vanadium Disc
+item.neptunum_disc.name=Neptunum Disc
 
 # Music
 item.pirate_crew.name=Music Disc

@@ -24,7 +24,8 @@ import net.minecraft.util.text.TextFormatting;
 
 public class RenderDisc extends Render<EntityDisc>{
 	
-	private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_p.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_d.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_g.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_i.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_s.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_w.png")};
+	private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_p.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_d.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_g.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_i.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_s.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_w.png")
+			, new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_v.png"), new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc/disc_n.png")};
 	private static final ResourceLocation DISC = new ResourceLocation(Reference.MOD_ID + ":textures/entity/disc_p.png");
 	private ModelDisc model = new ModelDisc();
 	

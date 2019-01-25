@@ -187,7 +187,9 @@ public class TLSItems {
 	public static ItemToolDisc DISC_IRON = new ItemToolDisc("iron_disc", 7, 2, EntityDisc.TypeOfDisc.IRON, SoundEvents.ITEM_ARMOR_EQUIP_IRON, ToolMaterial.IRON);
 	public static ItemToolDisc DISC_STONE = new ItemToolDisc("stone_disc", 6, 2, EntityDisc.TypeOfDisc.STONE, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, ToolMaterial.STONE);
 	public static ItemToolDisc DISC_WOOD = new ItemToolDisc("wood_disc", 5, 3, EntityDisc.TypeOfDisc.WOOD, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, ToolMaterial.WOOD);
-	
+	public static ItemToolDisc DISC_VANADIUM = new ItemToolDisc("vanadium_disc", 9, 2, EntityDisc.TypeOfDisc.VANDIUM, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, ToolMaterial.DIAMOND);
+	public static ItemToolDisc DISC_NEPTUNUM = new ItemToolDisc("neptunum_disc", 11, 3, EntityDisc.TypeOfDisc.NEPTUNUM, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, NEPTUNUM_MAT);
+
 	//Music Discs
 	public static ItemPirateCrewDisc PIRATE_CREW_DISC = new ItemPirateCrewDisc("pirate_crew", TLSMusic.PIRATE_CREW);
 	public static ItemConvolutionDisc OMAN_DISC = new ItemConvolutionDisc("ocean_man", TLSMusic.OCEAN_MAN);

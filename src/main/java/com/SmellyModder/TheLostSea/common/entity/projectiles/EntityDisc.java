@@ -41,6 +41,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import com.SmellyModder.TheLostSea.common.blocks.util.BlockDiscEnums;
 
 public class EntityDisc extends LSProjectile implements IEntityAdditionalSpawnData {
 
@@ -404,7 +405,9 @@ public class EntityDisc extends LSProjectile implements IEntityAdditionalSpawnDa
         GOLD(BlockPlanks.EnumType.BIRCH.getMetadata(), "g"),
         IRON(BlockPlanks.EnumType.JUNGLE.getMetadata(), "i"),
         STONE(BlockPlanks.EnumType.ACACIA.getMetadata(), "s"),
-        WOOD(BlockPlanks.EnumType.DARK_OAK.getMetadata(), "w");
+        WOOD(BlockPlanks.EnumType.DARK_OAK.getMetadata(), "w"),
+        VANDIUM(BlockDiscEnums.EnumType.VANADIUM.getMetadata(), "v"),
+        NEPTUNUM(BlockDiscEnums.EnumType.NEPTUNUM.getMetadata(), "n");
 
         private final String name;
         private final int metadata;
