@@ -46,7 +46,7 @@ public class BlockSpawnNurm extends BlockBase{
 	
 	@Override
 	public int tickRate(World world) {
-		return 1;
+		return 2;
 	}
 	
 	@Override
