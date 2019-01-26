@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.core.util;
 import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
@@ -81,6 +82,7 @@ public class TheLostSea {
 		MinecraftForge.EVENT_BUS.register(new FinDropEvent());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
+	    LSVillageHandler.initNurmShop();
 	    OreDictionaryLS.register();
 	}
 	
