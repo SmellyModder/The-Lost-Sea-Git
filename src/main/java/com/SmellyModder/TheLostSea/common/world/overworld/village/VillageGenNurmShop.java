@@ -70,7 +70,7 @@ public class VillageGenNurmShop extends Village
 		int k = 0;
 		int j = 0;
 		
-		BlockPos blockpos = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(-11), this.getZWithOffset(0, 0));
+		BlockPos blockpos = new BlockPos(this.getXWithOffset(5, 2), this.getYWithOffset(-12), this.getZWithOffset(5, 2));
 		
 		this.NURM_SHOP.generate(world, rand, blockpos);
 		
@@ -88,7 +88,7 @@ public class VillageGenNurmShop extends Village
 //		this.fillWithBlocks(world, box, 2, 1, 8, 8, 3, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 2, 5, 8, 8, 6, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 3, 7, 8, 7, 7, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 8, 8, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 8, 8, box);
 //		//Left
 //		this.fillWithBlocks(world, box, 1, 1, 4, 1, 3, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 1, 5, 6, 1, 5, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
@@ -113,14 +113,15 @@ public class VillageGenNurmShop extends Village
 //		this.fillWithBlocks(world, box, 9, 2, 5, 9, 2, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 9, 6, 5, 9, 6, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
 //		
+//		
 		
-		for(int zz = 0; zz <= 9; zz++)
+	//Did this to check where the structure's box is, and it appears to be way off from the structure
+	for(int zz = 0; zz <= 9; zz++)
 			for(int xx = 0; xx <= 10; xx++)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
-			}
-		
+	}		
 		return true;
 	}
 

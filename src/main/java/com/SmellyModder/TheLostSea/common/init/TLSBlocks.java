@@ -22,6 +22,7 @@ import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRotatableDeco;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRuin;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockTempleBaseStone;
 import com.SmellyModder.TheLostSea.common.blocks.temple.DummyAirBlock;
+import com.SmellyModder.TheLostSea.common.blocks.util.BlockSpawnNurm;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -95,4 +96,7 @@ public class TLSBlocks {
 	
 	//Fluids
 	//public static final Block DARK_WATER = new BlockDarkwaterFluid();
+	
+	//Developer
+	public static final Block INVIS_SPAWNER = new BlockSpawnNurm("spawn_n", Material.CIRCUITS);
 }
