@@ -52,6 +52,9 @@ public class VillageGenNurmShop extends Village
 	
 	private int groundLevel = 0;
 
+	/**
+	 * Note: I tried my best to do this
+	 */
 	@Override
 	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
@@ -110,6 +113,13 @@ public class VillageGenNurmShop extends Village
 //		this.fillWithBlocks(world, box, 9, 2, 5, 9, 2, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 9, 6, 5, 9, 6, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
 //		
+		
+		for(int zz = 0; zz <= 9; zz++)
+			for(int xx = 0; xx <= 10; xx++)
+			{
+				this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
+				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
+			}
 		
 		return true;
 	}
