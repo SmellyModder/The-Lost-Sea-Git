@@ -50,11 +50,8 @@ public class VillageGenNurmShop extends Village
 		this.boundingBox = par4StructureBoundingBox;
 	}
 	
-	private int groundLevel = 0;
+	private int groundLevel = -1;
 
-	/**
-	 * Note: I tried my best to do this
-	 */
 	@Override
 	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
 	{
@@ -63,64 +60,22 @@ public class VillageGenNurmShop extends Village
 			groundLevel = this.getAverageGroundLevel(world, box);
 			if(groundLevel < 0)
 				return true;
-			boundingBox.offset(0, groundLevel-boundingBox.maxY + 10 - 1, 0);
+			boundingBox.offset(0, groundLevel - boundingBox.maxY + 20 - 1, 0);
 		}
 		
-		BlockPos blockpos = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(0), this.getZWithOffset(0, 0));
+		this.fillWithBlocks(world, box, 0, 0, 0, 25, 4, 16, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		
-		if (box.isVecInside(blockpos))
-        {
-			this.NURM_SHOP.generate(world, rand, blockpos);
-        }
+		this.fillWithBlocks(world, box, 3, 2, 8, 5, 2, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
+		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 0, 0, 0, box);
+		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 26, 10, 17, box);
 		
-		this.fillWithBlocks(world, box, 0, 0, 0, 10, 9, 8, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
-		this.fillWithBlocks(world, box, 6, 0, 1, 9, 0, 2, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
-		
-//		this.fillWithBlocks(world, box, 2, 1, 3, 8, 3, 3, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 7, 5, 3, 8, 6, 3, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 7, 3, box);
-//		this.fillWithBlocks(world, box, 6, 5, 4, 6, 7, 4, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 2, 5, 5, 5, 6, 5, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 3, 7, 5, 5, 7, 5, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 8, 5, box);
-//		//Back
-//		this.fillWithBlocks(world, box, 2, 1, 8, 8, 3, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 2, 5, 8, 8, 6, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 3, 7, 8, 7, 7, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-		//this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 8, 8, box);
-//		//Left
-//		this.fillWithBlocks(world, box, 1, 1, 4, 1, 3, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 1, 5, 6, 1, 5, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		//Right
-//		this.fillWithBlocks(world, box, 9, 1, 4, 9, 3, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 9, 5, 4, 9, 6, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-//
-//		//Windows
-//		//Front
-//		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 2, 2, 3, box);
-//		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 6, 2, 3, box);
-//		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 8, 2, 3, box);
-		this.fillWithBlocks(world, box, box.minX, box.minY, box.minZ, box.maxX, box.maxY, box.maxZ, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		//Back
-//		this.fillWithBlocks(world, box, 3, 2, 8, 5, 2, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 3, 6, 8, 4, 6, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 6, 6, 8, 7, 6, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		//Left
-//		this.fillWithBlocks(world, box, 1, 2, 5, 1, 2, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 1, 6, 6, 1, 6, 7, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		//Right
-//		this.fillWithBlocks(world, box, 9, 2, 5, 9, 2, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		this.fillWithBlocks(world, box, 9, 6, 5, 9, 6, 6, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
-//		
-//		
-		
-	//Did this to check where the structure's box is, and it appears to be way off from the structure
-	for(int zz = 0; zz <= 9; zz++)
-			for(int xx = 0; xx <= 10; xx++)
+		for(int zz = 0; zz <= 17; zz++)
+			for(int xx = 0; xx <= 25; xx++)
 			{
 				this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
-	}
+			}
+		
 		return true;
 	}
 
@@ -129,9 +84,10 @@ public class VillageGenNurmShop extends Village
 		@Override
 		public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5)
 		{
-			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1 + 5, p2 + 5, p3 + 5, 0, 0, 0, 21, 20, 19, facing);
-			return (!canVillageGoDeeper(box))||(StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
+			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 26, 19, 17, facing);
+			return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
 		}
+
 
 		@Override
 		public PieceWeight getVillagePieceWeight(Random random, int i)
