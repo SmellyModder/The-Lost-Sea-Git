@@ -37,7 +37,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
 public class VillageGenNurmShop extends Village
 {
 	
-	public static final WorldGenStructure NURM_SHOP = new WorldGenStructure("nurm_shop_s");
+	public static final WorldGenStructure NURM_SHOP = new WorldGenStructure("nurm_shop_new");
 	
 	public VillageGenNurmShop()
 	{
@@ -66,13 +66,12 @@ public class VillageGenNurmShop extends Village
 			boundingBox.offset(0, groundLevel-boundingBox.maxY + 10 - 1, 0);
 		}
 		
-		int i = 0;
-		int k = 0;
-		int j = 0;
+		BlockPos blockpos = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(0), this.getZWithOffset(0, 0));
 		
-		BlockPos blockpos = new BlockPos(this.getXWithOffset(5, 2), this.getYWithOffset(-12), this.getZWithOffset(5, 2));
-		
-		this.NURM_SHOP.generate(world, rand, blockpos);
+		if (box.isVecInside(blockpos))
+        {
+			this.NURM_SHOP.generate(world, rand, blockpos);
+        }
 		
 		this.fillWithBlocks(world, box, 0, 0, 0, 10, 9, 8, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		this.fillWithBlocks(world, box, 6, 0, 1, 9, 0, 2, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
@@ -88,7 +87,7 @@ public class VillageGenNurmShop extends Village
 //		this.fillWithBlocks(world, box, 2, 1, 8, 8, 3, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 2, 5, 8, 8, 6, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 3, 7, 8, 7, 7, 8, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
-		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 8, 8, box);
+		//this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 8, 8, box);
 //		//Left
 //		this.fillWithBlocks(world, box, 1, 1, 4, 1, 3, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 1, 5, 6, 1, 5, 7, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
@@ -101,7 +100,7 @@ public class VillageGenNurmShop extends Village
 //		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 2, 2, 3, box);
 //		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 6, 2, 3, box);
 //		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 8, 2, 3, box);
-//		this.fillWithBlocks(world, box, 7, 6, 3, 8, 6, 3, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
+		this.fillWithBlocks(world, box, box.minX, box.minY, box.minZ, box.maxX, box.maxY, box.maxZ, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
 //		//Back
 //		this.fillWithBlocks(world, box, 3, 2, 8, 5, 2, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
 //		this.fillWithBlocks(world, box, 3, 6, 8, 4, 6, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
@@ -121,21 +120,8 @@ public class VillageGenNurmShop extends Village
 			{
 				this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
-	}		
-		return true;
 	}
-
-	public void placeItemframe(Random random, World world, int x, int y, int z, EnumFacing side, ItemStack stack)
-	{
-		int i1 = this.getXWithOffset(x, z);
-		int j1 = this.getYWithOffset(y);
-		int k1 = this.getZWithOffset(x, z);
-
-		EntityItemFrame e = new EntityItemFrame(world, new BlockPos(i1, j1, k1), side);
-		e.setDisplayedItem(stack);
-		if(e.onValidSurface()&&world.getEntitiesWithinAABB(EntityHanging.class, new AxisAlignedBB(i1-.125, j1, k1-.125, i1+1.125, j1+1, k1+1.125)).isEmpty())
-			if(!world.isRemote)
-				world.spawnEntity(e);
+		return true;
 	}
 
 	public static class VillageManager implements IVillageCreationHandler
