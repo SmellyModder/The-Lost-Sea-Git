@@ -8,6 +8,8 @@ import com.SmellyModder.TheLostSea.common.world.overworld.WorldGenStructure;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockDoor.EnumHingePosition;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs;
@@ -21,6 +23,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -65,10 +68,26 @@ public class VillageGenNurmShop extends Village
 		
 		this.fillWithBlocks(world, box, 0, 0, 0, 25, 4, 16, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		
-		this.fillWithBlocks(world, box, 3, 2, 8, 5, 2, 8, Blocks.GLASS_PANE.getDefaultState(), Blocks.GLASS_PANE.getDefaultState(), false);
+		//Tells me where it starts on the bottom corner and ends on the top corner.
 		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 0, 0, 0, box);
-		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 26, 10, 17, box);
+		this.setBlockState(world, Blocks.GLASS_PANE.getDefaultState(), 26, 19, 17, box);
 		
+		/*
+		 * ###########
+		 * # BOTTOM  #
+		 * ###########
+		 */
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 0, 6, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 0, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 6, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 8, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 9, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 4, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 5, box);
+		this.fillWithBlocks(world, box, 9, 0, 11, 9, 0, 4, Blocks.AIR.getDefaultState() , Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X), false);
+		
+		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
 		for(int zz = 0; zz <= 17; zz++)
 			for(int xx = 0; xx <= 25; xx++)
 			{
