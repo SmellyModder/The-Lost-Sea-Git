@@ -6,9 +6,13 @@ import java.util.Random;
 import com.SmellyModder.TheLostSea.common.world.overworld.WorldGenStructure;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockDoor.EnumHingePosition;
 import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockNewLog;
+import net.minecraft.block.BlockOldLog;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
@@ -18,6 +22,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -36,7 +41,9 @@ import net.minecraft.world.gen.structure.StructureVillagePieces.Village;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
-
+/*
+ * SmellyModder
+ */
 public class VillageGenNurmShop extends Village
 {
 	
@@ -85,7 +92,71 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 9, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 4, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 0, 5, box);
-		this.fillWithBlocks(world, box, 9, 0, 11, 9, 0, 4, Blocks.AIR.getDefaultState() , Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X), false);
+		
+		this.fillWithBlocks(world, box, 9, 0, 5, 9, 0, 11, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , false);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 9, 0, 4, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 9, 0, 12, box);
+		
+		this.fillWithBlocks(world, box, 17, 0, 5, 17, 0, 11, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , false);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 17, 0, 4, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 17, 0, 12, box);
+		
+		this.fillWithBlocks(world, box, 10, 0, 5, 16, 0, 11, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 10, 0, 12, 16, 0, 12, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , false);
+		this.fillWithBlocks(world, box, 10, 0, 4, 16, 0, 4, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE) , false);
+		
+		this.setBlockState(world, Blocks.GLOWSTONE.getDefaultState(), 10, 0, 5, box);
+		this.setBlockState(world, Blocks.GLOWSTONE.getDefaultState(), 10, 0, 11, box);
+		this.setBlockState(world, Blocks.GLOWSTONE.getDefaultState(), 16, 0, 11, box);
+		this.setBlockState(world, Blocks.GLOWSTONE.getDefaultState(), 16, 0, 5, box);
+		
+		this.fillWithBlocks(world, box, 10, 0, 3, 19, 0, 3, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 17, 0, 2, 18, 0, 2, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 18, 0, 4, 22, 0, 12, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 23, 0, 5, 23, 0, 11, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 11, 0, 13, 21, 0, 14, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 9, 0, 13, 11, 0, 13, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		
+		
+		
+		//Carpet
+		//Black
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 11, 1, 5, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 10, 1, 6, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 10, 1, 10, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 11, 1, 11, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 16, 1, 10, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 15, 1, 11, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 16, 1, 6, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 15, 1, 5, box);
+		
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 13, 1, 8, box);
+		
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 12, 1, 7, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 12, 1, 9, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 14, 1, 7, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.BLACK), 14, 1, 9, box);
+		
+		//White
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 14, 1, 8, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 12, 1, 8, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 13, 1, 9, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 13, 1, 7, box);
+		
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 11, 1, 6, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 11, 1, 10, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 15, 1, 6, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.WHITE), 15, 1, 10, box);
+		
+		//Red
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 11, 1, 7, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 12, 1, 6, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 12, 1, 10, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 11, 1, 9, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 14, 1, 6, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 15, 1, 7, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 15, 1, 9, box);
+		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 14, 1, 10, box);
 		
 		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
 		for(int zz = 0; zz <= 17; zz++)
