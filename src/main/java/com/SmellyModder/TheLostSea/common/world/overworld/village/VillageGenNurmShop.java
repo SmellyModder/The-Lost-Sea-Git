@@ -6,22 +6,27 @@ import java.util.Random;
 import com.SmellyModder.TheLostSea.common.world.overworld.WorldGenStructure;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockButtonWood;
 import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockDoor.EnumHingePosition;
+import net.minecraft.block.BlockJukebox;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockNewLog;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.BlockPrismarine;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockStoneSlab;
+import net.minecraft.block.BlockWoodSlab;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -158,6 +163,94 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 15, 1, 9, box);
 		this.setBlockState(world, Blocks.CARPET.getDefaultState().withProperty(BlockCarpet.COLOR, EnumDyeColor.RED), 14, 1, 10, box);
 		
+		/*
+		 * ##############
+		 * #SECOND LAYER#
+		 * ##############
+		 */
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 6, 1, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 6, 1, 6, box);
+		
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 1, 5, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 1, 4, box);
+		
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 1, 8, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 1, 9, box);
+		
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 1, 12, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 1, 13, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 1, 11, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 1, 10, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 9, 1, 12, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 9, 1, 13, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 9, 1, 14, box);
+		
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 10, 1, 13, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 10, 1, 14, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 10, 1, 15, box);
+		this.fillWithBlocks(world, box, 11, 1, 15, 21, 1, 15, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 1, 15, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 1, 14, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 1, 13, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 1, 12, box);
+		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 22, 1, 12, box);
+		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 22, 1, 11, box);
+		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 23, 1, 11, box);
+		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 23, 1, 10, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 10, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 11, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 8, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 5, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 4, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 23, 1, 4, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 24, 1, 9, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 24, 1, 6, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 1, 9, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 1, 6, box);
+		
+		this.fillWithBlocks(world, box, 19, 1, 3, 19, 1, 14, Blocks.SPRUCE_FENCE.getDefaultState(), Blocks.SPRUCE_FENCE.getDefaultState(), false);
+		this.placeFencePillar(world, box, rand, 19, 1, 3);
+		this.placeFencePillar(world, box, rand, 19, 1, 6);
+		this.placeFencePillar(world, box, rand, 19, 1, 14);
+		this.placeFencePillar(world, box, rand, 19, 1, 11);
+		
+		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 16, 1, 14, box);
+		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 14, 1, 14, box);
+		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 12, 1, 14, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 15, 1, 14, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 13, 1, 14, box);
+
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 22, 1, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 21, 1, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 20, 1, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 20, 1, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 19, 1, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 18, 1, 1, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 17, 1, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 16, 1, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 15, 1, 2, box);
+		
+		this.placeDoor(world, box, rand, 14, 1, 2, EnumFacing.NORTH, EnumHingePosition.RIGHT);
+		this.placeDoor(world, box, rand, 13, 1, 2, EnumFacing.NORTH, EnumHingePosition.LEFT);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 14, 0, 2, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 13, 0, 2, box);
+		
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 12, 1, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 11, 1, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 10, 1, 2, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 10, 1, 1, box);
+		
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 9, 1, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 1, 3, box);
+		this.setBlockState(world, Blocks.PRISMARINE.getDefaultState().withProperty(BlockPrismarine.VARIANT, BlockPrismarine.EnumType.DARK), 8, 1, 4, box);
+		
+		Block juke = Blocks.JUKEBOX;
+		BlockPos blockpos = new BlockPos(this.getXWithOffset(9, 11), this.getYWithOffset(1), this.getZWithOffset(9, 11));
+		((BlockJukebox)juke).insertRecord(world, blockpos, juke.getDefaultState(), new ItemStack(Items.RECORD_CHIRP));
+		this.setBlockState(world, juke.getDefaultState().withProperty(BlockJukebox.HAS_RECORD, Boolean.valueOf(true)), 9, 1, 11, box);
+		
+		
 		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
 		for(int zz = 0; zz <= 17; zz++)
 			for(int xx = 0; xx <= 25; xx++)
@@ -167,6 +260,20 @@ public class VillageGenNurmShop extends Village
 			}
 		
 		return true;
+	}
+	
+	protected void placeDoor(World worldIn, StructureBoundingBox boundingBoxIn, Random rand, int x, int y, int z, EnumFacing facing, EnumHingePosition hinge)
+	{
+		this.setBlockState(worldIn, Blocks.SPRUCE_DOOR.getDefaultState().withProperty(BlockDoor.FACING, facing).withProperty(BlockDoor.HINGE, hinge), x, y, z, boundingBoxIn);
+		this.setBlockState(worldIn, Blocks.SPRUCE_DOOR.getDefaultState().withProperty(BlockDoor.FACING, facing).withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER).withProperty(BlockDoor.HINGE, hinge), x, y+1, z, boundingBoxIn);
+	}
+	
+	
+
+	protected void placeFencePillar(World worldIn, StructureBoundingBox boundingBoxIn, Random rand, int x, int y, int z) {
+		IBlockState woodSlab = Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockWoodSlab.VARIANT, BlockPlanks.EnumType.SPRUCE);
+		this.setBlockState(worldIn, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), x, y, z, boundingBoxIn);
+		this.setBlockState(worldIn, woodSlab, x, y + 1, z, boundingBoxIn);
 	}
 
 	public static class VillageManager implements IVillageCreationHandler
