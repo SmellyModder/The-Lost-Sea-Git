@@ -21,6 +21,7 @@ import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockPrismarine;
 import net.minecraft.block.BlockPrismarine.EnumType;
+import net.minecraft.block.BlockSkull;
 import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
@@ -313,6 +314,7 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 24, 2, 6, box);
 		
 		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 2, 4, box);
+		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 3, 4, box);
 		
 		/*
 		 * #############
@@ -356,30 +358,33 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 3, 9, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 3, 3, 7, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 3, 3, 6, box);
-		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 2, 3, 7, box);
-		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 2, 3, 6, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 6, 3, 10, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 3, 11, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 12, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 13, box);
-		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 14, box);
-		
-		
+
 		Block creeper = Blocks.SKULL;
-	
-		BlockPos blockpos2 = new BlockPos(this.getXWithOffset(9, 13), this.getYWithOffset(3), this.getZWithOffset(9, 13));
-		
-		this.setBlockState(world, creeper.getDefaultState(), 9, 3, 13, box);
-		
-		BlockWorldState wState = new BlockWorldState(world, blockpos2, false);
-		
-		if(creeper.hasTileEntity()) {
-			((TileEntitySkull)wState.getTileEntity()).setType(4);
-			((TileEntitySkull)wState.getTileEntity()).setSkullRotation(-75);
-		}
 		
 		this.setBlockState(world, Blocks.SPONGE.getDefaultState(), 8, 2, 3, box);
+		this.setBlockState(world, Blocks.PRISMARINE.getDefaultState(), 7, 3, 3, box);
 		this.setBlockState(world, Blocks.PRISMARINE.getDefaultState().withProperty(BlockPrismarine.VARIANT, EnumType.BRICKS), 7, 2, 4, box);
+		
+		
+		/*
+		 * ##################
+		 * 5TH LAYER
+		 * ##################
+		 */
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 2, 4, 6, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 2, 4, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 3, 4, 5, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 4, 4, 4, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 4, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 6, 4, 2, box);
+		this.setBlockState(world, Blocks.WEB.getDefaultState(), 6, 4, 3, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 7, 4, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 4, 1, box);
+		this.fillWithBlocks(world, box, 10, 4, 1, 19, 4, 1, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
 		
 		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
 		for(int zz = 0; zz <= 17; zz++)
