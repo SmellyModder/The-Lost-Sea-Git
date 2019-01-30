@@ -26,7 +26,9 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockStoneSlab;
+import net.minecraft.block.BlockWeb;
 import net.minecraft.block.BlockWoodSlab;
+import net.minecraft.block.state.BlockWorldState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.item.EntityItemFrame;
@@ -35,6 +37,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -332,6 +335,48 @@ public class VillageGenNurmShop extends Village
 		this.fillWithBlocks(world, box, 24, 3, 2, 24, 3, 11, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 24, 3, 9, box);
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 24, 3, 6, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 23, 3, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 22, 3, 1, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 21, 3, 1, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 17, 3, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 20, 3, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 19, 3, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 18, 3, 1, box);
+		this.fillWithBlocks(world, box, 11, 3, 2, 16, 3, 2, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 10, 3, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 9, 3, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 1, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 3, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 6, 3, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 3, 4, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 4, 3, 5, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 3, 5, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 3, 8, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 4, 3, 8, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 5, 3, 9, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 3, 3, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 3, 3, 6, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 2, 3, 7, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 2, 3, 6, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 6, 3, 10, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 7, 3, 11, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 12, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 13, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 8, 3, 14, box);
+		
+		
+		Block creeper = Blocks.SKULL;
+	
+		BlockPos blockpos2 = new BlockPos(this.getXWithOffset(9, 13), this.getYWithOffset(3), this.getZWithOffset(9, 13));
+		
+		this.setBlockState(world, creeper.getDefaultState(), 9, 3, 13, box);
+		
+		BlockWorldState wState = new BlockWorldState(world, blockpos2, false);
+		
+		if(creeper.hasTileEntity()) {
+			((TileEntitySkull)wState.getTileEntity()).setType(4);
+			((TileEntitySkull)wState.getTileEntity()).setSkullRotation(-75);
+		}
 		
 		this.setBlockState(world, Blocks.SPONGE.getDefaultState(), 8, 2, 3, box);
 		this.setBlockState(world, Blocks.PRISMARINE.getDefaultState().withProperty(BlockPrismarine.VARIANT, EnumType.BRICKS), 7, 2, 4, box);
