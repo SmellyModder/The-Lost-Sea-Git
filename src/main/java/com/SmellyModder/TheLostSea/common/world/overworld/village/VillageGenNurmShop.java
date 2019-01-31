@@ -552,6 +552,39 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockHalfWoodSlab.VARIANT, BlockPlanks.EnumType.SPRUCE).withProperty(BlockSlab.HALF, BlockSlab.EnumBlockHalf.TOP), 18, 4, 14, box);
 
 		
+		/*
+		 * ###################
+		 * # LAYER 7##########
+		 * ###################
+		 */
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 2, 6, 6, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 2, 6, 7, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 2, 6, 5, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 3, 6, 5, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 3, 6, 4, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 4, 6, 4, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 4, 6, 3, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 5, 6, 3, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 5, 6, 2, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 6, 6, 2, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 6, 6, 1, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 7, 6, 1, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 8, 6, 1, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 9, 6, 1, box);
+		
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 2, 6, 8, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 3, 6, 8, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 3, 6, 9, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 4, 6, 9, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 4, 6, 10, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 5, 6, 10, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 5, 6, 11, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 6, 6, 11, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 6, 6, 12, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 7, 6, 12, box);
+		
+		
+		
 		
 		
 		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
