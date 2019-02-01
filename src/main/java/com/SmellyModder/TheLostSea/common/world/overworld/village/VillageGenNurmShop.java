@@ -37,6 +37,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockStoneSlab;
+import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWeb;
 import net.minecraft.block.BlockWoodSlab;
 import net.minecraft.block.state.BlockWorldState;
@@ -337,6 +338,8 @@ public class VillageGenNurmShop extends Village
 		
 		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 2, 4, box);
 		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 3, 4, box);
+		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 4, 4, box);
+		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 5, 4, box);
 		
 		/*
 		 * #############
@@ -643,11 +646,31 @@ public class VillageGenNurmShop extends Village
 		 * # LAYER 8######
 		 * ##############
 		 */
+		this.setBlockState(world, Blocks.TRAPDOOR.getDefaultState().withProperty(BlockTrapDoor.FACING, EnumFacing.SOUTH), 11, 7, 10, box);
+		this.setBlockState(world, Blocks.TRAPDOOR.getDefaultState().withProperty(BlockTrapDoor.FACING, EnumFacing.SOUTH), 12, 7, 10, box);
+		this.setBlockState(world, Blocks.TRAPDOOR.getDefaultState(), 12, 7, 9, box);
+		this.setBlockState(world, Blocks.TRAPDOOR.getDefaultState(), 11, 7, 9, box);
 		
+		this.fillWithBlocks(world, box, 8, 7, 3, 8, 7, 15, Blocks.SPRUCE_FENCE.getDefaultState(), Blocks.AIR.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 8, 7, 3, 14, 7, 3, Blocks.SPRUCE_FENCE.getDefaultState(), Blocks.AIR.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 8, 7, 15, 15, 7, 15, Blocks.SPRUCE_FENCE.getDefaultState(), Blocks.AIR.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 15, 7, 3, 15, 7, 15, Blocks.SPRUCE_FENCE.getDefaultState(), Blocks.AIR.getDefaultState(), false);
+		this.fillWithBlocks(world, box, 15, 7, 4, 22, 7, 15, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 		
+		this.fillWithBlocks(world, box, 15, 7, 3, 22, 7, 3, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 25, 7, 3, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 7, 2, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 24, 7, 2, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 7, 1, box);
 		
-		
-		
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 22, 7, 1, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 21, 7, 1, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 20, 7, 1, box);
+		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 19, 6, 1, box);
+		this.fillWithBlocks(world, box, 25, 7, 3, 25, 7, 11, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.fillWithBlocks(world, box, 23, 7, 4, 24, 7, 12, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 6, 4, box);
+		this.setBlockState(world, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.WEST), 23, 7, 4, box);
 		
 		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
 		for(int zz = 0; zz <= 17; zz++)
