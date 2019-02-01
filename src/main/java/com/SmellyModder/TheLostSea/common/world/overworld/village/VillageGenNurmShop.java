@@ -5,11 +5,14 @@ import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.world.overworld.WorldGenStructure;
+import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
+import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBanner;
 import net.minecraft.block.BlockButtonWood;
 import net.minecraft.block.BlockCarpet;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockDoor.EnumHingePosition;
 import net.minecraft.block.BlockEnderChest;
@@ -48,6 +51,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.BannerPattern;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityBanner;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -62,6 +66,8 @@ import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Village;
+import net.minecraft.world.storage.loot.LootEntryTable;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationHandler;
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
@@ -72,6 +78,12 @@ public class VillageGenNurmShop extends Village
 {
 	
 	public static final WorldGenStructure NURM_SHOP = new WorldGenStructure("nurm_shop_new");
+	
+	public static final ResourceLocation rowChestLoot = register("loot/nurm/rowchest");
+	
+	private static ResourceLocation register(String id) {
+        return LootTableList.register(new ResourceLocation(Reference.MOD_ID, id));
+    }
 	
 	public VillageGenNurmShop()
 	{
@@ -583,6 +595,56 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 6, 6, 12, box);
 		this.setBlockState(world, Blocks.SPRUCE_FENCE.getDefaultState(), 7, 6, 12, box);
 		
+		this.fillWithBlocks(world, box, 8, 6, 4, 8, 6, 14, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.fillWithBlocks(world, box, 15, 6, 4, 15, 6, 14, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.fillWithBlocks(world, box, 8, 6, 3, 15, 6, 3, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.fillWithBlocks(world, box, 8, 6, 15, 21, 6, 15, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.fillWithBlocks(world, box, 9, 6, 16, 14, 6, 16, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+
+		this.fillWithBlocks(world, box, 9, 6, 4, 14, 6, 15, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 13, 6, 11, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 13, 6, 8, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 10, 6, 8, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 10, 6, 11, box);
+		this.setBlockState(world, Blocks.AIR.getDefaultState(), 11, 6, 10, box);
+		this.setBlockState(world, Blocks.AIR.getDefaultState(), 12, 6, 10, box);
+		this.setBlockState(world, Blocks.AIR.getDefaultState(), 12, 6, 9, box);
+		this.setBlockState(world, Blocks.AIR.getDefaultState(), 11, 6, 9, box);
+		
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 16, 6, 3, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 19, 6, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 18, 6, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 17, 6, 3, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 20, 6, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 21, 6, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 22, 6, 2, box);
+		this.setBlockState(world, Blocks.LEVER.getDefaultState().withProperty(BlockLever.FACING, EnumOrientation.NORTH).withProperty(BlockLever.POWERED, Boolean.valueOf(true)), 23, 6, 3, box);
+		this.setBlockState(world, Blocks.REDSTONE_LAMP.getDefaultState(), 23, 6, 2, box);
+		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 6, 2, box);
+		
+		this.fillWithBlocks(world, box, 20, 6, 1, 23, 6, 1, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.fillWithBlocks(world, box, 24, 6, 3, 24, 6, 11, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.X).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), false);
+		this.setBlockState(world, Blocks.WEB.getDefaultState(), 23, 6, 11, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 6, 12, box);
+		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 22, 6, 12, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 6, 13, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 6, 14, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 6, 15, box);
+		
+		this.placeChest(world, boundingBox, rand, 21, 6, 14, EnumFacing.SOUTH, this.rowChestLoot);
+		this.placeChest(world, boundingBox, rand, 19, 6, 14, EnumFacing.SOUTH, this.rowChestLoot);
+		this.placeChest(world, boundingBox, rand, 17, 6, 14, EnumFacing.SOUTH, this.rowChestLoot);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 18, 6, 14, box);
+		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 20, 6, 14, box);
+		this.setBlockState(world, Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockWoodSlab.VARIANT, BlockPlanks.EnumType.SPRUCE), 16, 6, 14, box);
+
+		/*
+		 * ###############
+		 * # LAYER 8######
+		 * ##############
+		 */
+		
+		
 		
 		
 		
@@ -604,7 +666,14 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(worldIn, Blocks.SPRUCE_DOOR.getDefaultState().withProperty(BlockDoor.FACING, facing).withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER).withProperty(BlockDoor.HINGE, hinge), x, y+1, z, boundingBoxIn);
 	}
 	
-	
+	protected void placeChest(World world, StructureBoundingBox box, Random rand, int x, int y, int z, EnumFacing facing, ResourceLocation loot) {
+		BlockPos blockpos = new BlockPos(this.getXWithOffset(x, z), this.getYWithOffset(y), this.getZWithOffset(x, z)); 
+		this.setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, facing), x, y, z, box);
+		TileEntity tileentityC = world.getTileEntity(blockpos);
+		if(tileentityC instanceof TileEntityChest) {
+			((TileEntityChest)tileentityC).setLootTable(loot, rand.nextLong());
+		}
+	}
 
 	protected void placeFencePillar(World worldIn, StructureBoundingBox boundingBoxIn, Random rand, int x, int y, int z) {
 		IBlockState woodSlab = Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockWoodSlab.VARIANT, BlockPlanks.EnumType.SPRUCE);

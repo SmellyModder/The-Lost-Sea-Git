@@ -119,7 +119,7 @@ public class TLSItems {
 	public static Item NEPTUNUM = new ItemBase("neptunum");
 	public static Item VANADIUM_INGOT = new ItemBase("vanadium_ingot");
 	public static Item GOLDEN_ELDER_EYE = new ItemTempleFinder("golden_elder_eye");
-	public static Item PRISMARINE_BALL = new ItemBase("elastic_prismarine");
+	//public static Item PRISMARINE_BALL = new ItemBase("elastic_prismarine");
 	public static Item SHARK_TOOTH = new ItemBase("shark_tooth");
 	public static Item LORE_BOOK = new ItemLoreBook("lore_book");
 	public static Item LORE_BOOK_PAGE = new ItemLorePage("lore_book_page");

@@ -4,6 +4,7 @@ import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
+import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
