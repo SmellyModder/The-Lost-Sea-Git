@@ -10,7 +10,6 @@ import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.SmellyModder.TheLostSea.client.gui.npc.shop.SaleButtons;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
@@ -158,19 +157,11 @@ public class GuiNurmNpc extends GuiScreen {
 	
 	private ResponseButton ResponeButtonChest;
 	
-	World world;
-    BlockPos blockpos;
-	
 	public GuiNurmNpc(EntityPlayer player) {
 		this.player = player;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null);
 		dialogueID = dialouge.getVerse();
-		
-		world = player.getEntityWorld();
-		blockpos = world.findNearestStructure("Monument", player.getPosition(), true);
 	}
-	
-	
 	
 	@Override
 	public void initGui() {
@@ -275,8 +266,6 @@ public class GuiNurmNpc extends GuiScreen {
 		this.ResponeButtonEye.visible = dialouge.getVerse() == 1 && currGui == 1 && currDialogue == 3;
 		
 		this.ResponeButtonChest.visible = dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 4;
-		
-		
 		
 		SaleButton.visible = this.currGui == 2;
 		SaleButton2.visible = this.currGui == 2;
@@ -394,7 +383,7 @@ public class GuiNurmNpc extends GuiScreen {
 			 ItemStack itemstack = this.findEye(player);
 			 if(!itemstack.isEmpty()) {
 				 if(itemstack.getItem() instanceof ItemElderEye) {
-					 itemstack.shrink(1);
+					 TheLostSea.NETWORK.sendToServer(new MessageTakeItems(player, TLSItems.ELDER_EYE, 1));
 					 dialouge.setVerse(2);
 					 TheLostSea.NETWORK.sendToServer(new MessageSetVerse(2));
 					 this.currDialogue = 0;
@@ -405,7 +394,7 @@ public class GuiNurmNpc extends GuiScreen {
 		 }
 		 else if(parButton.id == 19) {
 			 if(!this.isInvEmpty(player, new ItemStack(Items.AIR)) && player.inventory.getFirstEmptyStack() != -1) {
-				 player.inventory.addItemStackToInventory(new ItemStack(TLSBlocks.STARTER_CHEST_FULL, 1));
+				 TheLostSea.NETWORK.sendToServer(new MessageGiveItems(player, Item.getItemFromBlock(TLSBlocks.STARTER_CHEST_FULL), 1));
 				 this.currDialogue = 5;
 			 } else {
 				 this.showError = true;
