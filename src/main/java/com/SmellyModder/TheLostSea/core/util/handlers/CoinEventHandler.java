@@ -5,6 +5,8 @@ import java.io.IOException;
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
+import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
+import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
 import com.SmellyModder.TheLostSea.core.math.ColorRBGHexIndex;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
@@ -49,6 +51,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 
 public class CoinEventHandler{
 
@@ -85,17 +88,11 @@ public class CoinEventHandler{
 		EntityPlayer player = event.getEntityPlayer(); 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		ICurrency coins_ad = event.getOriginal().getCapability(CoinProvider.COIN_CAP, null); 
-		
-		
 		coins.set(coins_ad.getCoins()); 
 		
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		IDialogueNurm dataNPC_AD = event.getOriginal().getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		dataNPC.setVerse(dataNPC_AD.getVerse());
-		
-		
-		ICurrency coins2 = player.getCapability(CoinProvider.COIN_CAP, null); 
-
 		
 	}
 	

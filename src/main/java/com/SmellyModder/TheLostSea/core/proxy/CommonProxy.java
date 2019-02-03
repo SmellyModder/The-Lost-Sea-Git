@@ -1,5 +1,6 @@
 package com.SmellyModder.TheLostSea.core.proxy;
 
+import com.SmellyModder.TheLostSea.client.particle.LostSeaParticles;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
@@ -9,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class CommonProxy {
 	
@@ -39,4 +41,5 @@ public class CommonProxy {
 	
 	public void OpenNurmGUI(EntityPlayer player) {
 	}
+
 }

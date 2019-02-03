@@ -96,7 +96,4 @@ public class TLSBlocks {
 	
 	//Fluids
 	//public static final Block DARK_WATER = new BlockDarkwaterFluid();
-	
-	//Developer
-	public static final Block INVIS_SPAWNER = new BlockSpawnNurm("spawn_n", Material.CIRCUITS);
 }

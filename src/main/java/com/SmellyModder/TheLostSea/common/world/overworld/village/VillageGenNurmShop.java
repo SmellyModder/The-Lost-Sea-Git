@@ -8,6 +8,11 @@ import com.SmellyModder.TheLostSea.common.entity.npc.EntityNurm;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.world.overworld.WorldGenStructure;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
+import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
+import com.SmellyModder.TheLostSea.core.api.capabilites.IWorldHolder;
+import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
+import com.SmellyModder.TheLostSea.core.api.capabilites.controllers.OverworldDataController;
+import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.block.Block;
@@ -41,6 +46,7 @@ import net.minecraft.block.BlockLog.EnumAxis;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.BlockSlab.EnumBlockHalf;
 import net.minecraft.block.BlockStairs.EnumShape;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.block.BlockTrapDoor;
@@ -75,6 +81,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk.EnumCreateEntityType;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.PieceWeight;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Village;
@@ -95,6 +102,7 @@ public class VillageGenNurmShop extends Village
 	public static final ResourceLocation roofChestLoot = register("loot/nurm/roofchest");
 	int vSpawned;
 	int count = 1;
+	boolean once = false;
 	
 	private static ResourceLocation register(String id) {
         return LootTableList.register(new ResourceLocation(Reference.MOD_ID, id));
@@ -123,7 +131,8 @@ public class VillageGenNurmShop extends Village
 				return true;
 			boundingBox.offset(0, groundLevel - boundingBox.maxY + 20 - 1, 0);
 		}
-		
+
+		IOverworldData data = world.getCapability(LostSeaWorldCapabilties.NURM_SHOP_CAP, null);
 		this.fillWithBlocks(world, box, 0, 0, 0, 25, 4, 15, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		
 		/*
@@ -784,6 +793,13 @@ public class VillageGenNurmShop extends Village
 		this.fillWithBlocks(world, box, 11, 12, 5, 11, 13, 7, Blocks.WOOL.getStateFromMeta(0), Blocks.WOOL.getStateFromMeta(0), false);
 		this.fillWithBlocks(world, box, 12, 11, 5, 12, 11, 7, Blocks.WOOL.getStateFromMeta(0), Blocks.WOOL.getStateFromMeta(0), false);
 		
+        IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.STONE_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
+        if (this.getBlockStateFromPos(world, 14, 0, -1, box).getMaterial() == Material.AIR && this.getBlockStateFromPos(world, 14, -1, -1, box).getMaterial() == Material.AIR)
+        {
+            this.setBlockState(world, iblockstate1, 14, -1, -1, box);
+            this.setBlockState(world, iblockstate1, 13, -1, -1, box);
+        }
+		
 		/*
 		 * ENTITIES
 		 */
@@ -815,6 +831,7 @@ public class VillageGenNurmShop extends Village
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
 			}
 		
+		data.setNurmShopGenerated(1);
 		return true;
 	}
 	
@@ -844,22 +861,26 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(worldIn, woodSlab, x, y + 1, z, boundingBoxIn);
 	}
 
-	public static class VillageManager implements IVillageCreationHandler
+	public static class VillageManager implements IVillageCreationHandler, IWorldHolder
 	{
 		@Override
 		public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5)
-		{
+		{	
+			IOverworldData data = worldServer.getCapability(LostSeaWorldCapabilties.NURM_SHOP_CAP, null);
 			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 26, 19, 16, facing);
-			return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
+            StructureBoundingBox box2 = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 5, 12, 9, facing);
+			if(data.getNurmShopGenerated() == 0) {
+				return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
+			}
+			return (!canVillageGoDeeper(box2)) || (StructureComponent.findIntersecting(pieces, box2) != null) ? null : new StructureVillagePieces.Church(startPiece, p5, random, box2, facing);
 		}
-
-
+		
 		@Override
 		public PieceWeight getVillagePieceWeight(Random random, int i)
 		{
-			return new PieceWeight(VillageGenNurmShop.class, 100, 1);
-		}
-
+			return new PieceWeight(VillageGenNurmShop.class, Config.NURM_SHOP_GEN_WEIGHT, 1);
+		} 
+		
 		@Override
 		public Class<?> getComponentClass()
 		{

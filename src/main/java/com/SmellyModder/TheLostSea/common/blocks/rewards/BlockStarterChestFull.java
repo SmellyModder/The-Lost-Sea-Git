@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.SmellyModder.TheLostSea.client.particle.LostSeaParticles;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
@@ -83,6 +84,26 @@ public class BlockStarterChestFull extends BlockContainer implements IHasModel
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
 		return 1;
 	}
+	
+	@SideOnly(Side.CLIENT)
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
+    {
+		TileEntity tileentityC = worldIn.getTileEntity(pos);
+		if(tileentityC instanceof TileEntityStarterChestFull) {
+			if(((TileEntityStarterChestFull)tileentityC).isOpen()) {
+				for (int i = 0; i < 4; ++i)
+                {
+            		double d0 = (double)((float)pos.getX() + rand.nextFloat());
+                    double d1 = (double)((float)pos.getY() + rand.nextFloat());
+                    double d2 = (double)((float)pos.getZ() + rand.nextFloat());
+                    double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
+                    double d4 = ((double)rand.nextFloat() - 0.5D) * (Math.random() * 0.5D);
+                    double d5 = ((double)rand.nextFloat() - 0.5D) * (Math.random() * 0.5D);
+            		LostSeaParticles.GOLD_DUST.spawn(worldIn, d0, d1, d2, d3, d4, d5);
+                }
+			}
+		}
+    }
 	
 	@Override
     public int getMetaFromState(IBlockState state)

@@ -21,6 +21,7 @@ public class Config {
 	public static int difficulty;
 	public static boolean exoticEnabled;
 	public static boolean isCoinOverlayTop;
+	public static int NURM_SHOP_GEN_WEIGHT;
 
 	public static void load(FMLPreInitializationEvent event) {
 		config = new Configuration(event.getSuggestedConfigurationFile());
@@ -30,10 +31,9 @@ public class Config {
 	}
 
 	private static void reloadConfig() {
-		//Basics
 		DIM_ID = config.getInt("LostSeaDimId", Configuration.CATEGORY_GENERAL, -9, -150, 150, " Use for compatibility purposes.", LANG_PREFIX + "The Lost Sea Dimension ID");
-		QuestGuiID = config.getInt("QuestGuiID", Configuration.CATEGORY_GENERAL, 33, 15, 150, " Use for compatibility purposes.", LANG_PREFIX + "QuestGuiID");
 		isCoinOverlayTop = config.getBoolean("CoinOverlayIsTop", Configuration.CATEGORY_CLIENT, false, "False - Coin Overlay is located on the bottom right, True - It's located middle top", LANG_PREFIX + "CoinOverlayIsTop");
+		NURM_SHOP_GEN_WEIGHT = config.getInt("ShopGenWeight", Configuration.CATEGORY_GENERAL, 1, 1, 100, "Set's the generation weight of the Nurm Shop in Villages. DO NOT GO LESS THAN OR EQUAL TO 0; crashes game");
 		if (config.hasChanged()) {
 			config.save();
 		}

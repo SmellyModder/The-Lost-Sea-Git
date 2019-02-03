@@ -51,24 +51,7 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 	
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		 ItemStack boots = player.inventory.armorItemInSlot(0);
-		 ItemStack chest = player.inventory.armorItemInSlot(2);
-		 ItemStack legs = player.inventory.armorItemInSlot(1);
-		 ItemStack helmet = player.inventory.armorItemInSlot(3);
-		    if ((legs != null) && (legs.getItem() == TLSItems.NEPTUNUM_LEGGINGS) && (helmet != null) && (helmet.getItem() == TLSItems.NEPTUNUM_HELMET) && (chest != null) && (chest.getItem() == TLSItems.NEPTUNUM_CHESTPLATE) && 
-		    		(boots != null) && (boots.getItem() == TLSItems.NEPTUNUM_BOOTS)) {
-		      
-		      double d0 = 0.0D;
-		      double d1 = 0.02D;
-		      double d2 = 0.0D;
-		      double a = Math.toRadians(player.renderYawOffset);
-		      double dx = -Math.sin(a - 1.5D);
-		      double dz = Math.cos(a - 1.5D);
-		      double dx2 = -Math.sin(a + 1.5D);
-		      double dz2 = Math.cos(a + 1.5D);
-		      world.spawnParticle(EnumParticleTypes.WATER_WAKE, player.posX + dx, player.posY + 1.8D, player.posZ + dz, d0, d1, d2, new int[0]);
-		      world.spawnParticle(EnumParticleTypes.WATER_WAKE, player.posX + dx2, player.posY + 1.8D, player.posZ + dz2, d0, d1, d2, new int[0]);
-		 }
+		 
 	}
 	
 	@Override

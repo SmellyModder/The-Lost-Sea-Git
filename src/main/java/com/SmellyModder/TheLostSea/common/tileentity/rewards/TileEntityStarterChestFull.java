@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.SmellyModder.TheLostSea.client.particle.LostSeaParticles;
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
+import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -21,6 +22,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
 import scala.annotation.meta.companionClass;
 
 public class TileEntityStarterChestFull extends TileEntityChest {
@@ -97,20 +99,6 @@ public class TileEntityStarterChestFull extends TileEntityChest {
                 this.lidAngle = 0.0F;
             }  
         }
-        if(this.isOpen()) {
-            	World world = this.getWorld();
-            	Random rand = new Random();
-            	for (int i = 0; i < 1; ++i)
-                {
-            		double d0 = (double)((float)pos.getX() + rand.nextFloat());
-                    double d1 = (double)((float)pos.getY() + rand.nextFloat());
-                    double d2 = (double)((float)pos.getZ() + rand.nextFloat());
-                    double d3 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
-                    double d4 = ((double)rand.nextFloat() - 0.5D) * (Math.random() * 0.5D);
-                    double d5 = ((double)rand.nextFloat() - 0.5D) * (Math.random() * 0.5D);
-            		LostSeaParticles.GOLD_DUST.spawn(world, d0, d1, d2, d3, d4, d5);
-                }
-       }
 	}
     
     public boolean isOpen() {

@@ -5,6 +5,7 @@ import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
+import com.SmellyModder.TheLostSea.core.api.capabilites.handlers.WorldDataHandler;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
@@ -60,6 +61,7 @@ public class TheLostSea {
 		Config.load(event);
 		RegistryHandler.preInitRegistries();
 		CapabilityHandler.register();
+		WorldDataHandler.register();
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 1, Side.CLIENT);
 		NETWORK.registerMessage(MessageSetCoins.HandleMessageSetCoins.class, MessageSetCoins.class, 2, Side.SERVER);
@@ -83,7 +85,9 @@ public class TheLostSea {
 		MinecraftForge.EVENT_BUS.register(new EyeDropEvent());
 		MinecraftForge.EVENT_BUS.register(new FinDropEvent());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
+		MinecraftForge.EVENT_BUS.register(new WorldDataHandler());
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
+	    MinecraftForge.EVENT_BUS.register(new GameplayEventHandler());
 	    LSVillageHandler.initNurmShop();
 	    OreDictionaryLS.register();
 	}

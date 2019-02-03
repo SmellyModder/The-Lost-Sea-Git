@@ -39,5 +39,4 @@ public class DialogueProviderN implements ICapabilitySerializable<NBTBase> {
 		{ 
 			DIALOGUE_CAP.getStorage().readNBT(DIALOGUE_CAP, this.instance, null, nbt); 
 		} 
-
 	}
