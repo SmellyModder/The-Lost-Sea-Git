@@ -796,8 +796,10 @@ public class VillageGenNurmShop extends Village
         IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.STONE_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
         if (this.getBlockStateFromPos(world, 14, 0, -1, box).getMaterial() == Material.AIR && this.getBlockStateFromPos(world, 14, -1, -1, box).getMaterial() == Material.AIR)
         {
-            this.setBlockState(world, iblockstate1, 14, -1, -1, box);
-            this.setBlockState(world, iblockstate1, 13, -1, -1, box);
+        	if(this.getBlockStateFromPos(world, 14, -2, -1, box).getMaterial() != Material.AIR) {
+        		 this.setBlockState(world, iblockstate1, 14, -1, -1, box);
+        		 this.setBlockState(world, iblockstate1, 13, -1, -1, box);
+        	}
         }
 		
 		/*
@@ -830,8 +832,7 @@ public class VillageGenNurmShop extends Village
 				//this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
 			}
-		
-		data.setNurmShopGenerated(1);
+			data.setNurmShopGenerated(1);
 		return true;
 	}
 	
