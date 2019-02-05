@@ -9,6 +9,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 
@@ -30,7 +31,7 @@ public class ModelNeptunumArmor extends ModelBiped {
     public ModelRenderer shape32_1;
     public ModelRenderer shape43_1;
 
-    public ModelNeptunumArmor(float modelSize) {
+    public ModelNeptunumArmor(EntityEquipmentSlot slot, float modelSize) {
     	super(modelSize, 0.0F, 128, 64);
         this.textureWidth = 128;
         this.textureHeight = 64;

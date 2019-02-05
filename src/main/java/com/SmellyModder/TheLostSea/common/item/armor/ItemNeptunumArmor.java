@@ -71,26 +71,10 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
         if(itemStack != ItemStack.EMPTY && itemStack.getItem() instanceof ItemArmor) {
-            ModelNeptunumArmor model = new ModelNeptunumArmor(0.01f);          
-           
-           
-            model.bipedHead.showModel = armorSlot == EntityEquipmentSlot.HEAD;
-            model.bipedBody.showModel = armorSlot == EntityEquipmentSlot.CHEST;
-            
-            model.bipedLeftArm.showModel = armorSlot == EntityEquipmentSlot.CHEST;
-            model.bipedRightArm.showModel = armorSlot == EntityEquipmentSlot.CHEST;
-            model.bipedLeftLeg.showModel = armorSlot == EntityEquipmentSlot.LEGS;
-            model.bipedRightLeg.showModel = armorSlot == EntityEquipmentSlot.LEGS;
-            
-            model.isChild = _default.isChild;
-            model.isRiding = _default.isRiding;
-            model.isSneak = _default.isSneak;
-            model.rightArmPose = _default.rightArmPose;
-            model.leftArmPose = _default.leftArmPose;    
-            return model;
+            return TheLostSea.proxy.getArmorModels(armorSlot, "neptunum");
         }
         return null;
-    }  
+    }
     
 	@Override
 	public void registerModels() {

@@ -1,5 +1,7 @@
 package com.SmellyModder.TheLostSea.common.world.overworld.village;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -12,6 +14,7 @@ import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
 import com.SmellyModder.TheLostSea.core.api.capabilites.IWorldHolder;
 import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
 import com.SmellyModder.TheLostSea.core.api.capabilites.controllers.OverworldDataController;
+import com.SmellyModder.TheLostSea.core.api.worlddata.NurmWorldData;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
@@ -102,6 +105,7 @@ public class VillageGenNurmShop extends Village
 	public static final ResourceLocation roofChestLoot = register("loot/nurm/roofchest");
 	int vSpawned;
 	int count = 1;
+	public static int spawned;
 	boolean once = false;
 	
 	private static ResourceLocation register(String id) {
@@ -832,7 +836,15 @@ public class VillageGenNurmShop extends Village
 				//this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
 			}
-			data.setNurmShopGenerated(1);
+		
+			NurmWorldData.writeFile();
+			spawned = 1;
+			try {
+	            NurmWorldData.useFileWriter();
+	    	} catch (IOException e) {
+	            e.printStackTrace();
+	    	}
+			
 		return true;
 	}
 	
@@ -870,10 +882,17 @@ public class VillageGenNurmShop extends Village
 			IOverworldData data = worldServer.getCapability(LostSeaWorldCapabilties.NURM_SHOP_CAP, null);
 			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 26, 19, 16, facing);
             StructureBoundingBox box2 = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 5, 12, 9, facing);
-			if(data.getNurmShopGenerated() == 0) {
+            
+            try {
+				NurmWorldData.readFile();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+           
+			if(VillageGenNurmShop.spawned == 0) {
 				return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
 			}
-			return (!canVillageGoDeeper(box2)) || (StructureComponent.findIntersecting(pieces, box2) != null) ? null : new StructureVillagePieces.Church(startPiece, p5, random, box2, facing);
+			return (!canVillageGoDeeper(box2)) || (StructureComponent.findIntersecting(pieces, box2) != null) ? null : new StructureVillagePieces.House1(startPiece, p5, random, box2, facing);
 		}
 		
 		@Override

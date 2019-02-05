@@ -6,6 +6,7 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
 import com.SmellyModder.TheLostSea.core.api.capabilites.handlers.WorldDataHandler;
+import com.SmellyModder.TheLostSea.core.api.worlddata.NurmWorldData;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
@@ -90,6 +91,7 @@ public class TheLostSea {
 	    MinecraftForge.EVENT_BUS.register(new GameplayEventHandler());
 	    LSVillageHandler.initNurmShop();
 	    OreDictionaryLS.register();
+	    
 	}
 	
 	@EventHandler

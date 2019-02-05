@@ -6,8 +6,10 @@ import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -38,6 +40,10 @@ public class CommonProxy {
 	public void preInit() {}
 	
 	public void init() {}
+	
+	public ModelBiped getArmorModels(EntityEquipmentSlot armorSlot, String armorName) {
+		return null;
+	}
 	
 	public void OpenNurmGUI(EntityPlayer player) {
 	}

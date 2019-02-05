@@ -1,16 +1,24 @@
 package com.SmellyModder.TheLostSea.core.util.events;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemNeptunumArmor;
+import com.SmellyModder.TheLostSea.common.world.overworld.village.VillageGenNurmShop;
 import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
 import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
+import com.SmellyModder.TheLostSea.core.api.worlddata.NurmWorldData;
 import com.SmellyModder.TheLostSea.core.util.Reference;
+import com.mojang.realmsclient.util.RealmsTasks.WorldCreationTask;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -47,4 +55,27 @@ public class GameplayEventHandler {
 //			}
 //		}
 	}
+	
+	
+	@SubscribeEvent
+    public static void onLoad(WorldEvent.Load event)
+    {
+        try {
+           	NurmWorldData.readFile();
+       } catch (FileNotFoundException e) {
+                e.printStackTrace();
+       }
+		
+    }
+    
+	 @SubscribeEvent
+	    public static void onUnload(WorldEvent.Unload event)
+	    {
+	        try {
+	            NurmWorldData.useFileWriter();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
 }
