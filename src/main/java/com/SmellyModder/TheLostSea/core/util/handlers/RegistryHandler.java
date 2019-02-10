@@ -55,8 +55,7 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(TLSBlocks.BLOCKS.toArray(new Block [0]));
-		TLSTileEntities.registerTileEntities();
-		
+		//TLSTileEntities.registerTileEntities();
 	}
 	
 	@SubscribeEvent

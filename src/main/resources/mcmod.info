@@ -8,14 +8,8 @@
   "url": "",
   "updateUrl": "",
   "authorList": ["SmellyModder(Luke Tonon)", "XboxSignOut(Aden George)", "Beeshroom", "Timinations", "Gegy", "BizarreAltispinax"],
-  "credits": "There is so many people to thank for helping this project become a reality from little math helps to over 25 HD Textures. Can't thank enough to all!
-All are credited on the curseforge credits! 
-\u00A7cArtist's: Beeshroom, SmellyModder, Beethoven, Five, LordofLustria.
-\u00A79Programmer's: SmellyModder, Gegy, TheSmileyMan.
-\u00A75Modeler's: BizarreAltispinax, SmellyModder, RecaWrongHouse, XboxSignOut.
-\u00A7bAnimator's: Timinations.
-\u00A73Sound FX: Timinations, XboxSignOut, Shiro.
-\u00A7dMusic: Shiro, Zakk Paradise, Xander Paradise",
+  "credits": "There is so many people to thank for helping this project become a reality, from little code helps to over tons of textures; Can't thank enough to all!
+All are credited on the curseforge credits!",
   "logoFile": "assets/thelostsea/textures/gui/other/the_lost_sea_logo.png",
   "screenshots": [],
   "dependencies": []

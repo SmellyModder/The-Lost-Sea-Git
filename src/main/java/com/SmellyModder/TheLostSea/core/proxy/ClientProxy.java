@@ -27,15 +27,11 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy{
 
+	//private final Map<EntityEquipmentSlot, ModelBiped> neptunumArmorModel = new EnumMap<>(EntityEquipmentSlot.class);
 	
-	private final Map<EntityEquipmentSlot, ModelBiped> neptunumArmorModel = new EnumMap<>(EntityEquipmentSlot.class);
-	
-
 	public void registerItemRenderer(Item item, int meta, String id) {
-			
-			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
-			
-		}
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
+	}
 
 	@Override
 	public void preInit() {
@@ -47,24 +43,10 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStarterChestFull.class, new TileEntityStarterChestFullRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStarterChest.class, new TileEntityStarterChestRenderer());
 		
-		float nSize = 0.01f;
-		neptunumArmorModel.put(EntityEquipmentSlot.HEAD, new ModelNeptunumArmor(EntityEquipmentSlot.HEAD, nSize));
-		neptunumArmorModel.put(EntityEquipmentSlot.CHEST, new ModelNeptunumArmor(EntityEquipmentSlot.CHEST, nSize));
-		neptunumArmorModel.put(EntityEquipmentSlot.LEGS, new ModelNeptunumArmor(EntityEquipmentSlot.LEGS, nSize));
-		neptunumArmorModel.put(EntityEquipmentSlot.FEET, new ModelNeptunumArmor(EntityEquipmentSlot.FEET, nSize));
-	}
-	
-	/*
-	 * Use this to get the Armor Models
-	 * Use the armor's name to get it's model
-	 */
-	@Override
-	public ModelBiped getArmorModels(EntityEquipmentSlot armorSlot, String armorName) {
-		switch(armorName) {
-		case "neptunum": 
-			return neptunumArmorModel.get(armorSlot);
-		}
-		return null;
+//		neptunumArmorModel.put(EntityEquipmentSlot.HEAD, new ModelNeptunumArmor(EntityEquipmentSlot.HEAD, 0.01f));
+//		neptunumArmorModel.put(EntityEquipmentSlot.CHEST, new ModelNeptunumArmor(EntityEquipmentSlot.CHEST, 0.01f));
+//		neptunumArmorModel.put(EntityEquipmentSlot.LEGS, new ModelNeptunumArmor(EntityEquipmentSlot.CHEST, 0.01f));
+//		neptunumArmorModel.put(EntityEquipmentSlot.FEET, new ModelNeptunumArmor(EntityEquipmentSlot.CHEST, 0.01f));
 	}
 	
 	@Override
@@ -75,11 +57,11 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void openMyGui(ItemStack stack)
 	{
-	     Minecraft.getMinecraft().displayGuiScreen(new GUILoreBook(stack));
+	    Minecraft.getMinecraft().displayGuiScreen(new GUILoreBook(stack));
 	}
 	
 	public void OpenNurmGUI(EntityPlayer player) {
-		 Minecraft.getMinecraft().displayGuiScreen(new GuiNurmNpc(player));
+		Minecraft.getMinecraft().displayGuiScreen(new GuiNurmNpc(player));
 	}
 	
 }

@@ -8,7 +8,6 @@ import com.SmellyModder.TheLostSea.common.item.armor.ItemNeptunumArmor;
 import com.SmellyModder.TheLostSea.common.world.overworld.village.VillageGenNurmShop;
 import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
 import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
-import com.SmellyModder.TheLostSea.core.api.worlddata.NurmWorldData;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.mojang.realmsclient.util.RealmsTasks.WorldCreationTask;
 
@@ -55,27 +54,5 @@ public class GameplayEventHandler {
 //			}
 //		}
 	}
-	
-	
-	@SubscribeEvent
-    public static void onLoad(WorldEvent.Load event)
-    {
-        try {
-           	NurmWorldData.readFile();
-       } catch (FileNotFoundException e) {
-                e.printStackTrace();
-       }
-		
-    }
-    
-	 @SubscribeEvent
-	    public static void onUnload(WorldEvent.Unload event)
-	    {
-	        try {
-	            NurmWorldData.useFileWriter();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
 
 }

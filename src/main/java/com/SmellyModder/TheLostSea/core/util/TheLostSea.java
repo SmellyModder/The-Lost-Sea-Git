@@ -3,10 +3,12 @@ package com.SmellyModder.TheLostSea.core.util;
 import com.SmellyModder.TheLostSea.client.overlay.stats.OverlayCoins;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.common.tileentity.TileEntitySeaStoneFurnace;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
+import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
 import com.SmellyModder.TheLostSea.core.api.capabilites.handlers.WorldDataHandler;
-import com.SmellyModder.TheLostSea.core.api.worlddata.NurmWorldData;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
@@ -29,6 +31,7 @@ import com.SmellyModder.TheLostSea.core.util.handlers.npc.NPCEventHandler;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -63,6 +66,7 @@ public class TheLostSea {
 		RegistryHandler.preInitRegistries();
 		CapabilityHandler.register();
 		WorldDataHandler.register();
+		registerTileEntities();
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 1, Side.CLIENT);
 		NETWORK.registerMessage(MessageSetCoins.HandleMessageSetCoins.class, MessageSetCoins.class, 2, Side.SERVER);
@@ -91,7 +95,6 @@ public class TheLostSea {
 	    MinecraftForge.EVENT_BUS.register(new GameplayEventHandler());
 	    LSVillageHandler.initNurmShop();
 	    OreDictionaryLS.register();
-	    
 	}
 	
 	@EventHandler
@@ -137,5 +140,11 @@ public class TheLostSea {
 	public static void serverInit(FMLServerStartingEvent event) {
 	        RegistryHandler.serverRegistries(event);
 	        System.out.println("A temple hums with energy...");
+	}
+	
+	private static void registerTileEntities() {
+		GameRegistry.registerTileEntity(TileEntitySeaStoneFurnace.class, new ResourceLocation(Reference.MOD_ID + ":seastone_furnace"));
+		GameRegistry.registerTileEntity(TileEntityStarterChestFull.class, new ResourceLocation(Reference.MOD_ID + ":starter_chest_full"));
+		GameRegistry.registerTileEntity(TileEntityStarterChest.class, new ResourceLocation(Reference.MOD_ID + ":starter_chest"));
 	}
 }

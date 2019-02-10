@@ -12,15 +12,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-
 public class ModelNeptunumArmor extends ModelBiped {
-    public ModelRenderer field_178736_x;
-    public ModelRenderer field_178723_h;
-    public ModelRenderer field_178721_j;
+    
     public ModelRenderer head;
-    public ModelRenderer field_78115_e;
-    public ModelRenderer field_178724_i;
-    public ModelRenderer field_178722_k;
     public ModelRenderer shape30;
     public ModelRenderer shape32;
     public ModelRenderer shape43;
@@ -31,7 +25,7 @@ public class ModelNeptunumArmor extends ModelBiped {
     public ModelRenderer shape32_1;
     public ModelRenderer shape43_1;
 
-    public ModelNeptunumArmor(EntityEquipmentSlot slot, float modelSize) {
+    public ModelNeptunumArmor(float modelSize) {
     	super(modelSize, 0.0F, 128, 64);
         this.textureWidth = 128;
         this.textureHeight = 64;
@@ -66,7 +60,6 @@ public class ModelNeptunumArmor extends ModelBiped {
         this.shape30_1.setRotationPoint(-1.3F, -2.1F, -2.5F);
         this.shape30_1.addBox(0.0F, 0.0F, 0.0F, 5, 6, 5, 0.0F);
        
-        
         this.bipedRightArm.addChild(this.shape30);
         this.bipedLeftArm.addChild(this.shape30_1);
          
@@ -90,7 +83,7 @@ public class ModelNeptunumArmor extends ModelBiped {
     
     @Override
    	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-   if (entityIn instanceof EntityArmorStand) {
+    	if (entityIn instanceof EntityArmorStand) {
    			EntityArmorStand entityarmorstand = (EntityArmorStand) entityIn;
    			this.bipedHead.rotateAngleX = 0.017453292F * entityarmorstand.getHeadRotation().getX();
    			this.bipedHead.rotateAngleY = 0.017453292F * entityarmorstand.getHeadRotation().getY();

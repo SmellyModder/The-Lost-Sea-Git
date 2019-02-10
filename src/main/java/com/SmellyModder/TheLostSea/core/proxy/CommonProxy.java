@@ -41,9 +41,13 @@ public class CommonProxy {
 	
 	public void init() {}
 	
-	public ModelBiped getArmorModels(EntityEquipmentSlot armorSlot, String armorName) {
-		return null;
-	}
+//	public ModelBiped getArmorModels(EntityEquipmentSlot armorSlot, String armorName) {
+//		return null;
+//	}
+	
+//	public ModelBiped getNeptunumArmorModel() {
+//		return null;
+//	}
 	
 	public void OpenNurmGUI(EntityPlayer player) {
 	}

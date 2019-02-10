@@ -5,6 +5,7 @@ import java.util.List;
 import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.client.model.armor.ModelNeptunumArmor;
+import com.SmellyModder.TheLostSea.client.model.armor.ModelPrismarineArmor;
 import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
@@ -49,6 +50,9 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 		TLSItems.ITEMS.add(this);
 	}
 	
+	/*
+	 * TODO - Armor Ability 
+	 */
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
 		 
@@ -67,12 +71,30 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
 		tooltip.add(TextFormatting.LIGHT_PURPLE + "Full Armor Ability:" + TextFormatting.DARK_AQUA + " Neptune's Might");
 	}
 	
-    @SideOnly(Side.CLIENT)
     @Override
+    @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-        if(itemStack != ItemStack.EMPTY && itemStack.getItem() instanceof ItemArmor) {
-            return TheLostSea.proxy.getArmorModels(armorSlot, "neptunum");
-        }
+    	if(!itemStack.isEmpty()) {
+			if(itemStack.getItem() instanceof ItemArmor) {
+				ModelNeptunumArmor model = new ModelNeptunumArmor(0.01f);
+           
+            	model.bipedHead.showModel = armorSlot == EntityEquipmentSlot.HEAD;
+            	model.bipedBody.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+            
+            	model.bipedLeftArm.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+            	model.bipedRightArm.showModel = armorSlot == EntityEquipmentSlot.CHEST;
+            	model.bipedLeftLeg.showModel = armorSlot == EntityEquipmentSlot.LEGS;
+            	model.bipedRightLeg.showModel = armorSlot == EntityEquipmentSlot.LEGS;
+            
+            	model.isChild = _default.isChild;
+            	model.isRiding = _default.isRiding;
+            	model.isSneak = _default.isSneak;
+            	model.rightArmPose = _default.rightArmPose;
+            	model.leftArmPose = _default.leftArmPose;
+            
+            	return model;
+			}
+    	}
         return null;
     }
     
