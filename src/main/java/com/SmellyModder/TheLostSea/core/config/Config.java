@@ -33,7 +33,7 @@ public class Config {
 	private static void reloadConfig() {
 		DIM_ID = config.getInt("LostSeaDimId", Configuration.CATEGORY_GENERAL, -9, -150, 150, " Use for compatibility purposes.", LANG_PREFIX + "The Lost Sea Dimension ID");
 		isCoinOverlayTop = config.getBoolean("CoinOverlayIsTop", Configuration.CATEGORY_CLIENT, false, "False - Coin Overlay is located on the bottom right, True - It's located middle top", LANG_PREFIX + "CoinOverlayIsTop");
-		NURM_SHOP_GEN_WEIGHT = config.getInt("ShopGenWeight", Configuration.CATEGORY_GENERAL, 1, 1, 100, "Set's the generation weight of the Nurm Shop in Villages. DO NOT GO LESS THAN OR EQUAL TO 0; crashes game");
+		NURM_SHOP_GEN_WEIGHT = config.getInt("ShopGenWeight", Configuration.CATEGORY_GENERAL, 25, 0, 100, "Controls the generation weight of Nurm's Shop in Villages. Value is used as a percent chance, ex. 10 for 10%");
 		if (config.hasChanged()) {
 			config.save();
 		}

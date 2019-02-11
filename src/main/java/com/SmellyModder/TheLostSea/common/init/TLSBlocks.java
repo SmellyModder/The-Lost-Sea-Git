@@ -80,7 +80,6 @@ public class TLSBlocks {
 	public static final Block COBALT_BLOCK = new BlockMetalBase("cobalt_block", Material.ROCK, 6.0F, 11F);
 	public static final Block AQUAMARINE_BLOCK = new BlockMetalBase("aquamarine_block", Material.ROCK, 5.5F, 10.5F);
 
-	
 	//Portal
 	public static final Block PORTAL = new BlockLSPortal("lost_sea_portal", Material.PORTAL);
 	

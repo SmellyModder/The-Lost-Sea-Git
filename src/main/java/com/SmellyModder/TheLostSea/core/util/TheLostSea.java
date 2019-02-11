@@ -6,6 +6,7 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.tileentity.TileEntitySeaStoneFurnace;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
+import com.SmellyModder.TheLostSea.common.tileentity.util.TileEntityNS;
 import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
 import com.SmellyModder.TheLostSea.core.api.capabilites.handlers.WorldDataHandler;

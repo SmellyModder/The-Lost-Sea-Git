@@ -11,5 +11,6 @@ public class BlockMetalBase extends BlockBase{
 		setHardness(hardness);
 		setResistance(resistance);
 	}
-
+	
+	
 }

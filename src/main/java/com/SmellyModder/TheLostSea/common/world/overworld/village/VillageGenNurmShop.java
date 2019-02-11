@@ -96,17 +96,10 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfessio
  */
 public class VillageGenNurmShop extends Village
 {
-	
-	public static final ResourceLocation rowChestLoot = register("loot/nurm/rowchest");
-	public static final ResourceLocation roofChestLoot = register("loot/nurm/roofchest");
 	int vSpawned;
 	int count = 1;
 	public static int spawned;
 	boolean once = false;
-	
-	private static ResourceLocation register(String id) {
-        return LootTableList.register(new ResourceLocation(Reference.MOD_ID, id));
-    }
 	
 	public VillageGenNurmShop()
 	{
@@ -654,9 +647,9 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 6, 13, box);
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 6, 14, box);
 		
-		this.placeChest(world, boundingBox, rand, 21, 6, 13, EnumFacing.SOUTH, this.rowChestLoot);
-		this.placeChest(world, boundingBox, rand, 19, 6, 13, EnumFacing.SOUTH, this.rowChestLoot);
-		this.placeChest(world, boundingBox, rand, 17, 6, 13, EnumFacing.SOUTH, this.rowChestLoot);
+		this.placeChest(world, boundingBox, rand, 21, 6, 13, EnumFacing.SOUTH, LostSeaLootTables.rowChestLoot);
+		this.placeChest(world, boundingBox, rand, 19, 6, 13, EnumFacing.SOUTH, LostSeaLootTables.rowChestLoot);
+		this.placeChest(world, boundingBox, rand, 17, 6, 13, EnumFacing.SOUTH, LostSeaLootTables.rowChestLoot);
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 18, 6, 13, box);
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 20, 6, 13, box);
 		this.setBlockState(world, Blocks.WOODEN_SLAB.getDefaultState().withProperty(BlockWoodSlab.VARIANT, BlockPlanks.EnumType.SPRUCE), 16, 6, 13, box);
@@ -712,7 +705,7 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.TRAPDOOR.getDefaultState().withProperty(BlockTrapDoor.FACING, EnumFacing.SOUTH), 19, 8, 8, box);
 		
 		this.setBlockState(world, Blocks.COBBLESTONE.getDefaultState(), 12, 7, 5, box);
-		this.placeChest(world, box, rand, 12, 8, 5, EnumFacing.SOUTH, this.roofChestLoot);
+		this.placeChest(world, box, rand, 12, 8, 5, EnumFacing.SOUTH, LostSeaLootTables.roofChestLoot);
 		
 		/*
 		 * ##################
@@ -736,7 +729,7 @@ public class VillageGenNurmShop extends Village
 		
 		this.placeBed(world, box, rand, 20, 8, 13);
 		this.setBlockState(world, Blocks.COBBLESTONE.getDefaultState(), 21, 8, 11, box);
-		this.placeChest(world, box, rand, 21, 9, 11, EnumFacing.SOUTH, this.roofChestLoot);
+		this.placeChest(world, box, rand, 21, 9, 11, EnumFacing.SOUTH, LostSeaLootTables.roofChestLoot);
 		this.setBlockState(world, Blocks.PUMPKIN.getDefaultState().withProperty(BlockPumpkin.FACING, EnumFacing.EAST), 16, 8, 3, box);
 		
 		/*
@@ -801,6 +794,9 @@ public class VillageGenNurmShop extends Village
         		 this.setBlockState(world, iblockstate1, 13, -1, -1, box);
         	}
         }
+        
+        BlockPos blockposTE = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(1), this.getZWithOffset(0, 0));
+       
 		
 		/*
 		 * ENTITIES
@@ -866,18 +862,16 @@ public class VillageGenNurmShop extends Village
 	{
 		@Override
 		public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5)
-		{	
-			IOverworldData data = worldServer.getCapability(LostSeaWorldCapabilties.NURM_SHOP_CAP, null);
+		{
 			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 26, 19, 16, facing);
             StructureBoundingBox box2 = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 5, 12, 9, facing);
-
 			return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
 		}
 		
 		@Override
 		public PieceWeight getVillagePieceWeight(Random random, int i)
 		{
-			return new PieceWeight(VillageGenNurmShop.class, 100, 1);
+			return new PieceWeight(VillageGenNurmShop.class, 100, this.getChance(random));
 		} 
 		
 		@Override
@@ -885,6 +879,14 @@ public class VillageGenNurmShop extends Village
 		{
 			return VillageGenNurmShop.class;
 		}
+		
+		int getChance(Random rand) {
+			if(rand.nextInt(100) <= Config.NURM_SHOP_GEN_WEIGHT) {
+				return 1;
+			}
+			return 0;
+		}
+		
 	}
 
 }
