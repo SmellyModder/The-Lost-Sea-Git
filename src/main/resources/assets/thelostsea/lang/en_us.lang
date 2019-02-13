@@ -5,6 +5,7 @@ itemGroup.The-Lost-Sea-Items=§3Lost Sea Items§r
 itemGroup.The-Lost-Sea-Gear=§3Lost Sea Gear§r
 itemGroup.The-Lost-Sea-Music=§3Lost Sea Music§r
 itemGroup.The-Lost-Sea-Ores=§3Lost Sea Ores§r
+itemGroup.LSPlants=Lost Sea Plants
 
 
 # Blocks
@@ -32,6 +33,13 @@ tile.portal_key_d.name=Dormant Portal Key
 tile.p_sea_stone.name=Polished Sea Stone
 tile.p_deepsea_stone.name=Polished Deep Sea Stone
 tile.sea_pebbles.name=Sea Pebbles
+
+##########
+# PLANTS #
+##########
+tile.palm_log.name=Palm Wood
+tile.palm_planks.name=Palm Wood Planks
+tile.palm_leaves.name=Palm Leaves
 
 # Machines
 tile.seastone_furnace.name=Sea Furnace
@@ -128,8 +136,6 @@ item.neptunum_helmet.name=Neptunum Helmet
 item.neptunum_chestplate.name=Neptunum Chestplate
 item.neptunum_leggings.name=Neptunum Leggings
 item.neptunum_boots.name=Neptunum Boots
-
-
 
 # Vanadium
 item.vanadium_sword.name=Vanadium Sword

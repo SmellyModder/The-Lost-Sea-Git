@@ -1,6 +1,6 @@
 {
    "parent": "block/cube_all",
    "textures": {
-       "all": "thelostsea:blocks/liquidack"
+       "all": "thelostsea:blocks/palm_planks"
    }
 }

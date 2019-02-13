@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "thelostsea:blocks/palm_log",
+        "side": "thelostsea:blocks/palm_log"
+    }
+}

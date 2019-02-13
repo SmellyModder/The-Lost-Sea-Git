@@ -67,6 +67,7 @@ public class TheLostSea {
 		CapabilityHandler.register();
 		WorldDataHandler.register();
 		registerTileEntities();
+		
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 1, Side.CLIENT);
 		NETWORK.registerMessage(MessageSetCoins.HandleMessageSetCoins.class, MessageSetCoins.class, 2, Side.SERVER);
@@ -84,7 +85,6 @@ public class TheLostSea {
 		proxy.init();
 		RegistryHandler.initRegistries();
 		
-		/* Register Gui Handler */
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
 		
 		MinecraftForge.EVENT_BUS.register(new EyeDropEvent());
@@ -93,13 +93,14 @@ public class TheLostSea {
 		MinecraftForge.EVENT_BUS.register(new WorldDataHandler());
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
 	    MinecraftForge.EVENT_BUS.register(new GameplayEventHandler());
+	    
 	    LSVillageHandler.initNurmShop();
 	    OreDictionaryLS.register();
 	}
 	
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event) {
-		System.out.println("Player Data Loaded");
+		
 	}
 
 	public static CreativeTabs TLS = new CreativeTabs("The-Lost-Sea-Items") {
@@ -107,27 +108,27 @@ public class TheLostSea {
 		public ItemStack createIcon() { 
 			  return new ItemStack(TLSItems.PEARL);
 		}
-		};
+	};
 		
 	public static CreativeTabs TLS_BLOCKS = new CreativeTabs("The-Lost-Sea-Blocks") {
 			@Override
 			public ItemStack createIcon() { 
 				  return new ItemStack(TLSBlocks.PRISMARINE_EYE_TEMPLE);
-			}
-			};
+		}
+	};
 		
 	public static CreativeTabs TLS_ORES = new CreativeTabs("The-Lost-Sea-Ores") {
 		@Override
 		public ItemStack createIcon() { 
 			return new ItemStack(TLSBlocks.DEEPSEA_GOLDORE);
 		}
-		};
+	};
 	
 	public static CreativeTabs TLS_GEAR = new CreativeTabs("The-Lost-Sea-Gear") {
 		@Override
 		public ItemStack createIcon() { 
 			return new ItemStack(TLSItems.PRISMARINE_HELMET);
-	}
+		}
 	};
 	
 	public static CreativeTabs TLS_MUSIC = new CreativeTabs("The-Lost-Sea-Music") {
@@ -136,6 +137,14 @@ public class TheLostSea {
 			return new ItemStack(TLSItems.PIRATE_CREW_DISC);
 		}
 	};
+	
+	public static CreativeTabs TLS_PLANTS = new CreativeTabs("LSPlants") {
+		@Override
+		public ItemStack createIcon() {
+			return new ItemStack(TLSBlocks.PALM_LOG);
+		}
+	};
+	
 	@EventHandler
 	public static void serverInit(FMLServerStartingEvent event) {
 	        RegistryHandler.serverRegistries(event);

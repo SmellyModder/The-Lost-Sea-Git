@@ -13,6 +13,9 @@ import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaOres;
 import com.SmellyModder.TheLostSea.common.blocks.plants.BlockBubbleFruitStem;
+import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLeavesLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLogLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockPlankLostSea;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChestFull;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPillarBase;
@@ -54,7 +57,6 @@ public class TLSBlocks {
 	public static final Block SEA_VANADIUMORE = new BlockLSOres("sea_vanadiumore", Material.ROCK, false, 1);
 	public static final Block DEEPSEA_VANADIUMORE = new BlockLSOres("deepsea_vanadiumore", Material.ROCK, false, 1);
 	public static final Block AQUAMARINE_ORE = new BlockLSOres("sea_aquamarineore", Material.ROCK, false, 2);
-
 	
 	//Temple
 	public static final Block CARVED_PRISMARINE_EYE = new BlockRuin("carved_eye", Material.ROCK);
@@ -92,6 +94,15 @@ public class TLSBlocks {
 	 */
 	public static final Block STARTER_CHEST_FULL = new BlockStarterChestFull("starter_chest_full");
 	public static final Block STARTER_CHEST = new BlockStarterChest("starter_chest");
+	
+	/*
+	 * ##########
+	 * #  TREE  #
+	 * ##########
+	 */
+	public static final Block PALM_LOG = new BlockLogLostSea("palm_log");
+	public static final Block PALM_PLANKS = new BlockPlankLostSea("palm_planks");
+	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_PLANKS); //Not final
 	
 	//Fluids
 	//public static final Block DARK_WATER = new BlockDarkwaterFluid();
