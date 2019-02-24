@@ -1,7 +1,6 @@
 package com.SmellyModder.TheLostSea.client.model;
 
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntityTorpedo;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

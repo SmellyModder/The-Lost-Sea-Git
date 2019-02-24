@@ -5,7 +5,6 @@ import java.util.Random;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.SmellyModder.TheLostSea.client.gui.font.LSFont;
 import com.SmellyModder.TheLostSea.common.entity.EntityAnglerfish;
 import com.SmellyModder.TheLostSea.common.entity.EntityTriGuardian;
 import com.SmellyModder.TheLostSea.common.entity.EntityVampireSquid;

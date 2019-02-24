@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "thelostsea:blocks/plants/palm_sapling_2"
+    }
+}

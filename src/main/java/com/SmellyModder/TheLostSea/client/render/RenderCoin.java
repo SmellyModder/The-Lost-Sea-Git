@@ -8,7 +8,6 @@ import com.SmellyModder.TheLostSea.client.model.npc.ModelLunete;
 import com.SmellyModder.TheLostSea.common.entity.bases.ThrowableOrb;
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.entity.npc.EntityLunete;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 

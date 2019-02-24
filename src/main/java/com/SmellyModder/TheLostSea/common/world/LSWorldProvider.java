@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.common.world;
 import com.SmellyModder.TheLostSea.common.init.DimensionInit;
 import com.SmellyModder.TheLostSea.common.init.TLSBiomes;
 import com.SmellyModder.TheLostSea.common.world.gen.chunk.ChunkGenLS;
+import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
@@ -11,10 +12,11 @@ import net.minecraft.world.gen.IChunkGenerator;
 
 public class LSWorldProvider extends WorldProvider
 {
-	public LSWorldProvider()
-	{
-		this.biomeProvider = new BiomeProviderSingle(TLSBiomes.LOST_SEA);
-	}
+	protected void init()
+    {
+        this.hasSkyLight = true;
+        this.biomeProvider = new BiomeProviderSingle(TLSBiomes.TROPICAL_ISLAND);
+    }
 	
 	@Override
 	public DimensionType getDimensionType() 
@@ -25,13 +27,13 @@ public class LSWorldProvider extends WorldProvider
 	@Override
 	public IChunkGenerator createChunkGenerator() 
 	{
+		//super.createChunkGenerator();
 		return new ChunkGenLS(world, true, world.getSeed());
 	}
 	
 	@Override
-	public boolean canRespawnHere() 
-	{
-		return false;
+	public String getSaveFolder() {
+		return Reference.MOD_ID + "lost_sea_dim";
 	}
 	
 	@Override

@@ -1,7 +1,6 @@
 package com.SmellyModder.TheLostSea.common.item.specialtools;
 
 import com.SmellyModder.TheLostSea.common.entity.EntityAnglerfish;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 
 import net.minecraft.entity.Entity;

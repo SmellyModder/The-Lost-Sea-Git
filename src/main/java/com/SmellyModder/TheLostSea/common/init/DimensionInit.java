@@ -13,9 +13,7 @@ public class DimensionInit {
 	public static final DimensionType LS = DimensionType.register(Reference.MOD_ID, "_lostsea", Config.DIM_ID, LSWorldProvider.class, false);
 	
 	public static void registerDimensions() {
-		
 		DimensionManager.registerDimension(Config.DIM_ID, LS);
-		
 	}
 	
 }

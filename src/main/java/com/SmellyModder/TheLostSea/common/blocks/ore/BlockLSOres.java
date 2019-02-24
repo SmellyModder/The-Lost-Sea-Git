@@ -114,9 +114,6 @@ public class BlockLSOres extends BlockBase{
         {
             item = TLSItems.NEPTUNUM;
         }
-		else if(this == TLSBlocks.AQUAMARINE_ORE) {
-			item = TLSItems.AQUAMARINE;
-		}
 		else if(this == TLSBlocks.DEEPSEA_VANADIUMORE || this == TLSBlocks.SEA_VANADIUMORE) {
 			item = Item.getItemFromBlock(this);
 		}

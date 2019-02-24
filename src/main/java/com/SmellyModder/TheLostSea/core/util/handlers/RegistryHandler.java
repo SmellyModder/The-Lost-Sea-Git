@@ -13,7 +13,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSmeltebles;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.init.TLSTileEntities;
-import com.SmellyModder.TheLostSea.common.init.TLSVehicles;
 import com.SmellyModder.TheLostSea.common.init.client.TileEntityRenders;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
@@ -55,7 +54,7 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(TLSBlocks.BLOCKS.toArray(new Block [0]));
-		//TLSTileEntities.registerTileEntities();
+		TLSTileEntities.registerTileEntities();
 	}
 	
 	@SubscribeEvent
@@ -119,7 +118,6 @@ public class RegistryHandler {
 
         TLSEntities.registerEntities();
         TLSEntities.registerEntities2();
-        TLSVehicles.registerVehicles();
         
         DimensionInit.registerDimensions();
 	}

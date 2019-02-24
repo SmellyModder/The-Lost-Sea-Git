@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
+import com.SmellyModder.TheLostSea.common.blocks.BlockMetalBase;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
-import com.SmellyModder.TheLostSea.common.blocks.metals.BlockMetalBase;
+import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockLSOres;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaCoalOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaOres;
 import com.SmellyModder.TheLostSea.common.blocks.plants.BlockBubbleFruitStem;
+import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLeavesLostSea;
 import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLogLostSea;
 import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockPlankLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockSaplingLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChestFull;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPillarBase;
@@ -26,9 +30,11 @@ import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRuin;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockTempleBaseStone;
 import com.SmellyModder.TheLostSea.common.blocks.temple.DummyAirBlock;
 import com.SmellyModder.TheLostSea.common.blocks.util.BlockSpawnNurm;
+import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenPalmTree;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
 
 public class TLSBlocks {
 
@@ -80,7 +86,6 @@ public class TLSBlocks {
 	//Ore Blocks
 	public static final Block VANADIUM_BLOCK = new BlockMetalBase("vanadium_block", Material.ROCK, 5.2F, 10F);
 	public static final Block COBALT_BLOCK = new BlockMetalBase("cobalt_block", Material.ROCK, 6.0F, 11F);
-	public static final Block AQUAMARINE_BLOCK = new BlockMetalBase("aquamarine_block", Material.ROCK, 5.5F, 10.5F);
 
 	//Portal
 	public static final Block PORTAL = new BlockLSPortal("lost_sea_portal", Material.PORTAL);
@@ -97,12 +102,17 @@ public class TLSBlocks {
 	
 	/*
 	 * ##########
-	 * #  TREE  #
+	 * #  PALM  #
 	 * ##########
 	 */
 	public static final Block PALM_LOG = new BlockLogLostSea("palm_log");
 	public static final Block PALM_PLANKS = new BlockPlankLostSea("palm_planks");
-	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_PLANKS); //Not final
+	public static final Block PALM_SAPLING = new BlockSaplingLostSea("palm_sapling", new WorldGenPalmTree(false), true);
+	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_SAPLING);
+	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
+	public static final ItemBlockLSDoor PALM_DOOR_ITEM = new ItemBlockLSDoor(PALM_DOOR);
+	public static final Block COCONUT = new BlockCoconut("coconut");
+	//public static final Block COCONUT_F = new BlockCoconut();
 	
 	//Fluids
 	//public static final Block DARK_WATER = new BlockDarkwaterFluid();

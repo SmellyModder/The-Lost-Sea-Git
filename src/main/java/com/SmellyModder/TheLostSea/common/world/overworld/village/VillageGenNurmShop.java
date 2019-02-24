@@ -98,9 +98,6 @@ public class VillageGenNurmShop extends Village
 {
 	int vSpawned;
 	int count = 1;
-	public static int spawned;
-	boolean once = false;
-	
 	public VillageGenNurmShop()
 	{
 	}
@@ -124,8 +121,6 @@ public class VillageGenNurmShop extends Village
 				return true;
 			boundingBox.offset(0, groundLevel - boundingBox.maxY + 20 - 1, 0);
 		}
-
-		IOverworldData data = world.getCapability(LostSeaWorldCapabilties.NURM_SHOP_CAP, null);
 		this.fillWithBlocks(world, box, 0, 0, 0, 25, 4, 15, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		
 		/*

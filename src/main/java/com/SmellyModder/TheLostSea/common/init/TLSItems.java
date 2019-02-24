@@ -1,11 +1,10 @@
 package com.SmellyModder.TheLostSea.common.init;
 
+import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockCoconut;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.common.item.ItemElderEye;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
-import com.SmellyModder.TheLostSea.common.item.ItemOrb;
 import com.SmellyModder.TheLostSea.common.item.ItemPearl;
 import com.SmellyModder.TheLostSea.common.item.ItemShieldBase;
 import com.SmellyModder.TheLostSea.common.item.ItemTempleFinder;
@@ -14,7 +13,6 @@ import com.SmellyModder.TheLostSea.common.item.armor.ArmorItemBaseP;
 import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBase;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemNeptunumArmor;
-import com.SmellyModder.TheLostSea.common.item.devutils.ItemScreen;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
@@ -22,7 +20,6 @@ import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemNeptunumShield;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemVanadiumShield;
-import com.SmellyModder.TheLostSea.common.item.shop.ItemMonumentMap;
 import com.SmellyModder.TheLostSea.common.item.shop.ItemWayfinderCompass;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemBowBase;
 import com.SmellyModder.TheLostSea.common.item.specialtools.ItemFishBucket;
@@ -35,9 +32,6 @@ import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunu
 import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumPickaxe;
 import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumSpade;
 import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumSword;
-import com.SmellyModder.TheLostSea.common.item.submarine.ItemSpeedUpgrade;
-import com.SmellyModder.TheLostSea.common.item.submarine.ItemSubB;
-import com.SmellyModder.TheLostSea.common.item.submarine.ItemSubPart;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemAxeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemHoeBaseP;
 import com.SmellyModder.TheLostSea.common.item.tools.ItemPickaxeBaseP;
@@ -90,123 +84,84 @@ public class TLSItems {
 	public static final Item PRISMARINE_LEGGINGS = new ArmorItemBaseP("prismarine_leggings", ARMOR_MATERIAL_PRIS, 2, EntityEquipmentSlot.LEGS);
 	public static final Item PRISMARINE_BOOTS = new Item3DArmorP("prismarine_boots", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
-	//Vehicles
-//	public static Item RED_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.RED, "sub_red");
-//	public static Item ORANGE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.ORANGE, "sub_orange");
-//	public static Item YELLOW_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.YELLOW, "sub_yellow");
-//	public static Item LIME_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIME, "sub_lime");
-//	public static Item GREEN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.GREEN, "sub_green");
-//	public static Item BLUE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BLUE, "sub_blue");
-//	public static Item LIGHTBLUE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIGHTBLUE, "sub_lightblue");
-//	public static Item CYAN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.CYAN, "sub_cyan");
-//	public static Item PURPLE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.PURPLE, "sub_purple");
-//	public static Item MAGENTA_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.MAGENTA, "sub_magenta");
-//	public static Item PINK_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.PINK, "sub_pink");
-//	public static Item BROWN_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BROWN, "sub_brown");
-//	public static Item BLACK_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.BLACK, "sub_black");
-//	public static Item GRAY_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.GRAY, "sub_gray");
-//	public static Item LIGHTGRAY_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.LIGHTGRAY, "sub_lightgray");
-//	public static Item WHITE_SUBMARINE = new ItemSubB(EntitySubmarineI.Type.WHITE, "sub_white");
-//	
-	//Parts
-//	public static Item SUB_ENGINEI = new ItemSubPart("engine_1");
-//	public static Item SUB_PROPELLERI = new ItemSubPart("propeller_1");
-//	public static Item SUB_LIGHTSI = new ItemSubPart("lights_1");
-	
 	//Collectables
-	public static Item PEARL = new ItemPearl("pearl");
-	public static Item ELDER_EYE = new ItemElderEye("elder_eye");
-	public static Item NEPTUNUM = new ItemBase("neptunum");
-	public static Item VANADIUM_INGOT = new ItemBase("vanadium_ingot");
-	public static Item GOLDEN_ELDER_EYE = new ItemTempleFinder("golden_elder_eye");
-	//public static Item PRISMARINE_BALL = new ItemBase("elastic_prismarine");
-	public static Item SHARK_TOOTH = new ItemBase("shark_tooth");
-	public static Item LORE_BOOK = new ItemLoreBook("lore_book");
-	public static Item LORE_BOOK_PAGE = new ItemLorePage("lore_book_page");
-	public static Item GUARDIAN_FIN = new ItemBase("fin");
-	public static Item AQUAMARINE = new ItemBase("aquamarine");
+	public static final Item PEARL = new ItemPearl("pearl");
+	public static final Item ELDER_EYE = new ItemElderEye("elder_eye");
+	public static final Item NEPTUNUM = new ItemBase("neptunum");
+	public static final Item VANADIUM_INGOT = new ItemBase("vanadium_ingot");
+	public static final Item GOLDEN_ELDER_EYE = new ItemTempleFinder("golden_elder_eye");
+	public static final Item SHARK_TOOTH = new ItemBase("shark_tooth");
+	public static final Item LORE_BOOK = new ItemLoreBook("lore_book");
+	public static final Item LORE_BOOK_PAGE = new ItemLorePage("lore_book_page");
+	public static final Item GUARDIAN_FIN = new ItemBase("fin");
 	
 	/**
 	 * Shop Exclusives
 	 */
-	public static Item WAYFINDER_COMPASS = new ItemWayfinderCompass("wayfinder");
+	public static final Item WAYFINDER_COMPASS = new ItemWayfinderCompass("wayfinder");
 	
 	//Finned Arrows
-	public static Item FINNED_ARROW = new ItemFinnedArrow("finnedarrow", false);
-	public static Item NEPTUNUM_FINNED_ARROW = new ItemFinnedArrow("cobaltfinnedarrow", true);
+	public static final Item FINNED_ARROW = new ItemFinnedArrow("finnedarrow", false);
+	public static final Item NEPTUNUM_FINNED_ARROW = new ItemFinnedArrow("cobaltfinnedarrow", true);
 	
 	//Tools Prismarine
-	public static Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
-	public static Item PRISMARINE_AXE = new ItemAxeBaseP("prismarine_axe", PRISMARINE_MAT);
-	public static Item PRISMARINE_SWORD = new ItemSwordBaseP("prismarine_sword", PRISMARINE_MAT);
-	public static Item PRISMARINE_SPADE = new ItemSpadeBaseP("prismarine_spade", PRISMARINE_MAT);
-	public static Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
+	public static final Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
+	public static final Item PRISMARINE_AXE = new ItemAxeBaseP("prismarine_axe", PRISMARINE_MAT);
+	public static final Item PRISMARINE_SWORD = new ItemSwordBaseP("prismarine_sword", PRISMARINE_MAT);
+	public static final Item PRISMARINE_SPADE = new ItemSpadeBaseP("prismarine_spade", PRISMARINE_MAT);
+	public static final Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
 	
 	//Tools Neptunum
-	public static Item NEPTUNUM_SWORD = new ItemNeptunumSword("cobalt_sword", NEPTUNUM_MAT_S);
-	public static Item NEPTUNUM_SHOVEL = new ItemNeptunumSpade("cobalt_shovel", NEPTUNUM_MAT);
-	public static Item NEPTUNUM_PICKAXE = new ItemNeptunumPickaxe("cobalt_pickaxe", NEPTUNUM_MAT);
-	public static Item NEPTUNUM_AXE = new ItemNeptunumAxe("cobalt_axe", NEPTUNUM_MAT);
-	public static Item NEPTUNUM_BOW = new ItemBowBase("cobaltbow");
-	public static Item NEPTUNUM_SHIELD = new ItemNeptunumShield("cobalt_shield");
+	public static final Item NEPTUNUM_SWORD = new ItemNeptunumSword("cobalt_sword", NEPTUNUM_MAT_S);
+	public static final Item NEPTUNUM_SHOVEL = new ItemNeptunumSpade("cobalt_shovel", NEPTUNUM_MAT);
+	public static final Item NEPTUNUM_PICKAXE = new ItemNeptunumPickaxe("cobalt_pickaxe", NEPTUNUM_MAT);
+	public static final Item NEPTUNUM_AXE = new ItemNeptunumAxe("cobalt_axe", NEPTUNUM_MAT);
+	public static final Item NEPTUNUM_BOW = new ItemBowBase("cobaltbow");
+	public static final Item NEPTUNUM_SHIELD = new ItemNeptunumShield("cobalt_shield");
 	public static final Item NEPTUNUM_HELMET = new ItemNeptunumArmor("neptunum_helmet", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
 	public static final Item NEPTUNUM_CHESTPLATE = new ItemNeptunumArmor("neptunum_chestplate", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
 	public static final Item NEPTUNUM_LEGGINGS = new ItemNeptunumArmor("neptunum_leggings", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
 	public static final Item NEPTUNUM_BOOTS = new ItemNeptunumArmor("neptunum_boots", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Tools Vanadium
-	public static Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);
-	public static Item VANADIUM_SHOVEL = new ItemSpadeBase("vanadium_shovel", VANADIUM_MAT);
-	public static Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
-	public static Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
-	public static Item VANADIUM_SHIELD = new ItemVanadiumShield("vanadium_shield");
+	public static final Item VANADIUM_SWORD = new ItemSwordBase("vanadium_sword", VANADIUM_MAT);
+	public static final Item VANADIUM_SHOVEL = new ItemSpadeBase("vanadium_shovel", VANADIUM_MAT);
+	public static final Item VANADIUM_PICKAXE = new ItemPickaxeBase("vanadium_pickaxe", VANADIUM_MAT);
+	public static final Item VANADIUM_AXE = new ItemAxeBase("vanadium_axe", VANADIUM_MAT);
+	public static final Item VANADIUM_SHIELD = new ItemVanadiumShield("vanadium_shield");
 	public static final Item VANADIUM_HELMET = new ItemArmorBase("vanadium_helmet", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
 	public static final Item VANADIUM_CHESTPLATE = new ItemArmorBase("vanadium_chestplate", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
 	public static final Item VANADIUM_LEGGINGS = new ItemArmorBase("vanadium_leggings", ArmorMaterials.VANADIUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
 	public static final Item VANADIUM_BOOTS = new ItemArmorBase("vanadium_boots", ArmorMaterials.VANADIUM_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Foods
-	public static ItemFood BUBBLE_FRUIT = new ItemBubbleFruit("bubble_berry", 2, false).setAlwaysEdible();
-	public static ItemFishFoodBase ANGLER_FISH = new ItemFishFoodBase("angler_fish", 1);
-	public static ItemFishFoodBase ANGLER_FISHC = new ItemFishFoodBase("angler_fish_cooked", 3);
-	public static ItemFishFoodBase SHARK_MEAT = new ItemFishFoodBase("shark_meat", 4);
-	public static ItemFishFoodBase SHARK_MEATC = new ItemFishFoodBase("shark_meat_cooked", 9);
-	
-	
-	//Fish Buckets
-	//public static Item ANGLER_BUKCET = new ItemFishBucket("angler_fish_bucket");
-	
-	//Throwables
-	//public static Item ORB = new ItemOrb("orb");
-	//public static ItemHarpoonGun HARPOON_GUN = new ItemHarpoonGun("harpoon_gun", 2, 0.3F, ToolMaterial.IRON);
+	public static final ItemFood BUBBLE_FRUIT = new ItemBubbleFruit("bubble_berry", 2, false).setAlwaysEdible();
+	public static final ItemFishFoodBase ANGLER_FISH = new ItemFishFoodBase("angler_fish", 1);
+	public static final ItemFishFoodBase ANGLER_FISHC = new ItemFishFoodBase("angler_fish_cooked", 3);
+	public static final ItemFishFoodBase SHARK_MEAT = new ItemFishFoodBase("shark_meat", 4);
+	public static final ItemFishFoodBase SHARK_MEATC = new ItemFishFoodBase("shark_meat_cooked", 9);
+	public static final Item COCONUT = new ItemBlockCoconut("coconut_item");
 	
 	//Discs
-	public static ItemToolDisc DISC_PRISMARINE = new ItemToolDisc("prismarine_disc", 6, 3, EntityDisc.TypeOfDisc.PRISMARINE, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, PRISMARINE_MAT_DISC);
-	public static ItemToolDisc DISC_DIAMOND = new ItemToolDisc("diamond_disc", 9, 2, EntityDisc.TypeOfDisc.DIAMOND, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, ToolMaterial.DIAMOND);
-	public static ItemToolDisc DISC_GOLD = new ItemToolDisc("gold_disc", 5, 1, EntityDisc.TypeOfDisc.GOLD, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, ToolMaterial.GOLD);
-	public static ItemToolDisc DISC_IRON = new ItemToolDisc("iron_disc", 7, 2, EntityDisc.TypeOfDisc.IRON, SoundEvents.ITEM_ARMOR_EQUIP_IRON, ToolMaterial.IRON);
-	public static ItemToolDisc DISC_STONE = new ItemToolDisc("stone_disc", 6, 2, EntityDisc.TypeOfDisc.STONE, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, ToolMaterial.STONE);
-	public static ItemToolDisc DISC_WOOD = new ItemToolDisc("wood_disc", 5, 3, EntityDisc.TypeOfDisc.WOOD, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, ToolMaterial.WOOD);
-	public static ItemToolDisc DISC_VANADIUM = new ItemToolDisc("vanadium_disc", 9, 2, EntityDisc.TypeOfDisc.VANDIUM, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, ToolMaterial.DIAMOND);
-	public static ItemToolDisc DISC_NEPTUNUM = new ItemToolDisc("neptunum_disc", 11, 3, EntityDisc.TypeOfDisc.NEPTUNUM, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, NEPTUNUM_MAT);
+	public static final ItemToolDisc DISC_PRISMARINE = new ItemToolDisc("prismarine_disc", 6, 3, EntityDisc.TypeOfDisc.PRISMARINE, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, PRISMARINE_MAT_DISC);
+	public static final ItemToolDisc DISC_DIAMOND = new ItemToolDisc("diamond_disc", 9, 2, EntityDisc.TypeOfDisc.DIAMOND, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, ToolMaterial.DIAMOND);
+	public static final ItemToolDisc DISC_GOLD = new ItemToolDisc("gold_disc", 5, 1, EntityDisc.TypeOfDisc.GOLD, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, ToolMaterial.GOLD);
+	public static final ItemToolDisc DISC_IRON = new ItemToolDisc("iron_disc", 7, 2, EntityDisc.TypeOfDisc.IRON, SoundEvents.ITEM_ARMOR_EQUIP_IRON, ToolMaterial.IRON);
+	public static final ItemToolDisc DISC_STONE = new ItemToolDisc("stone_disc", 6, 2, EntityDisc.TypeOfDisc.STONE, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, ToolMaterial.STONE);
+	public static final ItemToolDisc DISC_WOOD = new ItemToolDisc("wood_disc", 5, 3, EntityDisc.TypeOfDisc.WOOD, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, ToolMaterial.WOOD);
+	public static final ItemToolDisc DISC_VANADIUM = new ItemToolDisc("vanadium_disc", 9, 2, EntityDisc.TypeOfDisc.VANDIUM, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, ToolMaterial.DIAMOND);
+	public static final ItemToolDisc DISC_NEPTUNUM = new ItemToolDisc("neptunum_disc", 11, 3, EntityDisc.TypeOfDisc.NEPTUNUM, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, NEPTUNUM_MAT);
 
 	//Music Discs
-	public static ItemPirateCrewDisc PIRATE_CREW_DISC = new ItemPirateCrewDisc("pirate_crew", TLSMusic.PIRATE_CREW);
-	public static ItemConvolutionDisc OMAN_DISC = new ItemConvolutionDisc("ocean_man", TLSMusic.OCEAN_MAN);
+	public static final ItemPirateCrewDisc PIRATE_CREW_DISC = new ItemPirateCrewDisc("pirate_crew", TLSMusic.PIRATE_CREW);
+	public static final ItemConvolutionDisc OMAN_DISC = new ItemConvolutionDisc("ocean_man", TLSMusic.OCEAN_MAN);
 	//public static ItemGodSlayerDisc GOD_SLAYER_DISC = new ItemGodSlayerDisc("god_slayer", TLSMusic.PIRATE_CREW);
 	//public static ItemConvolutionDisc CONVOLUTION_DISC = new ItemConvolutionDisc("convolution", TLSMusic.PIRATE_CREW);
 	//public static ItemConvolutionDisc BEDAZZLE_DISC = new ItemConvolutionDisc("bedazzle", TLSMusic.PIRATE_CREW);
-	
-	
-	//Upgrades
-	public static Item SPEED_UPGRADE = new ItemSpeedUpgrade("speed_upgrade");
 	
 	/**
 	 * All the Quest Items
 	 * @param boolean(Is Special) - makes it enchanted, highlights text, will be marked as a *Special* rarity
 	 */
-	public static Item CUTLASS = new ItemCutlass("cutlass", CUTLASS_MAT, true);
-	
-	//Util
-	//public static Item GS = new ItemScreen("gs");
+	public static final Item CUTLASS = new ItemCutlass("cutlass", CUTLASS_MAT, true);
 }

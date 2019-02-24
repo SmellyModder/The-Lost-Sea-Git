@@ -14,8 +14,6 @@ import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineII;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntityTorpedo;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
@@ -45,7 +43,6 @@ public class TLSEntities {
 	//Registers stuff that has no egg
 	public static void registerEntities2() {
 		registerEntity2("throwableorb", ThrowableOrb.class, Reference.ORB, 50);
-		registerEntity2("torpedo", EntityTorpedo.class, Reference.TORPEDO, 50);
 		registerEntity2("disc", EntityDisc.class, Reference.DISC, 50);
 		registerEntity2("slash_hook", EntitySlash.class, Reference.CUTLASS, 50);
 		registerEntity2("harpoon", EntityHarpoon.class, Reference.HARPOON, 50);

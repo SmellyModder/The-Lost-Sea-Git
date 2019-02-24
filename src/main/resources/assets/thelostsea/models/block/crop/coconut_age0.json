@@ -1,0 +1,32 @@
+{
+	"credit": "Made by SmellyModder",
+	"ambientocclusion": false,
+	"textures": {
+        "particle": "thelostsea:blocks/maps/coconut_stage_0",
+        "coconut": "thelostsea:blocks/maps/coconut_stage_0"
+    },
+	"elements": [
+		{
+			"name": "coconut",
+			"from": [6, 8, 11],
+			"to": [10, 12, 15],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 4], "texture": "#coconut"},
+				"east": {"uv": [0, 0, 4, 4], "texture": "#coconut"},
+				"south": {"uv": [0, 0, 4, 4], "texture": "#coconut"},
+				"west": {"uv": [0, 0, 4, 4], "texture": "#coconut"},
+				"up": {"uv": [0, 4, 4, 8], "texture": "#coconut"},
+				"down": {"uv": [0, 8, 4, 12], "texture": "#coconut"}
+			}
+		},
+		{
+			"name": "stem",
+			"from": [8, 12, 12],
+			"to": [8, 16, 16],
+			"faces": {
+				"east": {"uv": [16, 0, 12, 4], "texture": "#coconut"},
+				"west": {"uv": [12, 0, 16, 4], "texture": "#coconut"}
+			}
+		}
+	]
+}

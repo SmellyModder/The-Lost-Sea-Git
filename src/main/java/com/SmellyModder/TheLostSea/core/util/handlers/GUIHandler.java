@@ -3,10 +3,8 @@ package com.SmellyModder.TheLostSea.core.util.handlers;
 import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.client.gui.GUILoreBook;
-import com.SmellyModder.TheLostSea.client.gui.GUISubUpgrades;
 import com.SmellyModder.TheLostSea.client.gui.GuiStarterChest;
 import com.SmellyModder.TheLostSea.common.container.ContainerStarterChest;
-import com.SmellyModder.TheLostSea.common.container.ContainerSubUpgrades;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
 import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;

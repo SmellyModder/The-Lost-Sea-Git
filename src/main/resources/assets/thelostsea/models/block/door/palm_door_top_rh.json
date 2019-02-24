@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_rh",
+    "textures": {
+       "bottom": "thelostsea:blocks/door/palm_door_bottom",
+        "top": "thelostsea:blocks/door/palm_door_top"
+    }
+}

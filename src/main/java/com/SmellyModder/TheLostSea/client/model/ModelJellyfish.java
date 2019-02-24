@@ -6,8 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
-
-import com.SmellyModder.TheLostSea.common.entity.bases.AbstractSubmarine;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 
 /**

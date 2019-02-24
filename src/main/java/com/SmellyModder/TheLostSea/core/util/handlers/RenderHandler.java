@@ -8,9 +8,6 @@ import com.SmellyModder.TheLostSea.client.render.RenderJellyfish;
 import com.SmellyModder.TheLostSea.client.render.RenderOrb;
 import com.SmellyModder.TheLostSea.client.render.RenderShark;
 import com.SmellyModder.TheLostSea.client.render.RenderSlash;
-import com.SmellyModder.TheLostSea.client.render.RenderSubmarine;
-import com.SmellyModder.TheLostSea.client.render.RenderSubmarineII;
-import com.SmellyModder.TheLostSea.client.render.RenderTorpedo;
 import com.SmellyModder.TheLostSea.client.render.RenderTriGuardian;
 import com.SmellyModder.TheLostSea.client.render.RenderVampireSquid;
 import com.SmellyModder.TheLostSea.client.render.atlantis.RenderTitan;
@@ -29,9 +26,6 @@ import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineI;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntitySubmarineII;
-import com.SmellyModder.TheLostSea.common.entity.submarine.EntityTorpedo;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 
 import net.minecraft.client.renderer.RenderItem;
@@ -79,43 +73,6 @@ public static void registerEntityRenders() {
 			}
 			
 		});
-		
-		/*RenderingRegistry.registerEntityRenderingHandler(EntityFinnedArrowTest.class, new IRenderFactory<EntityFinnedArrowTest>()
-		{
-			
-			@Override
-			public Render<? super EntityFinnedArrowTest> createRenderFor(RenderManager manager){
-				
-				return new RenderFinnedTestArrow(manager);
-				
-			}
-			
-		});*/
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntitySubmarineI.class, new IRenderFactory<EntitySubmarineI>()
-		{
-			
-			@Override
-			public Render<? super EntitySubmarineI> createRenderFor(RenderManager manager){
-				
-				return new RenderSubmarine(manager);
-				
-			}
-			
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntitySubmarineII.class, new IRenderFactory<EntitySubmarineII>()
-		{
-			
-			@Override
-			public Render<? super EntitySubmarineII> createRenderFor(RenderManager manager){
-				
-				return new RenderSubmarineII(manager);
-				
-			}
-			
-		});
-		
 		RenderingRegistry.registerEntityRenderingHandler(EntityJellyfish.class, new IRenderFactory<EntityJellyfish>()
 		{
 			
@@ -135,18 +92,6 @@ public static void registerEntityRenders() {
 			public Render<? super ThrowableOrb> createRenderFor(RenderManager manager){
 				
 				return new RenderOrb(manager);
-				
-			}
-			
-		});
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityTorpedo.class, new IRenderFactory<EntityTorpedo>()
-		{
-			
-			@Override
-			public Render<? super EntityTorpedo> createRenderFor(RenderManager manager){
-				
-				return new RenderTorpedo(manager);
 				
 			}
 			
