@@ -1,5 +1,7 @@
 package com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop;
 
-public class TileEntityCoconut {
+import net.minecraft.tileentity.TileEntity;
+
+public class TileEntityCoconut extends TileEntity{
 
 }

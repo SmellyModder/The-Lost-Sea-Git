@@ -33,6 +33,8 @@ tile.portal_key_d.name=Dormant Portal Key
 tile.p_sea_stone.name=Polished Sea Stone
 tile.p_deepsea_stone.name=Polished Deep Sea Stone
 tile.sea_pebbles.name=Sea Pebbles
+tile.palm_door.name=Palm Door
+tile.palm_stairs.name=Palm Stairs
 
 ##########
 # PLANTS #
@@ -41,6 +43,9 @@ tile.palm_log.name=Palm Wood
 tile.palm_planks.name=Palm Wood Planks
 tile.palm_leaves.name=Palm Leaves
 tile.palm_sapling.name=Palm Sapling
+tile.coconut.name=Coconut
+item.coconut_item.name=Coconut
+item.coconut_chunk.name=Coconut Chunk
 
 # Machines
 tile.seastone_furnace.name=Sea Furnace

@@ -14,6 +14,7 @@ import com.SmellyModder.TheLostSea.common.item.armor.Item3DArmorP;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemArmorBase;
 import com.SmellyModder.TheLostSea.common.item.armor.ItemNeptunumArmor;
 import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
+import com.SmellyModder.TheLostSea.common.item.food.ItemCoconutChunk;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
@@ -141,6 +142,7 @@ public class TLSItems {
 	public static final ItemFishFoodBase SHARK_MEAT = new ItemFishFoodBase("shark_meat", 4);
 	public static final ItemFishFoodBase SHARK_MEATC = new ItemFishFoodBase("shark_meat_cooked", 9);
 	public static final Item COCONUT = new ItemBlockCoconut("coconut_item");
+	public static final Item COCONUT_CHUNK = new ItemCoconutChunk();
 	
 	//Discs
 	public static final ItemToolDisc DISC_PRISMARINE = new ItemToolDisc("prismarine_disc", 6, 3, EntityDisc.TypeOfDisc.PRISMARINE, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, PRISMARINE_MAT_DISC);

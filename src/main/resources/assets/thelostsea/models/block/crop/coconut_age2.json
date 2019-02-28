@@ -3,32 +3,34 @@
 	"ambientocclusion": false,
 	"textures": {
         "particle": "thelostsea:blocks/maps/coconut_stage_2",
-        "coconut": "thelostsea:blocks/maps/coconut_stage_2"
+        "coconut": "thelostsea:blocks/maps/coconut_stage_2_2"
     },
 	"elements": [
-		{
-			"name": "coconut",
-			"from": [4, 4, 7],
-			"to": [12, 12, 15],
-			"color": 0,
-			"faces": {
-				"north": {"uv": [11, 4, 15, 9], "texture": "#coconut"},
-				"east": {"uv": [11, 4, 15, 9], "texture": "#coconut"},
-				"south": {"uv": [11, 4, 15, 9], "texture": "#coconut"},
-				"west": {"uv": [0, 0, 4, 4], "texture": "#coconut"},
-				"up": {"uv": [0, 0, 4, 4], "texture": "#coconut"},
-				"down": {"uv": [0, 0, 4, 4], "texture": "#coconut"}
-			}
-		},
-		{
-			"name": "stem",
-			"from": [8, 12, 12],
-			"to": [8, 16, 16],
-			"color": 1,
-			"faces": {
-				"east": {"uv": [16, 0, 12, 4], "texture": "#coconut"},
-				"west": {"uv": [12, 0, 16, 4], "texture": "#coconut"}
-			}
-		}
-	]
+        {
+            "name": "coconut",
+            "from": [4, 4, 7],
+            "to": [12, 12, 15],
+            "faces": {
+                "north": {"uv": [0, 4, 4, 8], "texture": "coconut"},
+                "east": {"uv": [12, 4, 16, 8], "texture": "coconut"},
+                "south": {"uv": [8, 4, 12, 8], "texture": "coconut"},
+                "west": {"uv": [4, 4, 8, 8], "texture": "coconut"},
+                "up": {"uv": [4, 0, 8, 4], "texture": "coconut"},
+                "down": {"uv": [8, 0, 12, 4], "texture": "coconut"}
+            }
+        },
+        {
+            "name": "stem",
+            "from": [8, 12, 12],
+            "to": [8, 16, 16],
+            "faces": {
+                "north": {"uv": [0, 0, 0, 0], "texture": "coconut"},
+                "east": {"uv": [2, 10, 0, 12], "texture": "coconut"},
+                "south": {"uv": [0, 0, 0, 0], "texture": "coconut"},
+                "west": {"uv": [0, 10, 2, 12], "texture": "coconut"},
+                "up": {"uv": [0, 0, 0, 0], "texture": "coconut"},
+                "down": {"uv": [0, 0, 0, 0], "texture": "coconut"}
+            }
+        }
+    ]
 }

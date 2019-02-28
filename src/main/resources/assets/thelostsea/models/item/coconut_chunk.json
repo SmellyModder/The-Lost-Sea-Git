@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "thelostsea:items/coconut_left"
+       "layer0": "thelostsea:items/coconut_chunk"
    }
 }

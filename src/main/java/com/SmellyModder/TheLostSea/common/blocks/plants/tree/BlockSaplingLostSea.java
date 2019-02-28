@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
-import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenBigPalmTree;
+import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenCurvedPalmTree;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
@@ -86,7 +86,7 @@ public class BlockSaplingLostSea extends BlockBush implements IGrowable, IHasMod
 		 else if(TerrainGen.saplingGrowTree(world, rand, pos)) {
 			 WorldGenerator generator = this.saplingGenerator;
 			 if(isPalm) {
-				 generator = world.rand.nextInt(9) == 1 ? new WorldGenBigPalmTree(false) : this.saplingGenerator;
+				 generator = world.rand.nextInt(6) == 1 ? new WorldGenCurvedPalmTree(false, world.rand.nextInt(4)) : this.saplingGenerator;
 			 }
 			 world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
 			 

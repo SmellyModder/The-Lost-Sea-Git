@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
+import com.SmellyModder.TheLostSea.common.blocks.BlockLSStair;
 import com.SmellyModder.TheLostSea.common.blocks.BlockMetalBase;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
@@ -29,7 +30,6 @@ import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRotatableDeco;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockRuin;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockTempleBaseStone;
 import com.SmellyModder.TheLostSea.common.blocks.temple.DummyAirBlock;
-import com.SmellyModder.TheLostSea.common.blocks.util.BlockSpawnNurm;
 import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenPalmTree;
 
 import net.minecraft.block.Block;
@@ -107,11 +107,14 @@ public class TLSBlocks {
 	 */
 	public static final Block PALM_LOG = new BlockLogLostSea("palm_log");
 	public static final Block PALM_PLANKS = new BlockPlankLostSea("palm_planks");
+	public static final Block PALM_STAIRS = new BlockLSStair("palm_stairs", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_SAPLING = new BlockSaplingLostSea("palm_sapling", new WorldGenPalmTree(false), true);
 	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_SAPLING);
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
 	public static final ItemBlockLSDoor PALM_DOOR_ITEM = new ItemBlockLSDoor(PALM_DOOR);
+	
 	public static final Block COCONUT = new BlockCoconut("coconut");
+	
 	//public static final Block COCONUT_F = new BlockCoconut();
 	
 	//Fluids
