@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.blocks.plants.tree;
+package com.SmellyModder.TheLostSea.common.blocks.bases;
 
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;

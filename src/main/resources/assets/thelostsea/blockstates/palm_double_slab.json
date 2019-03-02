@@ -1,0 +1,6 @@
+{
+    "variants":
+    {
+        "variant=default": { "model": "thelostsea:palm_planks" }
+    }
+}

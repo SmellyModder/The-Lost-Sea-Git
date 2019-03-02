@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.blocks;
+package com.SmellyModder.TheLostSea.common.blocks.bases;
 
 import java.util.Random;
 
@@ -42,7 +42,6 @@ public class BlockLSSlab extends BlockSlab {
 		this.half = half;
 		
 		TLSBlocks.BLOCKS.add(this);
-		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
 	
 	@Override
@@ -58,7 +57,7 @@ public class BlockLSSlab extends BlockSlab {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState state = this.blockState.getBaseState().withProperty(VARIANT, PalmVariant.DEFAULT);
-		if(!this.isDouble()) state = state.withProperty(HALF, ((meta&8) != 0) ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+		if(!this.isDouble()) state = state.withProperty(HALF, ((meta & 8) != 0) ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
 		return state;
 	}
 	
@@ -71,7 +70,7 @@ public class BlockLSSlab extends BlockSlab {
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-		if(!this.isDouble()) return new BlockStateContainer(this, new IProperty[] {VARIANT,HALF});
+		if(!this.isDouble()) return new BlockStateContainer(this, new IProperty[] {VARIANT, HALF});
 		else return new BlockStateContainer(this, new IProperty[] {VARIANT});
 	}
 

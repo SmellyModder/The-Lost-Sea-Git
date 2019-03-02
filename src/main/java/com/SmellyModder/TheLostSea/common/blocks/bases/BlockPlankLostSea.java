@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.blocks.plants.tree;
+package com.SmellyModder.TheLostSea.common.blocks.bases;
 
 import com.SmellyModder.TheLostSea.common.blocks.BlockBase;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
@@ -23,7 +24,7 @@ public class BlockPlankLostSea extends Block implements IHasModel{
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setHarvestLevel("axe", 0);
-		setCreativeTab(TheLostSea.TLS_PLANTS);
+		setCreativeTab(TheLostSea.TLS_BLOCKS);
 		setTranslationKey(name);
 		setRegistryName(name);
 		

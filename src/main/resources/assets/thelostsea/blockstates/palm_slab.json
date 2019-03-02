@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "thelostsea:blocks/palm_planks"
+    }
+  },
+  "variants": {
+     "half=bottom,variant=default": {"model": "thelostsea:slab_lower"},
+     "half=top,variant=default": {"model": "thelostsea:slab_upper"},
+     "inventory": {"model": "thelostsea:slab_lower"}
+  }
+}

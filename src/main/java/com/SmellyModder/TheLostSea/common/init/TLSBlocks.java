@@ -7,6 +7,15 @@ import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSStair;
 import com.SmellyModder.TheLostSea.common.blocks.BlockMetalBase;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoor;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoubleSlab;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFence;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFenceGate;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSSlabHalf;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLeavesLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLogLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockPlankLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockSaplingLostSea;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
 import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockLSOres;
@@ -15,11 +24,6 @@ import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaOres;
 import com.SmellyModder.TheLostSea.common.blocks.plants.BlockBubbleFruitStem;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLSDoor;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLeavesLostSea;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockLogLostSea;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockPlankLostSea;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.BlockSaplingLostSea;
 import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChestFull;
@@ -33,8 +37,12 @@ import com.SmellyModder.TheLostSea.common.blocks.temple.DummyAirBlock;
 import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenPalmTree;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
+import net.minecraft.block.BlockFenceGate;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
 
 public class TLSBlocks {
 
@@ -108,15 +116,17 @@ public class TLSBlocks {
 	public static final Block PALM_LOG = new BlockLogLostSea("palm_log");
 	public static final Block PALM_PLANKS = new BlockPlankLostSea("palm_planks");
 	public static final Block PALM_STAIRS = new BlockLSStair("palm_stairs", PALM_PLANKS.getDefaultState());
+	public static final BlockSlab PALM_DOUBLE_SLAB = new BlockLSDoubleSlab("palm_double_slab", Material.WOOD, TLSBlocks.PALM_SLAB);
+	public static final BlockSlab PALM_SLAB = new BlockLSSlabHalf("palm_slab", Material.WOOD, TLSBlocks.PALM_SLAB, TLSBlocks.PALM_DOUBLE_SLAB);
 	public static final Block PALM_SAPLING = new BlockSaplingLostSea("palm_sapling", new WorldGenPalmTree(false), true);
 	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_SAPLING);
+	public static final BlockFence PALM_FENCE = new BlockLSFence("palm_fence", PALM_PLANKS.getDefaultState());
+	public static final BlockFenceGate PALM_FENCE_GATE = new BlockLSFenceGate("palm_fence_gate", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
-	public static final ItemBlockLSDoor PALM_DOOR_ITEM = new ItemBlockLSDoor(PALM_DOOR);
+	
+	
 	
 	public static final Block COCONUT = new BlockCoconut("coconut");
 	
 	//public static final Block COCONUT_F = new BlockCoconut();
-	
-	//Fluids
-	//public static final Block DARK_WATER = new BlockDarkwaterFluid();
 }

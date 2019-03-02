@@ -33,16 +33,21 @@ tile.portal_key_d.name=Dormant Portal Key
 tile.p_sea_stone.name=Polished Sea Stone
 tile.p_deepsea_stone.name=Polished Deep Sea Stone
 tile.sea_pebbles.name=Sea Pebbles
-tile.palm_door.name=Palm Door
-tile.palm_stairs.name=Palm Stairs
 
-##########
-# PLANTS #
-##########
+//Palm
+tile.palm_door.name=Palm Door
+tile.palm_stairs.name=Palm Wood Stairs
+tile.palm_slab.name=Palm Wood Slab
+tile.palm_fence.name=Palm Wood Fence
+tile.palm_fence_gate.name=Palm Wood Fence Gate
 tile.palm_log.name=Palm Wood
 tile.palm_planks.name=Palm Wood Planks
 tile.palm_leaves.name=Palm Leaves
 tile.palm_sapling.name=Palm Sapling
+
+##########
+# PLANTS #
+##########
 tile.coconut.name=Coconut
 item.coconut_item.name=Coconut
 item.coconut_chunk.name=Coconut Chunk
