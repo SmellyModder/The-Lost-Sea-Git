@@ -121,7 +121,7 @@ public class TLSBlocks {
 	public static final Block PALM_SAPLING = new BlockSaplingLostSea("palm_sapling", new WorldGenPalmTree(false), true);
 	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_SAPLING);
 	public static final BlockFence PALM_FENCE = new BlockLSFence("palm_fence", PALM_PLANKS.getDefaultState());
-	public static final BlockFenceGate PALM_FENCE_GATE = new BlockLSFenceGate("palm_fence_gate", PALM_PLANKS.getDefaultState());
+	public static final Block PALM_FENCE_GATE = new BlockLSFenceGate("palm_fence_gate", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
 	
 	

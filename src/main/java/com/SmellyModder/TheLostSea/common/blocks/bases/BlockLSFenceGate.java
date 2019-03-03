@@ -26,7 +26,7 @@ public class BlockLSFenceGate extends BlockFenceGate implements IHasModel{
 		parent = blockParent;
 		setRegistryName(name);
 		setTranslationKey(name);
-			
+		
 		TLSBlocks.BLOCKS.add(this);
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
