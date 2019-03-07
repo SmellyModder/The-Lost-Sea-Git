@@ -1,8 +1,9 @@
 package com.SmellyModder.TheLostSea.common.blocks.fluid;
 
 import com.SmellyModder.TheLostSea.common.init.TLSFluids;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;

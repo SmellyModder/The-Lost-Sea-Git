@@ -1,5 +1,9 @@
 {
-    "variants": {
-        "normal": { "model": "thelostsea:palm_leaves" }
+    "variants":
+    {
+        "check_decay=true,decayable=true": { "model": "thelostsea:palm_leaves" },
+        "check_decay=true,decayable=false": { "model": "thelostsea:palm_leaves" },
+        "check_decay=false,decayable=true": { "model": "thelostsea:palm_leaves" },
+        "check_decay=false,decayable=false": { "model": "thelostsea:palm_leaves" }
     }
 }

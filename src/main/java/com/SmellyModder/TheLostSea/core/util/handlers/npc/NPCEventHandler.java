@@ -1,8 +1,8 @@
 package com.SmellyModder.TheLostSea.core.util.handlers.npc;
 
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;

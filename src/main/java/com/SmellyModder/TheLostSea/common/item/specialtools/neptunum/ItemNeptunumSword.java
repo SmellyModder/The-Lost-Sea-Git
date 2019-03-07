@@ -1,8 +1,8 @@
 package com.SmellyModder.TheLostSea.common.item.specialtools.neptunum;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.google.common.collect.Sets;
 
 import net.minecraft.block.Block;

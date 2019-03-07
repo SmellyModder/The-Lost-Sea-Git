@@ -2,6 +2,8 @@ package com.SmellyModder.TheLostSea.common.item;
 
 import javax.annotation.Nullable;
 
+import com.SmellyModder.TheLostSea.core.TheLostSea;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItemFrame;
@@ -18,6 +20,7 @@ public class ItemTempleFinder extends ItemBase{
 
 	public ItemTempleFinder(String name) {
 		super(name);
+		this.setCreativeTab(TheLostSea.TLS_SPECIAL);
 	}
 	
 	@Override

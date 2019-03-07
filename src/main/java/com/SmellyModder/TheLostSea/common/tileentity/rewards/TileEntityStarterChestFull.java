@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.SmellyModder.TheLostSea.client.particle.LostSeaParticles;
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;

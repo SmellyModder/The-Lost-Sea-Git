@@ -26,7 +26,7 @@
                             }
                         }
                     ],
-                    "weight": 19,
+                    "weight": 10,
                     "quality": 0
                 },
                 {
@@ -102,6 +102,19 @@
                             }
                         }
                     ],
+                    "weight": 7,
+                    "quality": 0
+                },
+                {
+                    "conditions": [],
+                    "type": "item",
+                    "name": "minecraft:book",
+                    "functions": [
+                        {
+                            "conditions": [],
+                            "function": "enchant_randomly"
+                        }
+                    ],
                     "weight": 6,
                     "quality": 0
                 },
@@ -119,13 +132,13 @@
                             }
                         }
                     ],
-                    "weight": 8,
+                    "weight": 7,
                     "quality": 0
                 }
             ],
             "rolls": {
                 "min": 4,
-                "max": 6
+                "max": 5
             },
             "bonus_rolls": {
                 "min": 1,

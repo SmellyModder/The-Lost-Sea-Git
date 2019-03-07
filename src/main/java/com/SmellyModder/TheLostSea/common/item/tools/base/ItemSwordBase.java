@@ -1,8 +1,9 @@
 package com.SmellyModder.TheLostSea.common.item.tools.base;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

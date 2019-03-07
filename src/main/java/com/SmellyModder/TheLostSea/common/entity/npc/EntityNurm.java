@@ -1,9 +1,9 @@
 package com.SmellyModder.TheLostSea.common.entity.npc;
 
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;

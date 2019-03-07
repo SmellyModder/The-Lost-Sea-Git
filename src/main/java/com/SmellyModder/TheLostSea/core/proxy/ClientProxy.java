@@ -8,7 +8,6 @@ import com.SmellyModder.TheLostSea.client.gui.npc.GuiNurmNpc;
 import com.SmellyModder.TheLostSea.client.model.armor.ModelNeptunumArmor;
 import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestFullRenderer;
 import com.SmellyModder.TheLostSea.client.render.tile.TileEntityStarterChestRenderer;
-import com.SmellyModder.TheLostSea.client.util.GuiGreenScreen;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.util.handlers.RenderHandler;
@@ -49,11 +48,6 @@ public class ClientProxy extends CommonProxy{
 //		neptunumArmorModel.put(EntityEquipmentSlot.FEET, new ModelNeptunumArmor(EntityEquipmentSlot.CHEST, 0.01f));
 	}
 	
-	@Override
-	public void openScreen() {
-		Minecraft.getMinecraft().displayGuiScreen(new GuiGreenScreen());
-	}
-
 	@Override
 	public void openMyGui(ItemStack stack)
 	{

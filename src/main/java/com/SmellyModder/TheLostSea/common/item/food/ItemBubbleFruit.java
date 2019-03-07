@@ -1,8 +1,9 @@
 package com.SmellyModder.TheLostSea.common.item.food;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;

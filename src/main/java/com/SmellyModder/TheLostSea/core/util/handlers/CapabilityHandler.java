@@ -1,12 +1,12 @@
 package com.SmellyModder.TheLostSea.core.util.handlers;
 
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.api.capabilites.EquippableCapabilties;
 import com.SmellyModder.TheLostSea.core.api.capabilites.IEquippableItemHandler;
 import com.SmellyModder.TheLostSea.core.api.relics.EquippableType;
 import com.SmellyModder.TheLostSea.core.api.relics.FakeEquippable;
 import com.SmellyModder.TheLostSea.core.api.relics.IEquippable;
 import com.SmellyModder.TheLostSea.core.util.Reference;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
 import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller.DialogueControllerN;

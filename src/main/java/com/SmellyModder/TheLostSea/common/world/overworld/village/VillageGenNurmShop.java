@@ -233,9 +233,6 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 22, 1, 12, box);
 		this.setBlockState(world, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Z).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), 23, 1, 11, box);
 		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 22, 1, 11, box);
-		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 22, 1, 10, box);
-		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 23, 1, 10, box);
-		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 23, 1, 9, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 9, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 10, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 24, 1, 7, box);
@@ -336,7 +333,11 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 23, 2, 2, box);
 		this.fillWithBlocks(world, box, 24, 2, 2, 24, 2, 10, Blocks.PLANKS.getDefaultState(), Blocks.PLANKS.getDefaultState(), false);
 		
-		this.setBlockState(world, Blocks.DIAMOND_BLOCK.getDefaultState(), 23, 2, 10, box);
+		this.setBlockState(world, this.getTreasureBlocks(rand), 22, 1, 10, box);
+		this.setBlockState(world, this.getTreasureBlocks(rand), 23, 1, 10, box);
+		this.setBlockState(world, this.getTreasureBlocks(rand), 23, 1, 9, box);
+		this.setBlockState(world, this.getTreasureBlocks(rand), 23, 2, 10, box);
+		
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 23, 2, 11, box);
 		this.setBlockState(world, Blocks.BOOKSHELF.getDefaultState(), 22, 2, 11, box);
 		this.setBlockState(world, Blocks.PLANKS.getDefaultState(), 22, 2, 12, box);
@@ -790,9 +791,6 @@ public class VillageGenNurmShop extends Village
         	}
         }
         
-        BlockPos blockposTE = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(1), this.getZWithOffset(0, 0));
-       
-		
 		/*
 		 * ENTITIES
 		 */
@@ -852,6 +850,30 @@ public class VillageGenNurmShop extends Village
 		this.setBlockState(worldIn, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, EnumAxis.Y).withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE), x, y, z, boundingBoxIn);
 		this.setBlockState(worldIn, woodSlab, x, y + 1, z, boundingBoxIn);
 	}
+	
+	protected IBlockState getTreasureBlocks(Random rand) {
+		int i = rand.nextInt(3);
+		IBlockState state;
+		switch(i) {
+			case 0:
+			default:
+			state = Blocks.DIAMOND_BLOCK.getDefaultState();
+			break;
+			
+			case 1:
+			state = Blocks.IRON_BLOCK.getDefaultState();
+			break;
+			
+			case 2:
+			state = Blocks.GOLD_BLOCK.getDefaultState();
+			break;
+			
+			case 3:
+			state = Blocks.LAPIS_BLOCK.getDefaultState();
+			break;
+		}
+		return state;
+	}
 
 	public static class VillageManager implements IVillageCreationHandler, IWorldHolder
 	{
@@ -859,7 +881,6 @@ public class VillageGenNurmShop extends Village
 		public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5)
 		{
 			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 26, 19, 16, facing);
-            StructureBoundingBox box2 = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 5, 12, 9, facing);
 			return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
 		}
 		

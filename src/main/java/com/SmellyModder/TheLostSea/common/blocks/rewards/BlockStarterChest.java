@@ -5,9 +5,9 @@ import javax.annotation.Nullable;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.Reference;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import akka.Main;
 import net.minecraft.block.Block;

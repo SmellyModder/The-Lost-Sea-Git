@@ -14,8 +14,8 @@ import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.entity.raid.EntityTitanGuardian;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.Reference;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;

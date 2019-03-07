@@ -1,8 +1,8 @@
 package com.SmellyModder.TheLostSea.common.blocks.bases;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;

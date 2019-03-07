@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPurpurSlab.Variant;

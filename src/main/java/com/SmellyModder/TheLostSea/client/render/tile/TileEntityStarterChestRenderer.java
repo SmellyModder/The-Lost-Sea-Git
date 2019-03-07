@@ -1,7 +1,7 @@
 package com.SmellyModder.TheLostSea.client.render.tile;
 
-import com.SmellyModder.TheLostSea.client.model.animation.ModelStarterChest;
-import com.SmellyModder.TheLostSea.client.model.animation.ModelStarterChestFull;
+import com.SmellyModder.TheLostSea.client.model.blocks.ModelStarterChest;
+import com.SmellyModder.TheLostSea.client.model.blocks.ModelStarterChestFull;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.core.util.Reference;
@@ -27,7 +27,7 @@ public class TileEntityStarterChestRenderer extends TileEntitySpecialRenderer<Ti
 
     @Override
     public void render(TileEntityStarterChest te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        {
+    {
             GlStateManager.enableDepth();
             GlStateManager.depthFunc(515);
             GlStateManager.depthMask(true);
@@ -36,8 +36,6 @@ public class TileEntityStarterChestRenderer extends TileEntitySpecialRenderer<Ti
             if (te.hasWorld()) {
                 Block block = te.getBlockType();
                 i = te.getBlockMetadata();
-
-                //te.checkForAdjacentChests();
             } else {
                 i = 0;
             }

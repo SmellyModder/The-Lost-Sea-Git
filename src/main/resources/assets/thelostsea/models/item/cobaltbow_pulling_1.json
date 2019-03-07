@@ -1,6 +1,0 @@
-{
-    "parent": "thelostsea:item/cobaltbow",
-    "textures": {
-        "layer0": "thelostsea:items/tools/cbow_pulling_1"
-    }
-}

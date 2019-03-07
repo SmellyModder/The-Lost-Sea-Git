@@ -1,9 +1,9 @@
 {
-	"credit": "Made with Blockbench",
+	"credit": "Made by JermyJ",
 	"ambientocclusion": false,
 	"textures": {
         "particle": "thelostsea:blocks/maps/coconut_stage_2",
-        "coconut": "thelostsea:blocks/maps/coconut_stage_2_2"
+        "coconut": "thelostsea:blocks/maps/coconut_stage_2"
     },
 	"elements": [
         {

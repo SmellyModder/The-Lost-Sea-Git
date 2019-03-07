@@ -13,9 +13,9 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSmeltebles;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.init.TLSTileEntities;
-import com.SmellyModder.TheLostSea.common.init.client.TileEntityRenders;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
+import com.SmellyModder.TheLostSea.core.api.LostSeaAPI;
 import com.SmellyModder.TheLostSea.core.util.CommandDimensionTP;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.Reference;
@@ -48,7 +48,6 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(TLSItems.ITEMS.toArray(new Item [0]));
-		 
 	}
 	
 	@SubscribeEvent
@@ -77,14 +76,13 @@ public class RegistryHandler {
 			
 			
 			if(item instanceof ILSShield) {
-				
 				ModelLSShield model = ((ILSShield)item).shieldModel();
 				
 				if(item == TLSItems.VANADIUM_SHIELD) {
-					RegistryHandler.createRender(item, model, ":textures/models/shield/vanadium_shield.png");
+					LostSeaAPI.RegistryUtils.createShieldRender(item, model, ":textures/models/shield/vanadium_shield.png");
 				}
 				else if(item == TLSItems.NEPTUNUM_SHIELD) {
-					RegistryHandler.createRender(item, model, ":textures/models/shield/cobalt_shield.png");
+					LostSeaAPI.RegistryUtils.createShieldRender(item, model, ":textures/models/shield/cobalt_shield.png");
 				}
 			}
 		}
@@ -98,16 +96,15 @@ public class RegistryHandler {
 			}
 			
 			if(block == TLSBlocks.STARTER_CHEST) {
-				RegistryHandler.createBlockRender(block, chest1);
+				LostSeaAPI.RegistryUtils.createTERender(block, chest1);
 			}
 			else if(block == TLSBlocks.STARTER_CHEST_FULL) {
-				RegistryHandler.createBlockRender(block, chest);
+				LostSeaAPI.RegistryUtils.createTERender(block, chest);
 			}
 		}
 	}
 
 	public static void initRegistries() {
-
         TLSBiomes.registerBiomes();
         SoundHandler.registerSounds();
         TLSSounds.registerSounds();
@@ -123,33 +120,6 @@ public class RegistryHandler {
 	}
 	
 	public static void serverRegistries(FMLServerStartingEvent event) {
-
         event.registerServerCommand(new CommandDimensionTP());
-
     }
-	
-	@SideOnly(Side.CLIENT)
-	private static void createRender(Item item, ModelLSShield s, String resource) {
-		item.setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
-            @Override
-            public void renderByItem(ItemStack stack) {
-                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + resource));
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(1.0F, -1.0F, -1.0F);
-                s.render();
-                GlStateManager.popMatrix();
-            }
-	    });
-	}
-	
-	@SideOnly(Side.CLIENT)
-	private static void createBlockRender(Block block, TileEntity t) {
-		Item.getItemFromBlock(block).setTileEntityItemStackRenderer(new TileEntityItemStackRenderer() {
-	    	
-	    	@Override
-            public void renderByItem(ItemStack stack) {
-                TileEntityRendererDispatcher.instance.render(t, 0.0, 0.0, 0.0, 0.0F, 1.0F);
-            }
-	    });
-	}
 }

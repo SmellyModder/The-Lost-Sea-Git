@@ -12,7 +12,7 @@ import com.SmellyModder.TheLostSea.client.model.items.ModelVanadiumShield;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
 
 import net.minecraft.block.BlockDispenser;
@@ -57,7 +57,7 @@ public class ItemNeptunumShield extends ItemBase implements ILSShield
 
     public String getItemStackDisplayName(ItemStack stack)
     {
-        return I18n.translateToLocal("item.cobalt_shield.name");
+        return I18n.translateToLocal("item.neptunum.name");
     }
     
     public EnumAction getItemUseAction(ItemStack stack)
@@ -79,7 +79,7 @@ public class ItemNeptunumShield extends ItemBase implements ILSShield
 
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return repair.getItem() == Item.getItemFromBlock(TLSBlocks.COBALT_BLOCK) ? true : super.getIsRepairable(toRepair, repair);
+        return repair.getItem() == Item.getItemFromBlock(TLSBlocks.NEPTUNUM_BLOCK) ? true : super.getIsRepairable(toRepair, repair);
     }
 
 	@Override

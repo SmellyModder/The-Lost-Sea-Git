@@ -2,8 +2,8 @@ package com.SmellyModder.TheLostSea.common.blocks;
 
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;

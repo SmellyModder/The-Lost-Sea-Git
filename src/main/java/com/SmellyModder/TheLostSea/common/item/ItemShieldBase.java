@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.client.util.ITooltipFlag;

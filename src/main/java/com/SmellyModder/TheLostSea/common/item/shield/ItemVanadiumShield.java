@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelLSShield;
 import com.SmellyModder.TheLostSea.client.model.items.ModelVanadiumShield;

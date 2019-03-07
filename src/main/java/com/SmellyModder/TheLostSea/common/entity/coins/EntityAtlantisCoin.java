@@ -3,9 +3,9 @@ package com.SmellyModder.TheLostSea.common.entity.coins;
 import com.SmellyModder.TheLostSea.client.particle.LostSeaParticles;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 

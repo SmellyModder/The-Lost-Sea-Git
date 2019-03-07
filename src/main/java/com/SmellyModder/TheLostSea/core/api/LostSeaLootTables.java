@@ -2,8 +2,8 @@ package com.SmellyModder.TheLostSea.core.api;
 
 import org.lwjgl.util.vector.Vector2f;
 
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.Reference;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootTableList;

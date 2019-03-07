@@ -12,10 +12,10 @@ import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoubleSlab;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFence;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFenceGate;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSSlabHalf;
-import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLeavesLostSea;
-import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLogLostSea;
-import com.SmellyModder.TheLostSea.common.blocks.bases.BlockPlankLostSea;
-import com.SmellyModder.TheLostSea.common.blocks.bases.BlockSaplingLostSea;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSLeaves;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSLog;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSPlank;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSSapling;
 import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
 import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockLSOres;
@@ -70,7 +70,7 @@ public class TLSBlocks {
 	public static final Block SEA_COBALTORE = new BlockLSOres("sea_neptunumore", Material.ROCK, false, 0);
 	public static final Block SEA_VANADIUMORE = new BlockLSOres("sea_vanadiumore", Material.ROCK, false, 1);
 	public static final Block DEEPSEA_VANADIUMORE = new BlockLSOres("deepsea_vanadiumore", Material.ROCK, false, 1);
-	public static final Block AQUAMARINE_ORE = new BlockLSOres("sea_aquamarineore", Material.ROCK, false, 2);
+	//public static final Block AQUAMARINE_ORE = new BlockLSOres("sea_aquamarineore", Material.ROCK, false, 2);
 	
 	//Temple
 	public static final Block CARVED_PRISMARINE_EYE = new BlockRuin("carved_eye", Material.ROCK);
@@ -93,7 +93,7 @@ public class TLSBlocks {
 	
 	//Ore Blocks
 	public static final Block VANADIUM_BLOCK = new BlockMetalBase("vanadium_block", Material.ROCK, 5.2F, 10F);
-	public static final Block COBALT_BLOCK = new BlockMetalBase("cobalt_block", Material.ROCK, 6.0F, 11F);
+	public static final Block NEPTUNUM_BLOCK = new BlockMetalBase("neptunum_block", Material.ROCK, 6.0F, 11F);
 
 	//Portal
 	public static final Block PORTAL = new BlockLSPortal("lost_sea_portal", Material.PORTAL);
@@ -113,20 +113,17 @@ public class TLSBlocks {
 	 * #  PALM  #
 	 * ##########
 	 */
-	public static final Block PALM_LOG = new BlockLogLostSea("palm_log");
-	public static final Block PALM_PLANKS = new BlockPlankLostSea("palm_planks");
+	public static final Block PALM_LOG = new BlockLSLog("palm_log");
+	public static final Block PALM_LEAVES = new BlockLSLeaves("palm_leaves", TLSBlocks.PALM_SAPLING, true);
+	public static final Block PALM_SAPLING = new BlockLSSapling("palm_sapling", new WorldGenPalmTree(false), true);
+	public static final Block PALM_PLANKS = new BlockLSPlank("palm_planks");
 	public static final Block PALM_STAIRS = new BlockLSStair("palm_stairs", PALM_PLANKS.getDefaultState());
 	public static final BlockSlab PALM_DOUBLE_SLAB = new BlockLSDoubleSlab("palm_double_slab", Material.WOOD, TLSBlocks.PALM_SLAB);
 	public static final BlockSlab PALM_SLAB = new BlockLSSlabHalf("palm_slab", Material.WOOD, TLSBlocks.PALM_SLAB, TLSBlocks.PALM_DOUBLE_SLAB);
-	public static final Block PALM_SAPLING = new BlockSaplingLostSea("palm_sapling", new WorldGenPalmTree(false), true);
-	public static final Block PALM_LEAVES = new BlockLeavesLostSea("palm_leaves", PALM_SAPLING);
+	
 	public static final BlockFence PALM_FENCE = new BlockLSFence("palm_fence", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_FENCE_GATE = new BlockLSFenceGate("palm_fence_gate", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
-	
-	
-	
 	public static final Block COCONUT = new BlockCoconut("coconut");
 	
-	//public static final Block COCONUT_F = new BlockCoconut();
 }

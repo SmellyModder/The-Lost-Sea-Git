@@ -6,8 +6,8 @@ import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -155,7 +155,7 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable, IHasMode
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) 
 	{
-        worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(((Integer)state.getValue(AGE)).intValue() + 1)), 2);
+		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(((Integer)state.getValue(AGE)).intValue() + 1)), 2);
 	}
 	
 	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) 

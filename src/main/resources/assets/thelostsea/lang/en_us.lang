@@ -1,12 +1,9 @@
 #Tab
-itemGroup.The-Lost-Sea-Vehicles=§3Lost Sea Vehicles§r
-itemGroup.The-Lost-Sea-Blocks=§3Lost Sea Blocks§r
-itemGroup.The-Lost-Sea-Items=§3Lost Sea Items§r
-itemGroup.The-Lost-Sea-Gear=§3Lost Sea Gear§r
-itemGroup.The-Lost-Sea-Music=§3Lost Sea Music§r
-itemGroup.The-Lost-Sea-Ores=§3Lost Sea Ores§r
+itemGroup.LSBlocks=Lost Sea Blocks
+itemGroup.LSItems=Lost Sea Items
+itemGroup.LSGear=Lost Sea Gear
 itemGroup.LSPlants=Lost Sea Plants
-
+itemGroup.LSSpecial=Lost Sea Special
 
 # Blocks
 tile.liquidack.name=Liquidack
@@ -86,29 +83,6 @@ entity.titan_guardian.name=Titan Guardian
 # NPC
 entity.nurm.name=Nurm: The Old Cartographer
 
-#Vehicles
-entity.submarine.name=Submarine I
-entity.submarineii.name=Submarine II
-
-#Vehicle Items
-
-item.sub.red.name=Red Submarine I
-item.sub.orange.name=Orange Submarine I
-item.sub.yellow.name=Yellow Submarine I
-item.sub.lime.name=Lime Submarine I
-item.sub.green.name=Green Submarine I
-item.sub.blue.name=Blue Submarine I
-item.sub.lightblue.name=Light Blue Submarine I
-item.sub.cyan.name=Cyan Submarine I
-item.sub.purple.name=Purple Submarine I
-item.sub.magenta.name=Magenta Submarine I
-item.sub.pink.name=Pink Submarine I
-item.sub.brown.name=Brown Submarine I
-item.sub.black.name=Black Submarine I
-item.sub.gray.name=Gray Submarine I
-item.sub.lightgray.name=Light Gray Submarine I
-item.sub.white.name=White Submarine I
-
 # Materials
 item.pearl.name=Pearl
 item.shark_tooth.name=Shark Tooth
@@ -136,13 +110,13 @@ item.prismarine_hoe.name=Prismarine Hoe
 item.elastic_prismarine.name=Elastic Prismarine Ball
 
 # Neptunum
-item.cobalt_sword.name=Neptunum Sword
-item.cobalt_axe.name=Neptunum Axe
-item.cobalt_pickaxe.name=Neptunum Pickaxe
-item.cobalt_shovel.name=Neptunum Shovel
-item.cobaltbow.name=Neptunum Bow
-tile.cobalt_block.name=Block of Neptunum
-item.cobalt_shield.name=Neptunum Shield
+item.neptunum_sword.name=Neptunum Sword
+item.neptunum_axe.name=Neptunum Axe
+item.neptunum_pickaxe.name=Neptunum Pickaxe
+item.neptunum_shovel.name=Neptunum Shovel
+item.neptunum_bow.name=Neptunum Bow
+tile.neptunum_block.name=Block of Neptunum
+item.neptunum_shield.name=Neptunum Shield
 item.neptunum_helmet.name=Neptunum Helmet
 item.neptunum_chestplate.name=Neptunum Chestplate
 item.neptunum_leggings.name=Neptunum Leggings
@@ -173,7 +147,7 @@ item.aquamarine_boots.name=Aquamarine Boots
 
 # Finned Arrows
 item.finnedarrow.name=Finned Arrow
-item.cobaltfinnedarrow.name=Neptunum Finned Arrow
+item.neptunum_finnedarrow.name=Neptunum Finned Arrow
 
 # Fish
 item.angler_fish.name=Angler Fish

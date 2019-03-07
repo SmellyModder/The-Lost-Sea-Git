@@ -7,8 +7,8 @@ import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
 import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -179,7 +179,7 @@ public class ItemToolDisc extends ItemTool implements IHasModel{
 		
 		@Override
 		public void addInformation(ItemStack itemstack, World world, List<String> list, ITooltipFlag flag) {
-			list.add("Rarity:" + " §a§lUncommon§r");
+			list.add("Rarity: " + TextFormatting.GREEN + "Uncommon");
 			list.add("Ranged Damage: " + damage);
 			list.add("Speed: " + speed);
 		}
@@ -204,7 +204,8 @@ public class ItemToolDisc extends ItemTool implements IHasModel{
 	        	EntityDisc cap = new EntityDisc(world, pos.getX(), pos.getY(), pos.getZ());
 	        	if(stack.getItem() == TLSItems.DISC_PRISMARINE) {
 		        	cap.setDiscType(EntityDisc.TypeOfDisc.PRISMARINE);
-		        }else if(stack.getItem() == TLSItems.DISC_DIAMOND) {
+		        }
+	        	else if(stack.getItem() == TLSItems.DISC_DIAMOND) {
 		        	cap.setDiscType(EntityDisc.TypeOfDisc.DIAMOND);
 		        }
 		        else if(stack.getItem() == TLSItems.DISC_GOLD) {
@@ -221,7 +222,8 @@ public class ItemToolDisc extends ItemTool implements IHasModel{
 		        }
 	            return cap;
 	    }
-	        @Override
+	    
+	    @Override
 	    public ItemStack dispenseStack(IBlockSource source, ItemStack stack)
 	    {
 	        World world = source.getWorld();
@@ -233,6 +235,6 @@ public class ItemToolDisc extends ItemTool implements IHasModel{
 	  
 	        stack.shrink(1);
 	        return stack;
-	    }
+	    	}
 	    }
 }

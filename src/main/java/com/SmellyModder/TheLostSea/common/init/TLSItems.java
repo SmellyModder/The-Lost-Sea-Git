@@ -67,7 +67,6 @@ public class TLSItems {
 		public static final ArmorMaterial PRISMARINE_ARMOR = EnumHelper.addArmorMaterial("prismarineArmor", "thelostsea:prismarine", 40, new int[]{2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 3.0f);
 		public static final ArmorMaterial VANADIUM_ARMOR = EnumHelper.addArmorMaterial("vanadiumArmor", "thelostsea:vanadium", 35, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.5f);
 		public static final ArmorMaterial NEPTUNUM_ARMOR = EnumHelper.addArmorMaterial("cobaltArmor", "thelostsea:neptunum", 45, new int[]{4, 8, 10, 4}, 9, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 3f);
-		public static final ArmorMaterial AQUAMARINE_ARMOR = EnumHelper.addArmorMaterial("aquamarineArmor", "thelostsea:aquamarine", 37, new int[]{3, 7, 9, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2f);
 	}
 	
 	public static final ToolMaterial PRISMARINE_MAT = EnumHelper.addToolMaterial("prismarine", 3, 1876, 8.2F, 6.5F, 33);
@@ -75,15 +74,14 @@ public class TLSItems {
 	public static final ToolMaterial PRISMARINE_MAT_DISC = EnumHelper.addToolMaterial("prismarine_disc", 3, 1876, 8.2F, 3F, 33);
 	public static final ToolMaterial NEPTUNUM_MAT = EnumHelper.addToolMaterial("cobaltmat", 4, 2000, 10F, 7.0F, 20);
 	public static final ToolMaterial NEPTUNUM_MAT_S = EnumHelper.addToolMaterial("cobaltmats", 4, 2000, 9F, 9.0F, 20);
-	public static final ToolMaterial AQUAMARINE_MAT = EnumHelper.addToolMaterial("aquamarinemat", 4, 1800, 4.0F, 4.0F, 33);
 	public static final ToolMaterial VANADIUM_MAT = EnumHelper.addToolMaterial("vanadiummat", 3, 1661, 8F, 3.0F, 13);
 	public static final ArmorMaterial ARMOR_MATERIAL_PRIS = EnumHelper.addArmorMaterial("armor_material_prismarine", Reference.MOD_ID + ":prismarinew", 11, new int[] {2, 10, 12, 6}, 34, SoundEvents.ITEM_ARMOR_EQIIP_ELYTRA, 2.6F);
 	
 	//Armor
-	public static final Item PRISMARINE_HELMET = new Item3DArmorP("prismarine_helmet", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.HEAD);
-	public static final Item PRISMARINE_CHESTPLATE = new Item3DArmorP("prismarine_chestplate", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.CHEST);
-	public static final Item PRISMARINE_LEGGINGS = new ArmorItemBaseP("prismarine_leggings", ARMOR_MATERIAL_PRIS, 2, EntityEquipmentSlot.LEGS);
-	public static final Item PRISMARINE_BOOTS = new Item3DArmorP("prismarine_boots", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.FEET);
+	//public static final Item PRISMARINE_HELMET = new Item3DArmorP("prismarine_helmet", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.HEAD);
+	//public static final Item PRISMARINE_CHESTPLATE = new Item3DArmorP("prismarine_chestplate", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.CHEST);
+	//public static final Item PRISMARINE_LEGGINGS = new ArmorItemBaseP("prismarine_leggings", ARMOR_MATERIAL_PRIS, 2, EntityEquipmentSlot.LEGS);
+	//public static final Item PRISMARINE_BOOTS = new Item3DArmorP("prismarine_boots", ArmorMaterials.PRISMARINE_ARMOR, 1, EntityEquipmentSlot.FEET);
 	
 	//Collectables
 	public static final Item PEARL = new ItemPearl("pearl");
@@ -103,22 +101,22 @@ public class TLSItems {
 	
 	//Finned Arrows
 	public static final Item FINNED_ARROW = new ItemFinnedArrow("finnedarrow", false);
-	public static final Item NEPTUNUM_FINNED_ARROW = new ItemFinnedArrow("cobaltfinnedarrow", true);
+	public static final Item NEPTUNUM_FINNED_ARROW = new ItemFinnedArrow("neptunum_finnedarrow", true);
 	
 	//Tools Prismarine
-	public static final Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
-	public static final Item PRISMARINE_AXE = new ItemAxeBaseP("prismarine_axe", PRISMARINE_MAT);
-	public static final Item PRISMARINE_SWORD = new ItemSwordBaseP("prismarine_sword", PRISMARINE_MAT);
-	public static final Item PRISMARINE_SPADE = new ItemSpadeBaseP("prismarine_spade", PRISMARINE_MAT);
-	public static final Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
+	//public static final Item PRISMARINE_PICKAXE = new ItemPickaxeBaseP("prismarine_pickaxe", PRISMARINE_MAT);
+	//public static final Item PRISMARINE_AXE = new ItemAxeBaseP("prismarine_axe", PRISMARINE_MAT);
+	//public static final Item PRISMARINE_SWORD = new ItemSwordBaseP("prismarine_sword", PRISMARINE_MAT);
+	//public static final Item PRISMARINE_SPADE = new ItemSpadeBaseP("prismarine_spade", PRISMARINE_MAT);
+	//public static final Item PRISMARINE_HOE = new ItemHoeBaseP("prismarine_hoe", PRISMARINE_MAT);
 	
 	//Tools Neptunum
-	public static final Item NEPTUNUM_SWORD = new ItemNeptunumSword("cobalt_sword", NEPTUNUM_MAT_S);
-	public static final Item NEPTUNUM_SHOVEL = new ItemNeptunumSpade("cobalt_shovel", NEPTUNUM_MAT);
-	public static final Item NEPTUNUM_PICKAXE = new ItemNeptunumPickaxe("cobalt_pickaxe", NEPTUNUM_MAT);
-	public static final Item NEPTUNUM_AXE = new ItemNeptunumAxe("cobalt_axe", NEPTUNUM_MAT);
-	public static final Item NEPTUNUM_BOW = new ItemBowBase("cobaltbow");
-	public static final Item NEPTUNUM_SHIELD = new ItemNeptunumShield("cobalt_shield");
+	public static final Item NEPTUNUM_SWORD = new ItemNeptunumSword("neptunum_sword", NEPTUNUM_MAT_S);
+	public static final Item NEPTUNUM_SHOVEL = new ItemNeptunumSpade("neptunum_shovel", NEPTUNUM_MAT);
+	public static final Item NEPTUNUM_PICKAXE = new ItemNeptunumPickaxe("neptunum_pickaxe", NEPTUNUM_MAT);
+	public static final Item NEPTUNUM_AXE = new ItemNeptunumAxe("neptunum_axe", NEPTUNUM_MAT);
+	public static final Item NEPTUNUM_BOW = new ItemBowBase("neptunum_bow");
+	public static final Item NEPTUNUM_SHIELD = new ItemNeptunumShield("neptunum_shield");
 	public static final Item NEPTUNUM_HELMET = new ItemNeptunumArmor("neptunum_helmet", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.HEAD);
 	public static final Item NEPTUNUM_CHESTPLATE = new ItemNeptunumArmor("neptunum_chestplate", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 1, EntityEquipmentSlot.CHEST);
 	public static final Item NEPTUNUM_LEGGINGS = new ItemNeptunumArmor("neptunum_leggings", "neptunum", ArmorMaterials.NEPTUNUM_ARMOR, 2, EntityEquipmentSlot.LEGS);
@@ -165,5 +163,5 @@ public class TLSItems {
 	 * All the Quest Items
 	 * @param boolean(Is Special) - makes it enchanted, highlights text, will be marked as a *Special* rarity
 	 */
-	public static final Item CUTLASS = new ItemCutlass("cutlass", CUTLASS_MAT, true);
+	//public static final Item CUTLASS = new ItemCutlass("cutlass", CUTLASS_MAT, true);
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.blocks.BlockBase;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -29,7 +29,7 @@ public class BlockSeaDiamondOre extends BlockBase{
 		setHardness(h);
 		setResistance(r);
 		setHarvestLevel("pickaxe", x);
-		setCreativeTab(TheLostSea.TLS_ORES);
+		setCreativeTab(TheLostSea.TLS_BLOCKS);
 	}
 	
 	public int quantityDroppedWithBonus(int fortune, Random random)

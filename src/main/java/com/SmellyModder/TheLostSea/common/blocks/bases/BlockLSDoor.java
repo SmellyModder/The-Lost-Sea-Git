@@ -5,8 +5,8 @@ import java.util.Random;
 import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockLSDoor;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.IHasModel;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.SoundType;

@@ -12,7 +12,7 @@ import com.SmellyModder.TheLostSea.common.entity.npc.EntityLunete;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 
 import net.minecraft.advancements.critereon.NBTPredicate;
 import net.minecraft.client.Minecraft;

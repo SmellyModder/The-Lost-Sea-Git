@@ -1,10 +1,10 @@
 package com.SmellyModder.TheLostSea.client.overlay.stats;
 
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.util.Reference;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 import net.minecraft.client.Minecraft;

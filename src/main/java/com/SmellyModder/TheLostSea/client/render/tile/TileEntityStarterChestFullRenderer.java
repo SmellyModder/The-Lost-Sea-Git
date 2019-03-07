@@ -1,7 +1,7 @@
 package com.SmellyModder.TheLostSea.client.render.tile;
 
-import com.SmellyModder.TheLostSea.client.model.animation.ModelStarterChest;
-import com.SmellyModder.TheLostSea.client.model.animation.ModelStarterChestFull;
+import com.SmellyModder.TheLostSea.client.model.blocks.ModelStarterChest;
+import com.SmellyModder.TheLostSea.client.model.blocks.ModelStarterChestFull;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.util.Reference;

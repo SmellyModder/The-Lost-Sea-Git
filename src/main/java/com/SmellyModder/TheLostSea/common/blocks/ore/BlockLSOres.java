@@ -5,7 +5,7 @@ import java.util.Random;
 import com.SmellyModder.TheLostSea.common.blocks.BlockBase;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
-import com.SmellyModder.TheLostSea.core.util.TheLostSea;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -25,7 +25,7 @@ public class BlockLSOres extends BlockBase{
 		super(name, material);
 		this.deep = isDeep;
 		setHarvestLevel("pickaxe", 3);
-		setCreativeTab(TheLostSea.TLS_ORES);
+		setCreativeTab(TheLostSea.TLS_BLOCKS);
 		
 		if(meta == 1) {
 			setHardness(-0.5F + getHardness());
