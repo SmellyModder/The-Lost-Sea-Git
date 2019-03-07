@@ -1,6 +1,6 @@
 {
    "parent": "block/cube_all",
    "textures": {
-       "all": "thelostsea:blocks/ores/deepsea_ironore"
+       "all": "thelostsea:blocks/ores/deepsea_iron_ore"
    }
 }

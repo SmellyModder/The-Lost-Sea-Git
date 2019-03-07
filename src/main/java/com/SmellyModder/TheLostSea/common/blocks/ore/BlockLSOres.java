@@ -91,10 +91,6 @@ public class BlockLSOres extends BlockBase{
             {
             	i = MathHelper.getInt(rand, 0, 0);
             }
-            else if (this == TLSBlocks.AQUAMARINE_ORE)
-            {
-            	i = MathHelper.getInt(rand, 2, 4);
-            }
             return i;
         }
         return 0;

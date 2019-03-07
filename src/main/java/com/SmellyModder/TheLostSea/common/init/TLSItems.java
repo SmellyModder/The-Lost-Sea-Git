@@ -17,7 +17,6 @@ import com.SmellyModder.TheLostSea.common.item.food.ItemBubbleFruit;
 import com.SmellyModder.TheLostSea.common.item.food.ItemCoconutChunk;
 import com.SmellyModder.TheLostSea.common.item.food.ItemFishFoodBase;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemConvolutionDisc;
-import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemGodSlayerDisc;
 import com.SmellyModder.TheLostSea.common.item.musicdiscs.ItemPirateCrewDisc;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemNeptunumShield;
 import com.SmellyModder.TheLostSea.common.item.shield.ItemVanadiumShield;
