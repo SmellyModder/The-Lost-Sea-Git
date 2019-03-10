@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockSeaOres extends BlockBase{
+public class BlockSeaOres extends BlockBase {
 	private boolean deep;
 	int ID;
 	public BlockSeaOres(String name, Material material, boolean isDeepStone, int ID) {

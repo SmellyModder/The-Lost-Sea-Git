@@ -8,7 +8,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemBase;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -45,7 +44,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class ItemToolDisc extends ItemTool implements IHasModel{
+public class ItemToolDisc extends ItemTool {
 		public int shot = 0;
 		public int damage = 1;
 		private float speed = 1.5F;
@@ -191,12 +190,6 @@ public class ItemToolDisc extends ItemTool implements IHasModel{
 	    {
 	        return 9;
 	    }
-	    
-	    @Override
-		public void registerModels() {
-			
-			TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-		}
 	    
 	    private static class DispenserBehavior extends BehaviorProjectileDispense {
 	        @Override

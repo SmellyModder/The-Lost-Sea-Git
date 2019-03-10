@@ -10,7 +10,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -38,7 +37,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
+public class ItemNeptunumArmor extends ItemArmor {
 
 	public ItemNeptunumArmor(String name, String path, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndexIn, equipmentSlotIn);
@@ -97,8 +96,4 @@ public class ItemNeptunumArmor extends ItemArmor implements IHasModel{
         return null;
     }
     
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
 }

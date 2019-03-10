@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
@@ -28,7 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemHoeBase extends ItemHoe implements IHasModel{
+public class ItemHoeBase extends ItemHoe {
 
 	public ItemHoeBase(String name, ToolMaterial material) {
 		super(material);
@@ -111,11 +110,5 @@ public class ItemHoeBase extends ItemHoe implements IHasModel{
     {
         return true;
     }
-
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
-
 
 }

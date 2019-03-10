@@ -7,7 +7,6 @@ import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.google.common.collect.Sets;
 
 import net.minecraft.block.Block;
@@ -30,8 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNeptunumSpade extends ItemTool implements IHasModel
-{
+public class ItemNeptunumSpade extends ItemTool {
     private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.CLAY, Blocks.DIRT, Blocks.FARMLAND, Blocks.GRASS, Blocks.GRAVEL, Blocks.MYCELIUM, Blocks.SAND, Blocks.SNOW, Blocks.SNOW_LAYER, Blocks.SOUL_SAND, Blocks.GRASS_PATH, Blocks.CONCRETE_POWDER);
 
     public ItemNeptunumSpade(String name, Item.ToolMaterial material)
@@ -54,11 +52,7 @@ public class ItemNeptunumSpade extends ItemTool implements IHasModel
 			tooltip.add(TextFormatting.BLUE + "Water-Bound" + TextFormatting.GRAY + " [SHIFT]");
 		}
 	}
-	
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
+    
     public boolean canHarvestBlock(IBlockState blockIn)
     {
         Block block = blockIn.getBlock();

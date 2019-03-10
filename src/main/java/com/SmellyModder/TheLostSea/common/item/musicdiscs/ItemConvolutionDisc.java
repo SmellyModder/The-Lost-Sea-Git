@@ -2,12 +2,11 @@ package com.SmellyModder.TheLostSea.common.item.musicdiscs;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 
-public class ItemConvolutionDisc extends ItemRecord implements IHasModel{
+public class ItemConvolutionDisc extends ItemRecord {
 
 	public ItemConvolutionDisc(String name, SoundEvent soundIn) {
 		super(name, soundIn);
@@ -16,10 +15,6 @@ public class ItemConvolutionDisc extends ItemRecord implements IHasModel{
 		setCreativeTab(TheLostSea.TLS_SPECIAL);
 		
 		TLSItems.ITEMS.add(this);
-	}
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
 }

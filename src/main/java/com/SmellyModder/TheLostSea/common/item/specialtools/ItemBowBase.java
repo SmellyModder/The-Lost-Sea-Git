@@ -12,7 +12,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.item.ItemFinnedArrow;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -38,8 +37,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBowBase extends ItemBow implements IHasModel
-{
+public class ItemBowBase extends ItemBow {
 
 	public ItemBowBase(String name) {
 		setRegistryName(name);
@@ -256,11 +254,5 @@ public class ItemBowBase extends ItemBow implements IHasModel
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
         }
     }
-	
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-		
-	}
 
 }

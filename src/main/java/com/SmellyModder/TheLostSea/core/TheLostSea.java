@@ -105,9 +105,7 @@ public class TheLostSea {
 	}
 	
 	@EventHandler
-	public static void PostInit(FMLPostInitializationEvent event) {
-		
-	}
+	public static void PostInit(FMLPostInitializationEvent event) {}
 
 	public static CreativeTabs TLS = new CreativeTabs("LSItems") {
 		@Override
@@ -146,7 +144,7 @@ public class TheLostSea {
 	
 	@EventHandler
 	public static void serverInit(FMLServerStartingEvent event) {
-	        RegistryHandler.serverRegistries(event);
-	        System.out.println("A temple hums with energy...");
+	    RegistryHandler.serverRegistries(event);
+	    System.out.println("A temple hums with energy...");
 	}
 }

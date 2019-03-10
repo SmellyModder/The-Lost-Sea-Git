@@ -15,9 +15,9 @@ import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.init.TLSTileEntities;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
+import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.api.LostSeaAPI;
 import com.SmellyModder.TheLostSea.core.util.CommandDimensionTP;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.interfaces.ILSShield;
 
@@ -68,12 +68,7 @@ public class RegistryHandler {
 		
 		for(Item item : TLSItems.ITEMS) {
 			
-			if(item instanceof IHasModel) {
-				
-				((IHasModel)item).registerModels();
-				
-			}
-			
+			TheLostSea.proxy.registerItemRenderer(item, 0, "inventory");
 			
 			if(item instanceof ILSShield) {
 				ModelLSShield model = ((ILSShield)item).shieldModel();
@@ -88,12 +83,7 @@ public class RegistryHandler {
 		}
 		for(Block block : TLSBlocks.BLOCKS) {
 			
-			if(block instanceof IHasModel) {
-				
-				((IHasModel)block).registerModels();
-				
-		        
-			}
+			TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(block), 0, "inventory");
 			
 			if(block == TLSBlocks.STARTER_CHEST) {
 				LostSeaAPI.RegistryUtils.createTERender(block, chest1);

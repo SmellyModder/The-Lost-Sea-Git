@@ -6,7 +6,6 @@ import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockLSDoor;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.SoundType;
@@ -22,7 +21,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLSDoor extends BlockDoor implements IHasModel {
+public class BlockLSDoor extends BlockDoor {
 	
     protected static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.1875D);
     protected static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.8125D, 1.0D, 1.0D, 1.0D);
@@ -85,9 +84,4 @@ public class BlockLSDoor extends BlockDoor implements IHasModel {
         return new ItemStack(Item.getItemFromBlock(this));
     }
     
-    @Override
-    public void registerModels()
-    {
-    	TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-    }
 }

@@ -10,7 +10,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChestFull;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
@@ -52,8 +51,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockStarterChestFull extends BlockContainer implements IHasModel
-{
+public class BlockStarterChestFull extends BlockContainer {
 	
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	protected static final AxisAlignedBB NORTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0D, 0.9375D, 0.975D, 0.9375D);
@@ -499,7 +497,5 @@ public class BlockStarterChestFull extends BlockContainer implements IHasModel
     {
         return true;
     }
-
-	@Override
-	public void registerModels() {TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inverntory");}
+    
 }

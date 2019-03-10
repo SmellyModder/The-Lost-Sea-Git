@@ -27,9 +27,4 @@ public class BlockRock extends BlockBase{
 		return MapColor.ADOBE;
 	}
 	
-//	public Item getItemDropped(IBlockState state, Random rand, int fortune)
-//    {
-//        return h == 2.2F ? Item.getItemFromBlock(TLSBlocks.DEEPSEA_COBBLE) : Item.getItemFromBlock(TLSBlocks.SEA_COBBLE);
-//    }
-	
 }

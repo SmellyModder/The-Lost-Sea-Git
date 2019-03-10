@@ -15,16 +15,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemBlockCoconut extends ItemBase
-{
+public class ItemBlockCoconut extends ItemBase {
 
-	public ItemBlockCoconut(String name) 
-	{
+	public ItemBlockCoconut(String name) {
 		super(name);
 	}
 
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		ItemStack itemstack = player.getHeldItem(hand);
 
         if (!player.canPlayerEdit(pos.offset(facing), facing, itemstack))

@@ -2,7 +2,6 @@ package com.SmellyModder.TheLostSea.common.item.food;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +13,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class ItemBubbleFruit extends ItemFood implements IHasModel{
+public class ItemBubbleFruit extends ItemFood {
 	
 	public ItemBubbleFruit(String name, int amount, boolean isWolfFood) {
 		super(amount, isWolfFood);
@@ -64,10 +63,4 @@ public class ItemBubbleFruit extends ItemFood implements IHasModel{
 
 	}
 	
-	
-	@Override
-	public void registerModels()
-	{
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
 }

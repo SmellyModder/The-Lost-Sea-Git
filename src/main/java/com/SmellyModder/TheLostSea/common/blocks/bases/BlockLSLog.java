@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.common.blocks.bases;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.SoundType;
@@ -18,7 +17,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockLSLog extends BlockLog implements IHasModel{
+public class BlockLSLog extends BlockLog {
 	
 	public BlockLSLog(String name) {
 		setHarvestLevel("axe", 0);
@@ -89,9 +88,4 @@ public class BlockLSLog extends BlockLog implements IHasModel{
         return this.getDefaultState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE);
     }
 
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
-	
 }

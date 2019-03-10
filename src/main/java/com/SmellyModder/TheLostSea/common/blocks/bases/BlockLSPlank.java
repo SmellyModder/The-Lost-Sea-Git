@@ -4,7 +4,6 @@ import com.SmellyModder.TheLostSea.common.blocks.BlockBase;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
@@ -17,7 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockLSPlank extends Block implements IHasModel{
+public class BlockLSPlank extends Block {
 
 	public BlockLSPlank(String name) {
 		super(Material.WOOD);
@@ -41,10 +40,5 @@ public class BlockLSPlank extends Block implements IHasModel{
     public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
         return 20;
     }
-
-	@Override
-	public void registerModels() {
-		TheLostSea.instance.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
 	
 }

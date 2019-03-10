@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.common.blocks.bases;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
@@ -17,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLSFence extends BlockFence implements IHasModel {
+public class BlockLSFence extends BlockFence {
 
 	IBlockState parent;
 	public BlockLSFence(String name, IBlockState blockParent) {
@@ -46,8 +45,4 @@ public class BlockLSFence extends BlockFence implements IHasModel {
 	    return parent.getBlock().getFlammability(world, pos, face);
 	}
 	
-	@Override	
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
 }

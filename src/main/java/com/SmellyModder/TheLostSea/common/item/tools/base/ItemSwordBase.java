@@ -2,7 +2,6 @@ package com.SmellyModder.TheLostSea.common.item.tools.base;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +19,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemSwordBase extends ItemSword implements IHasModel{
+public class ItemSwordBase extends ItemSword {
 
 	private float getReachD;
 
@@ -33,12 +32,6 @@ public class ItemSwordBase extends ItemSword implements IHasModel{
 		
 		
 		TLSItems.ITEMS.add(this);
-	}
-	
-	@Override
-	public void registerModels() {
-		
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 }

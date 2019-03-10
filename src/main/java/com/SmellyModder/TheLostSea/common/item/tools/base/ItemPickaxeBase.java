@@ -5,7 +5,6 @@ import java.util.Set;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,7 +17,7 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 
-public class ItemPickaxeBase extends ItemPickaxe  implements IHasModel{
+public class ItemPickaxeBase extends ItemPickaxe {
 
 	public ItemPickaxeBase(String name, ToolMaterial material) 
 	{ 
@@ -29,9 +28,4 @@ public class ItemPickaxeBase extends ItemPickaxe  implements IHasModel{
 		TLSItems.ITEMS.add(this);
 	}
 	
-	@Override
-	public void registerModels() {
-		
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
 }

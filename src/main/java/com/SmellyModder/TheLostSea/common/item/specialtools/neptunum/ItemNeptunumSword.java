@@ -2,7 +2,6 @@ package com.SmellyModder.TheLostSea.common.item.specialtools.neptunum;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.google.common.collect.Sets;
 
 import net.minecraft.block.Block;
@@ -30,7 +29,7 @@ import java.util.Set;
 import org.lwjgl.input.Keyboard;
 
 
-public class ItemNeptunumSword extends ItemTool implements IHasModel{
+public class ItemNeptunumSword extends ItemTool {
 
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.WEB);
 	public ItemNeptunumSword(String name, ToolMaterial material) 
@@ -57,9 +56,4 @@ public class ItemNeptunumSword extends ItemTool implements IHasModel{
 		}
 	}
 	
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
-
 }

@@ -6,7 +6,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenCurvedPalmTree;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockSapling;
@@ -27,7 +26,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockLSSapling extends BlockBush implements IGrowable, IHasModel {
+public class BlockLSSapling extends BlockBush implements IGrowable {
 
 	protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
 	
@@ -131,9 +130,5 @@ public class BlockLSSapling extends BlockBush implements IGrowable, IHasModel {
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, BlockSapling.STAGE);
     }
-
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
+    
 }

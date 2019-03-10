@@ -8,7 +8,6 @@ import javax.annotation.Nonnull;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.google.common.collect.Lists;
 
 import net.minecraft.block.Block;
@@ -28,7 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLSLeaves extends BlockLeaves implements IHasModel{
+public class BlockLSLeaves extends BlockLeaves {
 	
 	public static final PropertyBool DECAYABLE_UPPER_3X = PropertyBool.create("decayableupper3x");
 	public static final PropertyBool DECAYABLE_3X = PropertyBool.create("decayable3x");
@@ -264,9 +263,4 @@ public class BlockLSLeaves extends BlockLeaves implements IHasModel{
         worldIn.setBlockToAir(pos);
     }
     
-    @Override
-    public void registerModels() {
-    	TheLostSea.instance.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-    }
-
 }

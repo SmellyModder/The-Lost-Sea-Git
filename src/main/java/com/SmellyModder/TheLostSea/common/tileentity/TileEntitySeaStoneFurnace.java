@@ -1,8 +1,6 @@
 package com.SmellyModder.TheLostSea.common.tileentity;
 
-import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
-import com.SmellyModder.TheLostSea.common.blocks.util.WorldBoolHandler;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
+import com.SmellyModder.TheLostSea.common.blocks.BlockSeaFurnace;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

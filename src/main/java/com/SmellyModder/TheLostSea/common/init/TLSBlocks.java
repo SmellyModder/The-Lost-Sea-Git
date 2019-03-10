@@ -7,6 +7,8 @@ import com.SmellyModder.TheLostSea.common.blocks.BlockLSPortal;
 import com.SmellyModder.TheLostSea.common.blocks.BlockLSStair;
 import com.SmellyModder.TheLostSea.common.blocks.BlockMetalBase;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
+import com.SmellyModder.TheLostSea.common.blocks.BlockSeaFurnace;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSBark;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoubleSlab;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFence;
@@ -16,7 +18,6 @@ import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSLeaves;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSLog;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSPlank;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSSapling;
-import com.SmellyModder.TheLostSea.common.blocks.furnaces.BlockSeaFurnace;
 import com.SmellyModder.TheLostSea.common.blocks.itemblocks.ItemBlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockLSOres;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaCoalOre;
@@ -114,6 +115,7 @@ public class TLSBlocks {
 	 * ##########
 	 */
 	public static final Block PALM_LOG = new BlockLSLog("palm_log");
+	public static final Block PALM_BARK = new BlockLSBark("palm_wood");
 	public static final Block PALM_LEAVES = new BlockLSLeaves("palm_leaves", TLSBlocks.PALM_SAPLING, true);
 	public static final Block PALM_SAPLING = new BlockLSSapling("palm_sapling", new WorldGenPalmTree(false), true);
 	public static final Block PALM_PLANKS = new BlockLSPlank("palm_planks");

@@ -9,7 +9,6 @@ import org.lwjgl.input.Keyboard;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityFinnedArrow;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -57,11 +56,6 @@ public class ItemFinnedArrow extends ItemBase
         return entitytippedarrow;
     }
 
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
-	
 	public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.EntityPlayer player)
     {
         int enchant = net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel(net.minecraft.init.Enchantments.INFINITY, bow);

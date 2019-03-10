@@ -6,7 +6,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import akka.Main;
@@ -36,7 +35,7 @@ import net.minecraft.world.ILockableContainer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.model.IModelPart;
 
-public class BlockStarterChest extends BlockChest implements IHasModel {
+public class BlockStarterChest extends BlockChest {
 
 	 protected static final AxisAlignedBB NORTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0D, 0.9375D, 0.975D, 0.9375D);
 	 protected static final AxisAlignedBB SOUTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.975D, 1.0D);
@@ -227,8 +226,4 @@ public class BlockStarterChest extends BlockChest implements IHasModel {
         return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
     
-    @Override
-    public void registerModels() {
-    	TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-    }
 }

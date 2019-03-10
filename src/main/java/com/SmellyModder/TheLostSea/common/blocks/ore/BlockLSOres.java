@@ -18,7 +18,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLSOres extends BlockBase{
+public class BlockLSOres extends BlockBase {
 
 	private boolean deep;
 	public BlockLSOres(String name, Material material, boolean isDeep, int meta) {

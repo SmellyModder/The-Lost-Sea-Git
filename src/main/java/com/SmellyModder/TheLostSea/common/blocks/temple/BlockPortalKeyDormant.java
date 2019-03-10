@@ -36,7 +36,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPortalKeyDormant extends BlockBase{
+public class BlockPortalKeyDormant extends BlockBase {
 
 	public static final AxisAlignedBB PORTAL_BOX_N = new AxisAlignedBB(0.0000D, 0, 0.1875D, 1.0125D, 0.975D, 0.8125D);
 	public static final AxisAlignedBB Z_AXIS_AABB = new AxisAlignedBB(0.187500D, 0, 0.0000D, 0.8125D, 0.975D, 1.0125D);

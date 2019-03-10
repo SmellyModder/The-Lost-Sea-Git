@@ -16,7 +16,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSeaCoalOre extends BlockBase{
+public class BlockSeaCoalOre extends BlockBase {
 
 	private boolean deep;
 	public BlockSeaCoalOre(String name, Material material, boolean isDeepStone) {

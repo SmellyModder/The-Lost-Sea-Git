@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,7 +18,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemSpadeBase extends ItemSpade implements IHasModel{
+public class ItemSpadeBase extends ItemSpade {
 
 	public ItemSpadeBase(String name, ToolMaterial material) 
 	{ 
@@ -28,11 +27,5 @@ public class ItemSpadeBase extends ItemSpade implements IHasModel{
 		setTranslationKey(name);
 		setCreativeTab(TheLostSea.TLS_GEAR);
 		TLSItems.ITEMS.add(this);
-	}
-
-	@Override
-	public void registerModels() {
-	
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 }

@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.common.item.specialtools.exotics;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntitySlash;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -29,7 +28,7 @@ import org.lwjgl.input.Keyboard;
 import java.util.List;
 import java.util.Set;
 
-public class ItemCutlass extends ItemTool implements IHasModel{
+public class ItemCutlass extends ItemTool {
 	
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.PLANKS, Blocks.BOOKSHELF, Blocks.LOG, Blocks.LOG2, Blocks.CHEST, Blocks.PUMPKIN, Blocks.LIT_PUMPKIN, Blocks.MELON_BLOCK, Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE);
 	public ItemCutlass(String name, ToolMaterial material, boolean isSpecial) {
@@ -39,11 +38,6 @@ public class ItemCutlass extends ItemTool implements IHasModel{
 		this.attackSpeed = 5.0F;
 		
 		TLSItems.ITEMS.add(this);
-	}
-
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
 	@Override

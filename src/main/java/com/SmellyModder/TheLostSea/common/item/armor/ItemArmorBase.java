@@ -7,7 +7,6 @@ import org.lwjgl.input.Keyboard;
 import com.SmellyModder.TheLostSea.common.init.TLSEnchants;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +20,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class ItemArmorBase extends ItemArmor implements IHasModel{
+public class ItemArmorBase extends ItemArmor {
 
 	public ItemArmorBase(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, renderIndexIn, equipmentSlotIn);
@@ -31,9 +30,4 @@ public class ItemArmorBase extends ItemArmor implements IHasModel{
 		TLSItems.ITEMS.add(this);
 	}
 	
-	@Override
-	public void registerModels() {
-		
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
-	}
 }

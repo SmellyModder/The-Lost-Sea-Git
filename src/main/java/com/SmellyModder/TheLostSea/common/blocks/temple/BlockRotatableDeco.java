@@ -3,7 +3,6 @@ package com.SmellyModder.TheLostSea.common.blocks.temple;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -23,7 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRotatableDeco extends BlockHorizontal implements IHasModel{
+public class BlockRotatableDeco extends BlockHorizontal {
 	
 	
 	public BlockRotatableDeco(String name)
@@ -99,10 +98,5 @@ public class BlockRotatableDeco extends BlockHorizontal implements IHasModel{
     {
         return MapColor.BLUE_STAINED_HARDENED_CLAY;
     }
-
-    @Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
 	
 }

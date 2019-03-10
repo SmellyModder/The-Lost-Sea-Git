@@ -20,8 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class LostSeaAPI {
 	
-	public static IEquippableItemHandler getEquippableHandler(EntityPlayer player)
-	{
+	public static IEquippableItemHandler getEquippableHandler(EntityPlayer player) {
 		IEquippableItemHandler handler = player.getCapability(EquippableCapabilties.CAPABILITY_EQUIPPABLES, null);
 		handler.setPlayer(player);
 		return handler;
@@ -30,9 +29,7 @@ public class LostSeaAPI {
 	public static int isEquippableEquipped(EntityPlayer player, Item equippable) {
 		IEquippableItemHandler handler = getEquippableHandler(player);
 		for (int i = 0; i < handler.getSlots(); i++) {
-			
 			if (!handler.getStackInSlot(i).isEmpty() && handler.getStackInSlot(i).getItem() == equippable) 
-				
 				return i;
 		}
 		return -1;
@@ -79,4 +76,16 @@ public class LostSeaAPI {
 		}
 		
 	}
+	
+	
+	public static float getPercentedValue(float value, float percent, boolean increase) {
+		float result;
+		if(increase) {
+			result = (value * percent) + value;
+		} else {
+			result = value * percent;
+		}
+		return result;
+	}
+	
 }

@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.blocks.furnaces;
+package com.SmellyModder.TheLostSea.common.blocks;
 
 import java.util.Random;
 
@@ -8,7 +8,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.common.tileentity.TileEntitySeaStoneFurnace;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
@@ -42,7 +41,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockSeaFurnace extends BlockContainer implements IHasModel {
+public class BlockSeaFurnace extends BlockContainer {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private final boolean isBurning;
@@ -368,9 +367,5 @@ public class BlockSeaFurnace extends BlockContainer implements IHasModel {
 	public int tickRate(World world) {
 		return 1;
 	}
-
-    @Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
+    
 }

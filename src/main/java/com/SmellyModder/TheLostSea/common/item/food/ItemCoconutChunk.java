@@ -2,12 +2,11 @@ package com.SmellyModder.TheLostSea.common.item.food;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
-public class ItemCoconutChunk extends ItemFood implements IHasModel {
+public class ItemCoconutChunk extends ItemFood {
 
 	public ItemCoconutChunk() {
 		super(4, false);
@@ -28,11 +27,6 @@ public class ItemCoconutChunk extends ItemFood implements IHasModel {
 	@Override
 	public float getSaturationModifier(ItemStack stack) {
 		return 0.8F;
-	}
-
-	@Override
-	public void registerModels() {
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 }

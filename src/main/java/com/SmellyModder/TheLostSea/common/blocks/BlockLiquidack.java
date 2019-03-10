@@ -6,7 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockLiquidack extends BlockBase{
+public class BlockLiquidack extends BlockBase {
 
 	public BlockLiquidack(String name, Material material) {
 		super(name, material);

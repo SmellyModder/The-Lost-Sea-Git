@@ -6,7 +6,6 @@ import org.lwjgl.input.Keyboard;
 
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -20,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNeptunumAxe extends ItemAxe implements IHasModel {
+public class ItemNeptunumAxe extends ItemAxe {
 	
 	public ItemNeptunumAxe(String name, ToolMaterial material) 
 	{ 
@@ -41,12 +40,6 @@ public class ItemNeptunumAxe extends ItemAxe implements IHasModel {
 		else {
 			tooltip.add(TextFormatting.BLUE + "Water-Bound" + TextFormatting.GRAY + " [SHIFT]");
 		}
-	}
-	
-	@Override
-	public void registerModels() {
-		
-		TheLostSea.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 }

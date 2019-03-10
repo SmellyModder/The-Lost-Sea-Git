@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.util.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -39,7 +38,7 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCoconut extends BlockHorizontal implements IGrowable, IHasModel {
+public class BlockCoconut extends BlockHorizontal implements IGrowable {
 
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 2);
 	 
@@ -206,10 +205,5 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable, IHasMode
 	{
 		return new BlockStateContainer(this, new IProperty[] {FACING, AGE});
 	}
-
-	@Override
-	public void registerModels() 
-	{
-		TheLostSea.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-	}
+	
 }
