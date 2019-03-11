@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 
 
-public class LostSeaLootTables{
+public class LostSeaLootTables {
 	
 	/*
 	 * All the loot tables. When adding a new one leave a comment saying what structure/entity it belongs to.

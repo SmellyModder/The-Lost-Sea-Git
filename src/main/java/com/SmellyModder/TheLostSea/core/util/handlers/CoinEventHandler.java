@@ -8,7 +8,6 @@ import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
 import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
 import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
-import com.SmellyModder.TheLostSea.core.math.ColorRBGHexIndex;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;

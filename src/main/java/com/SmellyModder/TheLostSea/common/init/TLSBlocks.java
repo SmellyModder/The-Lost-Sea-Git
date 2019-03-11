@@ -8,12 +8,14 @@ import com.SmellyModder.TheLostSea.common.blocks.BlockLSStair;
 import com.SmellyModder.TheLostSea.common.blocks.BlockMetalBase;
 import com.SmellyModder.TheLostSea.common.blocks.BlockRock;
 import com.SmellyModder.TheLostSea.common.blocks.BlockSeaFurnace;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockAdvancedLeaves;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSBark;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoor;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSDoubleSlab;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFence;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSFenceGate;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSSlabHalf;
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockPalmLeaves;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSLeaves;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSLog;
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockLSPlank;
@@ -116,13 +118,15 @@ public class TLSBlocks {
 	 */
 	public static final Block PALM_LOG = new BlockLSLog("palm_log");
 	public static final Block PALM_BARK = new BlockLSBark("palm_wood");
-	public static final Block PALM_LEAVES = new BlockLSLeaves("palm_leaves", TLSBlocks.PALM_SAPLING, true);
+	public static final Block PALM_LEAVES = new BlockPalmLeaves("palm_leaves", TLSBlocks.PALM_SAPLING);
+	public static final Block PALM_LEAVES_X = new BlockAdvancedLeaves("palm_leaves_x", TLSBlocks.PALM_SAPLING, 0);
+	public static final Block PALM_LEAVES_U = new BlockAdvancedLeaves("palm_leaves_u", TLSBlocks.PALM_SAPLING, 1);
+	public static final Block PALM_LEAVES_D = new BlockAdvancedLeaves("palm_leaves_d", TLSBlocks.PALM_SAPLING, 2);
 	public static final Block PALM_SAPLING = new BlockLSSapling("palm_sapling", new WorldGenPalmTree(false), true);
 	public static final Block PALM_PLANKS = new BlockLSPlank("palm_planks");
 	public static final Block PALM_STAIRS = new BlockLSStair("palm_stairs", PALM_PLANKS.getDefaultState());
 	public static final BlockSlab PALM_DOUBLE_SLAB = new BlockLSDoubleSlab("palm_double_slab", Material.WOOD, TLSBlocks.PALM_SLAB);
 	public static final BlockSlab PALM_SLAB = new BlockLSSlabHalf("palm_slab", Material.WOOD, TLSBlocks.PALM_SLAB, TLSBlocks.PALM_DOUBLE_SLAB);
-	
 	public static final BlockFence PALM_FENCE = new BlockLSFence("palm_fence", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_FENCE_GATE = new BlockLSFenceGate("palm_fence_gate", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");

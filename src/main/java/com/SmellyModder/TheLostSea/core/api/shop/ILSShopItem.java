@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.core.api.inventory;
+package com.SmellyModder.TheLostSea.core.api.shop;
 
 public interface ILSShopItem {
 	

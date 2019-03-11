@@ -20,6 +20,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class LostSeaAPI {
 	
+	String[] name;
+	
+	public void doThis() {
+		name = new String[2];
+	}
+	
 	public static IEquippableItemHandler getEquippableHandler(EntityPlayer player) {
 		IEquippableItemHandler handler = player.getCapability(EquippableCapabilties.CAPABILITY_EQUIPPABLES, null);
 		handler.setPlayer(player);

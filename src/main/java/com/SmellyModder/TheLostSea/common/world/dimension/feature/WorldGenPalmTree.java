@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import com.SmellyModder.TheLostSea.common.blocks.bases.BlockAdvancedLeaves;
 import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 
@@ -31,7 +32,9 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 
 	protected static final IBlockState WOOD = TLSBlocks.PALM_LOG.getDefaultState();
 	protected static final IBlockState LEAVES = TLSBlocks.PALM_LEAVES.getDefaultState();
-	protected static final IBlockState LEAVES_NODECAY = TLSBlocks.PALM_LEAVES.getDefaultState().withProperty(BlockOldLeaf.DECAYABLE, Boolean.valueOf(false));
+	protected static final IBlockState LEAVES_3X = TLSBlocks.PALM_LEAVES_X.getDefaultState();
+	protected static final IBlockState LEAVES_3X_UP = TLSBlocks.PALM_LEAVES_U.getDefaultState();
+	protected static final IBlockState LEAVES_3X_DOWN = TLSBlocks.PALM_LEAVES_D.getDefaultState();
 	
 	public WorldGenPalmTree(boolean notify) {
 		super(notify);
@@ -130,55 +133,6 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 		{
 			createPalmLeavesBase(world, pos, LEAVES, WOOD, true);
 		}
-		else if(type == 2)
-		{
-			//Topest part
-			this.setBlockAndNotifyAdequately(world, pos, LEAVES);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+1, y, z), LEAVES);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-1, y, z), LEAVES);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y, z+1), LEAVES);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y, z-1), LEAVES);
-			
-			this.fillWithBlocks(world, pos, -1, -1, -1, 1, -1, 1, LEAVES, LEAVES, false);
-			
-			//Hanging leaves
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-1, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-1, z-2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-2, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-2, z-2), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+2, y-1, z-2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+2, y-2, z-2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-2, y-1, z-2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-2, y-2, z-2), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+2, y-1, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+2, y-2, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-2, y-1, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-2, y-2, z+2), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-2, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-1, z+2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-2, z-2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x, y-1, z-2), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+2, y-2, z), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-2, y-2, z), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-2, y-1, z), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+2, y-1, z), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+3, y-2, z+3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+3, y-3, z+3), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+3, y-2, z-3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x+3, y-3, z-3), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-3, y-2, z+3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-3, y-3, z+3), LEAVES_NODECAY);
-			
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-3, y-2, z-3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, new BlockPos(x-3, y-3, z-3), LEAVES_NODECAY);
-		}
 		else 
 		{
 			createPalmLeavesBase(world, pos, LEAVES, WOOD, false);
@@ -208,36 +162,36 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 			
 			this.setBlockAndNotifyAdequately(world, pos.north(2), block);
 			this.setBlockAndNotifyAdequately(world, pos.north(3), block);
-			this.setBlockAndNotifyAdequately(world, pos.down(1).north(4), LEAVES_NODECAY);
+			this.setBlockAndNotifyAdequately(world, pos.down(1).north(4), LEAVES_3X_UP);
 			
 			this.setBlockAndNotifyAdequately(world, pos.south(2), block);
 			this.setBlockAndNotifyAdequately(world, pos.south(3), block);
-			this.setBlockAndNotifyAdequately(world, pos.down(1).south(4), LEAVES_NODECAY);
+			this.setBlockAndNotifyAdequately(world, pos.down(1).south(4), LEAVES_3X_UP);
 			
 			this.setBlockAndNotifyAdequately(world, pos.west(2), block);
 			this.setBlockAndNotifyAdequately(world, pos.west(3), block);
-			this.setBlockAndNotifyAdequately(world, pos.down(1).west(4), LEAVES_NODECAY);
+			this.setBlockAndNotifyAdequately(world, pos.down(1).west(4), LEAVES_3X_UP);
 			
 			this.setBlockAndNotifyAdequately(world, pos.east(2), block);
 			this.setBlockAndNotifyAdequately(world, pos.east(3), block);
-			this.setBlockAndNotifyAdequately(world, pos.down(1).east(4), LEAVES_NODECAY);
+			this.setBlockAndNotifyAdequately(world, pos.down(1).east(4), LEAVES_3X_UP);
 			
 			if(world.rand.nextInt(2) == 1) {
-				this.setBlockAndNotifyAdequately(world, pos.north(2).west(2).down(), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.north(2).east(2).down(), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.south(2).west(2).down(), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.south(2).east(2).down(), LEAVES_NODECAY);
+				this.setBlockAndNotifyAdequately(world, pos.north(2).west(2).down(), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, pos.north(2).east(2).down(), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, pos.south(2).west(2).down(), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, pos.south(2).east(2).down(), LEAVES_3X_UP);
 			}
 			else {
-				this.setBlockAndNotifyAdequately(world, pos.north(2).west(2), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.north(2).east(2), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.south(2).west(2), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.south(2).east(2), LEAVES_NODECAY);
+				this.setBlockAndNotifyAdequately(world, pos.north(2).west(2), LEAVES_3X);
+				this.setBlockAndNotifyAdequately(world, pos.north(2).east(2), LEAVES_3X);
+				this.setBlockAndNotifyAdequately(world, pos.south(2).west(2), LEAVES_3X);
+				this.setBlockAndNotifyAdequately(world, pos.south(2).east(2), LEAVES_3X);
 				
-				this.setBlockAndNotifyAdequately(world, pos.north(3).west(3).down(), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.north(3).east(3).down(), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.south(3).west(3).down(), LEAVES_NODECAY);
-				this.setBlockAndNotifyAdequately(world, pos.south(3).east(3).down(), LEAVES_NODECAY);
+				this.setBlockAndNotifyAdequately(world, pos.north(3).west(3).down(), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, pos.north(3).east(3).down(), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, pos.south(3).west(3).down(), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, pos.south(3).east(3).down(), LEAVES_3X_UP);
 			}
 		} else {
 			//Topest part
@@ -263,27 +217,27 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(2), block);
 			
 			//Leave Branches
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(4), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(5).down(), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(4), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(5).down(), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(4), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(5).down(), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(3), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(4), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(5).down(), LEAVES_NODECAY);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3), LEAVES_3X_DOWN);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(4), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(5).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3), LEAVES_3X_DOWN);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(4), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(5).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(3), LEAVES_3X_DOWN);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(4), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(5).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(3), LEAVES_3X_DOWN);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(4), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(5).down(), LEAVES_3X_UP);
 			
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).east(2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).east(2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).east(3).down(), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).east(3).down(), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).west(2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).west(2), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).west(3).down(), LEAVES_NODECAY);
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).west(3).down(), LEAVES_NODECAY);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).east(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).east(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).east(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).east(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).west(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).west(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).west(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).west(3).down(), LEAVES_3X_UP);
 		}
 	}
 	

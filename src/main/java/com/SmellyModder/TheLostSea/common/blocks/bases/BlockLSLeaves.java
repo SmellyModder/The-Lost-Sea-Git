@@ -29,9 +29,6 @@ import net.minecraft.world.World;
 
 public class BlockLSLeaves extends BlockLeaves {
 	
-	public static final PropertyBool DECAYABLE_UPPER_3X = PropertyBool.create("decayableupper3x");
-	public static final PropertyBool DECAYABLE_3X = PropertyBool.create("decayable3x");
-	
 	private final Block sapling;
 	int[] surroundings;
 	boolean sLeafDecay;
@@ -39,14 +36,13 @@ public class BlockLSLeaves extends BlockLeaves {
 	/*
 	 * @param - doSpecialLeafDecay: Used for palm trees; makes leaves decay in a different way
 	 */
-	public BlockLSLeaves(String name, Block saplingToDrop, boolean doSpecialLeafDecay) {
+	public BlockLSLeaves(String name, Block saplingToDrop) {
 		super();
 		setCreativeTab(TheLostSea.TLS_BLOCKS);
 		setRegistryName(name);
 		setTranslationKey(name);
 		sapling = saplingToDrop;
-		sLeafDecay = doSpecialLeafDecay;
-		
+
 		TLSBlocks.BLOCKS.add(this);
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
@@ -115,19 +111,21 @@ public class BlockLSLeaves extends BlockLeaves {
         return 70;
     }
     
+    /*
+     * @author - Luke Tonon
+     */
     @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-        if (!worldIn.isRemote)
-        {
-            if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue() && ((Boolean)state.getValue(DECAYABLE)).booleanValue())
-            {
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+    	
+        if (!worldIn.isRemote) {
+        	
+            if (((Boolean)state.getValue(CHECK_DECAY)).booleanValue() && ((Boolean)state.getValue(DECAYABLE)).booleanValue()) {
+            	
                 int i = 4;
                 int j = 5;
                 int k = pos.getX();
                 int l = pos.getY();
                 int i1 = pos.getZ();
-                
                 
                 int j1 = 32;
                 int k1 = 1024;
@@ -219,45 +217,17 @@ public class BlockLSLeaves extends BlockLeaves {
 
                 int l2 = this.surroundings[16912];
 
-                if (l2 >= 0)
-                {
+                if (l2 >= 0) {
                     worldIn.setBlockState(pos, state.withProperty(CHECK_DECAY, Boolean.valueOf(false)), 4);
                 }
-                else
-                {
-                	//if(this.check3xLeaves(worldIn, pos)) {
-                			
-                	//} else {
-                		this.destroy(worldIn, pos);	
-                	//}
+                else {
+                	this.destroy(worldIn, pos);	
                 }
             }
         }
     }
     
-    private boolean check3xLeaves(World world, BlockPos pos) {
-    	boolean flag = false;
-    	BlockPos posN = pos.north();
-    	BlockPos posS = pos.south();
-    	BlockPos posE = pos.east();
-    	BlockPos posW = pos.west();
-    	
-    	BlockPos posNW = pos.north().west();
-    	BlockPos posNE = pos.north().east();
-    	BlockPos posSW = pos.south().west();
-    	BlockPos posSE = pos.south().east();
-    	
-    	if(world.getBlockState(posN) == TLSBlocks.PALM_LEAVES.getDefaultState() || world.getBlockState(posS) == TLSBlocks.PALM_LEAVES.getDefaultState()
-    			|| world.getBlockState(posE) == TLSBlocks.PALM_LEAVES.getDefaultState() || world.getBlockState(posW) == TLSBlocks.PALM_LEAVES.getDefaultState()
-    			|| world.getBlockState(posNW) == TLSBlocks.PALM_LEAVES.getDefaultState() || world.getBlockState(posNE) == TLSBlocks.PALM_LEAVES.getDefaultState()
-    			|| world.getBlockState(posSW) == TLSBlocks.PALM_LEAVES.getDefaultState() || world.getBlockState(posSE) == TLSBlocks.PALM_LEAVES.getDefaultState()) {
-    		flag = true;
-    	}
-    	
-    	return flag;
-    }
-    
-    private void destroy(World worldIn, BlockPos pos)
+    protected void destroy(World worldIn, BlockPos pos)
     {
         this.dropBlockAsItem(worldIn, pos, worldIn.getBlockState(pos), 0);
         worldIn.setBlockToAir(pos);
