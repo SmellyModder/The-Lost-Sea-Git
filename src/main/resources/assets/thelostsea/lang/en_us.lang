@@ -47,7 +47,7 @@ tile.palm_sapling.name=Palm Sapling
 # PLANTS #
 ##########
 tile.coconut.name=Coconut
-item.coconut_item.name=Coconut
+tile.coconut_item.name=Coconut
 item.coconut_chunk.name=Coconut Chunk
 
 # Machines

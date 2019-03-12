@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop;
+package com.SmellyModder.TheLostSea.common.blocks.plants;
 
 import java.util.Random;
 

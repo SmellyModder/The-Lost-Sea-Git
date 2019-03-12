@@ -4,17 +4,21 @@ import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.blocks.BlockBase;
 import com.SmellyModder.TheLostSea.common.blocks.util.ISpecialLeaf;
+import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -48,6 +52,11 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
             	}
             }
 		}
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		return new ItemStack(TLSBlocks.PALM_LEAVES);
 	}
 	
 	@Override

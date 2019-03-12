@@ -2,7 +2,7 @@ package com.SmellyModder.TheLostSea.common.world.dimension.feature;
 
 import java.util.Random;
 
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 
 import net.minecraft.block.Block;

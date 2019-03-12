@@ -27,7 +27,8 @@ import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaDiamondOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaIronOre;
 import com.SmellyModder.TheLostSea.common.blocks.ore.BlockSeaOres;
 import com.SmellyModder.TheLostSea.common.blocks.plants.BlockBubbleFruitStem;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockDecoCoconut;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChest;
 import com.SmellyModder.TheLostSea.common.blocks.rewards.BlockStarterChestFull;
 import com.SmellyModder.TheLostSea.common.blocks.temple.BlockPillarBase;
@@ -131,5 +132,6 @@ public class TLSBlocks {
 	public static final Block PALM_FENCE_GATE = new BlockLSFenceGate("palm_fence_gate", PALM_PLANKS.getDefaultState());
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
 	public static final Block COCONUT = new BlockCoconut("coconut");
+	public static final Block COCONUT_ITEMBLOCK = new BlockDecoCoconut("coconut_item");
 	
 }

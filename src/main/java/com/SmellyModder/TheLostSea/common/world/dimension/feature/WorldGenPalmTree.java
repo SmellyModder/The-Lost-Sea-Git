@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.SmellyModder.TheLostSea.common.blocks.bases.BlockAdvancedLeaves;
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 
 import net.minecraft.block.Block;

@@ -1,6 +1,6 @@
 package com.SmellyModder.TheLostSea.core.util.player.events;
 
-import com.SmellyModder.TheLostSea.common.blocks.plants.tree.crop.BlockCoconut;
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.core.util.Reference;
@@ -30,7 +30,7 @@ public class PlayerBreakEvents {
 		
 		ItemStack stack = player.getHeldItemMainhand();
 		ItemStack chunks = new ItemStack(TLSItems.COCONUT_CHUNK);
-		ItemStack coconut = new ItemStack(TLSItems.COCONUT);
+		ItemStack coconut = new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK);
 		
 		if(stack != null && isSword(stack.getItem())) {
 			

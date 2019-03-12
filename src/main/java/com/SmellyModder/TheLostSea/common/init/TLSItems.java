@@ -130,7 +130,6 @@ public class TLSItems {
 	public static final ItemFishFoodBase ANGLER_FISHC = new ItemFishFoodBase("angler_fish_cooked", 3);
 	public static final ItemFishFoodBase SHARK_MEAT = new ItemFishFoodBase("shark_meat", 4);
 	public static final ItemFishFoodBase SHARK_MEATC = new ItemFishFoodBase("shark_meat_cooked", 9);
-	public static final Item COCONUT = new ItemBlockCoconut("coconut_item");
 	public static final Item COCONUT_CHUNK = new ItemCoconutChunk();
 	
 	//Discs
