@@ -3,6 +3,7 @@ package com.SmellyModder.TheLostSea.core.util.player.events;
 import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumSword;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.block.Block;
@@ -26,14 +27,13 @@ public class PlayerBreakEvents {
 		World world = event.getWorld();
 		Block block = event.getState().getBlock();
 		
-		if (world.isRemote || block != TLSBlocks.COCONUT || player == null) return;
+		if (world.isRemote || block != TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.AGE, 2) || player == null) return;
 		
 		ItemStack stack = player.getHeldItemMainhand();
 		ItemStack chunks = new ItemStack(TLSItems.COCONUT_CHUNK);
 		ItemStack coconut = new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK);
 		
 		if(stack != null && isSword(stack.getItem())) {
-			
 			world.setBlockToAir(event.getPos());
 			
 			for (int i = 0; i < world.rand.nextInt(2) + 1; i++)
@@ -42,10 +42,43 @@ public class PlayerBreakEvents {
 				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
 				world.spawnEntity(entityitem);
 			}
-		} else if(stack != null && !isSword(stack.getItem())) {
 			
+		} else if(stack != null && !isSword(stack.getItem())) {
 			world.setBlockToAir(event.getPos());
-
+			
+			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
+				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, coconut);
+				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
+				world.spawnEntity(entityitem);
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void doCoconutDrops2(HarvestDropsEvent event) {
+		EntityPlayer player = event.getHarvester();
+		World world = event.getWorld();
+		Block block = event.getState().getBlock();
+		
+		if (world.isRemote || block != TLSBlocks.COCONUT_ITEMBLOCK || player == null) return;
+		
+		ItemStack stack = player.getHeldItemMainhand();
+		ItemStack chunks = new ItemStack(TLSItems.COCONUT_CHUNK);
+		ItemStack coconut = new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK);
+		
+		if(stack != null && isSword(stack.getItem())) {
+			world.setBlockToAir(event.getPos());
+			
+			for (int i = 0; i < world.rand.nextInt(2) + 1; i++)
+			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
+				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, chunks);
+				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
+				world.spawnEntity(entityitem);
+			}
+			
+		} else if(stack != null && !isSword(stack.getItem())) {
+			world.setBlockToAir(event.getPos());
+			
 			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
 				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, coconut);
 				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
@@ -55,6 +88,6 @@ public class PlayerBreakEvents {
 	}
 	
 	protected boolean isSword(Item item) {
-		return item instanceof ItemSword;
+		return item instanceof ItemSword || item instanceof ItemNeptunumSword; 
 	}
  }

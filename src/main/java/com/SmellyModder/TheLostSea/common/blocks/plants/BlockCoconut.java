@@ -19,6 +19,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
@@ -142,7 +143,7 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) 
 	{
-		return ((Integer)state.getValue(AGE)).intValue() < 2;
+		return true;
 	}
 
 	@Override
@@ -152,8 +153,14 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	}
 
 	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) 
-	{
+	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		if(state.getValue(AGE) == 2 && (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down()))) && pos.getY() >= 0) {
+			
+			if (worldIn.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)) && rand.nextInt(2) <= 1) {
+				
+            }
+			
+		}
 		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(((Integer)state.getValue(AGE)).intValue() + 1)), 2);
 	}
 	
@@ -161,7 +168,6 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	{
 		pos = pos.offset((EnumFacing)state.getValue(FACING));
 	   	IBlockState iblockstate = worldIn.getBlockState(pos);
-	    
 	   	return iblockstate.getBlock() == TLSBlocks.PALM_LOG;
 	}
 	
@@ -205,5 +211,12 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	{
 		return new BlockStateContainer(this, new IProperty[] {FACING, AGE});
 	}
+	
+	public static boolean canFallThrough(IBlockState state)
+    {
+        Block block = state.getBlock();
+        Material material = state.getMaterial();
+        return block == Blocks.FIRE || material == Material.AIR || material == Material.WATER || material == Material.LAVA;
+    }
 	
 }
