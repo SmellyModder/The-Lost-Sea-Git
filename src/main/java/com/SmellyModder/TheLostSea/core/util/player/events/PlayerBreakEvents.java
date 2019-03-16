@@ -7,6 +7,7 @@ import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunu
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -26,8 +27,9 @@ public class PlayerBreakEvents {
 		EntityPlayer player = event.getHarvester();
 		World world = event.getWorld();
 		Block block = event.getState().getBlock();
+		IBlockState state = event.getState();
 		
-		if (world.isRemote || block != TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.AGE, 2) || player == null) return;
+		if (world.isRemote || block != TLSBlocks.COCONUT || ((Integer)state.getValue(BlockCoconut.AGE)).intValue() != 2 || player == null) return;
 		
 		ItemStack stack = player.getHeldItemMainhand();
 		ItemStack chunks = new ItemStack(TLSItems.COCONUT_CHUNK);
@@ -36,7 +38,7 @@ public class PlayerBreakEvents {
 		if(stack != null && isSword(stack.getItem())) {
 			world.setBlockToAir(event.getPos());
 			
-			for (int i = 0; i < world.rand.nextInt(2) + 1; i++)
+			for (int i = 0; i < world.rand.nextInt(4) + 2; i++)
 			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
 				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, chunks);
 				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
@@ -69,7 +71,7 @@ public class PlayerBreakEvents {
 		if(stack != null && isSword(stack.getItem())) {
 			world.setBlockToAir(event.getPos());
 			
-			for (int i = 0; i < world.rand.nextInt(2) + 1; i++)
+			for (int i = 0; i < world.rand.nextInt(4) + 2; i++)
 			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
 				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, chunks);
 				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
@@ -87,7 +89,7 @@ public class PlayerBreakEvents {
 		}
 	}
 	
-	protected boolean isSword(Item item) {
+	boolean isSword(Item item) {
 		return item instanceof ItemSword || item instanceof ItemNeptunumSword; 
 	}
  }

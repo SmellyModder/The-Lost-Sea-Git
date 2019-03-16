@@ -47,7 +47,7 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
     protected static final AxisAlignedBB[] COCONUT_WEST_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0625D, 0.5D, 0.375D, 0.3125D, 0.75D, 0.625D), new AxisAlignedBB(0.0625D, 0.38D, 0.3125D, 0.4375D, 0.75D, 0.6875D), new AxisAlignedBB(0.0625D, 0.25D, 0.25D, 0.5625D, 0.75D, 0.75D)};
     protected static final AxisAlignedBB[] COCONUT_NORTH_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.375D, 0.5D, 0.0625D, 0.625D, 0.75D, 0.3125D), new AxisAlignedBB(0.3125D, 0.38D, 0.0625D, 0.6875D, 0.75D, 0.4375D), new AxisAlignedBB(0.25D, 0.25D, 0.0625D, 0.75D, 0.75D, 0.5625D)};
     protected static final AxisAlignedBB[] COCONUT_SOUTH_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.375D, 0.5D, 0.6875D, 0.625D, 0.75D, 0.9375D), new AxisAlignedBB(0.3125D, 0.38D, 0.5625D, 0.6875D, 0.75D, 0.9375D), new AxisAlignedBB(0.25D, 0.25D, 0.4375D, 0.75D, 0.75D, 0.9375D)};
-	public BlockCoconut(String name) {
+    public BlockCoconut(String name) {
 		super(Material.GOURD);
 		setRegistryName(name);
 		setTranslationKey(name);
@@ -58,8 +58,7 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(name));
 	}
 	
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) 
-	{
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!this.canBlockStay(worldIn, pos, state))
         {
             this.dropBlock(worldIn, pos, state);
@@ -78,18 +77,15 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 		
     }
 	
-    public boolean isFullCube(IBlockState state)
-    {
+    public boolean isFullCube(IBlockState state) {
         return false;
     }
     
-    public boolean isOpaqueCube(IBlockState state)
-    {
+    public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
     
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         int i = ((Integer)state.getValue(AGE)).intValue();
 
         switch ((EnumFacing)state.getValue(FACING))
@@ -106,66 +102,50 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
         }
     }
     
-    public IBlockState withRotation(IBlockState state, Rotation rot)
-    {
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
     }
 
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
-    {
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
     }
     
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-    {
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         EnumFacing enumfacing = EnumFacing.fromAngle((double)placer.rotationYaw);
         worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
     }
 
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-    {
-        if (!facing.getAxis().isHorizontal())
-        {
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        
+    	if (!facing.getAxis().isHorizontal()) {
             facing = EnumFacing.NORTH;
         }
-
+        
         return this.getDefaultState().withProperty(FACING, facing.getOpposite()).withProperty(AGE, Integer.valueOf(0));
     }
     
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
-    {
-        if (!this.canBlockStay(worldIn, pos, state))
-        {
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+    	if (!this.canBlockStay(worldIn, pos, state)) {
             this.dropBlock(worldIn, pos, state);
         }
     }
 
 	@Override
-	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) 
-	{
+	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
 		return true;
 	}
 
 	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) 
-	{
-		return true;
+	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
+		return ((Integer)state.getValue(AGE)).intValue() < 2;
 	}
 
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		if(state.getValue(AGE) == 2 && (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down()))) && pos.getY() >= 0) {
-			
-			if (worldIn.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)) && rand.nextInt(2) <= 1) {
-				
-            }
-			
-		}
 		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(((Integer)state.getValue(AGE)).intValue() + 1)), 2);
 	}
 	
-	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) 
-	{
+	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
 		pos = pos.offset((EnumFacing)state.getValue(FACING));
 	   	IBlockState iblockstate = worldIn.getBlockState(pos);
 	   	return iblockstate.getBlock() == TLSBlocks.PALM_LOG;
@@ -177,43 +157,36 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	 */
 	@Nullable
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) 
-	{
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
 	 
-	private void dropBlock(World worldIn, BlockPos pos, IBlockState state) 
-	{
+	private void dropBlock(World worldIn, BlockPos pos, IBlockState state) {
 	    worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
 	    this.dropBlockAsItem(worldIn, pos, state, 0);
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getRenderLayer()
-	{
+	public BlockRenderLayer getRenderLayer() {
 	    return BlockRenderLayer.CUTOUT;
 	}
 
-	public IBlockState getStateFromMeta(int meta)
-	{
+	public IBlockState getStateFromMeta(int meta) {
 	    return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta)).withProperty(AGE, Integer.valueOf((meta & 15) >> 2));
 	}
 	
-	public int getMetaFromState(IBlockState state)
-	{
+	public int getMetaFromState(IBlockState state) {
 		int i = 0;
 	    i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
 	    i = i | ((Integer)state.getValue(AGE)).intValue() << 2;
 	    return i;
 	}
 	
-	protected BlockStateContainer createBlockState()
-	{
+	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {FACING, AGE});
 	}
 	
-	public static boolean canFallThrough(IBlockState state)
-    {
+	public static boolean canFallThrough(IBlockState state) {
         Block block = state.getBlock();
         Material material = state.getMaterial();
         return block == Blocks.FIRE || material == Material.AIR || material == Material.WATER || material == Material.LAVA;
