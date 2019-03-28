@@ -1,12 +1,15 @@
 package com.SmellyModder.TheLostSea.common.blocks.plants;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
+import com.SmellyModder.TheLostSea.common.item.specialtools.neptunum.ItemNeptunumSword;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
+import com.SmellyModder.TheLostSea.core.util.player.events.PlayerBreakEvents;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -20,12 +23,16 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityFallingBlock;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
@@ -40,13 +47,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCoconut extends BlockHorizontal implements IGrowable {
-
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 2);
 	 
 	protected static final AxisAlignedBB[] COCONUT_EAST_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.6875D, 0.5D, 0.375D, 0.9375D, 0.75D, 0.625D), new AxisAlignedBB(0.5625D, 0.38D, 0.3125D, 0.9375D, 0.75D, 0.6875D), new AxisAlignedBB(0.4375D, 0.25D, 0.25D, 0.9375D, 0.75D, 0.75D)};
     protected static final AxisAlignedBB[] COCONUT_WEST_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0625D, 0.5D, 0.375D, 0.3125D, 0.75D, 0.625D), new AxisAlignedBB(0.0625D, 0.38D, 0.3125D, 0.4375D, 0.75D, 0.6875D), new AxisAlignedBB(0.0625D, 0.25D, 0.25D, 0.5625D, 0.75D, 0.75D)};
     protected static final AxisAlignedBB[] COCONUT_NORTH_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.375D, 0.5D, 0.0625D, 0.625D, 0.75D, 0.3125D), new AxisAlignedBB(0.3125D, 0.38D, 0.0625D, 0.6875D, 0.75D, 0.4375D), new AxisAlignedBB(0.25D, 0.25D, 0.0625D, 0.75D, 0.75D, 0.5625D)};
     protected static final AxisAlignedBB[] COCONUT_SOUTH_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.375D, 0.5D, 0.6875D, 0.625D, 0.75D, 0.9375D), new AxisAlignedBB(0.3125D, 0.38D, 0.5625D, 0.6875D, 0.75D, 0.9375D), new AxisAlignedBB(0.25D, 0.25D, 0.4375D, 0.75D, 0.75D, 0.9375D)};
+    
     public BlockCoconut(String name) {
 		super(Material.GOURD);
 		setRegistryName(name);
@@ -59,23 +66,50 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	}
 	
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		if (!this.canBlockStay(worldIn, pos, state))
-        {
+		if (!this.canBlockStay(worldIn, pos, state)) {
             this.dropBlock(worldIn, pos, state);
-        }
-        else
-        {
+        } else {
             int i = ((Integer)state.getValue(AGE)).intValue();
 
-            if (i < 2 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(5) == 0))
-            {
+            if (i < 2 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(5) == 0)) {
                 worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(i + 1)), 2);
                 ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
             }
         }
-		
-		
     }
+	
+	@Override
+	public void harvestBlock(World world, EntityPlayer player, BlockPos blockPos, IBlockState state, TileEntity te, ItemStack stack) {
+		if(((Integer)state.getValue(BlockCoconut.AGE)).intValue() != 2) return;
+		ItemStack stackP = player.getHeldItemMainhand();
+		final ItemStack[] COCONUT = {new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK), new ItemStack(TLSItems.COCONUT_CHUNK)};
+		
+		int[] pos = {blockPos.getX(), blockPos.getY(), blockPos.getZ()};
+		
+		if(stackP != null && PlayerBreakEvents.isSword(stackP.getItem())) {
+			int numToDrop = world.rand.nextInt(4) + 1;
+			
+			for (int i = 0; i < numToDrop; i++) {
+				PlayerBreakEvents.doBlockDrop(world, pos[0], pos[1], pos[2], COCONUT[1]);
+			}
+		} else if(stackP != null && !PlayerBreakEvents.isSword(stackP.getItem())) {
+			PlayerBreakEvents.doBlockDrop(world, pos[0], pos[1], pos[2], COCONUT[0]);
+		}
+		super.harvestBlock(world, player, blockPos, state, te, stack);
+	}
+	
+	protected void doBlockDrop(World world, int x, int y, int z, ItemStack stack) {
+		Random rand = world.rand;
+		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
+			float f = 0.6F;
+			double D = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
+			double D2 = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
+			double D3 = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
+			EntityItem entityitem = new EntityItem(world, (double)x + D, (double)y + D2, (double)z + D3, stack);
+			entityitem.setPickupDelay(10);
+			world.spawnEntity(entityitem);
+		}
+	}
 	
     public boolean isFullCube(IBlockState state) {
         return false;
@@ -88,8 +122,7 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         int i = ((Integer)state.getValue(AGE)).intValue();
 
-        switch ((EnumFacing)state.getValue(FACING))
-        {
+        switch ((EnumFacing)state.getValue(FACING)) {
             case SOUTH:
                 return COCONUT_SOUTH_AABB[i];
             case NORTH:
@@ -116,11 +149,9 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
     }
 
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        
     	if (!facing.getAxis().isHorizontal()) {
             facing = EnumFacing.NORTH;
         }
-        
         return this.getDefaultState().withProperty(FACING, facing.getOpposite()).withProperty(AGE, Integer.valueOf(0));
     }
     

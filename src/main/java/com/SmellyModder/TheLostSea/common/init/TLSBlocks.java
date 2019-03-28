@@ -49,7 +49,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 
 public class TLSBlocks {
-
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
 	//Environment
@@ -133,5 +132,4 @@ public class TLSBlocks {
 	public static final Block PALM_DOOR = new BlockLSDoor("palm_door");
 	public static final Block COCONUT = new BlockCoconut("coconut");
 	public static final Block COCONUT_ITEMBLOCK = new BlockDecoCoconut("coconut_item");
-	
 }

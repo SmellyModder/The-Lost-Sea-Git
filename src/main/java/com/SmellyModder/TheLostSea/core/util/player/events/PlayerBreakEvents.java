@@ -1,5 +1,7 @@
 package com.SmellyModder.TheLostSea.core.util.player.events;
 
+import java.util.Random;
+
 import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
@@ -23,73 +25,22 @@ import net.minecraftforge.fml.relauncher.Side;
 public class PlayerBreakEvents {
 	
 	@SubscribeEvent
-	public void doCoconutDrops(HarvestDropsEvent event) {
-		EntityPlayer player = event.getHarvester();
-		World world = event.getWorld();
-		Block block = event.getState().getBlock();
-		IBlockState state = event.getState();
-		
-		if (world.isRemote || block != TLSBlocks.COCONUT || ((Integer)state.getValue(BlockCoconut.AGE)).intValue() != 2 || player == null) return;
-		
-		ItemStack stack = player.getHeldItemMainhand();
-		ItemStack chunks = new ItemStack(TLSItems.COCONUT_CHUNK);
-		ItemStack coconut = new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK);
-		
-		if(stack != null && isSword(stack.getItem())) {
-			world.setBlockToAir(event.getPos());
-			
-			for (int i = 0; i < world.rand.nextInt(4) + 2; i++)
-			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
-				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, chunks);
-				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
-				world.spawnEntity(entityitem);
-			}
-			
-		} else if(stack != null && !isSword(stack.getItem())) {
-			world.setBlockToAir(event.getPos());
-			
-			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
-				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, coconut);
-				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
-				world.spawnEntity(entityitem);
-			}
+	public void registerHarvestDrops(HarvestDropsEvent event) {}
+	
+	public static void doBlockDrop(World world, int x, int y, int z, ItemStack stack) {
+		Random rand = world.rand;
+		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
+			float f = 0.6F;
+			double D = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
+			double D2 = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
+			double D3 = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
+			EntityItem entityitem = new EntityItem(world, (double)x + D, (double)y + D2, (double)z + D3, stack);
+			entityitem.setPickupDelay(10);
+			world.spawnEntity(entityitem);
 		}
 	}
 	
-	@SubscribeEvent
-	public void doCoconutDrops2(HarvestDropsEvent event) {
-		EntityPlayer player = event.getHarvester();
-		World world = event.getWorld();
-		Block block = event.getState().getBlock();
-		
-		if (world.isRemote || block != TLSBlocks.COCONUT_ITEMBLOCK || player == null) return;
-		
-		ItemStack stack = player.getHeldItemMainhand();
-		ItemStack chunks = new ItemStack(TLSItems.COCONUT_CHUNK);
-		ItemStack coconut = new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK);
-		
-		if(stack != null && isSword(stack.getItem())) {
-			world.setBlockToAir(event.getPos());
-			
-			for (int i = 0; i < world.rand.nextInt(4) + 2; i++)
-			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
-				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, chunks);
-				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
-				world.spawnEntity(entityitem);
-			}
-			
-		} else if(stack != null && !isSword(stack.getItem())) {
-			world.setBlockToAir(event.getPos());
-			
-			if(!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
-				EntityItem entityitem = new EntityItem(world, (double)event.getPos().getX() + world.rand.nextFloat() * 0.65F, event.getPos().getY() + world.rand.nextFloat() * 0.65F, event.getPos().getZ() + world.rand.nextFloat() * 0.65F, coconut);
-				entityitem.setPickupDelay(world.rand.nextInt(6) + 4);
-				world.spawnEntity(entityitem);
-			}
-		}
-	}
-	
-	boolean isSword(Item item) {
+	public static boolean isSword(Item item) {
 		return item instanceof ItemSword || item instanceof ItemNeptunumSword; 
 	}
- }
+}

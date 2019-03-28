@@ -53,7 +53,6 @@ import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class TheLostSea {
-
 	@Instance
 	public static TheLostSea instance;
 	
@@ -101,7 +100,6 @@ public class TheLostSea {
 	    
 	    LSVillageHandler.initNurmShop();
 	    OreDictionaryLS.register();
-	    
 	}
 	
 	@EventHandler
@@ -115,8 +113,8 @@ public class TheLostSea {
 	};
 		
 	public static CreativeTabs TLS_BLOCKS = new CreativeTabs("LSBlocks") {
-			@Override
-			public ItemStack createIcon() { 
+		@Override
+		public ItemStack createIcon() { 
 				  return new ItemStack(TLSBlocks.SEA_ROCK);
 		}
 	};
