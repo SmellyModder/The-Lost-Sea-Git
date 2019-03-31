@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 import net.minecraft.block.BlockPlanks;
 
 public class BlockLSFenceGate extends BlockFenceGate {
-
 	IBlockState parent;
 	public BlockLSFenceGate(String name, IBlockState blockParent) {
 		super(BlockPlanks.EnumType.OAK);

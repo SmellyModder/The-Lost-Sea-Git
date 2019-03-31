@@ -37,10 +37,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPortalKeyDormant extends BlockBase {
-
 	public static final AxisAlignedBB PORTAL_BOX_N = new AxisAlignedBB(0.0000D, 0, 0.1875D, 1.0125D, 0.975D, 0.8125D);
 	public static final AxisAlignedBB Z_AXIS_AABB = new AxisAlignedBB(0.187500D, 0, 0.0000D, 0.8125D, 0.975D, 1.0125D);
-	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
 	boolean isOn = false;
@@ -51,6 +49,7 @@ public class BlockPortalKeyDormant extends BlockBase {
 		setBlockUnbreakable();
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
+	
 	boolean once = true;
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -104,84 +103,77 @@ public class BlockPortalKeyDormant extends BlockBase {
 			int par4 = k;
 			Random par5Random = random;
 			if (true)
-			for (int l = 0; l < 20; ++l) {
-				double d0 = (double) ((float) par2 + par5Random.nextFloat());
-				double d1 = (double) ((float) par3 + par5Random.nextFloat());
-				double d2 = (double) ((float) par4 + par5Random.nextFloat());
-				double d3 = 0.0D;
-				double d4 = 0.0D;
-				double d5 = 0.0D;
-				int i1 = par5Random.nextInt(2) * 2 - 1;
-				d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.9D;
-				d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.9D;
-				d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.9D;
-				LostSeaParticles.AQUA_PORTAL.spawn(par1World, d0, d1, d2, d3, d4, d5);
+				for (int l = 0; l < 20; ++l) {
+					double d0 = (double) ((float) par2 + par5Random.nextFloat());
+					double d1 = (double) ((float) par3 + par5Random.nextFloat());
+					double d2 = (double) ((float) par4 + par5Random.nextFloat());
+					double d3 = 0.0D;
+					double d4 = 0.0D;
+					double d5 = 0.0D;
+					int i1 = par5Random.nextInt(2) * 2 - 1;
+					d3 = ((double) par5Random.nextFloat() - 0.5D) * 1.9D;
+					d4 = ((double) par5Random.nextFloat() - 0.5D) * 1.9D;
+					d5 = ((double) par5Random.nextFloat() - 0.5D) * 1.9D;
+					LostSeaParticles.AQUA_PORTAL.spawn(par1World, d0, d1, d2, d3, d4, d5);
 			}
 			this.isOn = false;
 		}
-		
-
 	}
 	
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		switch(state.getValue(FACING)) {
 			case NORTH:
 			default:
-			return PORTAL_BOX_N;
+				return PORTAL_BOX_N;
 			case SOUTH:
-			return PORTAL_BOX_N;
+				return PORTAL_BOX_N;
 			case EAST:
-			return Z_AXIS_AABB;
+				return Z_AXIS_AABB;
 			case WEST:
-			return Z_AXIS_AABB;
+				return Z_AXIS_AABB;
 			case UP:
-			return PORTAL_BOX_N;
+				return PORTAL_BOX_N;
 			case DOWN:
-			return PORTAL_BOX_N;
+				return PORTAL_BOX_N;
 		}
 	}
 	
 	@Override
-    public IBlockState getStateFromMeta(int meta)
-    {
+    public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 
     @Override
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).getHorizontalIndex();
     }
 
     @Override
-    protected BlockStateContainer createBlockState()
-    {
+    protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
 	
 	@SideOnly(Side.CLIENT)
-    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos)
-    {
+    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
 		switch(state.getValue(FACING)) {
-		case NORTH:
-		default:
-		return PORTAL_BOX_N.offset(pos);
-		case SOUTH:
-		return PORTAL_BOX_N.offset(pos);
-		case EAST:
-		return Z_AXIS_AABB.offset(pos);
-		case WEST:
-		return Z_AXIS_AABB.offset(pos);
-		case UP:
-		return PORTAL_BOX_N.offset(pos);
-		case DOWN:
-		return PORTAL_BOX_N.offset(pos);
-	}
+			case NORTH:
+			default:
+				return PORTAL_BOX_N.offset(pos);
+			case SOUTH:
+				return PORTAL_BOX_N.offset(pos);
+			case EAST:
+				return Z_AXIS_AABB.offset(pos);
+			case WEST:
+				return Z_AXIS_AABB.offset(pos);
+			case UP:
+				return PORTAL_BOX_N.offset(pos);
+			case DOWN:
+				return PORTAL_BOX_N.offset(pos);
+		}
     }
 	
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-	{
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 	   IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 	   return state.withProperty(FACING, placer.getHorizontalFacing());
 	}
@@ -191,9 +183,7 @@ public class BlockPortalKeyDormant extends BlockBase {
 		return false;
 	}
 	
-	public boolean isOpaqueCube(IBlockState state)
-    {
+	public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
-
 }

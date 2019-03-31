@@ -24,9 +24,7 @@ import net.minecraft.world.World;
 
 public class BlockRotatableDeco extends BlockHorizontal {
 	
-	
-	public BlockRotatableDeco(String name)
-    {
+	public BlockRotatableDeco(String name) {
         super(Material.ROCK);
         this.setHardness(1.4F);
         this.setSoundType(SoundType.STONE);
@@ -38,65 +36,37 @@ public class BlockRotatableDeco extends BlockHorizontal {
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
-    protected BlockStateContainer createBlockState()
-    {
+    protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, new IProperty[] {FACING});
     }
 
-    /**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
-    public IBlockState withRotation(IBlockState state, Rotation rot)
-    {
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
     }
-
-    /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
-    {
+    
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
     }
 
-    /**
-     * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
-     * IBlockstate
-     */
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-    {
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
-    /**
-     * Convert the BlockState into the correct metadata value
-     */
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         int i = 0;
         i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
         return i;
     }
 
-    /**
-     * Convert the given metadata into a BlockState for this Block
-     */
-    
-    public IBlockState getStateFromMeta(int meta)
-    {
+    public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 
-    public EnumPushReaction getMobilityFlag(IBlockState state)
-    {
+    public EnumPushReaction getMobilityFlag(IBlockState state) {
         return EnumPushReaction.PUSH_ONLY;
     }
     
-    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
-    {
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         return MapColor.BLUE_STAINED_HARDENED_CLAY;
     }
-	
 }

@@ -10,13 +10,12 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class EnchantmentAntiChloride extends Enchantment{
+public class EnchantmentAntiChloride extends Enchantment {
 	
 	public EnchantmentAntiChloride(EntityEquipmentSlot... slots) {
 		super(Rarity.VERY_RARE, EnumEnchantmentType.ALL, slots);
 		this.setName("anti_chloride");
 		this.setRegistryName(new ResourceLocation(Reference.MOD_ID + ":anti_chloride"));
-		
 		TLSEnchants.ENCHANTS.add(this);
 	}
 	

@@ -1,7 +1,6 @@
 package com.SmellyModder.TheLostSea.common.init;
 
 import com.SmellyModder.TheLostSea.common.entity.EntityAnglerfish;
-import com.SmellyModder.TheLostSea.common.entity.EntityHarpoon;
 import com.SmellyModder.TheLostSea.common.entity.EntityTriGuardian;
 import com.SmellyModder.TheLostSea.common.entity.EntityVampireSquid;
 import com.SmellyModder.TheLostSea.common.entity.bases.ThrowableOrb;
@@ -22,9 +21,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class TLSEntities {
-
+	
 	public static void registerEntities() {
-		
 		//Guardian's
 		registerEntity("tri_guardian", EntityTriGuardian.class, Reference.ENTITY_TRIGUARDIAN, 50, 5931634, 3095382);
 		registerEntity("titan_guardian", EntityTitanGuardian.class, Reference.ENTITY_TITAN, 50, 5931634, 7811851);
@@ -45,12 +43,10 @@ public class TLSEntities {
 		registerEntity2("throwableorb", ThrowableOrb.class, Reference.ORB, 50);
 		registerEntity2("disc", EntityDisc.class, Reference.DISC, 50);
 		registerEntity2("slash_hook", EntitySlash.class, Reference.CUTLASS, 50);
-		registerEntity2("harpoon", EntityHarpoon.class, Reference.HARPOON, 50);
 		registerEntity2("nurm", EntityNurm.class, Reference.NURM, 50);
 		registerEntity2("lunete", EntityLunete.class, Reference.LUNETE, 50);
 		registerEntity2("doubloon", EntityAtlantisCoin.class, 9875, 50);
 		registerEntity2("finnedarrow", EntityFinnedArrow.class, Reference.FINNEDARROW, 50);
-		//registerEntity2("finnedarrow", EntityFinnedArrowTest.class, Reference.FINNEDARROW, 50);
 	}
 	
 	private static void registerEntity2(String entityName, Class<? extends Entity> entityClass, int id, int range) {

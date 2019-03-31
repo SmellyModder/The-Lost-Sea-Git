@@ -31,12 +31,10 @@ public class BlockLSLog extends BlockLog {
 	    TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
 	
-	public IBlockState getStateFromMeta(int meta)
-    {
+	public IBlockState getStateFromMeta(int meta) {
         IBlockState iblockstate = this.getDefaultState();
 
-        switch (meta & 12)
-        {
+        switch (meta & 12) {
             case 0:
                 iblockstate = iblockstate.withProperty(LOG_AXIS, BlockLog.EnumAxis.Y);
                 break;
@@ -49,17 +47,14 @@ public class BlockLSLog extends BlockLog {
             default:
                 iblockstate = iblockstate.withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE);
         }
-
         return iblockstate;
     }
 
     @SuppressWarnings("incomplete-switch")
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         int meta = 0;
         
-        switch ((BlockLog.EnumAxis)state.getValue(LOG_AXIS))
-        {
+        switch ((BlockLog.EnumAxis)state.getValue(LOG_AXIS)) {
             case X:
             	meta |= 4;
                 break;
@@ -69,23 +64,19 @@ public class BlockLSLog extends BlockLog {
             case NONE:
             	meta |= 12;
         }
-
         return meta;
     }
     
     @Override
-	protected BlockStateContainer createBlockState() 
-	{
+	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {LOG_AXIS});
 	}
     
     @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
-    		float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
     	if(meta != 12) {
         	return this.getStateFromMeta(meta).withProperty(LOG_AXIS, BlockLog.EnumAxis.fromFacingAxis(facing.getAxis()));
         }
         return this.getDefaultState().withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE);
     }
-
 }

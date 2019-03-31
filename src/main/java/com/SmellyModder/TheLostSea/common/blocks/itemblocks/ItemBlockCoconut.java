@@ -27,20 +27,17 @@ public class ItemBlockCoconut extends ItemBlock {
 	}
 	
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         Block block = iblockstate.getBlock();
 
-        if (!block.isReplaceable(worldIn, pos))
-        {
+        if (!block.isReplaceable(worldIn, pos)) {
             pos = pos.offset(facing);
         }
 
         ItemStack itemstack = player.getHeldItem(hand);
 
-        if (!itemstack.isEmpty() && player.canPlayerEdit(pos, facing, itemstack) && worldIn.mayPlace(this.block, pos, false, facing, (Entity)null))
-        {
+        if (!itemstack.isEmpty() && player.canPlayerEdit(pos, facing, itemstack) && worldIn.mayPlace(this.block, pos, false, facing, (Entity)null)) {
             int i = this.getMetadata(itemstack.getMetadata());
             IBlockState iblockstate1 = this.block.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, i, player, hand);
             
@@ -52,9 +49,7 @@ public class ItemBlockCoconut extends ItemBlock {
             }
             
             return EnumActionResult.SUCCESS;
-        }
-        else
-        {
+        } else {
             return EnumActionResult.FAIL;
         }
     }

@@ -14,7 +14,6 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
 public class TLSBiomes {
-
 	public static final Biome TROPICAL_BEACH = new BiomeTropicalBeach();
 	public static final Biome TROPICAL_ISLAND = new BiomeTropicalIsland();
 
@@ -23,8 +22,7 @@ public class TLSBiomes {
 		initBiome(TROPICAL_ISLAND, "tropical_island", BiomeType.WARM, Type.JUNGLE, Type.BEACH);
 	}
 	
-	public static Biome initBiome(Biome biome, String name, BiomeType biometype, Type... types)
-	{
+	public static Biome initBiome(Biome biome, String name, BiomeType biometype, Type... types) {
 		biome.setRegistryName(name);
 		ForgeRegistries.BIOMES.register(biome);
 		BiomeDictionary.addTypes(biome, types);
@@ -32,7 +30,6 @@ public class TLSBiomes {
 	
 		return biome;
 	}
-
 
 	private static Biome addBiome(Biome biome) {
 		BiomeManager.addSpawnBiome(biome);

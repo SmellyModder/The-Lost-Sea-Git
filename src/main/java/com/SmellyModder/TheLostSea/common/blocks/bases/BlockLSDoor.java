@@ -22,7 +22,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockLSDoor extends BlockDoor {
-	
     protected static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.1875D);
     protected static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.8125D, 1.0D, 1.0D, 1.0D);
     protected static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.8125D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
@@ -42,15 +41,13 @@ public class BlockLSDoor extends BlockDoor {
        	TLSItems.ITEMS.add(new ItemBlockLSDoor(this).setRegistryName(this.getRegistryName()));
     }
     
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
         state = state.getActualState(source, pos);
         EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
         boolean flag = !((Boolean)state.getValue(OPEN)).booleanValue();
         boolean flag1 = state.getValue(HINGE) == BlockDoor.EnumHingePosition.RIGHT;
  
-        switch (enumfacing)
-        {
+        switch (enumfacing) {
             case EAST:
             default:
                 return flag ? EAST_AABB : (flag1 ? NORTH_AABB : SOUTH_AABB);
@@ -61,7 +58,6 @@ public class BlockLSDoor extends BlockDoor {
             case NORTH:
                 return flag ? NORTH_AABB : (flag1 ? WEST_AABB : EAST_AABB);
         }
-   
     }
     
     @Override
@@ -74,14 +70,8 @@ public class BlockLSDoor extends BlockDoor {
         return false;
     }
    
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
-    	return Item.getItemFromBlock(this);
-    }
-   
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
         return new ItemStack(Item.getItemFromBlock(this));
     }
-    
 }

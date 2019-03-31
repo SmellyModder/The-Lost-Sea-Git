@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block {
-
+	
 	public BlockBase(String name, Material material) {
 		super(material);
 		setTranslationKey(name);
@@ -19,5 +19,4 @@ public class BlockBase extends Block {
 		TLSBlocks.BLOCKS.add(this);
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
-
 }

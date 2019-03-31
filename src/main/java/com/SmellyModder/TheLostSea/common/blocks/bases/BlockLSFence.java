@@ -17,7 +17,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockLSFence extends BlockFence {
-
 	IBlockState parent;
 	public BlockLSFence(String name, IBlockState blockParent) {
 		super(Material.WOOD, MapColor.WOOD);

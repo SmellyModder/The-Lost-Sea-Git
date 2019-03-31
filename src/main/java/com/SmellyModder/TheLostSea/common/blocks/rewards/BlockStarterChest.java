@@ -36,12 +36,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.model.IModelPart;
 
 public class BlockStarterChest extends BlockChest {
-
-	 protected static final AxisAlignedBB NORTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0D, 0.9375D, 0.975D, 0.9375D);
-	 protected static final AxisAlignedBB SOUTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.975D, 1.0D);
-	 protected static final AxisAlignedBB WEST_CHEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0625D, 0.9375D, 0.975D, 0.9375D);
-	 protected static final AxisAlignedBB EAST_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 1.0D, 0.975D, 0.9375D);
-	 protected static final AxisAlignedBB NOT_CONNECTED_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.975D, 0.9375D);
+	protected static final AxisAlignedBB NORTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0D, 0.9375D, 0.975D, 0.9375D);
+	protected static final AxisAlignedBB SOUTH_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.975D, 1.0D);
+	protected static final AxisAlignedBB WEST_CHEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0625D, 0.9375D, 0.975D, 0.9375D);
+	protected static final AxisAlignedBB EAST_CHEST_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 1.0D, 0.975D, 0.9375D);
+	protected static final AxisAlignedBB NOT_CONNECTED_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.975D, 0.9375D);
 	    
     public BlockStarterChest(String name) {
         super(Type.BASIC);
@@ -56,29 +55,20 @@ public class BlockStarterChest extends BlockChest {
         TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(name));
     }
     
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
-        if (source.getBlockState(pos.north()).getBlock() == this)
-        {
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos){
+        if (source.getBlockState(pos.north()).getBlock() == this) {
             return NORTH_CHEST_AABB;
-        }
-        else if (source.getBlockState(pos.south()).getBlock() == this)
-        {
+        } else if (source.getBlockState(pos.south()).getBlock() == this) {
             return SOUTH_CHEST_AABB;
-        }
-        else if (source.getBlockState(pos.west()).getBlock() == this)
-        {
+        } else if (source.getBlockState(pos.west()).getBlock() == this) {
             return WEST_CHEST_AABB;
-        }
-        else
-        {
+        } else {
             return source.getBlockState(pos.east()).getBlock() == this ? EAST_CHEST_AABB : NOT_CONNECTED_AABB;
         }
     }
     
     @Override
-    public IBlockState checkForSurroundingChests(World worldIn, BlockPos pos, IBlockState state)
-    {
+    public IBlockState checkForSurroundingChests(World worldIn, BlockPos pos, IBlockState state) {
     	return state;
     }
     
@@ -95,17 +85,13 @@ public class BlockStarterChest extends BlockChest {
 
     @Override
     public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        if (!blockState.canProvidePower())
-        {
+        if (!blockState.canProvidePower()) {
             return 0;
-        }
-        else
-        {
+        } else {
             int i = 0;
             TileEntity tileentity = blockAccess.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntityStarterChest)
-            {
+            if (tileentity instanceof TileEntityStarterChest) {
                 i = ((TileEntityStarterChest)tileentity).numPlayersUsing;
             }
 
@@ -113,12 +99,8 @@ public class BlockStarterChest extends BlockChest {
         }
     }
 
-    /**
-     * Called by ItemBlocks after a block is set in the world, to allow post-place logic
-     */
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-    {
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         EnumFacing enumfacing = EnumFacing.byHorizontalIndex(MathHelper.floor((double)(placer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3).getOpposite();
         state = state.withProperty(FACING, enumfacing);
         BlockPos blockpos = pos.north();
@@ -130,78 +112,52 @@ public class BlockStarterChest extends BlockChest {
         boolean flag2 = this == worldIn.getBlockState(blockpos2).getBlock();
         boolean flag3 = this == worldIn.getBlockState(blockpos3).getBlock();
 
-        if (!flag && !flag1 && !flag2 && !flag3)
-        {
+        if (!flag && !flag1 && !flag2 && !flag3) {
             worldIn.setBlockState(pos, state, 3);
-        }
-        else if (enumfacing.getAxis() != EnumFacing.Axis.X || !flag && !flag1)
-        {
-            if (enumfacing.getAxis() == EnumFacing.Axis.Z && (flag2 || flag3))
-            {
-                if (flag2)
-                {
+        } else if (enumfacing.getAxis() != EnumFacing.Axis.X || !flag && !flag1) {
+        	
+            if (enumfacing.getAxis() == EnumFacing.Axis.Z && (flag2 || flag3)) {
+            	
+                if (flag2) {
                     worldIn.setBlockState(blockpos2, state, 3);
-                }
-                else
-                {
-                    worldIn.setBlockState(blockpos3, state, 3);
+                } else {                 
+                	worldIn.setBlockState(blockpos3, state, 3);
                 }
 
                 worldIn.setBlockState(pos, state, 3);
             }
-        }
-        else
-        {
-            if (flag)
-            {
+        } else {
+            if (flag) {
                 worldIn.setBlockState(blockpos, state, 3);
-            }
-            else
-            {
+            } else {
                 worldIn.setBlockState(blockpos1, state, 3);
             }
 
             worldIn.setBlockState(pos, state, 3);
         }
 
-        if (stack.hasDisplayName())
-        {
+        if (stack.hasDisplayName()) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntityStarterChest)
-            {
+            if (tileentity instanceof TileEntityStarterChest) {
                 ((TileEntityStarterChest)tileentity).setCustomName(stack.getDisplayName());
             }
         }
     }
 
-    @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
-    {
-       
-    }
-
     @Nullable
-    public ILockableContainer getContainer(World worldIn, BlockPos pos, boolean allowBlocking)
-    {
+    public ILockableContainer getContainer(World worldIn, BlockPos pos, boolean allowBlocking) {
         TileEntity tileentity = worldIn.getTileEntity(pos);
 
-        if (!(tileentity instanceof TileEntityStarterChest))
-        {
+        if (!(tileentity instanceof TileEntityStarterChest)) {
             return null;
-        }
-        else
-        {
+        } else {
             ILockableContainer ilockablecontainer = (TileEntityStarterChest)tileentity;
 
-            if (!allowBlocking && this.isBlocked(worldIn, pos))
-            {
+            if (!allowBlocking && this.isBlocked(worldIn, pos)) {
                 return null;
-            }
-            else
-            {
-                for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL)
-                {
+            } else {
+                for (EnumFacing enumfacing : EnumFacing.Plane.HORIZONTAL) {
                     BlockPos blockpos = pos.offset(enumfacing);
                     Block block = worldIn.getBlockState(blockpos).getBlock();
                 }
@@ -211,13 +167,11 @@ public class BlockStarterChest extends BlockChest {
         }
     }
 
-    private boolean isBlocked(World worldIn, BlockPos pos)
-    {
+    private boolean isBlocked(World worldIn, BlockPos pos) {
         return this.isBelowSolidBlock(worldIn, pos);
     }
 
-    private boolean isBelowSolidBlock(World worldIn, BlockPos pos)
-    {
+    private boolean isBelowSolidBlock(World worldIn, BlockPos pos) {
         return worldIn.getBlockState(pos.up()).doesSideBlockChestOpening(worldIn, pos.up(), EnumFacing.DOWN);
     }
 
@@ -225,5 +179,4 @@ public class BlockStarterChest extends BlockChest {
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
-    
 }

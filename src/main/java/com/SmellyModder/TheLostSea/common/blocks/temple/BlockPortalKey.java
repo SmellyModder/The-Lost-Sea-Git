@@ -25,10 +25,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPortalKey extends BlockBase {
-
 	public static final AxisAlignedBB PORTAL_BOX_N = new AxisAlignedBB(0.0000D, 0, 0.1875D, 1.0125D, 0.975D, 0.8125D);
 	public static final AxisAlignedBB Z_AXIS_AABB = new AxisAlignedBB(0.187500D, 0, 0.0000D, 0.8125D, 0.975D, 1.0125D);
-	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
 	public BlockPortalKey(String name, Material material) {
@@ -68,46 +66,41 @@ public class BlockPortalKey extends BlockBase {
 	}
 	
 	@Override
-    public IBlockState getStateFromMeta(int meta)
-    {
+    public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta));
     }
 	
     @Override
-    public int getMetaFromState(IBlockState state)
-    {
+    public int getMetaFromState(IBlockState state) {
         return state.getValue(FACING).getHorizontalIndex();
     }
 
     @Override
-    protected BlockStateContainer createBlockState()
-    {
+    protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
     }
     
 	@SideOnly(Side.CLIENT)
-    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos)
-    {
+    public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos) {
 		switch(state.getValue(FACING)) {
-		case NORTH:
-		default:
-		return PORTAL_BOX_N.offset(pos);
-		case SOUTH:
-		return PORTAL_BOX_N.offset(pos);
-		case EAST:
-		return Z_AXIS_AABB.offset(pos);
-		case WEST:
-		return Z_AXIS_AABB.offset(pos);
-		case UP:
-		return PORTAL_BOX_N.offset(pos);
-		case DOWN:
-		return PORTAL_BOX_N.offset(pos);
-	}
+			case NORTH:
+			default:
+				return PORTAL_BOX_N.offset(pos);
+			case SOUTH:
+				return PORTAL_BOX_N.offset(pos);
+			case EAST:
+				return Z_AXIS_AABB.offset(pos);
+			case WEST:
+				return Z_AXIS_AABB.offset(pos);
+			case UP:
+				return PORTAL_BOX_N.offset(pos);
+			case DOWN:
+				return PORTAL_BOX_N.offset(pos);
+		}
     }
 	
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-	{
+	public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 	   IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 	   return state.withProperty(FACING, placer.getHorizontalFacing());
 	}
@@ -117,9 +110,7 @@ public class BlockPortalKey extends BlockBase {
 		return false;
 	}
 	
-	public boolean isOpaqueCube(IBlockState state)
-    {
+	public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
-
 }

@@ -29,7 +29,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockDecoCoconut extends BlockFalling {
-
 	protected static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 0.50D, 0.75D);
 	
 	public BlockDecoCoconut(String name) {
@@ -62,19 +61,29 @@ public class BlockDecoCoconut extends BlockFalling {
 	
 	@Nullable
 	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {return null;}
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
+	}
 	
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {return BOUNDING_BOX;}
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return BOUNDING_BOX;
+	}
 	
-	public boolean isFullCube(IBlockState state) {return false;}
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
     
-    public boolean isOpaqueCube(IBlockState state) {return false;}
+    public boolean isOpaqueCube(IBlockState state) {
+    	return false;
+    }
 	
 	@Override
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {}
 	
 	@Override
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {return BlockFaceShape.UNDEFINED;}
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
+		return BlockFaceShape.UNDEFINED;
+	}
 
 }

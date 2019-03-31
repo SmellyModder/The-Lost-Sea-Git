@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockLSPortal extends BlockBase {
-
 	protected static final AxisAlignedBB PORTAL_BOUNDS = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
+	
 	public BlockLSPortal(String name, Material material) {
 		super(name, material);
 		setLightLevel(1.0F);
@@ -41,8 +41,7 @@ public class BlockLSPortal extends BlockBase {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 	
-	public boolean isOpaqueCube(IBlockState state)
-    {
+	public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 
@@ -57,35 +56,30 @@ public class BlockLSPortal extends BlockBase {
 		return 0;
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
 		IBlockState iblockstate = world.getBlockState(pos.offset(side));
 		Block block = iblockstate.getBlock();
 
-		if (state != iblockstate)
-			return true;
+		if (state != iblockstate) return true;
 
 		return block != this && super.shouldSideBeRendered(state, world, pos, side);
 	}
 	private boolean hasBeenPlaced = true;
 	
 	@SideOnly(Side.CLIENT)
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
-    {
-        if (rand.nextInt(785) == 0 && hasBeenPlaced == false)
-        {
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        if (rand.nextInt(785) == 0 && hasBeenPlaced == false) {
             worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D,TLSSounds.PORTAL_AMBIENT, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
-        }else if(rand.nextInt(890) == 0) {
+        } else if(rand.nextInt(890) == 0) {
         	worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D,TLSSounds.PORTAL_AMBIENT_2, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
-        }else if(rand.nextInt(265) == 0 && hasBeenPlaced == true) {
+        } else if(rand.nextInt(265) == 0 && hasBeenPlaced == true) {
         	hasBeenPlaced = false;
         	worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D,TLSSounds.AEGAEON_LAUGH, SoundCategory.BLOCKS, 3.2F, rand.nextFloat() * 0.4F + 0.8F, false);
         }
 
-        for (int i = 0; i < 1; ++i)
-        {
+        for (int i = 0; i < 1; ++i) {
             double d0 = (double)((float)pos.getX() + rand.nextFloat());
             double d1 = (double)((float)pos.getY() + rand.nextFloat());
             double d2 = (double)((float)pos.getZ() + rand.nextFloat());
@@ -94,13 +88,11 @@ public class BlockLSPortal extends BlockBase {
             double d5 = ((double)rand.nextFloat() - 0.5D) * 0.5D;
             int j = rand.nextInt(2) * 2 - 1;
 
-            if (worldIn.getBlockState(pos.west()).getBlock() != this && worldIn.getBlockState(pos.east()).getBlock() != this)
-            {
+            if (worldIn.getBlockState(pos.west()).getBlock() != this && worldIn.getBlockState(pos.east()).getBlock() != this) {
                 d0 = (double)pos.getX() + 0.5D + 0.25D * (double)j;
                 d3 = (double)(rand.nextFloat() * 2.0F * (float)j);
             }
-            else
-            {
+            else {
                 d2 = (double)pos.getZ() + 0.5D + 0.25D * (double)j;
                 d5 = (double)(rand.nextFloat() * 2.0F * (float)j);
             }
@@ -114,8 +106,7 @@ public class BlockLSPortal extends BlockBase {
         return -20;
     }
 	
-	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
-    {
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
         return BlockFaceShape.UNDEFINED;
     }
 }

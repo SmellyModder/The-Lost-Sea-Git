@@ -27,9 +27,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BlockLSSapling extends BlockBush implements IGrowable {
-
 	protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
-	
 	WorldGenerator saplingGenerator;
 	boolean isPalm;
 	
@@ -81,8 +79,7 @@ public class BlockLSSapling extends BlockBush implements IGrowable {
 	public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
 		 if (state.getValue(BlockSapling.STAGE) == 0) {
 			 world.setBlockState(pos, state.cycleProperty(BlockSapling.STAGE), 4);
-		 }
-		 else if(TerrainGen.saplingGrowTree(world, rand, pos)) {
+		 } else if(TerrainGen.saplingGrowTree(world, rand, pos)) {
 			 WorldGenerator generator = this.saplingGenerator;
 			 if(isPalm) {
 				 generator = world.rand.nextInt(6) == 1 ? new WorldGenCurvedPalmTree(false, world.rand.nextInt(4)) : this.saplingGenerator;
@@ -95,8 +92,7 @@ public class BlockLSSapling extends BlockBush implements IGrowable {
 		 }
 	}
 	
-	public void generateTree(World world, Random rand, BlockPos pos, IBlockState state)
-	{
+	public void generateTree(World world, Random rand, BlockPos pos, IBlockState state) {
 		if(!TerrainGen.saplingGrowTree(world, rand, pos)) return;
 		WorldGenerator gen = this.saplingGenerator;
 		world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);

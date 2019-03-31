@@ -23,7 +23,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockLSSlab extends BlockSlab {
-
 	Block half;
 	public static final PropertyEnum<PalmVariant> VARIANT = PropertyEnum.<PalmVariant>create("variant", PalmVariant.class);
 	
@@ -94,15 +93,12 @@ public class BlockLSSlab extends BlockSlab {
 		return Variant.DEFAULT;
 	}
 	
-	public static enum PalmVariant implements IStringSerializable
-	{
+	public static enum PalmVariant implements IStringSerializable {
 		DEFAULT;
 		
 		@Override
-		public String getName()
-		{
+		public String getName() {
 			return "default";
 		}
 	}
-
 }

@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 public class BlockPillarBase extends BlockRotatedPillar {
-
+	
 	public BlockPillarBase(String name, Material material) {
 		super(material);
 		setHardness(2.7F);
@@ -27,13 +27,11 @@ public class BlockPillarBase extends BlockRotatedPillar {
 		
 		TLSBlocks.BLOCKS.add(this);
 		TLSItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
-		 this.setDefaultState(this.getDefaultState().withProperty(AXIS, EnumFacing.Axis.Y));
+		this.setDefaultState(this.getDefaultState().withProperty(AXIS, EnumFacing.Axis.Y));
 	}
-
 	
 	@Override
 	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) {
 		return super.canEntityDestroy(state, world, pos, entity);
 	}
-
 }

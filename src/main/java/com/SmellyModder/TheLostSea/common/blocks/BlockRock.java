@@ -15,6 +15,7 @@ import net.minecraft.world.IBlockAccess;
 
 public class BlockRock extends BlockBase{
 	private float h;
+	
 	public BlockRock(String name, Material material, float hardness, boolean isCobble) {
 		super(name, material);
 		setHardness(hardness);
@@ -26,5 +27,4 @@ public class BlockRock extends BlockBase{
 	public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		return MapColor.ADOBE;
 	}
-	
 }

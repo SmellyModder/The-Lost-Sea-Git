@@ -48,7 +48,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 2);
-	 
+	
 	protected static final AxisAlignedBB[] COCONUT_EAST_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.6875D, 0.5D, 0.375D, 0.9375D, 0.75D, 0.625D), new AxisAlignedBB(0.5625D, 0.38D, 0.3125D, 0.9375D, 0.75D, 0.6875D), new AxisAlignedBB(0.4375D, 0.25D, 0.25D, 0.9375D, 0.75D, 0.75D)};
     protected static final AxisAlignedBB[] COCONUT_WEST_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.0625D, 0.5D, 0.375D, 0.3125D, 0.75D, 0.625D), new AxisAlignedBB(0.0625D, 0.38D, 0.3125D, 0.4375D, 0.75D, 0.6875D), new AxisAlignedBB(0.0625D, 0.25D, 0.25D, 0.5625D, 0.75D, 0.75D)};
     protected static final AxisAlignedBB[] COCONUT_NORTH_AABB = new AxisAlignedBB[] {new AxisAlignedBB(0.375D, 0.5D, 0.0625D, 0.625D, 0.75D, 0.3125D), new AxisAlignedBB(0.3125D, 0.38D, 0.0625D, 0.6875D, 0.75D, 0.4375D), new AxisAlignedBB(0.25D, 0.25D, 0.0625D, 0.75D, 0.75D, 0.5625D)};
@@ -81,6 +81,7 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	@Override
 	public void harvestBlock(World world, EntityPlayer player, BlockPos blockPos, IBlockState state, TileEntity te, ItemStack stack) {
 		if(((Integer)state.getValue(BlockCoconut.AGE)).intValue() != 2) return;
+		
 		ItemStack stackP = player.getHeldItemMainhand();
 		final ItemStack[] COCONUT = {new ItemStack(TLSBlocks.COCONUT_ITEMBLOCK), new ItemStack(TLSItems.COCONUT_CHUNK)};
 		
@@ -96,19 +97,6 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 			PlayerBreakEvents.doBlockDrop(world, pos[0], pos[1], pos[2], COCONUT[0]);
 		}
 		super.harvestBlock(world, player, blockPos, state, te, stack);
-	}
-	
-	protected void doBlockDrop(World world, int x, int y, int z, ItemStack stack) {
-		Random rand = world.rand;
-		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {
-			float f = 0.6F;
-			double D = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
-			double D2 = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
-			double D3 = (rand.nextFloat() * f) + (double)(1.0F - f) * 0.6D;
-			EntityItem entityitem = new EntityItem(world, (double)x + D, (double)y + D2, (double)z + D3, stack);
-			entityitem.setPickupDelay(10);
-			world.spawnEntity(entityitem);
-		}
 	}
 	
     public boolean isFullCube(IBlockState state) {
@@ -180,16 +168,6 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 		pos = pos.offset((EnumFacing)state.getValue(FACING));
 	   	IBlockState iblockstate = worldIn.getBlockState(pos);
 	   	return iblockstate.getBlock() == TLSBlocks.PALM_LOG;
-	}
-	
-	/*
-	 * Note:
-	 * The drops are handled with the other special block drop events in PlayerBreakEvents
-	 */
-	@Nullable
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return null;
 	}
 	 
 	private void dropBlock(World worldIn, BlockPos pos, IBlockState state) {

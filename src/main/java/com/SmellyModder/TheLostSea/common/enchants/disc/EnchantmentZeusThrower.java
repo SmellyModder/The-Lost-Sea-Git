@@ -9,13 +9,12 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
 
-public class EnchantmentZeusThrower extends Enchantment{
+public class EnchantmentZeusThrower extends Enchantment {
 
 	public EnchantmentZeusThrower(EntityEquipmentSlot... slots) {
 		super(Rarity.RARE, EnumEnchantmentType.ALL, slots);
 		this.setName("zeus_thrower");
 		this.setRegistryName(new ResourceLocation(Reference.MOD_ID + ":zeus_thrower"));
-		
 		TLSEnchants.ENCHANTS.add(this);
 	}
 	

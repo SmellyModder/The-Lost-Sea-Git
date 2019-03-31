@@ -23,12 +23,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
-
-	private final Block sapling;
+	private final Block SAPLING;
 	private int type;
 	public BlockAdvancedLeaves(String name, Block saplingToDrop, int type) {
 		super(name, Material.LEAVES);
-		this.sapling = saplingToDrop;
+		SAPLING = saplingToDrop;
 		this.setTickRandomly(true);
 		this.setCreativeTab(null);
 		this.type = type;
@@ -37,7 +36,6 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote) {
-        	
             if (type == 0) {
             	if(!this.checkLeaves(worldIn, pos, 0)) {
             		this.destroy(worldIn, pos);
@@ -66,7 +64,7 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(sapling);
+		return Item.getItemFromBlock(SAPLING);
 	}
 	
 	@Override
@@ -117,5 +115,4 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
                 world.getBlockState(pos.add(-1, lvl, 1)).getBlock() instanceof ISpecialLeaf
                 ? true : false;
     }
-
 }

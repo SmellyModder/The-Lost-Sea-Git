@@ -54,7 +54,6 @@ public class ItemLSSlab extends ItemBlock {
 
 	            return super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
 	        }
-
 	        return EnumActionResult.FAIL;
 	 }
 
@@ -71,5 +70,4 @@ public class ItemLSSlab extends ItemBlock {
 	     IBlockState currentState = world.getBlockState(pos.offset(side));
 	     return currentState.getBlock() == this.block || super.canPlaceBlockOnSide(world, pos, side, player, stack);
 	 }
-	 
 }

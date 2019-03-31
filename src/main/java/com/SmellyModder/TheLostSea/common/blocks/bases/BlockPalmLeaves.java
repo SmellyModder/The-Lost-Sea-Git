@@ -9,5 +9,4 @@ public class BlockPalmLeaves extends BlockLSLeaves implements ISpecialLeaf {
 	public BlockPalmLeaves(String name, Block saplingToDrop) {
 		super(name, saplingToDrop);
 	}
-	
 }
