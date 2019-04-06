@@ -36,16 +36,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNeptunumShield extends ItemBase implements ILSShield
-{
-    public ItemNeptunumShield(String name)
-    {
+public class ItemNeptunumShield extends ItemBase implements ILSShield {
+	
+    public ItemNeptunumShield(String name) {
     	super(name);
         this.maxStackSize = 1;
         this.setMaxDamage(876);
         this.setCreativeTab(TheLostSea.TLS_GEAR);
-        this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter()
-        {
+        this.addPropertyOverride(new ResourceLocation("blocking"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
             {
@@ -55,9 +53,8 @@ public class ItemNeptunumShield extends ItemBase implements ILSShield
         BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(this, ItemArmor.DISPENSER_BEHAVIOR);
     }
 
-    public String getItemStackDisplayName(ItemStack stack)
-    {
-        return I18n.translateToLocal("item.neptunum.name");
+    public String getItemStackDisplayName(ItemStack stack) {
+        return I18n.translateToLocal("item.neptunum_shield.name");
     }
     
     public EnumAction getItemUseAction(ItemStack stack)

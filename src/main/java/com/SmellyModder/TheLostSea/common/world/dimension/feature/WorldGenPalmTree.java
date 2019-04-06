@@ -29,8 +29,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class WorldGenPalmTree extends WorldGenAbstractLSTree {
-
 	protected static final IBlockState WOOD = TLSBlocks.PALM_LOG.getDefaultState();
+	protected static final IBlockState BARK = TLSBlocks.PALM_BARK.getDefaultState();
 	protected static final IBlockState LEAVES = TLSBlocks.PALM_LEAVES.getDefaultState();
 	protected static final IBlockState LEAVES_3X = TLSBlocks.PALM_LEAVES_X.getDefaultState();
 	protected static final IBlockState LEAVES_3X_UP = TLSBlocks.PALM_LEAVES_U.getDefaultState();
@@ -47,17 +47,15 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 		boolean flag = true;
 		
 		if(pos.getY() >= 1 && pos.getY() + height + 1 <= 256) {
-			for (int j = pos.getY(); j <= pos.getY() + 1 + height; ++j)
-            {
+			
+			for (int j = pos.getY(); j <= pos.getY() + 1 + height; ++j) {
                 int k = 1;
 
-                if (j == pos.getY())
-                {
+                if (j == pos.getY()) {
                     k = 0;
                 }
 
-                if (j >= pos.getY() + 1 + height - 2)
-                {
+                if (j >= pos.getY() + 1 + height - 2) {
                     k = 2;
                 }
 
@@ -82,65 +80,68 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
                 }
             }
 			
-			if(!flag) 
-			{
+			if(!flag) {
 				return false;
-			}
-			else 
-			{
-				 BlockPos down = pos.down();
-	             IBlockState state = world.getBlockState(down);
-	             boolean isSoil = state.getBlock().canSustainPlant(state, world, down, net.minecraft.util.EnumFacing.UP, (net.minecraft.block.BlockSapling)Blocks.SAPLING);
+			} else {
+				BlockPos down = pos.down();
+	            IBlockState state = world.getBlockState(down);
+	            boolean isSoil = state.getBlock().canSustainPlant(state, world, down, net.minecraft.util.EnumFacing.UP, (net.minecraft.block.BlockSapling)Blocks.SAPLING);
 	             
-	             if (isSoil && pos.getY() < world.getHeight() - height - 1)
-	             {
-	            	 for (int j2 = 0; j2 < height; ++j2)
-	                 {
-	                     BlockPos upN = pos.up(j2);
-	                     IBlockState state2 = world.getBlockState(upN);
+	            if (isSoil && pos.getY() < world.getHeight() - height - 1) {
+	            	 
+	            	 for (int j2 = 0; j2 < height; ++j2) {
+	            		 
+	                    BlockPos upN = pos.up(j2);
+	                    IBlockState state2 = world.getBlockState(upN);
 
-	                     if (state2.getBlock().isAir(state2, world, upN) || state2.getBlock().isLeaves(state2, world, upN))
-	                     {
-	                        this.setBlockAndNotifyAdequately(world, pos.up(j2), WOOD);
-	                        if(j2 == height - 1) {
-	                        	this.createPalmTop(world, upN, rand.nextInt(3));
-	                        }
-	                     }
+	                    if (state2.getBlock().isAir(state2, world, upN) || state2.getBlock().isLeaves(state2, world, upN)) {
+	                       this.setBlockAndNotifyAdequately(world, pos.up(j2), WOOD);
+	                       if(j2 == height - 1) {
+	                    	   	this.createPalmTop(world, upN, 0);
+	                       }
+	                    }
 	                 }
 	            	 
 	            	 return true;
-	             }
-	             else
-	             {
-	            	 return false;
-	             }
+	            } else {
+	            	return false;
+	            }
 			}
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
 	
-	/*
-	 * This all testing purposes :P, some may be final though
-	 */
-	public void createPalmTop(World world, BlockPos pos, int type) {
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		
-		if(type == 1) 
-		{
-			createPalmLeavesBase(world, pos, LEAVES, WOOD, true);
+	protected void createPalmTop(World world, BlockPos pos, int direction) {
+		int palmType = world.rand.nextInt(100);
+		if(palmType > 50 && palmType < 90) {
+			createPalmLeavesBase(world, pos, LEAVES, WOOD, 0);
+		} else if(palmType < 50 && palmType > 10) {
+			createPalmLeavesBase(world, pos, LEAVES, WOOD, 1);
+		} else {
+			createPalmLeavesBase(world, pos, LEAVES, WOOD, 2);
 		}
-		else 
-		{
-			createPalmLeavesBase(world, pos, LEAVES, WOOD, false);
+		if(direction != 3) {
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).north(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.SOUTH).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
+		}
+		if(direction != 2) {
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).south(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.NORTH).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
+		}
+		if(direction != 4) {
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).east(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.WEST).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
+		}
+		if(direction != 5) {
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).west(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.EAST).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
 		}
 	}
 	
-	protected void createPalmLeavesBase(World world, BlockPos pos, IBlockState block, IBlockState wood, boolean bigShape) {
-		if(!bigShape) {
+	/*
+	 * A method used to access the different leave generations for palm variants
+	 * @param {int} palmType - The value used to determine the palm tree's leave generation type, goes from 0-2
+	 * For more detail on the palmType variants, 0 = Basic, 1 = Bigger/Flowery looking palm leave shape, 2 = A longer hanging leaf version of 1
+	 */
+	protected void createPalmLeavesBase(World world, BlockPos pos, IBlockState block, IBlockState wood, int palmType) {
+		if(palmType == 0) {
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos), block);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).add(1, 0, 0), block);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).add(-1, 0, 0), block);
@@ -151,11 +152,6 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).south(), block);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).east(), block);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).west(), block);
-			
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).north(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.SOUTH).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).south(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.NORTH).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).east(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.WEST).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
-			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).west(), TLSBlocks.COCONUT.getDefaultState().withProperty(BlockCoconut.FACING, EnumFacing.EAST).withProperty(BlockCoconut.AGE, Integer.valueOf(world.rand.nextInt(2))));
 					
 			this.fillWithBlocks(world, createStartPos(pos).down(), -1, 0, -1, 1, 0, 1, block, block, false);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(), wood);
@@ -181,8 +177,7 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 				this.setBlockAndNotifyAdequately(world, pos.north(2).east(2).down(), LEAVES_3X_UP);
 				this.setBlockAndNotifyAdequately(world, pos.south(2).west(2).down(), LEAVES_3X_UP);
 				this.setBlockAndNotifyAdequately(world, pos.south(2).east(2).down(), LEAVES_3X_UP);
-			}
-			else {
+			} else {
 				this.setBlockAndNotifyAdequately(world, pos.north(2).west(2), LEAVES_3X);
 				this.setBlockAndNotifyAdequately(world, pos.north(2).east(2), LEAVES_3X);
 				this.setBlockAndNotifyAdequately(world, pos.south(2).west(2), LEAVES_3X);
@@ -193,7 +188,7 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 				this.setBlockAndNotifyAdequately(world, pos.south(3).west(3).down(), LEAVES_3X_UP);
 				this.setBlockAndNotifyAdequately(world, pos.south(3).east(3).down(), LEAVES_3X_UP);
 			}
-		} else {
+		} else if(palmType == 1) {
 			//Topest part
 			this.fillWithBlocks(world, createStartPos(pos).down(), -1, 0, -1, 1, 0, 1, block, block, false);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).north(), block);
@@ -238,49 +233,67 @@ public class WorldGenPalmTree extends WorldGenAbstractLSTree {
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).west(2), LEAVES_3X);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).west(3).down(), LEAVES_3X_UP);
 			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).west(3).down(), LEAVES_3X_UP);
-		}
-	}
-	
-	public static class generateClass implements IWorldGenerator {
-
-		private final WorldGenerator WorldGen = new WorldGenPalmTree(false);
-		
-		@Override
-		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-			switch(world.provider.getDimension()) {
-				case 0:
-					runGenerator(WorldGen, world, random, chunkX, chunkZ, 3, -1, 0, BiomePlains.class);
-					break;
-				case 1:
-					
-					break;
-				case 2:
-					
-					break;
-			}
-		}
-		
-		private void runGenerator(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, double chancesToSpawn, int minHeight, int maxHeight, Class<?>... classes)
-		{
-			if(chancesToSpawn < 1) 
-			{
-				if(random.nextDouble() < chancesToSpawn) chancesToSpawn = 1;
-				else chancesToSpawn = 0;
-			}
 			
-			ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
-			int heightDiff = maxHeight - minHeight + 1;
-			for(int i = 0; i < chancesToSpawn; i++)
-			{
-				BlockPos pos = new BlockPos(chunkX * 16 + 10 + random.nextInt(15), minHeight + random.nextInt(heightDiff), chunkZ * 16 + 10 + random.nextInt(15));
-				if(minHeight < 0) pos = world.getHeight(pos);
-				Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
-				if(classesList.contains(biome) || classes.length == 0) generator.generate(world, random, pos);
+			if(world.rand.nextInt(2) == 1) {
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).north(2), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).south(2), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).east(2), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).west(2), LEAVES_3X_UP);
 			}
-		}
-		
-		public static void register() {
-			GameRegistry.registerWorldGenerator(new WorldGenPalmTree.generateClass(), 0);
+		} else if(palmType == 2) {
+			//Base part
+			this.fillWithBlocks(world, createStartPos(pos).down(), -1, 0, -1, 1, 0, 1, block, block, false);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).north(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).south(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).east(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(2).west(), block);
+			
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south().west(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south().east(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north().west(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north().east(), block);
+			
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).down(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).down(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(2).down(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(2).down(), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(2), block);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(2), block);
+			
+			//Diagonal Leave Branches
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).east(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).east(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).east(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).east(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).east(3).down(2), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).east(3).down(2), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(2).west(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(2).west(2), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).west(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).west(3).down(), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3).west(3).down(2), LEAVES_3X_UP);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3).west(3).down(2), LEAVES_3X_UP);
+			
+			//Hanging Leave Branches
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(3), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(3), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(3), LEAVES_3X);
+			this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(3), LEAVES_3X);
+			for(int i = 1; i <= 2; i++) {
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).north(4).down(i), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).east(4).down(i), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).south(4).down(i), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).west(4).down(i), LEAVES_3X_UP);
+			}
+			if(world.rand.nextInt(2) == 1) {
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).north(2), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).south(2), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).east(2), LEAVES_3X_UP);
+				this.setBlockAndNotifyAdequately(world, createStartPos(pos).down(3).west(2), LEAVES_3X_UP);
+			}
 		}
 	}
 }

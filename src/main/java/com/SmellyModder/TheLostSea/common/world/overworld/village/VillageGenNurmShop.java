@@ -92,34 +92,26 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry.IVillageCreationH
 import net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession;
 
 /*
- * SmellyModder
+ * @author - Smelly(Luke Tonon)
  */
-public class VillageGenNurmShop extends Village
-{
+public class VillageGenNurmShop extends Village {
 	int vSpawned;
 	int count = 1;
-	public VillageGenNurmShop()
-	{
-	}
+	private int groundLevel = -1;
 
-	public VillageGenNurmShop(Start villagePiece, int f, Random random, StructureBoundingBox box, EnumFacing facing)
-	{
+	public VillageGenNurmShop(Start villagePiece, int f, Random random, StructureBoundingBox box, EnumFacing facing) {
 		super(villagePiece, f);
 		this.setCoordBaseMode(facing);
 		this.boundingBox = box;
 	}
 	
-	private int groundLevel = -1;
-
 	@Override
-	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box)
-	{
-		if(groundLevel < 0)
-		{
+	public boolean addComponentParts(World world, Random rand, StructureBoundingBox box) {
+		if(groundLevel < 0) {
 			groundLevel = this.getAverageGroundLevel(world, box);
 			if(groundLevel < 0)
 				return true;
-			boundingBox.offset(0, groundLevel - boundingBox.maxY + 20 - 1, 0);
+				boundingBox.offset(0, groundLevel - boundingBox.maxY + 20 - 1, 0);
 		}
 		this.fillWithBlocks(world, box, 0, 0, 0, 25, 4, 15, Blocks.AIR.getDefaultState(), Blocks.AIR.getDefaultState(), false);
 		
@@ -783,27 +775,22 @@ public class VillageGenNurmShop extends Village
 		this.fillWithBlocks(world, box, 12, 11, 5, 12, 11, 7, Blocks.WOOL.getStateFromMeta(0), Blocks.WOOL.getStateFromMeta(0), false);
 		
         IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.STONE_STAIRS.getDefaultState().withProperty(BlockStairs.FACING, EnumFacing.NORTH));
-        if (this.getBlockStateFromPos(world, 14, 0, -1, box).getMaterial() == Material.AIR && this.getBlockStateFromPos(world, 14, -1, -1, box).getMaterial() == Material.AIR)
-        {
+        if (this.getBlockStateFromPos(world, 14, 0, -1, box).getMaterial() == Material.AIR && this.getBlockStateFromPos(world, 14, -1, -1, box).getMaterial() == Material.AIR) {
         	if(this.getBlockStateFromPos(world, 14, -2, -1, box).getMaterial() != Material.AIR) {
         		 this.setBlockState(world, iblockstate1, 14, -1, -1, box);
         		 this.setBlockState(world, iblockstate1, 13, -1, -1, box);
         	}
         }
         
-		/*
-		 * ENTITIES
-		 */
+		//Entities
 		int x = this.getXWithOffset(20, 7);
         int y = this.getYWithOffset(1);
         int z = this.getZWithOffset(20, 7);
         int x2 = this.getXWithOffset(9, 11);
         int y2 = this.getYWithOffset(2);
         int z2 = this.getZWithOffset(9, 11);
-        if (vSpawned < count)
-        {
-        	for (int i = this.vSpawned; i < count; ++i)
-            {
+        if (vSpawned < count) {
+        	for (int i = this.vSpawned; i < count; ++i) {
         		EntityNurm nurm = new EntityNurm(world);
         		EntityParrot parrot = new EntityParrot(world);
         		nurm.setLocationAndAngles((double)x + 0.5D, (double)y, (double)z + 0.5D, 0.0F, 0.0F);
@@ -814,10 +801,9 @@ public class VillageGenNurmShop extends Village
             }
         }
 		
-		///Places Blocks so that it doesn't float, will fix later due to it being a bit weird
+		//Places Blocks so that it doesn't float, will fix later due to it being a bit weird
 		for(int zz = 0; zz <= 16; zz++)
-			for(int xx = 0; xx <= 25; xx++)
-			{
+			for(int xx = 0; xx <= 25; xx++) {
 				//this.clearCurrentPositionBlocksUpwards(world, xx, 10, zz, box);
 				this.replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), xx, -1, zz, box);
 			}
@@ -825,8 +811,7 @@ public class VillageGenNurmShop extends Village
 		return true;
 	}
 	
-	protected void placeDoor(World worldIn, StructureBoundingBox boundingBoxIn, Random rand, int x, int y, int z, EnumFacing facing, EnumHingePosition hinge)
-	{
+	protected void placeDoor(World worldIn, StructureBoundingBox boundingBoxIn, Random rand, int x, int y, int z, EnumFacing facing, EnumHingePosition hinge) {
 		this.setBlockState(worldIn, Blocks.SPRUCE_DOOR.getDefaultState().withProperty(BlockDoor.FACING, facing).withProperty(BlockDoor.HINGE, hinge), x, y, z, boundingBoxIn);
 		this.setBlockState(worldIn, Blocks.SPRUCE_DOOR.getDefaultState().withProperty(BlockDoor.FACING, facing).withProperty(BlockDoor.HALF, BlockDoor.EnumDoorHalf.UPPER).withProperty(BlockDoor.HINGE, hinge), x, y+1, z, boundingBoxIn);
 	}
@@ -875,24 +860,20 @@ public class VillageGenNurmShop extends Village
 		return state;
 	}
 
-	public static class VillageManager implements IVillageCreationHandler, IWorldHolder
-	{
+	public static class VillageManager implements IVillageCreationHandler {
 		@Override
-		public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5)
-		{
+		public Village buildComponent(PieceWeight villagePiece, Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5) {
 			StructureBoundingBox box = StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 26, 19, 16, facing);
 			return (!canVillageGoDeeper(box)) || (StructureComponent.findIntersecting(pieces, box) != null) ? null : new VillageGenNurmShop(startPiece, p5, random, box, facing);
 		}
 		
 		@Override
-		public PieceWeight getVillagePieceWeight(Random random, int i)
-		{
+		public PieceWeight getVillagePieceWeight(Random random, int i) {
 			return new PieceWeight(VillageGenNurmShop.class, 100, this.getChance(random));
 		} 
 		
 		@Override
-		public Class<?> getComponentClass()
-		{
+		public Class<?> getComponentClass() {
 			return VillageGenNurmShop.class;
 		}
 		
@@ -902,7 +883,6 @@ public class VillageGenNurmShop extends Village
 			}
 			return 0;
 		}
-		
 	}
 
 }

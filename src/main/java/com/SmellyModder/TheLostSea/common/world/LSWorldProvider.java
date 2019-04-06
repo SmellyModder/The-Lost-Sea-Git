@@ -10,23 +10,20 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.gen.IChunkGenerator;
 
-public class LSWorldProvider extends WorldProvider
-{
-	protected void init()
-    {
+public class LSWorldProvider extends WorldProvider {
+	
+	protected void init() {
         this.hasSkyLight = true;
         this.biomeProvider = new BiomeProviderSingle(TLSBiomes.TROPICAL_ISLAND);
     }
 	
 	@Override
-	public DimensionType getDimensionType() 
-	{
+	public DimensionType getDimensionType() {
 		return DimensionInit.LS;
 	}
 	
 	@Override
-	public IChunkGenerator createChunkGenerator() 
-	{
+	public IChunkGenerator createChunkGenerator() {
 		//super.createChunkGenerator();
 		return new ChunkGenLS(world, true, world.getSeed());
 	}
@@ -37,20 +34,17 @@ public class LSWorldProvider extends WorldProvider
 	}
 	
 	@Override
-	protected void generateLightBrightnessTable()
-    {
+	protected void generateLightBrightnessTable() {
         float f = 0.0F;
         	
-        for (int i = 0; i <= 15; ++i)
-        {
+        for (int i = 0; i <= 15; ++i) {
             float f1 = 1.0F - (float)i / 15.0F;
             this.lightBrightnessTable[i] = (1.0F - f1) / (f1 * 3.0F + 1.0F) * 1.0F + 1.2F;
         }
     }
 	
 	@Override
-	public boolean isSurfaceWorld() 
-	{
+	public boolean isSurfaceWorld() {
 		return false;
 	}
 

@@ -32,6 +32,8 @@ public class BlockLSSlab extends BlockSlab {
 		setTranslationKey(name);
 		setRegistryName(name);
 		this.setCreativeTab(TheLostSea.TLS_BLOCKS);
+		this.setHardness(2F);
+		this.setResistance(15F);
 		this.useNeighborBrightness = !this.isDouble();
 		
 		IBlockState state = this.blockState.getBaseState().withProperty(VARIANT, PalmVariant.DEFAULT);

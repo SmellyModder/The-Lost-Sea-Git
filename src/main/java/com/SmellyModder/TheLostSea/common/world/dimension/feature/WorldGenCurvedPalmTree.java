@@ -2,6 +2,7 @@ package com.SmellyModder.TheLostSea.common.world.dimension.feature;
 
 import java.util.Random;
 
+import com.SmellyModder.TheLostSea.common.blocks.plants.BlockCoconut;
 import com.SmellyModder.TheLostSea.common.init.TLSBlocks;
 
 import net.minecraft.block.BlockLog.EnumAxis;
@@ -18,10 +19,8 @@ import net.minecraft.world.World;
 
 public class WorldGenCurvedPalmTree extends WorldGenPalmTree {
 
-	int dir;
-	public WorldGenCurvedPalmTree(boolean notify, int dir) {
+	public WorldGenCurvedPalmTree(boolean notify) {
 		super(notify);
-		this.dir = dir;
 	}
 	
 	@Override
@@ -65,57 +64,42 @@ public class WorldGenCurvedPalmTree extends WorldGenPalmTree {
                     }
                 }
             }
-			
-			if(!flag) 
-			{
+			if(!flag) {
 				return false;
-			}
-            else 
-            {
+			} else {
             	BlockPos down = pos.down();
                 IBlockState state = world.getBlockState(down);
                 boolean isSoil = state.getBlock().canSustainPlant(state, world, down, net.minecraft.util.EnumFacing.UP, ((net.minecraft.block.BlockSapling)Blocks.SAPLING)) || state.getBlock() == Blocks.SAND.getDefaultState();
                 
             	if(isSoil && pos.getY() < world.getHeight() - height - 1) {
             		state.getBlock().onPlantGrow(state, world, down, pos);
+                    EnumFacing direction = EnumFacing.random(world.rand);
                     
-                    BlockPos sPos = pos;
-                    
-                    int dir = this.pickDirection(world, pos, this.dir);
-                    
-                    if (dir == 1)
-	                {
-                    	this.setBlockAndNotifyAdequately(world, pos, WOOD);
-                    	this.setBlockAndNotifyAdequately(world, pos.south(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.Z));
-                    	this.setBlockAndNotifyAdequately(world, pos.west(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.X));
-                    	this.createCurvedPalmWithDirection(world, pos, dir);
-	                }
-                    else if(dir == 2) {
-                    	this.setBlockAndNotifyAdequately(world, pos, WOOD);
-                    	this.setBlockAndNotifyAdequately(world, pos.east(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.X));
-                    	this.setBlockAndNotifyAdequately(world, pos.north(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.Z));
-                    	this.createCurvedPalmWithDirection(world, pos, dir);
+                    if(direction == EnumFacing.UP || direction == EnumFacing.DOWN) {
+                    	direction = rand.nextInt(2) == 1 ? EnumFacing.NORTH : EnumFacing.SOUTH;
                     }
-                    else if(dir == 3) {
-                    	this.setBlockAndNotifyAdequately(world, pos, WOOD);
-                    	this.setBlockAndNotifyAdequately(world, pos.west(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.X));
-                    	this.setBlockAndNotifyAdequately(world, pos.north(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.Z));
-                    	this.createCurvedPalmWithDirection(world, pos, dir);
-                    } else if(dir == 4){
-                    	this.setBlockAndNotifyAdequately(world, pos, WOOD);
-                    	this.setBlockAndNotifyAdequately(world, pos.east(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.X));
-                    	this.setBlockAndNotifyAdequately(world, pos.south(), WOOD.withProperty(BlockOldLog.LOG_AXIS, EnumAxis.Z));
-                    	this.createCurvedPalmWithDirection(world, pos, dir);
-                    } else {
-                    	this.setBlockAndNotifyAdequately(world, pos, WOOD);
-                    	this.createCurvedPalmWithDirection(world, pos, dir);
+                    
+                    // 2 - North, 3 - South, 4 - West, 5 - East
+                    if (direction.getIndex() == 2) {
+                    	this.createCurvedPalmWithDirection(world, pos, 2);
+                    	this.generatePalmRoots(world, pos, 2);
+	                }
+                    else if(direction.getIndex() == 3) {
+                    	this.createCurvedPalmWithDirection(world, pos, 3);
+                    	this.generatePalmRoots(world, pos, 3);
+                    }
+	                else if(direction.getIndex() == 4) {
+                    	this.createCurvedPalmWithDirection(world, pos, 4);
+                    	this.generatePalmRoots(world, pos, 4);
+                    }
+                    else if(direction.getIndex() == 5) {
+                    	this.createCurvedPalmWithDirection(world, pos, 5);
+                    	this.generatePalmRoots(world, pos, 5);
                     }
             	}
                 return true;
             }
-        }
-        else
-        {
+        } else {
         	return false;
         }
 	}
@@ -125,111 +109,117 @@ public class WorldGenCurvedPalmTree extends WorldGenPalmTree {
 	}
 	
 	private void createCurvedPalmWithDirection(World world, BlockPos pos, int dir) {
+		int[] heightForBranch = {world.rand.nextInt(3) + 2, world.rand.nextInt(3) + 2, world.rand.nextInt(3) + 2, world.rand.nextInt(1) + 2};
 		
-		int heightFBranch = world.rand.nextInt(3) + 2;
-		int heightSBranch = world.rand.nextInt(3) + 2;
-		int heightTBranch = world.rand.nextInt(3) + 2;
-		int heightMBranch = world.rand.nextInt(1) + 2;
-		
-		if(dir == 4) {
-			for(int i = 0; i < heightFBranch; i++) {
+		if(dir == 5) {
+			for(int i = 0; i < heightForBranch[0]; i++) {
 				this.setBlockAndNotifyAdequately(world, pos.up(i), WOOD);
 			}
-			for(int i2 = 0; i2 < heightSBranch; i2++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(i2).south(), WOOD);
+			for(int i2 = 0; i2 < heightForBranch[1]; i2++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(i2).east(), WOOD);
 			}
-			for(int i3 = 0; i3 < heightTBranch; i3++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(i3).south(2), WOOD);
+			for(int i3 = 0; i3 < heightForBranch[2]; i3++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(i3).east(2), WOOD);
 			}
-			for(int i4 = 0; i4 < heightMBranch; i4++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(i4).south(3), WOOD);
+			for(int i4 = 0; i4 < heightForBranch[3]; i4++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(i4).east(3), WOOD);
 			}
-			this.createPalmTop(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(heightMBranch).south(3), 1);
-		} else if(dir == 3) {
-			for(int i = 0; i < heightFBranch; i++) {
+			this.createPalmTop(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(heightForBranch[3]).east(3), 5);
+		} else if(dir == 4) {
+			for(int i = 0; i < heightForBranch[0]; i++) {
 				this.setBlockAndNotifyAdequately(world, pos.up(i), WOOD);
 			}
-			for(int i2 = 0; i2 < heightSBranch; i2++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(i2).east(), WOOD);
+			for(int i2 = 0; i2 < heightForBranch[1]; i2++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(i2).west(), WOOD);
 			}
-			for(int i3 = 0; i3 < heightTBranch; i3++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(i3).east(2), WOOD);
+			for(int i3 = 0; i3 < heightForBranch[2]; i3++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(i3).west(2), WOOD);
 			}
-			for(int i4 = 0; i4 < heightMBranch; i4++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(i4).east(3), WOOD);
+			for(int i4 = 0; i4 < heightForBranch[3]; i4++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(i4).west(3), WOOD);
 			}
-			this.createPalmTop(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(heightMBranch).east(3), 1);
+			this.createPalmTop(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(heightForBranch[3]).west(3), 4);
 		} else if(dir == 2) {
-			for(int i = 0; i < heightFBranch; i++) {
+			for(int i = 0; i < heightForBranch[0]; i++) {
 				this.setBlockAndNotifyAdequately(world, pos.up(i), WOOD);
 			}
-			for(int i2 = 0; i2 < heightSBranch; i2++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(i2).south(), WOOD);
+			for(int i2 = 0; i2 < heightForBranch[1]; i2++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(i2).north(), WOOD);
 			}
-			for(int i3 = 0; i3 < heightTBranch; i3++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(i3).south(2), WOOD);
+			for(int i3 = 0; i3 < heightForBranch[2]; i3++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(i3).north(2), WOOD);
 			}
-			for(int i4 = 0; i4 < heightMBranch; i4++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(i4).south(3), WOOD);
+			for(int i4 = 0; i4 < heightForBranch[3]; i4++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(i4).north(3), WOOD);
 			}
-			this.createPalmTop(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(heightMBranch).south(3), 1);
-		} else if(dir == 1) {
-			for(int i = 0; i < heightFBranch; i++) {
+			this.createPalmTop(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(heightForBranch[3]).north(3), 2);
+		} else if(dir == 3) {
+			for(int i = 0; i < heightForBranch[0]; i++) {
 				this.setBlockAndNotifyAdequately(world, pos.up(i), WOOD);
 			}
-			for(int i2 = 0; i2 < heightSBranch; i2++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(i2).east(), WOOD);
+			for(int i2 = 0; i2 < heightForBranch[1]; i2++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(i2).south(), WOOD);
 			}
-			for(int i3 = 0; i3 < heightTBranch; i3++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(i3).east(2), WOOD);
+			for(int i3 = 0; i3 < heightForBranch[2]; i3++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(i3).south(2), WOOD);
 			}
-			for(int i4 = 0; i4 < heightMBranch; i4++) {
-				this.setBlockAndNotifyAdequately(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(i4).east(3), WOOD);
+			for(int i4 = 0; i4 < heightForBranch[3]; i4++) {
+				this.setBlockAndNotifyAdequately(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(i4).south(3), WOOD);
 			}
-			this.createPalmTop(world, pos.up(heightFBranch).up(heightSBranch).up(heightTBranch).up(heightMBranch).east(3), 1);
-		} else {
-			this.createCurvedPalmWithDirection(world, pos, world.rand.nextInt(4));
+			this.createPalmTop(world, pos.up(heightForBranch[0]).up(heightForBranch[1]).up(heightForBranch[2]).up(heightForBranch[3]).south(3), 3);
 		}
 	}
 	
-	private int pickDirection(World world, BlockPos pos, int direction) {
-		BlockPos sPos = pos;
-        IBlockState stateS = world.getBlockState(sPos.south());
-        IBlockState stateW = world.getBlockState(sPos.west());
-        IBlockState stateE = world.getBlockState(sPos.east());
-        IBlockState stateN = world.getBlockState(sPos.north());
+	private void generatePalmRoots(World world, BlockPos pos, int direction) {
+        IBlockState[] directionState = {
+        	world.getBlockState(pos.north()), 
+        	world.getBlockState(pos.south()), 
+        	world.getBlockState(pos.west()), 						
+        	world.getBlockState(pos.east())
+        };
+        Random rand = world.rand;
+        if(rand.nextInt(3) != 0) return;
         
-        int dir = direction;
-        
-        if(dir == 1) {
-        	if (canGrowInto(stateS) && canGrowInto(stateW)) {
-        		return 1;
-            } else {
-            	dir = 0;
-            }
-        } else if(dir == 2) {
-        	if(canGrowInto(stateE) && canGrowInto(stateN)) {
-            	return 2;
-            } else {
-            	dir = 0;
-            }
-        } else if(dir == 3) {
-        	if(canGrowInto(stateW) && canGrowInto(stateN)) {
-            	return 3;
-            } else {
-            	dir = 0;
-            }
+        if(direction == 2) {
+        	if(canGrowInto(directionState[1])) {
+        		if(canGrowInto(directionState[3])) {
+        			this.setBlockAndNotifyAdequately(world, pos.east(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.south(), BARK);
+        		} else if(canGrowInto(directionState[2])) {
+        			this.setBlockAndNotifyAdequately(world, pos.west(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.south(), BARK);
+        		} else { return; }
+        	} else { return; }
+        } else if(direction == 3) {
+        	if(canGrowInto(directionState[0])) {
+        		if(canGrowInto(directionState[3])) {
+        			this.setBlockAndNotifyAdequately(world, pos.east(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.north(), BARK);
+        		} else if(canGrowInto(directionState[2])){
+        			this.setBlockAndNotifyAdequately(world, pos.west(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.north(), BARK);
+        		} else { return; }
+        	} else { return; }
+        } else if(direction == 4) {
+        	if(canGrowInto(directionState[3])) {
+        		if(canGrowInto(directionState[0])) {
+        			this.setBlockAndNotifyAdequately(world, pos.north(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.east(), BARK);
+        		} else if(canGrowInto(directionState[1])){
+        			this.setBlockAndNotifyAdequately(world, pos.south(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.east(), BARK);
+        		} else { return; }
+        	} else { return; }
+        } else if(direction == 5) {
+        	if(canGrowInto(directionState[2])) {
+        		if(canGrowInto(directionState[0])) {
+        			this.setBlockAndNotifyAdequately(world, pos.north(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.west(), BARK);
+        		} else if(canGrowInto(directionState[1])){
+        			this.setBlockAndNotifyAdequately(world, pos.south(), BARK);
+        			this.setBlockAndNotifyAdequately(world, pos.west(), BARK);
+        		} else { return; }
+        	} else { return; }
         }
-        else if(dir == 4) {
-        	if(canGrowInto(stateE) && canGrowInto(stateS)) {
-            	return 4;
-            } else {
-            	dir = 0;
-            }
-        } else {
-        	return 0;
-        }
-        return 0;
 	}
-	
 }

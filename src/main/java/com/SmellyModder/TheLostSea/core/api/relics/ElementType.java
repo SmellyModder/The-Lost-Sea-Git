@@ -12,7 +12,6 @@ public enum ElementType {
 	WIND("Wind", "Light", "Electric"),
 	RIFT("Rift", "Rift");
 	
-	
 	private String elementID;
 	private String weakness;
 	private String riftStance;

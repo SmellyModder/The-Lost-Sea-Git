@@ -55,7 +55,7 @@ public class ItemToolDisc extends ItemTool {
 		private ItemStack disc;
 		
 		private final EntityDisc.TypeOfDisc type;
-		 private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.PRISMARINE);
+		private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.PRISMARINE);
 		
 		public ItemToolDisc(String name, int damageRanged, float speed, EntityDisc.TypeOfDisc typeIn, SoundEvent event, Item.ToolMaterial material) {
 			super(material, EFFECTIVE_ON);
@@ -72,8 +72,7 @@ public class ItemToolDisc extends ItemTool {
 	        TLSItems.ITEMS.add(this);
 		}
 		
-		public EnumAction getItemUseAction(ItemStack stack)
-	    {
+		public final EnumAction getItemUseAction(ItemStack stack) {
 	        return EnumAction.BOW;
 	    }
 		
@@ -92,62 +91,42 @@ public class ItemToolDisc extends ItemTool {
 		@Override
 		public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 			ItemStack stack = playerIn.getHeldItem(handIn);
-			
-			
-			
 			worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, events, SoundCategory.BLOCKS, 0.8F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			if(!playerIn.capabilities.isCreativeMode)
 				shot++;
-				
 			
-			if(shot == 1) 
-			{
-				playerIn.getCooldownTracker().setCooldown(this, rechargeBase() + rechargeBaseII() + rechargeBaseIII());
-			}
-			if(shot == 2) 
-			{
-				playerIn.getCooldownTracker().setCooldown(this, rechargeBase() + rechargeBaseII() + rechargeBaseIII() + 5);
-			}
-			if(shot >= 3 || shot == 3) 
-			{
-				playerIn.getCooldownTracker().setCooldown(this, rechargeBase() + rechargeBaseII() + rechargeBaseIII() + 340);
-				shot -= 3;
-			}
-			if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.RECHARGE, stack) > 0) 
-			{
-	           shouldLowerRecharge = true;
-	        }
-			if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.RECHARGE, stack) > 1) 
-			{
-	           shouldLowerRechargeII = true;
-	        }
-			if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.RECHARGE, stack) > 2) 
-			{
-	           shouldLowerRechargeIII = true;
-	        }
+				if(shot == 1) {
+					playerIn.getCooldownTracker().setCooldown(this, rechargeBase() + rechargeBaseII() + rechargeBaseIII());
+				}
+				if(shot == 2) {
+					playerIn.getCooldownTracker().setCooldown(this, rechargeBase() + rechargeBaseII() + rechargeBaseIII() + 5);
+				}	
+				if(shot >= 3 || shot == 3) {
+					playerIn.getCooldownTracker().setCooldown(this, rechargeBase() + rechargeBaseII() + rechargeBaseIII() + 340);
+					shot -= 3;
+				}
+				if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.RECHARGE, stack) > 0) {
+					shouldLowerRecharge = true;
+				}
+				if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.RECHARGE, stack) > 1) {
+					shouldLowerRechargeII = true;
+				}
+				if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.RECHARGE, stack) > 2) {
+					shouldLowerRechargeIII = true;
+				}
 			
-			if(!worldIn.isRemote) {
-				
-				EntityDisc disc = new EntityDisc(worldIn, playerIn);
-	            disc.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, speed, 1.0F);
-	            worldIn.spawnEntity(disc);
-	            disc.setDiscType(this.type);
-	            if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0)
-	            {
-	            	disc.setFire(100);
-	            }
-	            if (EnchantmentHelper.getEnchantmentLevel(TLSEnchants.ZEUS_THROWER, stack) > 0)
-	            {
-	            	disc.createBolts = true;
-	            }
-	            if(EnchantmentHelper.getEnchantmentLevel(TLSEnchants.DOUBLE_TROUBLE, stack) > 0) {
-	            	worldIn.spawnEntity(disc);
-	            }
-	            
-	            
-			}
-			
-			//playerIn.setActiveHand(handIn);
+				if(!worldIn.isRemote) {
+					EntityDisc disc = new EntityDisc(worldIn, playerIn);
+					disc.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, speed, 1.0F);
+					worldIn.spawnEntity(disc);
+					disc.setDiscType(this.type);
+					if (EnchantmentHelper.getEnchantmentLevel(Enchantments.FLAME, stack) > 0) {
+						disc.setFire(100);
+					}
+					if (EnchantmentHelper.getEnchantmentLevel(TLSEnchants.ZEUS_THROWER, stack) > 0) {
+						disc.createBolts = true;
+					}
+				}
 			playerIn.addStat(StatList.getObjectUseStats(this));
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
 		}
@@ -160,19 +139,14 @@ public class ItemToolDisc extends ItemTool {
 					return EnumActionResult.SUCCESS;
 				}
 			}
-			
 			return EnumActionResult.PASS;
 		}
 		
-		public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
-	    {
+		public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
 	        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
-
-	        if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
-	        {
+	        if (equipmentSlot == EntityEquipmentSlot.MAINHAND) {
 	            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 0.0D, 0));
 	        }
-
 	        return multimap;
 	    }
 		
@@ -183,15 +157,12 @@ public class ItemToolDisc extends ItemTool {
 			list.add("Speed: " + speed);
 		}
 		
-		/**
-	     * Return the enchantability factor of the item, most of the time is based on material.
-	     */
-	    public int getItemEnchantability()
-	    {
+	    public final int getItemEnchantability() {
 	        return 9;
 	    }
 	    
-	    private static class DispenserBehavior extends BehaviorProjectileDispense {
+        private static class DispenserBehavior extends BehaviorProjectileDispense {
+	    	
 	        @Override
 	        protected IProjectile getProjectileEntity(World world, IPosition pos, ItemStack stack) {
 	        	EntityDisc cap = new EntityDisc(world, pos.getX(), pos.getY(), pos.getZ());
@@ -214,20 +185,19 @@ public class ItemToolDisc extends ItemTool {
 		        	cap.setDiscType(EntityDisc.TypeOfDisc.IRON);
 		        }
 	            return cap;
-	    }
+	        }
 	    
-	    @Override
-	    public ItemStack dispenseStack(IBlockSource source, ItemStack stack)
-	    {
-	        World world = source.getWorld();
-	        IPosition iposition = BlockDispenser.getDispensePosition(source);
-	        EnumFacing enumfacing = (EnumFacing)source.getBlockState().getValue(BlockDispenser.FACING);
-	        IProjectile iprojectile = this.getProjectileEntity(world, iposition, stack);
-	        iprojectile.shoot((double)enumfacing.getXOffset(), (double)((float)enumfacing.getYOffset() + 0.1F), (double)enumfacing.getZOffset(), this.getProjectileVelocity(), this.getProjectileInaccuracy());
-	        world.spawnEntity((Entity)iprojectile);
-	  
-	        stack.shrink(1);
-	        return stack;
-	    	}
-	    }
+	        @Override
+	        public ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
+	        	World world = source.getWorld();
+	        	IPosition iposition = BlockDispenser.getDispensePosition(source);
+	        	EnumFacing enumfacing = (EnumFacing)source.getBlockState().getValue(BlockDispenser.FACING);
+	        	IProjectile iprojectile = this.getProjectileEntity(world, iposition, stack);
+	        	
+	        	iprojectile.shoot((double)enumfacing.getXOffset(), (double)((float)enumfacing.getYOffset() + 0.1F), (double)enumfacing.getZOffset(), this.getProjectileVelocity(), this.getProjectileInaccuracy());
+	        	world.spawnEntity((Entity)iprojectile);
+	        	stack.shrink(1);
+	        	return stack;
+	        }
+        }
 }

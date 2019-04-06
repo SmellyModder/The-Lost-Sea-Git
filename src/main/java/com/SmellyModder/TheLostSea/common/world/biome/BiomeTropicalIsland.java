@@ -43,7 +43,7 @@ public class BiomeTropicalIsland extends Biome {
 		} else if(rand.nextInt(2) == 1) {
 			return new WorldGenPalmTree(false);
 		} else {
-			return new WorldGenCurvedPalmTree(false, rand.nextInt(4));
+			return new WorldGenCurvedPalmTree(false);
 		}
 	}
 

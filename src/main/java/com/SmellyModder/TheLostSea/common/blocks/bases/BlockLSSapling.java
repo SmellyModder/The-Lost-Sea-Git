@@ -82,7 +82,7 @@ public class BlockLSSapling extends BlockBush implements IGrowable {
 		 } else if(TerrainGen.saplingGrowTree(world, rand, pos)) {
 			 WorldGenerator generator = this.saplingGenerator;
 			 if(isPalm) {
-				 generator = world.rand.nextInt(6) == 1 ? new WorldGenCurvedPalmTree(false, world.rand.nextInt(4)) : this.saplingGenerator;
+				 generator = world.rand.nextInt(1) == 0 ? new WorldGenCurvedPalmTree(false) : this.saplingGenerator;
 			 }
 			 world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
 			 

@@ -169,10 +169,13 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	   	IBlockState iblockstate = worldIn.getBlockState(pos);
 	   	return iblockstate.getBlock() == TLSBlocks.PALM_LOG;
 	}
-	 
+	
+	@Nullable
 	private void dropBlock(World worldIn, BlockPos pos, IBlockState state) {
 	    worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-	    this.dropBlockAsItem(worldIn, pos, state, 0);
+	    if(((Integer)state.getValue(AGE)).intValue() == 2) {
+	    	this.dropBlockAsItem(worldIn, pos, state, 0);
+	    }
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -194,11 +197,4 @@ public class BlockCoconut extends BlockHorizontal implements IGrowable {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] {FACING, AGE});
 	}
-	
-	public static boolean canFallThrough(IBlockState state) {
-        Block block = state.getBlock();
-        Material material = state.getMaterial();
-        return block == Blocks.FIRE || material == Material.AIR || material == Material.WATER || material == Material.LAVA;
-    }
-	
 }

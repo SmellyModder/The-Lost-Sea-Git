@@ -37,15 +37,15 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote) {
             if (type == 0) {
-            	if(!this.checkLeaves(worldIn, pos, 0)) {
+            	if(!this.checkLeaves(worldIn, pos, 0, true)) {
             		this.destroy(worldIn, pos);
             	}
             } else if(type == 1) {
-            	if(!this.checkLeaves(worldIn, pos, 1)) {
+            	if(!this.checkLeaves(worldIn, pos, 1, false)) {
             		this.destroy(worldIn, pos);
             	}
             } else if(type == 2) {
-            	if(!this.checkLeaves(worldIn, pos, -1)) {
+            	if(!this.checkLeaves(worldIn, pos, -1, false)) {
             		this.destroy(worldIn, pos);
             	}
             }
@@ -96,9 +96,10 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
         worldIn.setBlockToAir(pos);
     }
     
-    protected boolean checkLeaves(World world, BlockPos pos, int lvl) {
-        return
-        		world.getBlockState(pos.add(1, lvl, 0)).getBlock() instanceof ISpecialLeaf
+    protected boolean checkLeaves(World world, BlockPos pos, int lvl, boolean doNotCheckMiddle) {
+    	if(doNotCheckMiddle) {
+    		return
+            	world.getBlockState(pos.add(1, lvl, 0)).getBlock() instanceof ISpecialLeaf
                 ||
                 world.getBlockState(pos.add(-1, lvl, 0)).getBlock() instanceof ISpecialLeaf
                 ||
@@ -112,7 +113,26 @@ public class BlockAdvancedLeaves extends BlockBase implements ISpecialLeaf {
                 ||
                 world.getBlockState(pos.add(1, lvl, -1)).getBlock() instanceof ISpecialLeaf
                 ||
-                world.getBlockState(pos.add(-1, lvl, 1)).getBlock() instanceof ISpecialLeaf
-                ? true : false;
+                world.getBlockState(pos.add(-1, lvl, 1)).getBlock() instanceof ISpecialLeaf ? true : false;
+    	} else {
+    		return
+        		world.getBlockState(pos.add(1, lvl, 0)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(-1, lvl, 0)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(0, lvl, 1)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(0, lvl, 0)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(0, lvl, -1)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(1, lvl, 1)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(-1, lvl, -1)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(1, lvl, -1)).getBlock() instanceof ISpecialLeaf
+                ||
+                world.getBlockState(pos.add(-1, lvl, 1)).getBlock() instanceof ISpecialLeaf ? true : false;
+    	}
     }
 }

@@ -1,5 +1,5 @@
 {
-    "parent": "thelostsea:item/cobaltbow",
+    "parent": "thelostsea:item/neptunum_bow",
     "textures": {
         "layer0": "thelostsea:items/tools/neptunum_bow_pulling_2"
     }
