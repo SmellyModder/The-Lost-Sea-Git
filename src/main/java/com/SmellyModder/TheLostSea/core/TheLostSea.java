@@ -10,7 +10,6 @@ import com.SmellyModder.TheLostSea.common.world.dimension.feature.WorldGenPalmTr
 import com.SmellyModder.TheLostSea.common.world.gen.chunk.IslandTerrainHandler;
 import com.SmellyModder.TheLostSea.common.world.overworld.handler.LSVillageHandler;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
-import com.SmellyModder.TheLostSea.core.api.capabilites.handlers.WorldDataHandler;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.mob_events.EyeDropEvent;
 import com.SmellyModder.TheLostSea.core.mob_events.FinDropEvent;
@@ -70,16 +69,18 @@ public class TheLostSea {
 		Config.load(event);
 		RegistryHandler.preInitRegistries();
 		CapabilityHandler.register();
-		WorldDataHandler.register();
 		
+		//Coins
 		NETWORK.registerMessage(MessageRequestCoins.HandleRequestCoins.class, MessageRequestCoins.class, 0, Side.SERVER);
 		NETWORK.registerMessage(MessageCoins.HandleMessageCoins.class, MessageCoins.class, 1, Side.CLIENT);
 		NETWORK.registerMessage(MessageSetCoins.HandleMessageSetCoins.class, MessageSetCoins.class, 2, Side.SERVER);
 		
+		//Npc
 		NETWORK.registerMessage(MessageRequestVerseN.HandleRequestVerse.class, MessageRequestVerseN.class, 3, Side.SERVER);
 		NETWORK.registerMessage(MessageVerseN.HandleMessageVerse.class, MessageVerseN.class, 4, Side.CLIENT);
 		NETWORK.registerMessage(MessageSetVerse.HandleMessageSetVerse.class, MessageSetVerse.class, 5, Side.SERVER);
 		
+		//Shop
 		NETWORK.registerMessage(MessageGiveItems.HandleGiveItems.class, MessageGiveItems.class, 6, Side.SERVER);
 		NETWORK.registerMessage(MessageTakeItems.HandleTakeItems.class, MessageTakeItems.class, 7, Side.SERVER);
 	}
@@ -95,7 +96,6 @@ public class TheLostSea {
 		MinecraftForge.EVENT_BUS.register(new FinDropEvent());
 		MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
 		MinecraftForge.EVENT_BUS.register(new PlayerBreakEvents());
-		MinecraftForge.EVENT_BUS.register(new WorldDataHandler());
 	    MinecraftForge.EVENT_BUS.register(new CoinEventHandler());
 	    
 	    LSVillageHandler.initNurmShop();

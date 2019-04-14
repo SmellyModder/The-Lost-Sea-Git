@@ -6,15 +6,11 @@ import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
 import com.SmellyModder.TheLostSea.common.init.TLSItems;
 import com.SmellyModder.TheLostSea.common.init.TLSSounds;
 import com.SmellyModder.TheLostSea.core.TheLostSea;
-import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
-import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
 import com.SmellyModder.TheLostSea.core.packets.MessageRequestCoins;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IStepGetterN;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.StepProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 
@@ -53,10 +49,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 
 public class CoinEventHandler{
-
 	@SubscribeEvent 
-	public void onPlayerLogsIn(PlayerLoggedInEvent event) 
-	{ 
+	public void onPlayerLogsIn(PlayerLoggedInEvent event) { 
 		EntityPlayer player = event.player; 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
@@ -74,7 +68,6 @@ public class CoinEventHandler{
 		ICurrency coins2 = player.getCapability(CoinProvider.COIN_CAP, null); 
 
 		if(ID == -9) {
-
 			if(player instanceof EntityPlayerMP) {
 				TheLostSea.NETWORK.sendTo(new MessageCoins(coins2.getCoins()), (EntityPlayerMP) player);
 			}
@@ -82,8 +75,7 @@ public class CoinEventHandler{
 	}
 	
 	@SubscribeEvent 
-	public void onPlayerClone(PlayerEvent.Clone event) 
-	{ 
+	public void onPlayerClone(PlayerEvent.Clone event) { 
 		EntityPlayer player = event.getEntityPlayer(); 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		ICurrency coins_ad = event.getOriginal().getCapability(CoinProvider.COIN_CAP, null); 
@@ -92,12 +84,10 @@ public class CoinEventHandler{
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		IDialogueNurm dataNPC_AD = event.getOriginal().getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		dataNPC.setVerse(dataNPC_AD.getVerse());
-		
 	}
 	
 	@SubscribeEvent 
-	public void onPlayerTick(PlayerTickEvent event) 
-	{ 
+	public void onPlayerTick(PlayerTickEvent event) { 
 		EntityPlayer player = event.player; 
 		ICurrency coins = player.getCapability(CoinProvider.COIN_CAP, null); 
 		IDialogueNurm dataNPC = player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
@@ -106,7 +96,6 @@ public class CoinEventHandler{
 		if(coins.getCoins() > 9999999) {
 			coins.set(9999999);
 		}
-		
 		if(player instanceof EntityPlayerMP) {
 			TheLostSea.NETWORK.sendTo(new MessageCoins(coins.getCoins()), (EntityPlayerMP) player);
 		}

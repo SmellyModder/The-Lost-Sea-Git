@@ -24,9 +24,6 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class PlayerBreakEvents {
 	
-	@SubscribeEvent
-	public void registerHarvestDrops(HarvestDropsEvent event) {}
-	
 	public static void doBlockDrop(World world, int x, int y, int z, ItemStack stack) {
 		Random rand = world.rand;
 		if (!world.isRemote && world.getGameRules().getBoolean("doTileDrops")) {

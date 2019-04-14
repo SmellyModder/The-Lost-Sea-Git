@@ -1,7 +1,7 @@
 package com.SmellyModder.TheLostSea.core.packets.npc;
 
 import com.SmellyModder.TheLostSea.core.packets.MessageCoins;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.DialogueProviderN;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 
 import io.netty.buffer.ByteBuf;

@@ -15,18 +15,14 @@
                 {
                     "conditions": [],
                     "type": "item",
-                    "name": "minecraft:bone",
+                    "name": "minecraft:book",
                     "functions": [
                         {
                             "conditions": [],
-                            "function": "set_count",
-                            "count": {
-                                "min": 12,
-                                "max": 16
-                            }
+                            "function": "enchant_randomly"
                         }
                     ],
-                    "weight": 20,
+                    "weight": 6,
                     "quality": 0
                 },
                 {

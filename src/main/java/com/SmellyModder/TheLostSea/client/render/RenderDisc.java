@@ -6,7 +6,7 @@ import com.SmellyModder.TheLostSea.client.model.ModelDisc;
 import com.SmellyModder.TheLostSea.client.model.ModelJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.passive.EntityJellyfish;
 import com.SmellyModder.TheLostSea.common.entity.projectiles.EntityDisc;
-import com.SmellyModder.TheLostSea.core.math.LSMathHelper;
+import com.SmellyModder.TheLostSea.core.util.LSMathHelper;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
 import net.minecraft.client.model.ModelBook;

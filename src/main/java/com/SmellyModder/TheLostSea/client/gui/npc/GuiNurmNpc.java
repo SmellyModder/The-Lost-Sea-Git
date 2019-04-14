@@ -25,9 +25,9 @@ import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.shop.MessageGiveItems;
 import com.SmellyModder.TheLostSea.core.packets.npc.shop.MessageTakeItems;
 import com.SmellyModder.TheLostSea.core.util.Reference;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller.DialogueControllerN;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.DialogueControllerN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.IDialogueNurm;
 import com.SmellyModder.TheLostSea.core.util.player.CoinProvider;
 import com.SmellyModder.TheLostSea.core.util.player.shoputil.ICurrency;
 
@@ -75,7 +75,6 @@ import scala.reflect.internal.Trees.This;
 
 @SideOnly(Side.CLIENT)
 public class GuiNurmNpc extends GuiScreen {
-	
 	EntityPlayer player;
 	Minecraft mine = Minecraft.getMinecraft();
 	ScaledResolution resolution = new ScaledResolution(mine);
@@ -100,7 +99,7 @@ public class GuiNurmNpc extends GuiScreen {
 	private String description;
 	private int amount;
 	private static final ResourceLocation BG = new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png");
-	 
+	
 	/*
 	 * Buttons
 	 */
@@ -231,7 +230,6 @@ public class GuiNurmNpc extends GuiScreen {
 
         Keyboard.enableRepeatEvents(true);
         
-        
         this.NextDialougeButton.visible = false;
         
         this.ExitButton.visible = currGui == 0;
@@ -244,7 +242,7 @@ public class GuiNurmNpc extends GuiScreen {
 		this.NextDialougeButton.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 1 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 3 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 5 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 6 
 				|| dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 8 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 10 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 12 
 				|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 0 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 3
-						|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 5;
+				|| dialouge.getVerse() == 2 && currGui == 1 && currDialogue == 5;
 		
 		this.ResponeButton4.visible = dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 2 || dialouge.getVerse() == 0 && currGui == 1 && currDialogue == 4;
 		
@@ -284,15 +282,13 @@ public class GuiNurmNpc extends GuiScreen {
 		super.initGui();
 	}
 	
-	public boolean isInvEmpty(EntityPlayer player, ItemStack stackIn)
-    {
+	public boolean isInvEmpty(EntityPlayer player, ItemStack stackIn) {
         return player.inventory.add(-1, stackIn);
     }
 	
 	public boolean invFull(EntityPlayer p) {          
 	    return p.inventory.mainInventory.size() == -1;
 	}
-
 	
 	protected void actionPerformed(GuiButton parButton) {	
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
@@ -454,14 +450,11 @@ public class GuiNurmNpc extends GuiScreen {
 		return i * 36;
 	}
 	
-	private ItemStack findItem(EntityPlayer player, Item item)
-    {
-         for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
-         {
+	private ItemStack findItem(EntityPlayer player, Item item) {
+         for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
              ItemStack itemstack = player.inventory.getStackInSlot(i);
 
-             if (itemstack.getItem() == item)
-             {
+             if (itemstack.getItem() == item) {
                  return itemstack;
              }
          }
@@ -474,8 +467,7 @@ public class GuiNurmNpc extends GuiScreen {
 	}
 	
 	@Override
-	public void updateScreen() 
-	{
+	public void updateScreen() {
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
 		this.ExitButton.visible = currGui == 0;
 		this.TalkButton.visible = currGui == 0;
@@ -546,8 +538,7 @@ public class GuiNurmNpc extends GuiScreen {
 	}
 	
 	@Override
-	public void drawScreen(int parWidth, int parHeight, float p_73863_3_)
-	{
+	public void drawScreen(int parWidth, int parHeight, float p_73863_3_) {
 		int offsetFromScreenLeft = (width - WIDTH) / 2;	
 		int y = (this.height - HEIGHT) / 2;
 		IDialogueNurm dialouge = this.player.getCapability(DialogueProviderN.DIALOGUE_CAP, null); 
@@ -597,9 +588,7 @@ public class GuiNurmNpc extends GuiScreen {
         		else {
         			this.fontRenderer.drawString(String.valueOf(this.amount), offsetFromScreenLeft + (int)134, y + 59, 4210752);
         		}
-        		
         		mc.getRenderItem().renderItemIntoGUI(new ItemStack(this.currItem), offsetFromScreenLeft + (int)51, y + 53);
-        		
     		}
     	}
     	
@@ -733,139 +722,110 @@ public class GuiNurmNpc extends GuiScreen {
    			 this.fontRenderer.drawString(TextFormatting.BOLD + "Inventory Slots Full!", offsetFromScreenLeft + 202, y + 180, 16711680, true);
     		}
     	}
-    	
-    	
 	}
 	
 	protected void drawDialouge() {
-		
 		this.drawGradientRect(this.width / 2 - 0 / 2 - 185, this.height / 2 + 0 * 12 - 10, this.width / 2 + 0 / 2 + 185, this.height / 2 + 0 * 10 + 30, 0x66000000, 0x66000000);
-		
 		int offsetFromScreenLeft = (width - WIDTH) / 2;	
 		int y = (this.height - HEIGHT) / 2;
 		this.fontRenderer.drawString(TextFormatting.ITALIC + "Nurm", offsetFromScreenLeft - 53, y + 107, 5020550, true);
 	}
 	
 	static class NextDialougeButton extends GuiButton{
-        public NextDialougeButton(int parButtonId, int parPosX, int parPosY)
-        {
+        public NextDialougeButton(int parButtonId, int parPosX, int parPosY) {
             super(parButtonId, parPosX, parPosY, 23, 13, "");
         }
         
         @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         	if(visible) {
-    	 		  boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
+        		boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
     	 		  
-    	 		  GlStateManager.pushMatrix();
+    	 		GlStateManager.pushMatrix();
 
-    	 		  int i = 2;
-                  int j = 11;
-    	 		  GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-    	 		  mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png"));
+    	 		int i = 2;
+                int j = 11;
+                GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+    	 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/npc_nurm_starter_gui.png"));
     	 		  
-    	 		 final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
-    	 		 final double timePassed = time - timeBefore;
+    	 		final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
+    	 		final double timePassed = time - timeBefore;
 
     	 		timeBefore = time;
-    	 		
-    	 		
     	 		
     	 		if (nextAnimation < 1000)
     	 		{
     	 			nextAnimation += timePassed;
-    	 		}
-    	 		else
-    	 		{
+    	 		} else {
     	 			nextAnimation = 0.0;
     	 		}
-
     	 		final double anim = nextAnimation;
 
-    	 		if (nextAnimation < 500.0)
-    	 		{
+    	 		if (nextAnimation < 500.0) {
     	 			GlStateManager.translate(0, anim / 500.0, 0);
-    	 		}
-    	 		else if (nextAnimation >= 500.0)
-    	 		{
+    	 		} else if (nextAnimation >= 500.0) {
     	 			GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
     	 		}
-    	 		
-    	 		
                 this.drawTexturedModalRect(this.x, this.y, i, j, 11, 8);
                 GlStateManager.popMatrix();
         	}
         }
         
         @Override
-        public void playPressSound(SoundHandler soundHandlerIn) {
-        }
+        public void playPressSound(SoundHandler soundHandlerIn) {}
         
         @Override
-        public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
-        {
+        public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
            return this.enabled && this.visible;
         }
 	}
 	
 	static class ShopButton extends GuiButton {
-        public ShopButton(int parButtonId, int parPosX, int parPosY)
-        {
+        public ShopButton(int parButtonId, int parPosX, int parPosY) {
             super(parButtonId, parPosX, parPosY, 70, 20, "");
         }
         
         @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         	if(visible) {
-  	 		    boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
+        		boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
 
         		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         		mc.getTextureManager().bindTexture(BG);
         		
-        		 GlStateManager.enableBlend();
-                 GlStateManager.disableAlpha();
-                 GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        		 this.drawTexturedModalRect(this.x + 10, this.y - 30, 0, 80, 60, 45);
-        		 GlStateManager.disableBlend();
-        		 GlStateManager.enableAlpha();
-        		
+        		GlStateManager.enableBlend();
+                GlStateManager.disableAlpha();
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        		this.drawTexturedModalRect(this.x + 10, this.y - 30, 0, 80, 60, 45);
+        		GlStateManager.disableBlend();
+        		GlStateManager.enableAlpha();
         		
         		if(isButtonPressed) {
-        		 final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
-       	 		 final double timePassed = time - timeBefore;
+        			final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
+       	 		 	final double timePassed = time - timeBefore;
 
-       	 		 timeBefore = time;
+       	 		 	timeBefore = time;
 
-       	 		 if (nextAnimation < 1000)
-       	 		 {
-       	 			nextAnimation += timePassed;
-       	 		 }
-       	 		 else
-       	 		 {
-       	 			nextAnimation = 0.0;
-       	 		 }
+       	 		 	if (nextAnimation < 1000) {
+       	 		 		nextAnimation += timePassed;
+       	 		 	} else {
+       	 		 		nextAnimation = 0.0;
+       	 		 	}
        	 		
-       	 		final double anim = nextAnimation;
+       	 		 	final double anim = nextAnimation;
        	 		
-       	 		if (nextAnimation < 500.0)
-       	 		{
-       	 			//GlStateManager.translate(0, anim / 500.0, 0);
-       	 		}
-       	 		else if (nextAnimation >= 500.0)
-       	 		{
-       	 			//GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
-       	 		}
-                    this.drawTexturedModalRect(this.x + 55, this.y + 2.5F, 2, 11, 11, 8);
+       	 		 	this.drawTexturedModalRect(this.x + 55, this.y + 2.5F, 2, 11, 11, 8);
         		}
         	}
         }
 	}
 	
 	static class TalkButton extends GuiButton {
-        public TalkButton(int parButtonId, int parPosX, int parPosY)
-        {
+		
+        public TalkButton(int parButtonId, int parPosX, int parPosY) {
             super(parButtonId, parPosX, parPosY, 70, 20, "");
         }
+        
         @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         	if(visible) {
@@ -881,31 +841,20 @@ public class GuiNurmNpc extends GuiScreen {
         		 GlStateManager.enableAlpha();
         		
         		if(isButtonPressed) {
-                	
-        		 final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
-       	 		 final double timePassed = time - timeBefore;
+        			
+        			final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
+       	 		 	final double timePassed = time - timeBefore;
 
-       	 		 timeBefore = time;
+       	 		 	timeBefore = time;
 
-       	 		 if (nextAnimation < 1000)
-       	 		 {
-       	 			nextAnimation += timePassed;
-       	 		 }
-       	 		 else
-       	 		 {
-       	 			nextAnimation = 0.0;
-       	 		 }
+       	 		 	if (nextAnimation < 1000) {
+       	 		 		nextAnimation += timePassed;
+       	 		 	} else {
+       	 		 		nextAnimation = 0.0;
+       	 		 	}
        	 		
-       	 		final double anim = nextAnimation;
-       	 		
-       	 		if (nextAnimation < 500.0)
-       	 		{
-       	 			//GlStateManager.translate(0, anim / 500.0, 0);
-       	 		}
-       	 		else if (nextAnimation >= 500.0)
-       	 		{
-       	 			//GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
-       	 		}
+       	 		 	final double anim = nextAnimation;
+       	 		 	
                     this.drawTexturedModalRect(this.x + 55, this.y + 2.5F, 2, 11, 11, 8);
         		}
         	}
@@ -913,10 +862,12 @@ public class GuiNurmNpc extends GuiScreen {
 	}
 	
 	static class ExitButton extends GuiButton {
-        public ExitButton(int parButtonId, int parPosX, int parPosY)
-        {
+		
+        public ExitButton(int parButtonId, int parPosX, int parPosY) {
             super(parButtonId, parPosX, parPosY, 70, 20, "");
-        } @Override
+        }
+        
+        @Override
         public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         	if(visible) {
   	 		    boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
@@ -932,96 +883,76 @@ public class GuiNurmNpc extends GuiScreen {
         		
         		
         		if(isButtonPressed) {
-        			
+        			final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
+       	 		 	final double timePassed = time - timeBefore;
 
-        		
-        		 final double time = (Sys.getTime() * 700) / Sys.getTimerResolution();
-       	 		 final double timePassed = time - timeBefore;
+       	 		 	timeBefore = time;
 
-       	 		 timeBefore = time;
-
-       	 		 if (nextAnimation < 1000)
-       	 		 {
-       	 			nextAnimation += timePassed;
-       	 		 }
-       	 		 else
-       	 		 {
-       	 			nextAnimation = 0.0;
-       	 		 }
+       	 		 	if (nextAnimation < 1000) {
+       	 		 		nextAnimation += timePassed;
+       	 		 	} else {
+       	 		 		nextAnimation = 0.0;
+       	 		 	}
        	 		
-       	 		final double anim = nextAnimation;
-       	 		
-       	 		if (nextAnimation < 500.0)
-       	 		{
-       	 			//GlStateManager.translate(0, anim / 500.0, 0);
-       	 		}
-       	 		else if (nextAnimation >= 500.0)
-       	 		{
-       	 			//GlStateManager.translate(0, -((anim - 500.0) / 500.0), 0);
-       	 		}
+       	 		 	final double anim = nextAnimation;
+       	 		 	
                     this.drawTexturedModalRect(this.x + 55, this.y + 2.5F, 2, 11, 11, 8);
         		}
         	}
         }
 	}
 	
-	protected boolean isEye(ItemStack stack)
-	{
+	protected boolean isEye(ItemStack stack) {
 	   return stack.getItem() instanceof ItemBase;
 	}
 	
-	private ItemStack findEye(EntityPlayer player)
-    {
-            for (int i = 0; i < player.inventory.getSizeInventory(); ++i)
-            {
-                ItemStack itemstack = player.inventory.getStackInSlot(i);
+	private ItemStack findEye(EntityPlayer player) {
+		for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
+			ItemStack itemstack = player.inventory.getStackInSlot(i);
 
-                if (this.isEye(itemstack))
-                {
-                    return itemstack;
-                }
+            if (this.isEye(itemstack)) {
+            	return itemstack;
             }
-            return ItemStack.EMPTY;
+        }
+		return ItemStack.EMPTY;
      }
 	
 	static class ResponseButton extends GuiButton {
-		
 		int width;
 		String text;
-		public ResponseButton(int parButtonId, int parPosX, int parPosY,int wordWidth, String text)
-        {
+		public ResponseButton(int parButtonId, int parPosX, int parPosY,int wordWidth, String text) {
             super(parButtonId, parPosX, parPosY, wordWidth, 20, "");
             width = wordWidth;
             this.text = text;
         }
+		
 		@Override
 		public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
 			if(visible) {
-			 boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
-    		 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-    		 mc.getTextureManager().bindTexture(BG);
+				boolean isButtonPressed = (mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height);
+				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				mc.getTextureManager().bindTexture(BG);
     		
-    		 int i = 80;
+				int i = 80;
     		 
-    		 if(isButtonPressed) {
-    			 this.drawTexturedModalRect(this.x, this.y - 30, 0, 157, width, 43);
-    		 } else {
-    			 GlStateManager.enableBlend();
-    			 GlStateManager.disableAlpha();
-    			 GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-    			 this.drawTexturedModalRect(this.x, this.y - 30, 0, 80, width, 43);
+				if(isButtonPressed) {
+					this.drawTexturedModalRect(this.x, this.y - 30, 0, 157, width, 43);
+				} else {
+					GlStateManager.enableBlend();
+					GlStateManager.disableAlpha();
+					GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+					this.drawTexturedModalRect(this.x, this.y - 30, 0, 80, width, 43);
     			 
-    			 GlStateManager.disableBlend();
-    		 	 GlStateManager.enableAlpha();
-    		 }
-    		 mc.fontRenderer.drawString(text, this.x + 3, this.y, 16777215, true);
-		}
-	  } 
+					GlStateManager.disableBlend();
+					GlStateManager.enableAlpha();
+				}
+				mc.fontRenderer.drawString(text, this.x + 3, this.y, 16777215, true);
+			}
+		} 
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public static class SaleButton extends GuiButton implements IShopButton {
-	
 		Item itemForSale;
 		int price;
 		String description;
@@ -1048,19 +979,15 @@ public class GuiNurmNpc extends GuiScreen {
 		}
 		
 		public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
-			if (this.visible)
-            {	
-				
+			if (this.visible) {	
 				mc.getRenderItem().renderItemAndEffectIntoGUI(new ItemStack(this.itemForSale), this.x, this.y);
-				
                 boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_buttons.png"));
                 int i = 42;
                 int j = 100;
 
-                if (flag)
-                {
+                if (flag) {
                     j -= 59;
                 }
                 
@@ -1074,69 +1001,54 @@ public class GuiNurmNpc extends GuiScreen {
 		}
 		
 		@Override
-		public void playPressSound(SoundHandler soundHandlerIn) {
-		}
+		public void playPressSound(SoundHandler soundHandlerIn) {}
 		
-		}
+	}
 	
 	@SideOnly(Side.CLIENT)
-    static class AmountArrow extends GuiButton
-    {
+    static class AmountArrow extends GuiButton {
             private final boolean isForward;
-
-            public AmountArrow(int buttonId, int x, int y, boolean isForwardIn)
-            {
+ 
+            public AmountArrow(int buttonId, int x, int y, boolean isForwardIn) {
                 super(buttonId, x, y, 23, 13, "");
                 this.isForward = isForwardIn;
             }
 
-            public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
-            {
-                if (this.visible)
-                {
+            public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+                if (this.visible) {
                     boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
                     GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                     mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_buttons.png"));
                     int i = 32;
                     int j = 2;
 
-                    if (flag)
-                    {
+                    if (flag) {
                         j += 19;
                     }
-
-                    if (this.isForward)
-                    {
+                    if (this.isForward) {
                         i += 23;
                     }
-
                     this.drawTexturedModalRect(this.x, this.y, i, j, 8, 17);
                 }
            }
-     }
+    }
 	
-	static class BuyButton extends GuiButton
-    {
+	static class BuyButton extends GuiButton {
         private final boolean isSell;
-
-        public BuyButton(int buttonId, int x, int y, boolean isSell)
-        {
+        public BuyButton(int buttonId, int x, int y, boolean isSell) {
             super(buttonId, x, y, 43, 20, "");
             this.isSell = isSell;
         }
 
-        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks)
-        {
-            if (this.visible)
-            {
+        public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+            if (this.visible) {
                 boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":textures/gui/npc/nurm/shop_buttons.png"));
                 int i = 0;
                 int j = 41;
 
-                if (flag)
-                {
+                if (flag) {
                     j += 20;
                 }
 
@@ -1146,8 +1058,7 @@ public class GuiNurmNpc extends GuiScreen {
                 
                 if(!this.isSell) {
                 	mc.fontRenderer.drawString("Buy", (float)((this.x + this.width / 2) - mc.fontRenderer.getStringWidth("Buy") / 2), this.y + (this.height - 8) / 2, 4210752, false);
-                }
-                else {
+                } else {
                 	mc.fontRenderer.drawString("Sell", (float)((this.x + this.width / 2) - mc.fontRenderer.getStringWidth("Buy") / 2), this.y + (this.height - 8) / 2, 4210752, false);
                 }
             }

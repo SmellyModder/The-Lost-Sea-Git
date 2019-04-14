@@ -1,11 +1,7 @@
-package com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.controller;
+package com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm;
 
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
-
-public class DialogueControllerN implements IDialogueNurm{
-
+public class DialogueControllerN implements IDialogueNurm {
 	private int verse = 0;
-	
 	public void subtractVerse(int verseID) {
 		this.verse -= verseID;
 	}
@@ -21,7 +17,4 @@ public class DialogueControllerN implements IDialogueNurm{
 	public int getVerse() {
 		return this.verse;
 	}
-
-	
-
 }

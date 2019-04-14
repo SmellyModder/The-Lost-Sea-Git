@@ -2,8 +2,8 @@ package com.SmellyModder.TheLostSea.core.packets;
 
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageRequestVerseN;
 import com.SmellyModder.TheLostSea.core.packets.npc.MessageVerseN;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.interfaces.IDialogueNurm;
-import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.provider.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.DialogueProviderN;
+import com.SmellyModder.TheLostSea.core.util.npc.dialogue.nurm.IDialogueNurm;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;

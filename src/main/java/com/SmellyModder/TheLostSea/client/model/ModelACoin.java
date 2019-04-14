@@ -12,7 +12,7 @@ import java.util.TimerTask;
 import org.lwjgl.opengl.GL11;
 
 import com.SmellyModder.TheLostSea.common.entity.coins.EntityAtlantisCoin;
-import com.SmellyModder.TheLostSea.core.math.LSMathHelper;
+import com.SmellyModder.TheLostSea.core.util.LSMathHelper;
 
 /**
  * ModelACoin - SmellyModder

@@ -1,4 +1,4 @@
-package com.SmellyModder.TheLostSea.core.math;
+package com.SmellyModder.TheLostSea.core.util;
 
 import java.util.Random;
 

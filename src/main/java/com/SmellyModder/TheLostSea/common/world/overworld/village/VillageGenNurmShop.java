@@ -1,18 +1,11 @@
 package com.SmellyModder.TheLostSea.common.world.overworld.village;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 import com.SmellyModder.TheLostSea.common.entity.npc.EntityNurm;
 import com.SmellyModder.TheLostSea.common.tileentity.rewards.TileEntityStarterChest;
 import com.SmellyModder.TheLostSea.core.api.LostSeaLootTables;
-import com.SmellyModder.TheLostSea.core.api.capabilites.IOverworldData;
-import com.SmellyModder.TheLostSea.core.api.capabilites.IWorldHolder;
-import com.SmellyModder.TheLostSea.core.api.capabilites.LostSeaWorldCapabilties;
-import com.SmellyModder.TheLostSea.core.api.capabilites.controllers.OverworldDataController;
 import com.SmellyModder.TheLostSea.core.config.Config;
 import com.SmellyModder.TheLostSea.core.util.Reference;
 
@@ -284,7 +277,6 @@ public class VillageGenNurmShop extends Village {
 		BlockPos blockpos = new BlockPos(this.getXWithOffset(9, 10), this.getYWithOffset(1), this.getZWithOffset(9, 10));
 		((BlockJukebox)juke).insertRecord(world, blockpos, juke.getDefaultState(), new ItemStack(Items.RECORD_CHIRP));
 		this.setBlockState(world, juke.getDefaultState().withProperty(BlockJukebox.HAS_RECORD, Boolean.valueOf(true)), 9, 1, 10, box);
-		
 		
 		/***
 		 * ###############
@@ -837,27 +829,9 @@ public class VillageGenNurmShop extends Village {
 	}
 	
 	protected IBlockState getTreasureBlocks(Random rand) {
-		int i = rand.nextInt(3);
-		IBlockState state;
-		switch(i) {
-			case 0:
-			default:
-			state = Blocks.DIAMOND_BLOCK.getDefaultState();
-			break;
-			
-			case 1:
-			state = Blocks.IRON_BLOCK.getDefaultState();
-			break;
-			
-			case 2:
-			state = Blocks.GOLD_BLOCK.getDefaultState();
-			break;
-			
-			case 3:
-			state = Blocks.LAPIS_BLOCK.getDefaultState();
-			break;
-		}
-		return state;
+		int i = rand.nextInt(4);
+		IBlockState[] states = {Blocks.DIAMOND_BLOCK.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.GOLD_BLOCK.getDefaultState(), Blocks.LAPIS_BLOCK.getDefaultState()};
+		return states[i];
 	}
 
 	public static class VillageManager implements IVillageCreationHandler {

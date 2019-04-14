@@ -9,7 +9,6 @@ import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 
 public class EquippableCapabilties {
-	
 	@CapabilityInject(IEquippableItemHandler.class)
 	public static final Capability<IEquippableItemHandler> CAPABILITY_EQUIPPABLES = null;
 
@@ -22,9 +21,9 @@ public class EquippableCapabilties {
 		public NBTBase writeNBT (Capability<IEquippableItemHandler> capability, IEquippableItemHandler instance, EnumFacing side) {
 			return null;
 		}
-
+		
 		@Override
-		public void readNBT (Capability<IEquippableItemHandler> capability, IEquippableItemHandler instance, EnumFacing side, NBTBase nbt){}
+		public void readNBT (Capability<IEquippableItemHandler> capability, IEquippableItemHandler instance, EnumFacing side, NBTBase nbt) {}
 	}
 	
 	public static class CapabilityItemEquippableStorage implements IStorage<IEquippable> {
